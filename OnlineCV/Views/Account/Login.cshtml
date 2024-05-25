@@ -1,0 +1,232 @@
+﻿@model CVEntity.Account.CredentialDto;
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row ">
+        <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border p-3 rounded" style="margin-top:100px;box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);background-color:white;">
+
+            <form asp-controller="Account" asp-action="Login" method="post">
+               @*  <div class="mb-3" id="imageContainer">
+                    <img src="~/Images/Comp_Logo/default.jpg" class="img-fluid rounded mx-auto d-block" style="height: 200px; width: 300px;" />
+                </div>
+                <div class="mb-3">
+                    <label class="text-white" for="CategoryId"> <i class='bx bx-cabinet'></i> Company</label>
+                    <select class="form-select select me-2" asp-for="SelectedCompanyId" aria-label="Default select example" id="CategoryId" style="width: 100%;">
+                        <!-- <option selected>Open this select menu</option> -->
+                        <option value="" selected>-- Select Company --</option>
+                        @foreach (var company in Model.CompanyList)
+                        {
+                            <option value="@company.comcod">@company.comnam</option>
+                        }
+                    </select>
+                </div> *@
+                <div class="mb-3">
+                    @* <label asp-for="Email" class="text-white"><i class='bx bx-user'></i> Email/Phone</label> *@
+                    <input type="text" asp-for="@Model.login.Email" class="form-control" placeholder="Email address or phone number" />
+                    <span asp-validation-for="@Model.login.Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    @* <label asp-for="Password" class="text-white"><i class='bx bx-lock-alt'></i> Password</label> *@
+                    <input id="lgpassword" type="password" asp-for="@Model.login.Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="@Model.login.Password" class="text-danger"></span>
+                    <i id="lgopen" class="bi bi-eye" style="float:right;cursor:pointer;margin-top:-29px;margin-right: 6px;"></i>
+                    <i id="lgclose" class="fa bi-eye-slash" style="float:right;cursor:pointer;;margin-top:-29px;margin-right: 6px;display:none;"></i>
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" asp-for="@Model.login.IsRemember" class="form-check-input" />
+                    <label asp-for="@Model.login.IsRemember" class="form-check-label">Keep me logged in.</label>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn w-100 btn-primary mb-2" value="Login" />
+                </div>
+                <div class="text-center mb-3">
+                    <a class="text-primary text-decoration-none" asp-action="ForgotPassword">Forgotten password?</a>
+                </div>
+                <hr class="mb-3">
+            </form>
+            <div class="text-center">
+                <button id="AddUser" class="btn btn-success">Create new account</button>
+            </div>
+            @*<div class="mb-3 text-center">
+            <form asp-controller="Account" asp-action="SignUp" method="get">
+            <input type="submit" class="btn btn-success w-50" value="Register" />
+            </form>
+            </div>*@
+            <div class="modal fade " id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form asp-controller="Account" asp-action="Register" method="post">
+                        <div class="modal-body">
+                            
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            @* <label asp-for="Email" class="text-white"><i class='bx bx-user'></i> Email/Phone</label> *@
+                                            <input type="text" asp-for="@Model.register.Name" class="form-control" placeholder="Your Name" />
+                                            <span asp-validation-for="@Model.register.Name" class="text-danger"></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            @* <label asp-for="Email" class="text-white"><i class='bx bx-user'></i> Email/Phone</label> *@
+                                            <input type="text" asp-for="@Model.register.Email" class="form-control" placeholder="Email address or phone number" />
+                                            <span asp-validation-for="@Model.register.Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            @* <label asp-for="Password" class="text-white"><i class='bx bx-lock-alt'></i> Password</label> *@
+                                            <input type="password" asp-for="@Model.register.Password" class="form-control" placeholder="Password" />
+                                            <span asp-validation-for="@Model.register.Password" class="text-danger"></span>
+                                        </div> 
+                                        <div class="mb-3">
+                                            @* <label asp-for="Password" class="text-white"><i class='bx bx-lock-alt'></i> Password</label> *@
+                                            <input type="password" asp-for="@Model.register.ConfirmPassword" class="form-control" placeholder="Confirm password" />
+                                            <span asp-validation-for="@Model.register.ConfirmPassword" class="text-danger"></span>
+                                        </div>
+                                        <table style="width: 100%;table-layout: fixed;">
+                                            <tr>
+                                                <td >
+                                                    <span>Gender</span>
+                                                    <div class="border form-control">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" id="inlineRadio1" asp-for="@Model.register.Gender" value="M">
+                                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" id="inlineRadio2" asp-for="@Model.register.Gender" value="F">
+                                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" id="inlineRadio3" asp-for="@Model.register.Gender" value="C">
+                                                            <label class="form-check-label" for="inlineRadio3">Custom</label>
+                                                        </div>
+                                                    </div>
+                                                    <span asp-validation-for="@Model.register.Gender" class="text-danger"></span>
+                                                </td>
+                                                <td width="10px"></td>
+                                                <td >
+                                                    <span>Date of birth</span>
+                                                    <div>
+                                                        @* <label asp-for="Password" class="text-white"><i class='bx bx-lock-alt'></i> Password</label> *@
+                                                        <input type="date" asp-for="@Model.register.Birthday" class="form-control" placeholder="" />
+                                                        <span asp-validation-for="@Model.register.Birthday" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>                                     
+                                       
+                                    </div>
+                                                                     
+                                </div>
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            @* <button type="button" class="btn btn-primary">Send message</button> *@
+                            <button type="submit" class="btn btn-primary" id="submitid">Submit</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+                <partial name="_ValidationScriptsPartial" />
+
+    }
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+            crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+          rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+
+    <style>
+        .select2-selection--single {
+            height: 40px !important;
+            border-radius: 8px !important;
+        }
+
+            .select2-selection--single .select2-selection__rendered {
+                line-height: 40px !important;
+            }
+
+            .select2-selection--single .select2-selection__arrow {
+                top: 8px !important;
+                right: 8px !important;
+            }
+
+        /* .select2-container {
+                    width: 100% !important;
+                } */
+
+        .select2-search--dropdown .select2-search__field {
+            border-radius: 8px !important;
+            height: 40px !important;
+        }
+
+        .select2-results__option--selectable {
+            border-radius: 8px !important;
+        }
+
+        .select2-results > .select2-results__options {
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-bottom: 4px !important;
+        }
+
+        .select2-container--open .select2-dropdown--below {
+            border-radius: 8px !important;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#lgopen").click(function () {
+                $("#lgopen").hide();
+                $("#lgclose").show();
+                $("#lgpassword").attr("type", "text");
+            });
+            $("#lgclose").click(function () {
+                $("#lgopen").show();
+                $("#lgclose").hide();
+                $("#lgpassword").attr("type", "password");
+
+            });
+            $("#AddUser").click(function () {
+                $("#userModal").modal("show");
+            });
+            // Initialize Select2 on the select element with the specified ID
+            $('#CategoryId').select2();
+            $('#CategoryId').on('change', function () {
+                var selectedCompanyId = $(this).val();
+                var imageContainer = $('#imageContainer');
+                var img = imageContainer.find('img');
+
+                if (selectedCompanyId) {
+                    // Set the new image src based on the selectedCompanyId
+                    var imageUrl = '/Images/Comp_Logo/' + selectedCompanyId + '.jpg';
+                    img.attr('src', imageUrl);
+                } else {
+                    // If no company is selected, show the default image
+                    img.attr('src', '~/Images/Comp_Logo/default.jpg');
+                }
+            });
+
+        });
+
+
+    </script>
+}
+
+
