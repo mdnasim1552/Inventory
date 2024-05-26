@@ -25,11 +25,45 @@ namespace OnlineCV.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginDto logindto)
+        public async Task<IActionResult> Login(CredentialDto credentialdto)
         {
-            return View();
-        }
+            var logindto = credentialdto.login;
+            // Clear any existing validation errors for the Login property
+            ModelState.Remove(nameof(credentialdto.register));
+            if (ModelState.IsValid)
+            {
+                var userInfo = await _unitOfWork.Credential.SingleOrDefaultAsync(c=>c.Email==logindto.Email && c.Password== logindto.Password);
+                if (userInfo != null)
+                {
 
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name,userInfo.Name),
+                        new Claim(ClaimTypes.Email,userInfo.Email)
+                     };
+                    ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);//we can use CookieAuthenticationDefaults.AuthenticationScheme (constant) instead of "MyCookieAuth"
+                    ClaimsPrincipal claimprincipal = new ClaimsPrincipal(identity);
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = logindto.IsRemember
+                    };
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimprincipal, authProperties);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login Attempt!");
+                    return View(logindto);
+
+                }
+            }
+            return View(logindto);
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Account");
+        }
         public async Task<IActionResult> ForgotPassword()
         {
             return View();
@@ -42,10 +76,10 @@ namespace OnlineCV.Controllers
             ModelState.Remove(nameof(credentialdto.login));
             if (ModelState.IsValid)
             {
-                bool emailExists = await _unitOfWork.Credential.EmailExistsAsync(registerdto.Email);
+                bool emailExists = await _unitOfWork.Credential.AnyAsync(c => c.Email == registerdto.Email);
                 if (emailExists) {
                     ModelState.AddModelError(string.Empty, "Email already exist.");
-                    return View(registerdto);
+                    return View("Login", credentialdto);
                 }
                 else
                 {
@@ -71,7 +105,7 @@ namespace OnlineCV.Controllers
                     
                 }
             }
-            return View(registerdto);
+            return View(credentialdto);
         }
     }
 }

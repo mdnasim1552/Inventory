@@ -561,3 +561,4 @@ F:\ASP.NET Core MVC\OnlineCV\OnlineCV\obj\Debug\net8.0\ref\OnlineCV.dll
 F:\ASP.NET Core MVC\OnlineCV\OnlineCV\bin\Debug\net8.0\AutoMapper.dll
 F:\ASP.NET Core MVC\OnlineCV\OnlineCV\bin\Debug\net8.0\libman.json
 F:\ASP.NET Core MVC\OnlineCV\OnlineCV\obj\Debug\net8.0\OnlineCV.csproj.CopyComplete
+F:\ASP.NET Core MVC\OnlineCV\OnlineCV\obj\Debug\net8.0\OnlineCV.sourcelink.json

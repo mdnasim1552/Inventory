@@ -9,3 +9,4 @@ F:\ASP.NET Core MVC\OnlineCV\CVEntity\obj\Debug\net8.0\CVEntity.dll
 F:\ASP.NET Core MVC\OnlineCV\CVEntity\obj\Debug\net8.0\refint\CVEntity.dll
 F:\ASP.NET Core MVC\OnlineCV\CVEntity\obj\Debug\net8.0\CVEntity.pdb
 F:\ASP.NET Core MVC\OnlineCV\CVEntity\obj\Debug\net8.0\ref\CVEntity.dll
+F:\ASP.NET Core MVC\OnlineCV\CVEntity\obj\Debug\net8.0\CVEntity.sourcelink.json
