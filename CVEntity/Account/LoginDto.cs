@@ -8,11 +8,7 @@ using System.Threading.Tasks;
 namespace CVEntity.Account
 {
     public class LoginDto
-    {
-       
-        public string Name { get; set; } = null!;
-        
-
+    {     
         [StringLength(50)]
         //[Required(ErrorMessage = "sdfssd")]
         public string Email { get; set; } = null!;

@@ -14,13 +14,14 @@ namespace OnlineCV.Repositories
             _db = db;
         }
 
-        public void Update(Credential credential)
-        {
-            _db.Credentials.Update(credential);
-        }
-        public async Task<bool> EmailExistsAsync(string email)
-        {
-            return await _db.Credentials.AnyAsync(c => c.Email == email);
-        }
+        //public void Update(Credential credential)
+        //{
+        //    _db.Credentials.Update(credential);
+        //}
+        //public async Task<bool> EmailExistsAsync(string email)
+        //{
+        //    return await _db.Credentials.AnyAsync(c => c.Email == email);
+        //}
+        
     }
 }

@@ -28,6 +28,11 @@ namespace OnlineCV.UnitOfWork
             return dbSet.Where(predicate);
         }
 
+        public Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
         public TEntity Get(int id)
         {
             return dbSet.Find(id);
@@ -38,6 +43,16 @@ namespace OnlineCV.UnitOfWork
             return dbSet.ToList();
         }
 
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        {
+            return await dbSet.ToListAsync();
+        }
+
+        public async Task<TEntity> GetAsync(int id)
+        {
+            return await dbSet.FindAsync(id);
+        }
+
         public void Remove(TEntity entity)
         {
             dbSet.Remove(entity);
@@ -46,6 +61,19 @@ namespace OnlineCV.UnitOfWork
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             dbSet.RemoveRange(entities);
+        }
+        public void Update(TEntity entity)
+        {
+            dbSet.Attach(entity);
+            _db.Entry(entity).State = EntityState.Modified;
+        }
+        public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await dbSet.SingleOrDefaultAsync(predicate);
+        }
+        public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await dbSet.AnyAsync(predicate);
         }
     }
 }
