@@ -1,0 +1,95 @@
+﻿@model InventoryEntity.Account.CredentialDto;
+@{
+    ViewData["Title"] = "Signup";
+    Layout = "~/Views/Shared/_SignInLayout.cshtml";
+}
+<div class="login-wrapper">
+    <div class="login-content">
+        <div class="login-userset">
+            <div class="login-logo">
+                <img src="~/assets/img/logo.png" alt="img" />
+            </div>
+            <div class="login-userheading">
+                <h3>Create an Account</h3>
+                <h4>Continue where you left off</h4>
+            </div>
+            <form asp-controller="Account" asp-action="Signup" method="post">
+                <div class="form-login">
+                    <label asp-for="@Model.register.Name">Full Name</label>
+                    <div class="form-addons">
+                        <input asp-for="@Model.register.Name" type="text" placeholder="Enter your full name" />
+                        <img src="~/assets/img/icons/users1.svg" alt="img" />
+                    </div>
+                </div>
+                <div class="form-login">
+                    <label asp-for="@Model.register.Email">Email</label>
+                    <div class="form-addons">
+                        <input asp-for="@Model.register.Email" type="text" placeholder="Enter your email address" />
+                        <img src="~/assets/img/icons/mail.svg" alt="img" />
+                    </div>
+                </div>
+                <div class="form-login">
+                    <label asp-for="@Model.register.Password">Password</label>
+                    <div class="pass-group">
+                        <input type="password" asp-for="@Model.register.Password"
+                               class="pass-input"
+                               placeholder="Enter your password" />
+                        <span class="fas toggle-password fa-eye-slash"></span>
+                    </div>
+                </div>
+                <div class="form-login">
+                    <button type="submit" class="btn btn-login">Sign Up</button>
+                </div>
+            </form>
+            
+            <div class="signinform text-center">
+                <h4>
+                    Already a user?
+                    <a class="hover-a" asp-action="Signin" asp-controller="Account">Sign In</a>
+                </h4>
+            </div>
+            <div class="form-setlogin">
+                <h4>Or sign up with</h4>
+            </div>
+            <div class="form-sociallink">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <img src="~/assets/img/icons/google.png"
+                                 class="me-2"
+                                 alt="google" />
+                            Sign Up using Google
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <img src="~/assets/img/icons/facebook.png"
+                                 class="me-2"
+                                 alt="google" />
+                            Sign Up using Facebook
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="login-img">
+        <img src="~/assets/img/login.jpg" alt="img" />
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+
+    </script>
+}
