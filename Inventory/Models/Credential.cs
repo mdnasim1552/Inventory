@@ -27,4 +27,10 @@ public partial class Credential
 
     [Column(TypeName = "smalldatetime")]
     public DateTime? Birthday { get; set; }
+
+    public int? RoleId { get; set; }
+
+    [ForeignKey("RoleId")]
+    [InverseProperty("Credentials")]
+    public virtual Userrole? Role { get; set; }
 }

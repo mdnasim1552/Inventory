@@ -7,11 +7,15 @@ namespace Inventory.UnitOfWork
     {
         private readonly ApplicationDbContext _context;
         public ICredentialRepository Credential { get; private set; }
+        public IUserroleRepository Userrole { get; private set; }
+        public IEmailSettingRepository EmailSetting { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
             //Comp=new CompinfsRepository(context);
             Credential = new CredentialRepository(context);
+            Userrole = new UserroleRepository(context);
+            EmailSetting = new EmailSettingRepository(context);
         }
 
        
