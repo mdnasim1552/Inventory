@@ -99,6 +99,8 @@ namespace Inventory.Controllers
                     var saveResult = await _unitOfWork.SaveAsync();
                     if (saveResult)
                     {
+                        bool status = await _unitOfWork.EmailSetting.SendEmailAsync(credentials.Email, "Account Created", "Congratulations, your account " +
+                            "has been successfully created.");
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimprincipal);
                         return RedirectToAction("Index", "Home");
                     }
