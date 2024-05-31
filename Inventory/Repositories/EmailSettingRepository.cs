@@ -28,7 +28,9 @@ namespace Inventory.Repositories
                 {
                     From = new MailAddress(emailsettings.From),
                     Subject = subject,
-                    Body = message
+                    Body = message,
+                    BodyEncoding=System.Text.Encoding.ASCII,
+                    IsBodyHtml= true
                 };
                 mailmessage.To.Add(email);
                 SmtpClient smtp = new SmtpClient(emailsettings.SmtpServer)

@@ -15,10 +15,15 @@ namespace Inventory.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-        public AccountController(IMapper mapper, IUnitOfWork unitOfWork)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IConfiguration _configuration;
+
+        public AccountController(IMapper mapper, IUnitOfWork unitOfWork,IWebHostEnvironment webHostEnvironment,IConfiguration configuration)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
+            _configuration= configuration;
         }
         public IActionResult Signin()
         {
@@ -99,8 +104,15 @@ namespace Inventory.Controllers
                     var saveResult = await _unitOfWork.SaveAsync();
                     if (saveResult)
                     {
-                        bool status = await _unitOfWork.EmailSetting.SendEmailAsync(credentials.Email, "Account Created", "Congratulations, your account " +
-                            "has been successfully created.");
+                        string url = _configuration.GetValue<string>("Urls:LoginUrl");
+                        string filepath = Path.Combine(_webHostEnvironment.WebRootPath, "EmailTemplate\\Welcome.cshtml");
+                        string htmlstring = System.IO.File.ReadAllText(filepath);
+                        htmlstring = htmlstring.Replace("{{company}}", "Inventory Management");
+                        htmlstring = htmlstring.Replace("{{User's Name}}", credentials.Name);
+                        htmlstring = htmlstring.Replace("{{Username}}", credentials.Email);
+                        htmlstring = htmlstring.Replace("{{Password}}", credentials.Password);//{{lgnurl}}
+                        htmlstring = htmlstring.Replace("{{lgnurl}}", url);
+                        bool status = await _unitOfWork.EmailSetting.SendEmailAsync(credentials.Email, "Account Created", htmlstring);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimprincipal);
                         return RedirectToAction("Index", "Home");
                     }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LTJDRw2WtSd6RLSM19WGkFOmcd/ME/woo5IKMeLNORo=",
+  "Hash": "8FVKFFbCKO8SP1jLQiADlisOaS/MA/ruukG0A8poY0A=",
   "Source": "Inventory",
   "BasePath": "_content/Inventory",
   "Mode": "Default",
@@ -9895,6 +9895,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\EmailTemplate\\Welcome.cshtml",
+      "SourceId": "Inventory",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\",
+      "BasePath": "_content/Inventory",
+      "RelativePath": "EmailTemplate/Welcome.cshtml",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "wwwroot\\EmailTemplate\\Welcome.cshtml"
     },
     {
       "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\favicon.ico",
