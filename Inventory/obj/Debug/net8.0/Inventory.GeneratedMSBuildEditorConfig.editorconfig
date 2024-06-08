@@ -26,12 +26,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = F:\ASP.NET Core MVC\OnlineCV\Inventory
 build_property._RazorSourceGeneratorDebug = 
 
+[F:/ASP.NET Core MVC/OnlineCV/Inventory/wwwroot/EmailTemplate/Forgotpassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = d3d3cm9vdFxFbWFpbFRlbXBsYXRlXEZvcmdvdHBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/ASP.NET Core MVC/OnlineCV/Inventory/wwwroot/EmailTemplate/Welcome.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d3d3cm9vdFxFbWFpbFRlbXBsYXRlXFdlbGNvbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Account/ForgotPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Account/ResetPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Account/Signin.cshtml]

@@ -561,4 +561,5 @@ F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\refint\Inventory.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\Inventory.pdb
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\Inventory.genruntimeconfig.cache
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\ref\Inventory.dll
+F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\BCrypt.Net-Next.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\Inventory.csproj.CopyComplete

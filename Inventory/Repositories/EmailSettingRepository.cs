@@ -1,4 +1,5 @@
 ﻿using Inventory.Data;
+using Inventory.IRepositories;
 using Inventory.Models;
 using Inventory.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
@@ -14,15 +15,15 @@ namespace Inventory.Repositories
         {
             _db = db;
         }
-        public async Task<bool> SendEmailAsync(string email, string subject, string message)
+        public async Task<bool> SendEmailAsync(string adminEmail,string email, string subject, string message)
         {
             try
             {
-                var adminEmail = await (from c in _db.Credentials
-                                        join r in _db.Userroles
-                                        on c.RoleId equals r.RoleId
-                                        where r.Role == "Admin"
-                                        select c.Email).SingleOrDefaultAsync();
+                //var adminEmail = await (from c in _db.Credentials
+                //                        join r in _db.Userroles
+                //                        on c.RoleId equals r.RoleId
+                //                        where r.Role == "Admin"
+                //                        select c.Email).SingleOrDefaultAsync();
                 var emailsettings = await (from e in _db.EmailSettings where e.From == adminEmail select e).SingleOrDefaultAsync();
                 MailMessage mailmessage = new MailMessage()
                 {

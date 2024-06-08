@@ -18,7 +18,6 @@ public partial class Credential
     [StringLength(50)]
     public string Email { get; set; } = null!;
 
-    [StringLength(50)]
     public string Password { get; set; } = null!;
 
     [StringLength(1)]

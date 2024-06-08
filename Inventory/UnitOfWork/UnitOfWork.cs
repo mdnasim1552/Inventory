@@ -1,4 +1,5 @@
 ﻿using Inventory.Data;
+using Inventory.IRepositories;
 using Inventory.Repositories;
 
 namespace Inventory.UnitOfWork
@@ -9,6 +10,7 @@ namespace Inventory.UnitOfWork
         public ICredentialRepository Credential { get; private set; }
         public IUserroleRepository Userrole { get; private set; }
         public IEmailSettingRepository EmailSetting { get; private set; }
+        public IPasswordResetTokenRepository PasswordResetToken { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
@@ -16,6 +18,7 @@ namespace Inventory.UnitOfWork
             Credential = new CredentialRepository(context);
             Userrole = new UserroleRepository(context);
             EmailSetting = new EmailSettingRepository(context);
+            PasswordResetToken=new PasswordResetTokenRepository(context);
         }
 
        

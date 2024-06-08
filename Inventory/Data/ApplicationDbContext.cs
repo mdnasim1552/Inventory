@@ -12,6 +12,10 @@ public partial class ApplicationDbContext : DbContext
     {
     }
 
+    public virtual DbSet<Brand> Brands { get; set; }
+
+    public virtual DbSet<Category> Categories { get; set; }
+
     public virtual DbSet<Credential> Credentials { get; set; }
 
     public virtual DbSet<EducationalQualification> EducationalQualifications { get; set; }
@@ -19,6 +23,14 @@ public partial class ApplicationDbContext : DbContext
     public virtual DbSet<EmailSetting> EmailSettings { get; set; }
 
     public virtual DbSet<Jobapplication> Jobapplications { get; set; }
+
+    public virtual DbSet<PasswordResetToken> PasswordResetTokens { get; set; }
+
+    public virtual DbSet<Product> Products { get; set; }
+
+    public virtual DbSet<SubCategory> SubCategories { get; set; }
+
+    public virtual DbSet<Unit> Units { get; set; }
 
     public virtual DbSet<Userrole> Userroles { get; set; }
 
@@ -48,6 +60,42 @@ public partial class ApplicationDbContext : DbContext
         modelBuilder.Entity<Jobapplication>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__jobappli__3213E83F82772CEE");
+        });
+
+        modelBuilder.Entity<Product>(entity =>
+        {
+            entity.Property(e => e.Discount).HasDefaultValue(0.00m);
+            entity.Property(e => e.Sku).IsFixedLength();
+            entity.Property(e => e.Status).IsFixedLength();
+            entity.Property(e => e.Tax).HasDefaultValue(0.00m);
+
+            entity.HasOne(d => d.Brand).WithMany(p => p.Products)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Product_Brand");
+
+            entity.HasOne(d => d.Category).WithMany(p => p.Products)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Product_Category");
+
+            entity.HasOne(d => d.SubCategory).WithMany(p => p.Products)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Product_SubCategory");
+
+            entity.HasOne(d => d.Unit).WithMany(p => p.Products)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Product_Unit");
+        });
+
+        modelBuilder.Entity<SubCategory>(entity =>
+        {
+            entity.HasOne(d => d.Category).WithMany(p => p.SubCategories)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SubCategory_Category");
+        });
+
+        modelBuilder.Entity<Unit>(entity =>
+        {
+            entity.Property(e => e.ShortName).IsFixedLength();
         });
 
         modelBuilder.Entity<Userrole>(entity =>
