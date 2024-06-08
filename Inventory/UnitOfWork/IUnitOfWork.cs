@@ -1,4 +1,4 @@
-﻿using Inventory.Repositories;
+﻿using Inventory.IRepositories;
 
 namespace Inventory.UnitOfWork
 {
@@ -7,6 +7,7 @@ namespace Inventory.UnitOfWork
         ICredentialRepository Credential { get; }
         IUserroleRepository Userrole { get; }
         IEmailSettingRepository EmailSetting { get; }
+        IPasswordResetTokenRepository PasswordResetToken { get; }
         void Saved();
         Task<bool> SaveAsync();
     }

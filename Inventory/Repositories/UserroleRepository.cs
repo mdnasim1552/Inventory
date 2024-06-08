@@ -1,4 +1,5 @@
 ﻿using Inventory.Data;
+using Inventory.IRepositories;
 using Inventory.Models;
 using Inventory.UnitOfWork;
 

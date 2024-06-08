@@ -8,6 +8,10 @@ using NuGet.Configuration;
 using Inventory.UnitOfWork;
 using System.Security.Claims;
 using Inventory.Models;
+using Microsoft.CodeAnalysis.Scripting;
+using System.Security.Cryptography;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Inventory.Controllers
 {
@@ -37,8 +41,8 @@ namespace Inventory.Controllers
             ModelState.Remove(nameof(credentialdto.register));
             if (ModelState.IsValid)
             {
-                var userInfo = await _unitOfWork.Credential.SingleOrDefaultAsync(c=>c.Email==logindto.Email && c.Password== logindto.Password);
-                if (userInfo != null)
+                var userInfo = await _unitOfWork.Credential.SingleOrDefaultAsync(c=>c.Email==logindto.Email);
+                if (userInfo != null && BCrypt.Net.BCrypt.Verify(logindto.Password, userInfo.Password))
                 {
 
                     var claims = new List<Claim>
@@ -73,6 +77,93 @@ namespace Inventory.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            var userInfo = await _unitOfWork.Credential.SingleOrDefaultAsync(c => c.Email == email);
+            if (userInfo == null) return RedirectToAction("ForgotPasswordConfirmation");
+
+            // Generate a secure token
+            var token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
+
+            //Store the token in the database with an expiration time
+            var passwordResetToken = new PasswordResetToken
+            {
+                Email = email,
+                Token = token,
+                Expiration = DateTime.UtcNow.AddHours(1) // Token valid for 1 hour
+            };
+            _unitOfWork.PasswordResetToken.Add(passwordResetToken);
+            var saveResult=await _unitOfWork.SaveAsync();
+            var callbackUrl = Url.Action("ResetPassword", "Account", new { token = token }, protocol: HttpContext.Request.Scheme);
+            Credential credentials=await _unitOfWork.Credential.SingleOrDefaultAsync(c=>c.Email==email);
+            var adminEmail = _configuration.GetValue<string>("GlobalAdmin:Gmail");
+            string filepath = Path.Combine(_webHostEnvironment.WebRootPath, "EmailTemplate\\Forgotpassword.cshtml");
+            string htmlstring = System.IO.File.ReadAllText(filepath);
+            htmlstring = htmlstring.Replace("{{company}}", "Inventory Management");
+            htmlstring = htmlstring.Replace("{{User's Name}}", credentials.Name);
+            htmlstring = htmlstring.Replace("{{Username}}", credentials.Email);
+            htmlstring = htmlstring.Replace("{{reseturl}}", callbackUrl);
+            bool status = await _unitOfWork.EmailSetting.SendEmailAsync(adminEmail, credentials.Email, "Password Reset for Inventory Management", htmlstring);
+
+            return RedirectToAction("ForgotPasswordConfirmation");
+        }
+        public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult ResetPassword(string token)
+        {
+            if (string.IsNullOrEmpty(token))
+            {
+                return View("Error");
+            }
+            return View(new ResetPasswordDto { Token = token });
+        }
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var resetToken = await _unitOfWork.PasswordResetToken.SingleOrDefaultAsync(t => t.Token == model.Token && t.Email==model.Email);
+            if (resetToken == null || resetToken.Expiration < DateTime.UtcNow)
+            {
+                // Token is invalid or expired
+                ModelState.AddModelError(string.Empty, "Invalid or expired token.");
+                return View(model);
+            }
+
+            var user = await _unitOfWork.Credential.SingleOrDefaultAsync(c => c.Email == resetToken.Email);
+            if (user == null)
+            {
+                // User not found
+                return RedirectToAction("ResetPasswordConfirmation");
+            }
+
+            // Hash the password before saving it
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.Password);
+
+            // Reset the user's password
+            user.Password = hashedPassword;
+            _unitOfWork.Credential.Update(user);
+            bool userUpdateStatus =await _unitOfWork.SaveAsync();
+
+            // Remove the token after successful reset
+            _unitOfWork.PasswordResetToken.Remove(resetToken);
+            bool removeToken=await _unitOfWork.SaveAsync();
+
+            return RedirectToAction("ResetPasswordConfirmation");
+        }
+
+
         public async Task<IActionResult> Signup()
         {
             return View();
@@ -100,19 +191,21 @@ namespace Inventory.Controllers
                     ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);//we can use CookieAuthenticationDefaults.AuthenticationScheme (constant) instead of "MyCookieAuth"
                     ClaimsPrincipal claimprincipal = new ClaimsPrincipal(identity);
                     var credentials = _mapper.Map<Credential>(registerdto);
+                    credentials.Password = BCrypt.Net.BCrypt.HashPassword(registerdto.Password);
                     _unitOfWork.Credential.Add(credentials);
                     var saveResult = await _unitOfWork.SaveAsync();
                     if (saveResult)
                     {
                         string url = _configuration.GetValue<string>("Urls:LoginUrl");
+                        var adminEmail = _configuration.GetValue<string>("GlobalAdmin:Gmail");
                         string filepath = Path.Combine(_webHostEnvironment.WebRootPath, "EmailTemplate\\Welcome.cshtml");
                         string htmlstring = System.IO.File.ReadAllText(filepath);
                         htmlstring = htmlstring.Replace("{{company}}", "Inventory Management");
                         htmlstring = htmlstring.Replace("{{User's Name}}", credentials.Name);
                         htmlstring = htmlstring.Replace("{{Username}}", credentials.Email);
-                        htmlstring = htmlstring.Replace("{{Password}}", credentials.Password);//{{lgnurl}}
+                        htmlstring = htmlstring.Replace("{{Password}}", registerdto.Password);//{{lgnurl}}
                         htmlstring = htmlstring.Replace("{{lgnurl}}", url);
-                        bool status = await _unitOfWork.EmailSetting.SendEmailAsync(credentials.Email, "Account Created", htmlstring);
+                        bool status = await _unitOfWork.EmailSetting.SendEmailAsync(adminEmail,credentials.Email, "Account Created", htmlstring);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimprincipal);
                         return RedirectToAction("Index", "Home");
                     }

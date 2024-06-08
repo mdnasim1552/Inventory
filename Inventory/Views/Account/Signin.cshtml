@@ -13,11 +13,12 @@
                 <h3>Sign In</h3>
                 <h4>Please login to your account</h4>
             </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
             <form asp-controller="Account" asp-action="Signin" method="post">
                 <div class="form-login">
                     <label asp-for="@Model.login.Email">Email</label>
                     <div class="form-addons">
-                        <input type="text" asp-for="@Model.login.Email" placeholder="Enter your email address">
+                        <input type="email" asp-for="@Model.login.Email" placeholder="Enter your email address">
                         <img src="~/assets/img/icons/mail.svg" alt="img">
                     </div>
                 </div>

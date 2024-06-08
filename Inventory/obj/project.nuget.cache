@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "NOgzj1Mx1lOxvv7RWE7GhHuBLp8Edo1w0/nr36zlkT4pRShyRm4GBPEyPDilxoN2jKpFrBeB3ekvXW/U36DgDg==",
+  "dgSpecHash": "9e7uuHGw0S/vS1K4pQSkIl19t9xoWq5s0KsJjADl6BF9YAV6an2I6Y4r9u8TpFLVNsRjKSxKnNAps3YTTN1ZFg==",
   "success": true,
   "projectFilePath": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mdnas\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\mdnas\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",
