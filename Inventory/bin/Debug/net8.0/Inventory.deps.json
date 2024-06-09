@@ -80,7 +80,7 @@
           "Microsoft.AspNetCore.Http.Connections": "8.0.0.0",
           "Microsoft.AspNetCore.Http": "8.0.0.0",
           "Microsoft.AspNetCore.Http.Extensions": "8.0.0.0",
-          "Microsoft.AspNetCore.Http.Features": "8.0.0.0",
+          "Microsoft.AspNetCore.Http.Features.Reference": "8.0.0.0",
           "Microsoft.AspNetCore.Http.Results": "8.0.0.0",
           "Microsoft.AspNetCore.HttpLogging": "8.0.0.0",
           "Microsoft.AspNetCore.HttpOverrides": "8.0.0.0",
@@ -1048,6 +1048,12 @@
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.Web.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/5.0.17": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0",
+          "System.IO.Pipelines": "8.0.0"
         }
       },
       "Microsoft.AspNetCore.Metadata/8.0.5": {
@@ -2603,6 +2609,9 @@
         }
       },
       "InventoryEntity/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.17"
+        },
         "runtime": {
           "InventoryEntity.dll": {}
         },
@@ -2808,7 +2817,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Http.Features/8.0.0.0": {
+      "Microsoft.AspNetCore.Http.Features.Reference/8.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Http.Features.dll": {}
         },
@@ -4803,6 +4812,13 @@
       "path": "microsoft.aspnetcore.components.web/8.0.5",
       "hashPath": "microsoft.aspnetcore.components.web.8.0.5.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Http.Features/5.0.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3jG2xS+dx8DDCGV/F+STdPTg89lX3ao3dF/VEPvJaz3wzBIjuadipTtYNEXDIVuOPZwb6jdmhrX9jkzOIBm5cw==",
+      "path": "microsoft.aspnetcore.http.features/5.0.17",
+      "hashPath": "microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Metadata/8.0.5": {
       "type": "package",
       "serviceable": true,
@@ -5750,7 +5766,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Http.Features/8.0.0.0": {
+    "Microsoft.AspNetCore.Http.Features.Reference/8.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

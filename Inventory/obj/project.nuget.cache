@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9e7uuHGw0S/vS1K4pQSkIl19t9xoWq5s0KsJjADl6BF9YAV6an2I6Y4r9u8TpFLVNsRjKSxKnNAps3YTTN1ZFg==",
+  "dgSpecHash": "YyIqvytk94pHR8GXiN3IXKTXq0CiVaXa55uE7k4wHNYGpZDnErU0jwh8qO6eIaUjNbOgOjBxeNvLA1dkqpzeHg==",
   "success": true,
   "projectFilePath": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj",
   "expectedPackageFiles": [
@@ -65,6 +65,7 @@
     "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.5\\microsoft.aspnetcore.components.quickgrid.8.0.5.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid.entityframeworkadapter\\8.0.5\\microsoft.aspnetcore.components.quickgrid.entityframeworkadapter.8.0.5.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.5\\microsoft.aspnetcore.components.web.8.0.5.nupkg.sha512",
+    "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.5\\microsoft.aspnetcore.metadata.8.0.5.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.0\\microsoft.aspnetcore.mvc.razor.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\8.0.5\\microsoft.aspnetcore.mvc.razor.runtimecompilation.8.0.5.nupkg.sha512",

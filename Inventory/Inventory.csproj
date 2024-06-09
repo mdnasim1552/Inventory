@@ -26,11 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Views\Product\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\InventoryEntity\InventoryEntity.csproj" />
   </ItemGroup>
 
