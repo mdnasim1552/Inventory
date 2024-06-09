@@ -3,15 +3,24 @@ using Inventory.Configuration;
 using Inventory.Data;
 using Inventory.Profiles;
 using Inventory.UnitOfWork;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
+builder.Services.AddScoped<IDbConnection>(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var connectionString = configuration.GetConnectionString("DefaultConnection");
+    return new SqlConnection(connectionString);
+});
+
 builder.Services.AddDbContext<ApplicationDbContext>(options=>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddAllRepository();//Register all repository by DependencyInjection
 builder.Services.AddAuthenticationAndAuthorization();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 var app = builder.Build();

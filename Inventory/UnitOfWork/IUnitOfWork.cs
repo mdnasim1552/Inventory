@@ -8,6 +8,7 @@ namespace Inventory.UnitOfWork
         IUserroleRepository Userrole { get; }
         IEmailSettingRepository EmailSetting { get; }
         IPasswordResetTokenRepository PasswordResetToken { get; }
+        IBrandRepository BrandRepository { get; }
         void Saved();
         Task<bool> SaveAsync();
     }

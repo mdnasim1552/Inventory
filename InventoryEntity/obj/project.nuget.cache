@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "tqcDHnooOurv7526ZDEfPGpHsIUhVS0nYqX6TN/zx7+wq84pf6ZG16xGKqK9ctTwO/q023Vv/4XUgy4q1gXeag==",
+  "dgSpecHash": "5I9fBtdjX/CS6emtczkS0qsXO4BGqBrhUXy4wq2Ii7SwqX2SJSWDDJnO/Iouhoy1Wx9DGJoH2e4zqo+xR8CPFQ==",
   "success": true,
   "projectFilePath": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\mdnas\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

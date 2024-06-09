@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Inventory.Data;
+using Inventory.UnitOfWork;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Inventory.Configuration
 {
@@ -6,6 +8,9 @@ namespace Inventory.Configuration
     {
         public static IServiceCollection AddAllRepository(this IServiceCollection services)
         {
+
+            services.AddScoped<IUnitOfWork, Inventory.UnitOfWork.UnitOfWork>();
+            services.AddScoped<IProcessAccess, ProcessAccess>();
             //services.AddScoped<IUserRepository, UserRepository>();
             //services.AddScoped<IRoleService, RoleService>();
             //services.AddScoped<ILoginRepository, LoginRepository>();

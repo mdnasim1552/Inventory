@@ -10,3 +10,4 @@ F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.dl
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\refint\InventoryEntity.dll
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.pdb
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\ref\InventoryEntity.dll
+F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.csproj.AssemblyReference.cache
