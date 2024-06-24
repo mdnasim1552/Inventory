@@ -1,63 +1,222 @@
-﻿@model InventoryEntity.Brand.BrandDto
+﻿@model IEnumerable<InventoryEntity.Brand.BrandDto>
 @{
-    ViewData["Title"] = "Add Brand";
+    ViewData["Title"] = "Brand List";
 }
-
 <div class="content">
     <div class="page-header">
         <div class="page-title">
-            <h4>Brand ADD</h4>
-            <h6>Create new Brand</h6>
+            <h4>Brand List</h4>
+            <h6>Manage your Brand</h6>
+        </div>
+        <div class="page-btn">
+            <a asp-controller="Brand" asp-action="Create" class="btn btn-added">
+                <img src="~/assets/img/icons/plus.svg"
+                     class="me-2"
+                     alt="img" />Add Brand
+            </a>
         </div>
     </div>
-    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
     <div class="card">
         <div class="card-body">
-            <div class="row">
-                <form asp-controller="Brand" asp-action="Index" method="post" enctype="multipart/form-data">
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label asp-for="@Model.Name">Brand Name</label>
-                            <input type="text" asp-for="@Model.Name" />
-                        </div>
+            <div class="table-top">
+                <div class="search-set">
+                    <div class="search-path">
+                        <a class="btn btn-filter" id="filter_search">
+                            <img src="~/assets/img/icons/filter.svg" alt="img" />
+                            <span>
+                                <img src="~/assets/img/icons/closes.svg" alt="img" />
+                            </span>
+                        </a>
                     </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label asp-for="@Model.Description">Description</label>
-                            <textarea asp-for="@Model.Description" class="form-control"></textarea>
-                        </div>
+                    <div class="search-input">
+                        <a class="btn btn-searchset">
+                            <img src="~/assets/img/icons/search-white.svg" alt="img" />
+                        </a>
                     </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label asp-for="@Model.BrandImg"> Product Image</label>
-                            <div class="image-upload">
-                                <input asp-for="@Model.BrandImg" type="file" accept="image/*" />
-                                <div class="image-uploads">
-                                    <img src="~/assets/img/icons/upload.svg" alt="img" />
-                                    <h4>Drag and drop a file to upload</h4>
-                                </div>
+                </div>
+                <div class="wordset">
+                    <ul>
+                        <li>
+                            <a data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               title="pdf">
+                                <img src="~/assets/img/icons/pdf.svg" alt="img" />
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               title="excel">
+                                <img src="~/assets/img/icons/excel.svg" alt="img" />
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               title="print">
+                                <img src="~/assets/img/icons/printer.svg" alt="img" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" id="filter_inputs">
+                <div class="card-body pb-0">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <input type="text" placeholder="Enter Brand Name" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <input type="text"
+                                       placeholder="Enter Brand Description" />
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+                            <div class="form-group">
+                                <a class="btn btn-filters ms-auto">
+                                    <img src="~/assets/img/icons/search-whites.svg"
+                                         alt="img" />
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        @* <a href="javascript:void(0);" class="btn btn-submit me-2">Submit</a> *@
-                        <button type="submit" class="btn btn-submit me-2">Submit</button>
-                        <a href="brandlist.html" class="btn btn-cancel">Cancel</a>
-                    </div>
-                </form>               
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table datanew">
+                    <thead>
+                        <tr>
+                            <th>
+                                <label class="checkboxs">
+                                    <input type="checkbox" id="select-all" />
+                                    <span class="checkmarks"></span>
+                                </label>
+                            </th>
+                            <th>Image</th>
+                            <th>Brand Name</th>
+                            <th>Brand Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var brand in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="checkboxs">
+                                        <input type="checkbox" />
+                                        <span class="checkmarks"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <a class="product-img">
+                                        <img src="@brand.ImageUrl"
+                                             alt="product" />
+                                    </a>
+                                </td>
+                                <td>@brand.Name</td>
+                                <td>@brand.Description</td>
+                                <td>
+                                    <a class="me-3" href="editbrand.html">
+                                        <img src="~/assets/img/icons/edit.svg" alt="img" />
+                                    </a>
+                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                        <img src="~/assets/img/icons/delete.svg" alt="img" />
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        @* <tr>
+                            <td>
+                                <label class="checkboxs">
+                                    <input type="checkbox" />
+                                    <span class="checkmarks"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <a class="product-img">
+                                    <img src="assets/img/brand/adidas.png"
+                                         alt="product" />
+                                </a>
+                            </td>
+                            <td>Adidas</td>
+                            <td>Shoes, sportswear</td>
+                            <td>
+                                <a class="me-3" href="editbrand.html">
+                                    <img src="assets/img/icons/edit.svg" alt="img" />
+                                </a>
+                                <a class="me-3 confirm-text" href="javascript:void(0);">
+                                    <img src="assets/img/icons/delete.svg" alt="img" />
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="checkboxs">
+                                    <input type="checkbox" />
+                                    <span class="checkmarks"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <a class="product-img">
+                                    <img src="assets/img/brand/colgate.png"
+                                         alt="product" />
+                                </a>
+                            </td>
+                            <td>Colgate</td>
+                            <td>Oral hygiene. Toothbrushes</td>
+                            <td>
+                                <a class="me-3" href="editbrand.html">
+                                    <img src="assets/img/icons/edit.svg" alt="img" />
+                                </a>
+                                <a class="me-3 confirm-text" href="javascript:void(0);">
+                                    <img src="assets/img/icons/delete.svg" alt="img" />
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="checkboxs">
+                                    <input type="checkbox" />
+                                    <span class="checkmarks"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <a class="product-img">
+                                    <img src="assets/img/brand/samsung.png"
+                                         alt="product" />
+                                </a>
+                            </td>
+                            <td>samsung</td>
+                            <td>Electronics</td>
+                            <td>
+                                <a class="me-3" href="editbrand.html">
+                                    <img src="assets/img/icons/edit.svg" alt="img" />
+                                </a>
+                                <a class="me-3 confirm-text" href="javascript:void(0);">
+                                    <img src="assets/img/icons/delete.svg" alt="img" />
+                                </a>
+                            </td>
+                        </tr> *@
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
-
 @section Scripts {
     @{
         <partial name="_ValidationScriptsPartial" />
-
     }
     <script type="text/javascript">
         $(document).ready(function () {
-
+            
         });
 
     </script>
