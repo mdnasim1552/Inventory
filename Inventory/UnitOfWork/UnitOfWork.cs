@@ -11,7 +11,7 @@ namespace Inventory.UnitOfWork
         public IUserroleRepository Userrole { get; private set; }
         public IEmailSettingRepository EmailSetting { get; private set; }
         public IPasswordResetTokenRepository PasswordResetToken { get; private set; }
-        public IBrandRepository BrandRepository { get; private set; }
+        public IBrandRepository Brand { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
@@ -20,7 +20,7 @@ namespace Inventory.UnitOfWork
             Userrole = new UserroleRepository(context);
             EmailSetting = new EmailSettingRepository(context);
             PasswordResetToken=new PasswordResetTokenRepository(context);
-            BrandRepository = new BrandRepository(context);
+            Brand = new BrandRepository(context);
         }
 
        
