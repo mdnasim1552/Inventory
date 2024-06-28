@@ -4,6 +4,7 @@ using Inventory.UnitOfWork;
 using InventoryEntity.Brand;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.Controllers
 {
@@ -48,6 +49,54 @@ namespace Inventory.Controllers
             return View(brandDto);
         }
 
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var brand = await _unitOfWork.Brand.GetAsync(id);
+            if (brand == null)
+            {
+                return NotFound();
+            }
+
+            var brandDto = _mapper.Map<BrandDto>(brand);
+
+            return View(brandDto);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(BrandDto brandDto)
+        {
+            if (ModelState.IsValid)
+            {
+                if (brandDto.BrandImg != null)
+                {
+                    if(brandDto.ImageUrl!=null)
+                    {
+                        var imageUrl = brandDto.ImageUrl.TrimStart('/');
+                        imageUrl = Path.Combine(_webHostEnvironment.WebRootPath, imageUrl);
+                        if (System.IO.File.Exists(imageUrl))
+                        {
+                            System.IO.File.Delete(imageUrl);
+                            //return Ok("Image deleted successfully.");
+                        }
+                    }                   
+                    brandDto.ImageUrl = await UploadImage(brandDto.BrandImg);
+                }
+                var brands = _mapper.Map<Brand>(brandDto);
+                _unitOfWork.Brand.Update(brands);
+                var brandstatus = await _unitOfWork.SaveAsync();
+                if (brandstatus)
+                {
+                    return RedirectToAction("Edit");
+                    //return View(brandDto);
+                }
+            }
+            ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
+            return View(brandDto);
+        }
+
         private async Task<string> UploadImage(IFormFile BrandImg)
         {
             string uniqueFileName = string.Empty;
@@ -82,6 +131,25 @@ namespace Inventory.Controllers
                 uniqueFileName = $"/BrandImages/{uniqueFileName}";
             }
             return uniqueFileName;
+        }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteImage(string imageUrl, int id)
+        {
+            var brand = await _unitOfWork.Brand.GetAsync(id);
+            brand.Image = null;
+            _unitOfWork.Brand.Update(brand);
+            var saveResult = await _unitOfWork.SaveAsync();
+            if (saveResult)
+            {
+                imageUrl = imageUrl.TrimStart('/');
+                imageUrl = Path.Combine(_webHostEnvironment.WebRootPath, imageUrl);
+                if (System.IO.File.Exists(imageUrl))
+                {
+                    System.IO.File.Delete(imageUrl);
+                    return Ok("Image deleted successfully.");
+                }
+            }           
+            return NotFound("Image not found.");
         }
     }
 }
