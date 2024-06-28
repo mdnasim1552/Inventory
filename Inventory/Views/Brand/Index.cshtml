@@ -123,7 +123,7 @@
                                 <td>@brand.Name</td>
                                 <td>@brand.Description</td>
                                 <td>
-                                    <a class="me-3" href="editbrand.html">
+                                    <a class="me-3" asp-action="Edit" asp-controller="Brand" asp-route-id="@brand.Id">
                                         <img src="~/assets/img/icons/edit.svg" alt="img" />
                                     </a>
                                     <a class="me-3 confirm-text" href="javascript:void(0);">
@@ -214,6 +214,7 @@
     @{
         <partial name="_ValidationScriptsPartial" />
     }
+
     <script type="text/javascript">
         $(document).ready(function () {
             
