@@ -89,7 +89,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table datanew">
+                <table class="table" id="branddatanew">
                     <thead>
                         <tr>
                             <th>
@@ -107,7 +107,7 @@
                     <tbody>
                         @foreach(var brand in Model)
                         {
-                            <tr>
+                            <tr data-id="@brand.Id">
                                 <td>
                                     <label class="checkboxs">
                                         <input type="checkbox" />
@@ -126,84 +126,12 @@
                                     <a class="me-3" asp-action="Edit" asp-controller="Brand" asp-route-id="@brand.Id">
                                         <img src="~/assets/img/icons/edit.svg" alt="img" />
                                     </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                    <a class="me-3 deleteBrandbtn" href="javascript:void(0);" data-id="@brand.Id">
                                         <img src="~/assets/img/icons/delete.svg" alt="img" />
                                     </a>
                                 </td>
                             </tr>
                         }
-                        @* <tr>
-                            <td>
-                                <label class="checkboxs">
-                                    <input type="checkbox" />
-                                    <span class="checkmarks"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <a class="product-img">
-                                    <img src="assets/img/brand/adidas.png"
-                                         alt="product" />
-                                </a>
-                            </td>
-                            <td>Adidas</td>
-                            <td>Shoes, sportswear</td>
-                            <td>
-                                <a class="me-3" href="editbrand.html">
-                                    <img src="assets/img/icons/edit.svg" alt="img" />
-                                </a>
-                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                    <img src="assets/img/icons/delete.svg" alt="img" />
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label class="checkboxs">
-                                    <input type="checkbox" />
-                                    <span class="checkmarks"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <a class="product-img">
-                                    <img src="assets/img/brand/colgate.png"
-                                         alt="product" />
-                                </a>
-                            </td>
-                            <td>Colgate</td>
-                            <td>Oral hygiene. Toothbrushes</td>
-                            <td>
-                                <a class="me-3" href="editbrand.html">
-                                    <img src="assets/img/icons/edit.svg" alt="img" />
-                                </a>
-                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                    <img src="assets/img/icons/delete.svg" alt="img" />
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label class="checkboxs">
-                                    <input type="checkbox" />
-                                    <span class="checkmarks"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <a class="product-img">
-                                    <img src="assets/img/brand/samsung.png"
-                                         alt="product" />
-                                </a>
-                            </td>
-                            <td>samsung</td>
-                            <td>Electronics</td>
-                            <td>
-                                <a class="me-3" href="editbrand.html">
-                                    <img src="assets/img/icons/edit.svg" alt="img" />
-                                </a>
-                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                    <img src="assets/img/icons/delete.svg" alt="img" />
-                                </a>
-                            </td>
-                        </tr> *@
                     </tbody>
                 </table>
             </div>
@@ -217,7 +145,101 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            
+            var updateMessage = '@TempData["UpdateMessage"]';
+            if (updateMessage) {
+                showContent(updateMessage);
+            }          
+            // $(".deleteBrandbtn").on("click",
+            //     function () {
+            //         Swal.fire({
+            //             title: "Are you sure?",
+            //             text: "You won't be able to revert this!",
+            //             type: "warning",
+            //             showCancelButton: !0,
+            //             confirmButtonColor: "#3085d6",
+            //             cancelButtonColor: "#d33",
+            //             confirmButtonText: "Yes, delete it!",
+            //             confirmButtonClass: "btn btn-primary",
+            //             cancelButtonClass: "btn btn-danger ml-1",
+            //             buttonsStyling: !1
+            //         }).then(function (t) {
+            //             t.value && Swal.fire({
+            //                 type: "success",
+            //                 title: "Deleted!",
+            //                 text: "Your file has been deleted.",
+            //                 confirmButtonClass: "btn btn-success"
+            //             })
+            //         })
+            //     })
+            var table = $('#branddatanew').DataTable({
+                "bFilter": true,
+                "sDom": 'fBtlpi',
+                'pagingType': 'numbers',
+                "ordering": true,
+                "language": {
+                    search: ' ',
+                    sLengthMenu: '_MENU_',
+                    searchPlaceholder: "Search...",
+                    info: "_START_ - _END_ of _TOTAL_ items",
+                },
+                initComplete: function (settings, json) {
+                    $('.dataTables_filter').appendTo('#tableSearch');
+                    $('.dataTables_filter').appendTo('.search-input');
+                },
+            });
+
+            $(".deleteBrandbtn").on("click", function () {
+                var brandId = $(this).data("id");
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    type: "warning",
+                    showCancelButton: !0,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!",
+                    confirmButtonClass: "btn btn-primary",
+                    cancelButtonClass: "btn btn-danger ml-1",
+                    buttonsStyling: !1
+                }).then(function (t) {
+                    if (t.value) {
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("Delete", "Brand")',
+                            data: { id: brandId },
+                            success: function (response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        type: "success",
+                                        title: "Deleted!",
+                                        text: "Your brand has been deleted.",
+                                        confirmButtonClass: "btn btn-success"
+                                    });
+                                    // Remove the brand row from the table
+                                    //$('tr[data-id="' + brandId + '"]').remove();
+                                    // Remove the brand row from the table using DataTable API
+                                    table.row($('tr[data-id="' + brandId + '"]')).remove().draw();
+                                } else {
+                                    Swal.fire({
+                                        type: "error",
+                                        title: "Error!",
+                                        text: response.message,
+                                        confirmButtonClass: "btn btn-danger"
+                                    });
+                                }
+                            },
+                            error: function () {
+                                Swal.fire({
+                                    type: "error",
+                                    title: "Error!",
+                                    text: "An error occurred while processing your request.",
+                                    confirmButtonClass: "btn btn-danger"
+                                });
+                            }
+                        });
+                    }
+                });
+            });
         });
 
     </script>
