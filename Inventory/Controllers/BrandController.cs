@@ -89,7 +89,8 @@ namespace Inventory.Controllers
                 var brandstatus = await _unitOfWork.SaveAsync();
                 if (brandstatus)
                 {
-                    return RedirectToAction("Edit");
+                    TempData["UpdateMessage"] = "Update successfully";
+                    return RedirectToAction("Index");
                     //return View(brandDto);
                 }
             }
@@ -151,5 +152,37 @@ namespace Inventory.Controllers
             }           
             return NotFound("Image not found.");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var brand = await _unitOfWork.Brand.GetAsync(id);
+            if (brand == null)
+            {
+                return NotFound();
+            }
+
+            // If the brand has an image, delete it
+            if (!string.IsNullOrEmpty(brand.Image))
+            {
+                var imageUrl = brand.Image.TrimStart('/');
+                imageUrl = Path.Combine(_webHostEnvironment.WebRootPath, imageUrl);
+                if (System.IO.File.Exists(imageUrl))
+                {
+                    System.IO.File.Delete(imageUrl);
+                }
+            }
+
+            _unitOfWork.Brand.Remove(brand);
+            var result = await _unitOfWork.SaveAsync();
+
+            if (result)
+            {
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false, message = "Error while deleting the brand" });
+        }
+
     }
 }
