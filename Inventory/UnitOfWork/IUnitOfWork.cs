@@ -9,6 +9,8 @@ namespace Inventory.UnitOfWork
         IEmailSettingRepository EmailSetting { get; }
         IPasswordResetTokenRepository PasswordResetToken { get; }
         IBrandRepository Brand { get; }
+        ISubCategoryRepository SubCategory { get; }
+        ICategoryRepository Category { get; }
         void Saved();
         Task<bool> SaveAsync();
     }
