@@ -12,6 +12,8 @@ namespace Inventory.UnitOfWork
         public IEmailSettingRepository EmailSetting { get; private set; }
         public IPasswordResetTokenRepository PasswordResetToken { get; private set; }
         public IBrandRepository Brand { get; private set; }
+        public ISubCategoryRepository SubCategory { get; private set; }
+        public ICategoryRepository Category { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
@@ -21,6 +23,8 @@ namespace Inventory.UnitOfWork
             EmailSetting = new EmailSettingRepository(context);
             PasswordResetToken=new PasswordResetTokenRepository(context);
             Brand = new BrandRepository(context);
+            SubCategory = new SubCategoryRepository(context);
+            Category = new CategoryRepository(context);
         }
 
        

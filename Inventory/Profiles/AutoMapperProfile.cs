@@ -2,6 +2,7 @@
 using InventoryEntity.Account;
 using Inventory.Models;
 using InventoryEntity.Brand;
+using InventoryEntity.Category;
 
 namespace Inventory.Profiles
 {
@@ -20,7 +21,15 @@ namespace Inventory.Profiles
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.ImageUrl))
-                .ReverseMap(); 
+                .ReverseMap();
+
+            CreateMap<CategoryDto, Category>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image))
+                .ReverseMap();
         }
     }
 }
