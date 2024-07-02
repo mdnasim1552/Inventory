@@ -102,7 +102,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table datanew">
+                <table class="table" id="categorydatanew">
                     <thead>
                         <tr>
                             <th>
@@ -139,10 +139,10 @@
                                 <td>@category.Description</td>
                                 <td>Admin</td>
                                 <td>
-                                    <a class="me-3" href="editcategory.html">
+                                    <a class="me-3" asp-action="Edit" asp-controller="Category" asp-route-id="@category.Id">
                                         <img src="~/assets/img/icons/edit.svg" alt="img" />
                                     </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);" data-id="@category.Id">
+                                    <a class="me-3 deleteCategorybtn" href="javascript:void(0);" data-id="@category.Id">
                                         <img src="~/assets/img/icons/delete.svg" alt="img" />
                                     </a>
                                 </td>
@@ -527,7 +527,7 @@
             //             })
             //         })
             //     })
-            var table = $('#branddatanew').DataTable({
+            var table = $('#categorydatanew').DataTable({
                 "bFilter": true,
                 "sDom": 'fBtlpi',
                 'pagingType': 'numbers',
@@ -544,7 +544,7 @@
                 },
             });
 
-            $(".deleteBrandbtn").on("click", function () {
+            $(".deleteCategorybtn").on("click", function () {
                 var brandId = $(this).data("id");
                 Swal.fire({
                     title: "Are you sure?",
@@ -561,14 +561,14 @@
                     if (t.value) {
                         $.ajax({
                             type: "POST",
-                            url: '@Url.Action("Delete", "Brand")',
+                            url: '@Url.Action("Delete", "Category")',
                             data: { id: brandId },
                             success: function (response) {
                                 if (response.success) {
                                     Swal.fire({
                                         type: "success",
                                         title: "Deleted!",
-                                        text: "Your brand has been deleted.",
+                                        text: "Your category has been deleted.",
                                         confirmButtonClass: "btn btn-success"
                                     });
                                     // Remove the brand row from the table
