@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\BrandImages\\20240630195323596_24c_Walton.jpeg"
     },
     {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240702013318664_84f_istockphoto-14035008.jpg",
+      "PackagePath": "staticwebassets\\BrandImages\\20240702013318664_84f_istockphoto-14035008.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\CategoryImages\\20240702013445831_641_432540372_2198717020.jpg",
+      "PackagePath": "staticwebassets\\CategoryImages\\20240702013445831_641_432540372_2198717020.jpg"
+    },
+    {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\Images\\Login_page_background.jpg",
       "PackagePath": "staticwebassets\\Images\\Login_page_background.jpg"
     },
