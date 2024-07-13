@@ -5,20 +5,44 @@
       "PackagePath": "staticwebassets\\Inventory.bundle.scp.css"
     },
     {
-      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240630195323596_24c_Walton.jpeg",
-      "PackagePath": "staticwebassets\\BrandImages\\20240630195323596_24c_Walton.jpeg"
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240703230841362_a70_adidas.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240703230841362_a70_adidas.png"
     },
     {
-      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240702013318664_84f_istockphoto-14035008.jpg",
-      "PackagePath": "staticwebassets\\BrandImages\\20240702013318664_84f_istockphoto-14035008.jpg"
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240703230928346_0ac_colgate.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240703230928346_0ac_colgate.png"
     },
     {
-      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\CategoryImages\\20240702013445831_641_432540372_2198717020.jpg",
-      "PackagePath": "staticwebassets\\CategoryImages\\20240702013445831_641_432540372_2198717020.jpg"
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240703230957234_d7e_samsung.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240703230957234_d7e_samsung.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\CategoryImages\\20240704001956274_446_Electronics.jpg",
+      "PackagePath": "staticwebassets\\CategoryImages\\20240704001956274_446_Electronics.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\CategoryImages\\20240704002638278_c3e_Hygiene.jpg",
+      "PackagePath": "staticwebassets\\CategoryImages\\20240704002638278_c3e_Hygiene.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\CategoryImages\\20240704003648384_da6_Footwear.jpg",
+      "PackagePath": "staticwebassets\\CategoryImages\\20240704003648384_da6_Footwear.jpg"
     },
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\Images\\Login_page_background.jpg",
       "PackagePath": "staticwebassets\\Images\\Login_page_background.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240713030807873_931_product1.jpg",
+      "PackagePath": "staticwebassets\\ProductImages\\20240713030807873_931_product1.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\SubCategoryImages\\20240706201428784_474_Pc_parts.jpg",
+      "PackagePath": "staticwebassets\\SubCategoryImages\\20240706201428784_474_Pc_parts.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\SubCategoryImages\\20240707023117693_833_Mouth_Wash.jpg",
+      "PackagePath": "staticwebassets\\SubCategoryImages\\20240707023117693_833_Mouth_Wash.jpg"
     },
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\css\\animate.css",

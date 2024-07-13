@@ -20,6 +20,9 @@ public partial class SubCategory
 
     public string? Description { get; set; }
 
+    [StringLength(500)]
+    public string? Image { get; set; }
+
     public int CategoryId { get; set; }
 
     [ForeignKey("CategoryId")]

@@ -347,12 +347,12 @@
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul>
-                                <li><a href="productlist.html">Product List</a></li>
-                                <li><a href="addproduct.html">Add Product</a></li>
+                                <li><a asp-action="Index" asp-controller="Product">Product List</a></li>
+                                <li><a asp-action="Create" asp-controller="Product">Add Product</a></li>
                                 <li><a asp-action="Index" asp-controller="Category">Category List</a></li>
                                 <li><a asp-action="Create" asp-controller="Category">Add Category</a></li>
-                                <li><a href="subcategorylist.html">Sub Category List</a></li>
-                                <li><a href="subaddcategory.html">Add Sub Category</a></li>
+                                <li><a asp-action="Index" asp-controller="SubCategory">Sub Category List</a></li>
+                                <li><a asp-action="Create" asp-controller="SubCategory">Add Sub Category</a></li>
                                 <li><a asp-action="Index" asp-controller="Brand">Brand List</a></li>
                                 <li><a asp-action="Create" asp-controller="Brand">Add Brand</a></li>
                                 <li><a href="importproduct.html">Import Products</a></li>

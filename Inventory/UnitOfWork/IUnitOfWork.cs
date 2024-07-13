@@ -11,6 +11,8 @@ namespace Inventory.UnitOfWork
         IBrandRepository Brand { get; }
         ISubCategoryRepository SubCategory { get; }
         ICategoryRepository Category { get; }
+        IProductRepository Product { get; }
+        IUnitRepository Unit { get; }
         void Saved();
         Task<bool> SaveAsync();
     }

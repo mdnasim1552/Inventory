@@ -14,6 +14,8 @@ namespace Inventory.UnitOfWork
         public IBrandRepository Brand { get; private set; }
         public ISubCategoryRepository SubCategory { get; private set; }
         public ICategoryRepository Category { get; private set; }
+        public IProductRepository Product { get; private set; }
+        public IUnitRepository Unit { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
@@ -25,6 +27,8 @@ namespace Inventory.UnitOfWork
             Brand = new BrandRepository(context);
             SubCategory = new SubCategoryRepository(context);
             Category = new CategoryRepository(context);
+            Product=new ProductRepository(context);
+            Unit = new UnitRepository(context);
         }
 
        

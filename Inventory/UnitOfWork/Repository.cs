@@ -25,12 +25,12 @@ namespace Inventory.UnitOfWork
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return dbSet.Where(predicate);
+            return dbSet.Where(predicate).ToList();
         }
 
-        public Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await dbSet.Where(predicate).ToListAsync();
         }
 
         public TEntity Get(int id)
@@ -74,6 +74,16 @@ namespace Inventory.UnitOfWork
         public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await dbSet.AnyAsync(predicate);
+        }
+
+        public async Task<IEnumerable<TEntity>> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            IQueryable<TEntity> query = dbSet;
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            return await query.ToListAsync();
         }
     }
 }
