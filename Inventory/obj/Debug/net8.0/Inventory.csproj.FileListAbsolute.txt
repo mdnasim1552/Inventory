@@ -303,6 +303,7 @@ F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\refs\WindowsBase.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\AutoMapper.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\Azure.Core.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\Azure.Identity.dll
+F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\BCrypt.Net-Next.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\Humanizer.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
@@ -556,10 +557,9 @@ F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\staticwebassets.pack.jso
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\scopedcss\bundle\Inventory.styles.css
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\scopedcss\projectbundle\Inventory.bundle.scp.css
+F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\Inventory.csproj.CopyComplete
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\Inventory.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\refint\Inventory.dll
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\Inventory.pdb
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\Inventory.genruntimeconfig.cache
 F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\ref\Inventory.dll
-F:\ASP.NET Core MVC\OnlineCV\Inventory\bin\Debug\net8.0\BCrypt.Net-Next.dll
-F:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net8.0\Inventory.csproj.CopyComplete

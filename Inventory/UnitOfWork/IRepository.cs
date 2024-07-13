@@ -9,6 +9,7 @@ namespace Inventory.UnitOfWork
         Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate); // Asynchronous method to find entities by predicate
         Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
         Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<IEnumerable<TEntity>> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties);
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);

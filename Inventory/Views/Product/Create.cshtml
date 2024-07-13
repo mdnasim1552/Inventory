@@ -1,0 +1,40 @@
+﻿@model InventoryEntity.Product.ProductDto
+@{
+    ViewData["Title"] = "Add Product";
+}
+<div class="content">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Product Add</h4>
+            <h6>Create new product</h6>
+        </div>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <form asp-controller="Product" asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <partial name="_ProductFormFields" model="Model" />
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-submit me-2">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+
+    </script>
+}

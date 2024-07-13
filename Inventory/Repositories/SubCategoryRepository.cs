@@ -5,7 +5,7 @@ using Inventory.UnitOfWork;
 
 namespace Inventory.Repositories
 {
-    public class SubCategoryRepository: Repository<Category>, ISubCategoryRepository
+    public class SubCategoryRepository: Repository<SubCategory>, ISubCategoryRepository
     {
         private readonly ApplicationDbContext _db;
         public SubCategoryRepository(ApplicationDbContext db):base(db)

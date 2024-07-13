@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace InventoryEntity.SubCategory
 {
@@ -16,7 +17,8 @@ namespace InventoryEntity.SubCategory
         public string Code { get; set; } = null!;
 
         public string? Description { get; set; }
-
+        public string? Image { get; set; }
         public int CategoryId { get; set; }
+        public IFormFile? SubCategoryImg { get; set; }
     }
 }

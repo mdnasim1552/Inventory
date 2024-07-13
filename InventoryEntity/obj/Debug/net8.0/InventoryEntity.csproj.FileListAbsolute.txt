@@ -1,6 +1,7 @@
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\bin\Debug\net8.0\InventoryEntity.deps.json
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\bin\Debug\net8.0\InventoryEntity.dll
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\bin\Debug\net8.0\InventoryEntity.pdb
+F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.csproj.AssemblyReference.cache
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.GeneratedMSBuildEditorConfig.editorconfig
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.AssemblyInfoInputs.cache
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.AssemblyInfo.cs
@@ -10,4 +11,3 @@ F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.dl
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\refint\InventoryEntity.dll
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.pdb
 F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\ref\InventoryEntity.dll
-F:\ASP.NET Core MVC\OnlineCV\InventoryEntity\obj\Debug\net8.0\InventoryEntity.csproj.AssemblyReference.cache

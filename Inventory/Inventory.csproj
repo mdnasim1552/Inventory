@@ -29,4 +29,8 @@
     <ProjectReference Include="..\InventoryEntity\InventoryEntity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\SubCategoryImages\" />
+  </ItemGroup>
+
 </Project>
