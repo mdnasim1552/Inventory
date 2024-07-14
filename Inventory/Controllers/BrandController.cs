@@ -5,6 +5,8 @@ using InventoryEntity.Brand;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Linq;
 
 namespace Inventory.Controllers
 {
@@ -25,6 +27,26 @@ namespace Inventory.Controllers
             var brandList = await _unitOfWork.Brand.GetAllAsync();
             var brandListDto = _mapper.Map<List<BrandDto>>(brandList);
 
+            return View(brandListDto);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(BrandSearch brandSearch)
+        {
+            var brandList = await _unitOfWork.Brand.GetAllAsync();
+
+            if (!String.IsNullOrEmpty(brandSearch.Name))
+            {
+                brandList = brandList.Where(b => b.Name.ToLower().Contains(brandSearch.Name.ToLower()));
+            }
+
+            if (!String.IsNullOrEmpty(brandSearch.Description))
+            {
+                brandList = brandList.Where(b => b.Description.ToLower().Contains(brandSearch.Description.ToLower()));
+            }
+
+            ViewData["SearchName"] = brandSearch.Name;
+            ViewData["SearchDescription"] = brandSearch.Description;
+            var brandListDto = _mapper.Map<List<BrandDto>>(brandList);
             return View(brandListDto);
         }
         public  IActionResult Create()

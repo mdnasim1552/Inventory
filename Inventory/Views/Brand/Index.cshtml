@@ -61,32 +61,36 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="card" id="filter_inputs">
-                <div class="card-body pb-0">
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <input type="text" placeholder="Enter Brand Name" />
+            <form method="post" asp-controller="Brand" asp-action="Index">
+                <div class="card" id="filter_inputs">
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <input name="Name" type="text" placeholder="Enter Brand Name" value="@ViewData["SearchName"]" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <input type="text"
-                                       placeholder="Enter Brand Description" />
+                            <div class="col-lg-3 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <input name="Description" type="text"
+                                           placeholder="Enter Brand Description" value="@ViewData["SearchDescription"]" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-1 col-sm-6 col-12 ms-auto">
-                            <div class="form-group">
-                                <a class="btn btn-filters ms-auto">
-                                    <img src="~/assets/img/icons/search-whites.svg"
-                                         alt="img" />
-                                </a>
+                            <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+                                <div class="form-group">
+                                    @* <a class="btn btn-filters ms-auto">
+                                        <img src="~/assets/img/icons/search-whites.svg"
+                                             alt="img" />
+                                    </a> *@
+                                    <button type="submit" class="btn btn-filters ms-auto">
+                                        <img src="~/assets/img/icons/search-whites.svg" alt="img" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>          
 
             <div class="table-responsive">
                 <table class="table" id="branddatanew">
