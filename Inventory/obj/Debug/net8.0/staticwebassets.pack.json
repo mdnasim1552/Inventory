@@ -17,6 +17,38 @@
       "PackagePath": "staticwebassets\\BrandImages\\20240703230957234_d7e_samsung.png"
     },
     {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240714201617029_af6_google.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240714201617029_af6_google.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240714201752651_5d1_microsoft.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240714201752651_5d1_microsoft.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240714201850676_c4a_ios.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240714201850676_c4a_ios.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240714201944555_033_oppo.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240714201944555_033_oppo.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240714202114606_644_oracle.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240714202114606_644_oracle.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240714202228974_358_sony.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240714202228974_358_sony.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240714202836817_27d_xiaomi.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240714202836817_27d_xiaomi.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\BrandImages\\20240714203144205_9ad_realme.png",
+      "PackagePath": "staticwebassets\\BrandImages\\20240714203144205_9ad_realme.png"
+    },
+    {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\CategoryImages\\20240704001956274_446_Electronics.jpg",
       "PackagePath": "staticwebassets\\CategoryImages\\20240704001956274_446_Electronics.jpg"
     },
@@ -33,8 +65,8 @@
       "PackagePath": "staticwebassets\\Images\\Login_page_background.jpg"
     },
     {
-      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240713030807873_931_product1.jpg",
-      "PackagePath": "staticwebassets\\ProductImages\\20240713030807873_931_product1.jpg"
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240714015746967_3d7_product1.jpg",
+      "PackagePath": "staticwebassets\\ProductImages\\20240714015746967_3d7_product1.jpg"
     },
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\SubCategoryImages\\20240706201428784_474_Pc_parts.jpg",
