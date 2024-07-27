@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using Inventory.Models;
 using Inventory.UnitOfWork;
+using InventoryEntity.Brand;
 using InventoryEntity.Category;
 using InventoryEntity.SubCategory;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.Linq;
 
 namespace Inventory.Controllers
 {
@@ -24,10 +27,34 @@ namespace Inventory.Controllers
         {
             var SubCategoryList = await _unitOfWork.SubCategory.GetAllIncluding(sc=>sc.Category);
             //var CategoryListDto = _mapper.Map<List<CategoryDto>>(CategoryList);
-
+            ViewData["CategoryList"] = categoryList;
             return View(SubCategoryList);
         }
+        [HttpPost]
+        public async Task<IActionResult> Index(SubCategorySearch subCategorySearch)
+        {
+            var subcategoryList = await _unitOfWork.SubCategory.GetAllAsync();
 
+            if (subCategorySearch.CategoryId.HasValue)
+            {
+                subcategoryList = subcategoryList.Where(b => b.CategoryId==subCategorySearch.CategoryId);
+            }
+
+            if (subCategorySearch.SubCategoryId.HasValue)
+            {
+                subcategoryList = subcategoryList.Where(b=>b.Id==subCategorySearch.SubCategoryId);
+            }
+            if (!String.IsNullOrEmpty(subCategorySearch.SubCategoryCode))
+            {
+                subcategoryList = subcategoryList.Where(b => b.Code.ToLower().Contains(subCategorySearch.SubCategoryCode.ToLower()));
+            }
+            ViewData["CategoryId"] = subCategorySearch.CategoryId;
+            ViewData["SubCategoryId"] = subCategorySearch.SubCategoryId;
+            ViewData["SubCategoryCode"] = subCategorySearch.SubCategoryCode;
+            //var subCategoryListDto = _mapper.Map<List<SubCategoryDto>>(subcategoryList);
+            ViewData["CategoryList"] = categoryList;
+            return View(subcategoryList);
+        }
         public async Task<IActionResult> Create()
         {
             ViewData["CategoryList"] = categoryList;
@@ -186,6 +213,26 @@ namespace Inventory.Controllers
             }
 
             return Json(new { success = false, message = "Error while deleting the SubCategory" });
+        }
+
+        public async Task<IActionResult> GetSubCategoryCode()
+        {
+            var subcategoryList = await _unitOfWork.SubCategory.GetAllAsync();
+            if (subcategoryList == null)
+            {
+                return Json($"SCT001");
+            }
+            var maxSubCategoryCode = subcategoryList.Any() == true ? subcategoryList.Select(c => int.Parse(c.Code.Substring(3))).Max() + 1 : 1;//c => int.Parse(c.Substring(2))
+            return Json($"CT{maxSubCategoryCode:D3}");
+        }
+        public async Task<IActionResult> GetSubCategoryCodeById(int Id)
+        {
+            var subcategory = await _unitOfWork.SubCategory.SingleOrDefaultAsync(s=>s.Id==Id);
+            if (subcategory == null)
+            {
+                return Json($"SCT000");
+            }
+            return Json(subcategory.Code);
         }
     }
 }

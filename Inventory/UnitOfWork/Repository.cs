@@ -32,6 +32,10 @@ namespace Inventory.UnitOfWork
         {
             return await dbSet.Where(predicate).ToListAsync();
         }
+        public async Task<TResult> MaxAsync<TResult>(Expression<Func<TEntity, TResult>> predicate)
+        {
+            return await dbSet.MaxAsync(predicate);
+        }
 
         public TEntity Get(int id)
         {

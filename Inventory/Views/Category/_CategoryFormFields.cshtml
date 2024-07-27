@@ -8,7 +8,7 @@
 <div class="col-lg-6 col-sm-6 col-md-6 col-12">
     <div class="form-group">
         <label asp-for="Code">Category Code</label>
-        <input asp-for="Code" type="text" />
+        <input asp-for="Code" type="text" disabled  id="CategoryCode"/>
     </div>
 </div>
 <div class="col-lg-12">
@@ -62,6 +62,17 @@
             $('#imageuloadContainer').show();
             $('#fileInput').show();
         })
+
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetCategoryCode", "Category")',
+            success: function (data) {
+                $('#CategoryCode').val(data)
+            },
+            error: function () {
+                console.error("There was an error fetching the category code:", error);
+            }
+        });
     });
 
 </script>
