@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<Inventory.Models.SubCategory>
 @{
     ViewData["Title"] = "Sub-Category List";
+    var categoryList = ViewData["CategoryList"] as IEnumerable<Inventory.Models.Category>;
+    var categorySelectList = categoryList != null
+           ? new SelectList(categoryList, "Id", "Name")
+           : new SelectList(Enumerable.Empty<Category>(), "Id", "Name");
 }
 
 <div class="content">
@@ -61,50 +65,47 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="card" id="filter_inputs">
-                <div class="card-body pb-0">
-                    <div class="row">
-                        <div class="col-lg-2 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select class="select">
-                                    <option>Choose Category</option>
-                                    <option>Computers</option>
-                                </select>
+            <form method="post" asp-controller="SubCategory" asp-action="Index">
+                <div class="card" id="filter_inputs">
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-6 col-12">
+                                <div class="form-group">                                   
+                                    <select class="select" name="CategoryId" id="categorySelect" asp-items="categorySelectList" asp-for="@ViewData["CategoryId"]">
+                                        <option value="" selected >Choose Category</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Sub Category</label>
-                                <select class="select">
-                                    <option>Choose Sub Category</option>
-                                    <option>Fruits</option>
-                                </select>
+                            <div class="col-lg-2 col-sm-6 col-12">
+                                <div class="form-group">                                   
+                                    <select class="select" name="SubCategoryId" id="subcategorySelect" asp-for="@ViewData["SubCategoryId"]">
+                                        <option value="" selected >Choose Sub Category</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Category Code</label>
-                                <select class="select">
-                                    <option>CT001</option>
-                                    <option>CT002</option>
-                                </select>
+                            <div class="col-lg-2 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <input type="text" id="SubCategoryCode" disabled value="@ViewData["SubCategoryCode"]" placeholder="SubCategory Code" />
+                                    <input name="SubCategoryCode" type="hidden" id="SubCategoryHiddenCode" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-1 col-sm-6 col-12 ms-auto">
-                            <div class="form-group">
-                                <label>&nbsp;</label>
-                                <a class="btn btn-filters ms-auto">
-                                    <img src="~/assets/img/icons/search-whites.svg"
-                                         alt="img" />
-                                </a>
+                            <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+                                <div class="form-group">
+                                    @* <label>&nbsp;</label> *@
+                                    @* <a class="btn btn-filters ms-auto">
+                                        <img src="~/assets/img/icons/search-whites.svg"
+                                             alt="img" />
+                                    </a> *@
+                                    <button type="submit" class="btn btn-filters ms-auto">
+                                        <img src="~/assets/img/icons/search-whites.svg" alt="img" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </form>
+            
             <div class="table-responsive">
                 <table class="table" id="subcategorydatanew">
                     <thead>
@@ -164,7 +165,7 @@
 
 @section Scripts {
     @{
-        <partial name="_ValidationScriptsPartial" />
+                            <partial name="_ValidationScriptsPartial" />
     }
 
     <script type="text/javascript">
@@ -243,6 +244,57 @@
                     }
                 });
             });
+            var categoryId = $('#categorySelect').val();
+            var selectedSubCategoryId = '@ViewData["SubCategoryId"]';
+                        
+            if (categoryId) {
+                populateSubcategories(categoryId, selectedSubCategoryId);
+            }
+
+            $('#categorySelect').change(function () {
+                var categoryId = $(this).val();
+                populateSubcategories(categoryId);
+                $('#SubCategoryCode').val('');
+                $('#SubCategoryHiddenCode').val('');
+            });
+
+            function populateSubcategories(categoryId, selectedSubCategoryId = null) {
+                if (categoryId) {
+                    $.getJSON('@Url.Action("GetSubCategories", "Product")', { categoryId: categoryId }, function (data) {
+                        var subcategorySelect = $('#subcategorySelect');
+                        subcategorySelect.empty();
+                        subcategorySelect.append('<option value="" selected disabled>Choose Sub Category</option>');
+                        $.each(data, function (index, subcategory) {
+                            var option = $('<option>', {
+                                value: subcategory.id,
+                                text: subcategory.name
+                            });
+                            if (subcategory.id == selectedSubCategoryId) {
+                                option.attr('selected', 'selected');
+                            }
+                            subcategorySelect.append(option);
+                        });
+                    });
+                } else {
+                    $('#subcategorySelect').empty();
+                    $('#subcategorySelect').append('<option value="" selected disabled>Choose Sub Category</option>');
+                }
+            }
+            $('#subcategorySelect').change(function () {   
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("GetSubCategoryCodeById", "SubCategory")',
+                    data: { Id: $('#subcategorySelect').val() },
+                    success: function (data) {
+                        $('#SubCategoryCode').val(data)
+                        $('#SubCategoryHiddenCode').val(data);
+                    },
+                    error: function () {
+                        console.error("There was an error fetching the category code:", error);
+                    }
+                });
+            });
+
         });
 
     </script>

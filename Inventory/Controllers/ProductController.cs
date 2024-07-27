@@ -32,10 +32,48 @@ namespace Inventory.Controllers
         public async Task<IActionResult> Index()
         {
             var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category,p=>p.Brand);
-
+            ViewData["CategoryList"] = categoryList;
+            ViewData["BrandList"] = brandList;
             return View(productList);
         }
+        [HttpPost]
+        public async Task<IActionResult> Index(ProductSearch productSearch)
+        {
+            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand);
 
+            if (productSearch.CategoryId.HasValue)
+            {
+                productList = productList.Where(p => p.CategoryId == productSearch.CategoryId);
+            }
+
+            if (productSearch.SubCategoryId.HasValue)
+            {
+                productList = productList.Where(p => p.SubCategoryId == productSearch.SubCategoryId);
+            }
+            if (productSearch.BrandId.HasValue)
+            {
+                productList = productList.Where(p => p.BrandId == productSearch.BrandId);
+            }
+            if (productSearch.Min_Price.HasValue)
+            {
+                productList = productList.Where(p => p.Price >= productSearch.Min_Price);
+            }
+            if (productSearch.Max_Price.HasValue)
+            {
+                productList = productList.Where(p => p.Price <= productSearch.Max_Price);
+            }
+
+            ViewData["CategoryId"] = productSearch.CategoryId;
+            ViewData["SubCategoryId"] = productSearch.SubCategoryId;
+            ViewData["BrandId"] = productSearch.BrandId;
+            ViewData["Min_Price"] = productSearch.Min_Price;
+            ViewData["Max_Price"] = productSearch.Max_Price;
+
+
+            ViewData["CategoryList"] = categoryList;
+            ViewData["BrandList"] = brandList;
+            return View(productList);
+        }
         public IActionResult Create()
         {
             ViewData["CategoryList"] = categoryList;

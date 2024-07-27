@@ -3,6 +3,7 @@ using Inventory.Models;
 using Inventory.UnitOfWork;
 using InventoryEntity.Brand;
 using InventoryEntity.Category;
+using InventoryEntity.SubCategory;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Inventory.Controllers
@@ -12,21 +13,41 @@ namespace Inventory.Controllers
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IEnumerable<Category> categoryList = new List<Category>();
         public CategoryController(IMapper mapper, IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
-
+            categoryList = _unitOfWork.Category.GetAll();
         }
         public async Task<IActionResult> Index()
         {
             var CategoryList = await _unitOfWork.Category.GetAllAsync();
             var CategoryListDto = _mapper.Map<List<CategoryDto>>(CategoryList);
-
+            ViewData["CategoryList"] = categoryList;
             return View(CategoryListDto);
         }
+        [HttpPost]
+        public async Task<IActionResult> Index(CategorySearch categorySearch)
+        {
+            var CategoryList = await _unitOfWork.Category.GetAllAsync();
+            
 
+            if (categorySearch.CategoryId.HasValue)
+            {
+                CategoryList = CategoryList.Where(b => b.Id == categorySearch.CategoryId);
+            }           
+            if (!String.IsNullOrEmpty(categorySearch.CategoryCode))
+            {
+                CategoryList = CategoryList.Where(b => b.Code.ToLower().Contains(categorySearch.CategoryCode.ToLower()));
+            }
+            ViewData["CategoryList"] = categoryList;
+            ViewData["CategoryId"] = categorySearch.CategoryId;
+            ViewData["CategoryCode"] = categorySearch.CategoryCode;
+            var categoryListDto = _mapper.Map<List<CategoryDto>>(CategoryList);
+            return View(categoryListDto);
+        }
         public IActionResult Create()
         {
             return View();
@@ -182,6 +203,25 @@ namespace Inventory.Controllers
             }
 
             return Json(new { success = false, message = "Error while deleting the Category" });
+        }
+        public async Task<IActionResult> GetCategoryCode()
+        {
+            var categoryList = await _unitOfWork.Category.GetAllAsync();
+            if (categoryList ==null)
+            {
+                return Json($"CT001");
+            }
+            var maxCategoryCode = categoryList.Any()==true? categoryList.Select(c=> int.Parse(c.Code.Substring(2))).Max()+1:1;//c => int.Parse(c.Substring(2))
+            return Json($"CT{maxCategoryCode:D3}");
+        }
+        public async Task<IActionResult> GetCategoryCodeById(int Id)
+        {
+            var category = await _unitOfWork.Category.SingleOrDefaultAsync(c => c.Id == Id);
+            if (category == null)
+            {
+                return Json("");
+            }
+            return Json(category.Code);
         }
     }
 }
