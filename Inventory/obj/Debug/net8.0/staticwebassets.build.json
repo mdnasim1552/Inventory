@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "e0DmH/H8ykIj+oPEINFxe5BEMblFUJinp6xYsMddGQ8=",
+  "Hash": "a5NTrZhbuodJwjXu1EjRYnxzJjnOkOHoW5K013hU1gg=",
   "Source": "Inventory",
   "BasePath": "_content/Inventory",
   "Mode": "Default",
@@ -17,10 +17,10 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.5\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
+      "Identity": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
       "SourceId": "Microsoft.AspNetCore.Components.QuickGrid",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\",
       "BasePath": "_content/Microsoft.AspNetCore.Components.QuickGrid",
       "RelativePath": "Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.5\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.5\\staticwebassets\\QuickGrid.razor.js",
+      "Identity": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\QuickGrid.razor.js",
       "SourceId": "Microsoft.AspNetCore.Components.QuickGrid",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\",
       "BasePath": "_content/Microsoft.AspNetCore.Components.QuickGrid",
       "RelativePath": "QuickGrid.razor.js",
       "AssetKind": "All",
@@ -52,7 +52,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.5\\staticwebassets\\QuickGrid.razor.js"
+      "OriginalItemSpec": "C:\\Users\\mdnas\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\QuickGrid.razor.js"
     },
     {
       "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Inventory.styles.css",
@@ -167,6 +167,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\css\\dataTables.bootstrap4.min.css"
+    },
+    {
+      "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\css\\jquery-ui.min.css",
+      "SourceId": "Inventory",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\",
+      "BasePath": "_content/Inventory",
+      "RelativePath": "assets/css/jquery-ui.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\jquery-ui.min.css"
     },
     {
       "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\css\\style.css",
@@ -50405,12 +50424,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240714015746967_3d7_product1.jpg",
+      "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240801213032099_8a8_product36.jpg",
       "SourceId": "Inventory",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\",
       "BasePath": "_content/Inventory",
-      "RelativePath": "ProductImages/20240714015746967_3d7_product1.jpg",
+      "RelativePath": "ProductImages/20240801213032099_8a8_product36.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -50421,7 +50440,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\ProductImages\\20240714015746967_3d7_product1.jpg"
+      "OriginalItemSpec": "wwwroot\\ProductImages\\20240801213032099_8a8_product36.jpg"
+    },
+    {
+      "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240811003510425_d59_product56.jpg",
+      "SourceId": "Inventory",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\",
+      "BasePath": "_content/Inventory",
+      "RelativePath": "ProductImages/20240811003510425_d59_product56.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProductImages\\20240811003510425_d59_product56.jpg"
     },
     {
       "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\SubCategoryImages\\20240706201428784_474_Pc_parts.jpg",

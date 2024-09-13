@@ -1,0 +1,211 @@
+﻿@model InventoryEntity.Product.ProductDto
+@{
+    var categoryList = ViewData["CategoryList"] as IEnumerable<Inventory.Models.Category>;
+    var categorySelectList = categoryList != null
+           ? new SelectList(categoryList, "Id", "Name")
+           : new SelectList(Enumerable.Empty<Category>(), "Id", "Name");
+    var brandList = ViewData["BrandList"] as IEnumerable<Inventory.Models.Brand>;
+    var brandSelectedList = brandList != null
+    ? new SelectList(brandList, "Id", "Name")
+    : new SelectList(Enumerable.Empty<Brand>(), "Id", "Name");
+    var unitList = ViewData["UnitList"] as IEnumerable<Inventory.Models.Unit>;
+    var unitSelectedList = unitList != null
+    ? new SelectList(unitList, "Id", "Name")
+    : new SelectList(Enumerable.Empty<Unit>(), "Id", "Name");
+}
+<script src="~/assets/js/script.js"></script>
+<div class="row">
+    <div class="col-lg-8 col-sm-12">
+        <div class="card" style="margin:0 !important;">
+            <div class="card-body">
+                <div class="bar-code-view">
+                    <img src="~/assets/img/barcode1.png" alt="barcode">
+                    <a class="printimg">
+                        <img src="~/assets/img/icons/printer.svg" alt="print">
+                    </a>
+                </div>
+                <div class="productdetails">
+                    <ul class="product-bar">
+                        <li>
+                            <h4>Product</h4>
+                            @* <h6>@Model.Name</h6> *@
+                            @* <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" /> *@
+                            <input asp-for="@Model.Name" type="text" style="width:70% !important; border:none;padding: 10px;" />
+                            <input asp-for="@Model.Id" type="hidden" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Category</h4>
+                            @* <h6>@Model.Category.Name</h6> *@
+                            <select class="select" id="categorySelect1" asp-for="@Model.CategoryId" required asp-items="categorySelectList" style="width:70% !important; border:none;padding: 10px;">
+                                <option value="" selected disabled>Choose Category</option>
+                                @*  @if (categoryList != null)
+                                {
+                                @foreach (var c in categoryList)
+                                {
+                                <option value="@c.Id">@c.Name</option>
+                                }
+                                }      *@
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Sub Category</h4>
+                            @* <h6>@Model.SubCategory.Name</h6> *@
+                            <select class="select" id="subcategorySelect1" asp-for="@Model.SubCategoryId" required style="width:70% !important; border:none;padding: 10px;">
+                                <option value="" selected disabled>Choose Sub Category</option>
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Brand</h4>
+                            @* <h6>@Model.Brand.Name</h6> *@
+                            <select class="select" asp-for="@Model.BrandId" required asp-items="brandSelectedList" style="width:70% !important; border:none;padding: 10px;">
+                                <option value="" selected disabled>Choose Brand</option>
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Unit</h4>
+                            @* <h6>@Model.Unit.ShortName</h6> *@
+                            <select class="select" asp-for="@Model.UnitId" asp-items="unitSelectedList" required style="width:70% !important; border:none;padding: 10px;">
+                                <option value="" selected disabled>Choose Unit</option>
+                            </select>
+                        </li>
+                        <li>
+                            <h4>SKU</h4>
+                            @* <h6>@Model.Sku</h6> *@
+                            <input asp-for="@Model.Sku" type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Minimum Qty</h4>
+                            @* <h6>@Model.MinQuantity</h6> *@
+                            <input asp-for="@Model.MinQuantity" type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Quantity</h4>
+                            @* <h6>@Model.Quantity</h6> *@
+                            <input asp-for="@Model.Quantity" type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Tax %</h4>
+                            @* <h6>@Convert.ToDouble(Model.Tax).ToString("#,##0.00;(#,##0.00);0") %</h6> *@
+                            <input asp-for="@Model.Tax" type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Discount %</h4>
+                            @* <h6>@Convert.ToDouble(Model.Discount).ToString("#,##0.00;(#,##0.00);0") %</h6> *@
+                            <input asp-for="@Model.Discount" type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Price</h4>
+                            @* <h6>@Convert.ToDouble(Model.Price).ToString("#,##0.00;(#,##0.00);0")</h6> *@
+                            <input asp-for="@Model.Price" type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Status</h4>
+                            @* <h6>@Model.Status</h6> *@
+                            <select class="select" asp-for="Status" asp-items="@(new List<SelectListItem> {
+                            new SelectListItem { Value = "Open", Text = "Open" },
+                            new SelectListItem { Value = "Closed", Text = "Closed" }
+                            })" required style="width:70% !important; border:none;padding: 10px;">
+                                <option value="" selected disabled>-- Select Status --</option>
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Description</h4>
+                            @* <h6>@Model.Description</h6> *@
+                            <textarea asp-for="@Model.Description" style="width:70% !important; border:none;padding: 10px;"></textarea>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="slider-product-details">
+                    <div class="owl-carousel owl-theme product-slide">
+                        <div class="slider-product">
+                            <img src="@Model.Image" style="width:100% !important;" alt="img">
+                            <h4>@Model.Name</h4>
+                            <h6 class="image-size">Loading...</h6>
+                        </div>
+                        <div class="slider-product">
+                            <img src="@Model.Image" style="width:100% !important;" alt="img">
+                            <h4>@Model.Name</h4>
+                            <h6 class="image-size">Loading...</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" asp-for="Image" id="ImageUrlHiddenField" />
+<style>
+    .select2-container {
+        min-width: 70% !important;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var imageUrl = "@Model.Image";
+        $.ajax({
+            type: 'HEAD',
+            url: imageUrl,
+            success: function (data, textStatus, xhr) {
+                var imageSize = xhr.getResponseHeader('Content-Length');
+                if (imageSize) {
+                    var sizeInKB = (imageSize / 1024).toFixed(2);
+                    $('.image-size').text(sizeInKB + ' KB');
+                } else {
+                    $('.image-size').text('Size not available');
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error fetching image size: ' + errorThrown);
+                $('.image-size').text('Error fetching size');
+            }
+        });
+
+        var categoryId = $('#categorySelect1').val();
+        var selectedSubCategoryId = @(Model?.SubCategoryId ?? 0); // assuming SubCategoryId is part of the model
+
+        if (categoryId) {
+            populateSubcategories(categoryId, selectedSubCategoryId);
+        }
+
+        $('#categorySelect1').change(function () {
+            var categoryId = $(this).val();
+            populateSubcategories(categoryId);
+        });
+
+        function populateSubcategories(categoryId, selectedSubCategoryId = null) {
+            if (categoryId) {
+                $.getJSON('@Url.Action("GetSubCategories", "Product")', { categoryId: categoryId }, function (data) {
+                    var subcategorySelect = $('#subcategorySelect1');
+                    subcategorySelect.empty();
+                    subcategorySelect.append('<option value="" selected disabled>Choose Sub Category</option>');
+                    $.each(data, function (index, subcategory) {
+                        // subcategorySelect.append($('<option>', {
+                        //     value: subcategory.id,
+                        //     text: subcategory.name
+                        // }));
+                        var option = $('<option>', {
+                            value: subcategory.id,
+                            text: subcategory.name
+                        });
+
+                        if (subcategory.id == selectedSubCategoryId) {
+                            option.attr('selected', 'selected');
+                        }
+
+                        subcategorySelect.append(option);
+                    });
+                });
+            } else {
+                $('#subcategorySelect1').empty();
+                $('#subcategorySelect1').append('<option value="" selected disabled>Choose Sub Category</option>');
+            }
+        }
+    });
+
+</script>

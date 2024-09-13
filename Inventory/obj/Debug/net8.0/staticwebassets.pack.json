@@ -65,8 +65,12 @@
       "PackagePath": "staticwebassets\\Images\\Login_page_background.jpg"
     },
     {
-      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240714015746967_3d7_product1.jpg",
-      "PackagePath": "staticwebassets\\ProductImages\\20240714015746967_3d7_product1.jpg"
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240801213032099_8a8_product36.jpg",
+      "PackagePath": "staticwebassets\\ProductImages\\20240801213032099_8a8_product36.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240811003510425_d59_product56.jpg",
+      "PackagePath": "staticwebassets\\ProductImages\\20240811003510425_d59_product56.jpg"
     },
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\SubCategoryImages\\20240706201428784_474_Pc_parts.jpg",
@@ -91,6 +95,10 @@
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\css\\dataTables.bootstrap4.min.css",
       "PackagePath": "staticwebassets\\assets\\css\\dataTables.bootstrap4.min.css"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\css\\jquery-ui.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\jquery-ui.min.css"
     },
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\css\\style.css",

@@ -1,0 +1,13 @@
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\bin\Debug\net8.0\InventoryRDLC.deps.json
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\bin\Debug\net8.0\InventoryRDLC.dll
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\bin\Debug\net8.0\InventoryRDLC.pdb
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\InventoryRDLC.csproj.AssemblyReference.cache
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\InventoryRDLC.GeneratedMSBuildEditorConfig.editorconfig
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\InventoryRDLC.AssemblyInfoInputs.cache
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\InventoryRDLC.AssemblyInfo.cs
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\InventoryRDLC.csproj.CoreCompileInputs.cache
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\InventoryRDLC.sourcelink.json
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\InventoryRDLC.dll
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\refint\InventoryRDLC.dll
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\InventoryRDLC.pdb
+F:\ASP.NET Core MVC\OnlineCV\InventoryRDLC\obj\Debug\net8.0\ref\InventoryRDLC.dll
