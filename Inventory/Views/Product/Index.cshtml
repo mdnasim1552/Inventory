@@ -47,21 +47,21 @@
                 <div class="wordset">
                     <ul>
                         <li>
-                            <a data-bs-toggle="tooltip"
+                            <a data-bs-toggle="tooltip" id="pdfButton"
                                data-bs-placement="top"
                                title="pdf">
                                 <img src="~/assets/img/icons/pdf.svg" alt="img" />
                             </a>
                         </li>
                         <li>
-                            <a data-bs-toggle="tooltip"
+                            <a data-bs-toggle="tooltip" id="excelButton"
                                data-bs-placement="top"
                                title="excel">
                                 <img src="~/assets/img/icons/excel.svg" alt="img" />
                             </a>
                         </li>
                         <li>
-                            <a data-bs-toggle="tooltip"
+                            <a data-bs-toggle="tooltip" id="mswordButton"
                                data-bs-placement="top"
                                title="print">
                                 <img src="~/assets/img/icons/printer.svg" alt="img" />
@@ -165,7 +165,7 @@
                                 <td>@product.Quantity</td>
                                 <td>Admin</td>
                                 <td>
-                                    <a class="me-3" href="product-details.html">
+                                    <a class="me-3 view_product" data-id="@product.Id">
                                         <img src="~/assets/img/icons/eye.svg" alt="img" />
                                     </a>
                                     <a class="me-3" asp-action="Edit" asp-controller="Product" asp-route-id="@product.Id">
@@ -185,10 +185,32 @@
     </div>
 </div>
 
+<div class="modal fade " id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Product Details</h1>
+                @* <h4>Product Details</h4>
+                <h6>Full details of a product</h6> *@
+                <button type="button" class="fa fa-times" data-bs-dismiss="modal" aria-label="Close" style="color:black !important;"></button>
+            </div>
+            <form id="editProductForm">
+                <div class="modal-body" id="productModalBody">
+                </div>
+                <div class="modal-footer" style="margin-right:10px;display:inline-block;padding:0; float:right;">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    @* <button type="button" class="btn btn-primary">Send message</button> *@
+                    <button type="submit" class="btn btn-sm btn-primary" id="submitid">Submit</button>
+                </div>
+            </form>          
+        </div>
+    </div>
+</div>
 @section Scripts {
     @{
-        <partial name="_ValidationScriptsPartial" />
+                <partial name="_ValidationScriptsPartial" />
     }
+    
     <style>
         .ui-slider-horizontal {
             height: .6em;
@@ -226,12 +248,77 @@
 
     </style>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function () {           
             var updateMessage = '@TempData["UpdateMessage"]';
             if (updateMessage) {
                 showContent(updateMessage);
             }
+            $("#pdfButton").on("click", function () {
+                // $.ajax({
+                //     url: "/Product/GenerateProductReport",
+                //     method: "GET",
+                //     dataType: "json",
+                //     //responseType: 'arraybuffer', // Set the responseType to 'arraybuffer' to handle binary data
+                //     success: function (result) {
+                //         //var blob = new Blob([result], { type: "application/pdf" });
+                //         var fileUrl = result.fileUrl;
+                //         // Create a data URL for the Blob
+                //         //var url = URL.createObjectURL(blob);
+                //         window.open(fileUrl, "_blank");
+                //         // Open the PDF in a new window
+                //         //window.open(url, "_blank");
+                //     },
+                //     error: function (error) {
+                //         alert(error.responseText)
+                //     }
+                // });
+                ExportFile("pdf");
+            });
+            $("#excelButton").on("click", function () {
+                ExportFile("vnd.ms-excel");
+            });
+            $("#mswordButton").on("click", function () {
+                ExportFile("msword");
+            });
+            function ExportFile(fileType){
+                $.ajax({
+                    url: "/Product/GenerateProductReport",
+                    method: "GET",
+                    data: { fileType: fileType },
+                    xhrFields: {
+                        responseType: 'blob'  // Set the response type to blob to handle binary data
+                    },
+                    success: function (result) {
+                        var blob = new Blob([result], { type: "application/" + fileType });
+                        var url = URL.createObjectURL(blob);
 
+                        if (fileType === "pdf") {
+                            window.open(url, "_blank");  // Open the PDF in a new window
+                        } else if (fileType === "vnd.ms-excel" || fileType === "msword") {
+                            // Download the Excel file
+                            // var link = document.createElement('a');
+                            // link.href = url;
+                            // //link.download = "ProductReport.xls";  // Set the default name for the download
+                            // document.body.appendChild(link);
+                            // link.click();
+                            // document.body.removeChild(link);
+
+                            var $link = $('<a></a>').attr({
+                                href: url
+                                //download: "ProductReport.xls"  // Set the default name for the download
+                            }).appendTo('body');  // Add the link to the DOM
+
+                            $link[0].click();  // Trigger the click event on the link
+                            $link.remove();  // Remove the link from the DOM
+                        }
+
+                        //window.open(url, "_blank");  // Open the PDF in a new window
+                    },
+                    error: function (error) {
+                        alert("Error generating File: " + error.responseText);
+                    }
+                });
+            }
             var table = $('#productdatanew').DataTable({
                 "bFilter": true,
                 "sDom": 'fBtlpi',
@@ -248,7 +335,81 @@
                     $('.dataTables_filter').appendTo('.search-input');
                 },
             });
+            $(".view_product").click(function () {
+                //var allData = table.rows().data().toArray();
+                var productId = $(this).data("id");
+                $.ajax({
+                    url: '/Product/GetProductDetails', // Adjust the controller action URL as needed
+                    type: 'GET',
+                    data: { id: productId },
+                    success: function (result) {
+                        $('#productModalBody').html(result); // Load the result into the modal body
+                        // $("#userModal").on("shown.bs.modal", function () {
+                        //     if ($('.product-slide').length > 0) {
+                        //         $('.product-slide').owlCarousel({
+                        //             items: 1,
+                        //             margin: 30,
+                        //             dots: false,
+                        //             nav: true,
+                        //             loop: false,
+                        //             responsiveClass: true,
+                        //             responsive: {
+                        //                 0: {
+                        //                     items: 1
+                        //                 },
+                        //                 800: {
+                        //                     items: 1
+                        //                 },
+                        //                 1170: {
+                        //                     items: 1
+                        //                 }
+                        //             }
+                        //         });
+                        //     }
+                        // }); 
+                        $("#userModal").modal("show"); // Show the modal
+                    },
+                    error: function () {
+                        alert('Error loading product details');
+                    }
+                });
+                // $.ajax({
+                //     url: '/api/Users/updateData', // Your server-side update endpoint
+                //     method: 'POST',
+                //     contentType: 'application/json',
+                //     data: JSON.stringify(allData),
+                //     success: function (response) {
+                //         showContent('Data updated successfully');
+                //         //alert('Data updated successfully');
+                //     },
+                //     error: function (error) {
+                //         showContentFail('Error updating data');
+                //         //console.error('Error updating data:', error);
+                //     }
+                // });
+                //$("#userModal").modal("show");
+            });
+            $('#editProductForm').submit(function (event) {
+                event.preventDefault(); // Prevent the form from submitting the default way
 
+                $.ajax({
+                    url: '/Product/EditProduct',
+                    type: 'POST',
+                    data: $(this).serialize(), // Serialize the form data
+                    success: function (response) {
+                        if (response.success) {
+                            showContent(response.message);
+                            $('#userModal').modal('hide'); // Hide the modal
+                            // Optionally, refresh the table or show a success message
+                        } else {
+                            $('#productModalBody').html(response); // Reload the form with validation errors
+                        }
+                    },
+                    error: function () {
+                        alert('Error saving product details');
+                    }
+                });
+            });
             $(".deleteproductdbtn").on("click", function () {
                 var productId = $(this).data("id");
                 Swal.fire({
@@ -300,9 +461,7 @@
                         });
                     }
                 });
-            });
-
-
+            });           
 
             $("#min_price,#max_price").on('change', function () {
 

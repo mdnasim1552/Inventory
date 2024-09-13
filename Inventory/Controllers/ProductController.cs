@@ -1,12 +1,18 @@
 ﻿using AutoMapper;
+using Inventory.Data;
 using Inventory.Models;
 using Inventory.UnitOfWork;
 using InventoryEntity.Category;
 using InventoryEntity.Product;
 using InventoryEntity.SubCategory;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Reporting.NETCore;
 using Newtonsoft.Json;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.Data;
+using InventoryRDLC;
 
 namespace Inventory.Controllers
 {
@@ -15,15 +21,17 @@ namespace Inventory.Controllers
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IProcessAccess _processAccess;
         private readonly IEnumerable<Category> categoryList = new List<Category>();
         private readonly IEnumerable<SubCategory> subcategoryList = new List<SubCategory>();
         private readonly IEnumerable<Brand> brandList = new List<Brand>();
         private readonly IEnumerable<Unit> unitList=new List<Unit>();
-        public ProductController(IMapper mapper, IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
+        public ProductController(IMapper mapper, IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment, IProcessAccess processAccess)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
+            _processAccess= processAccess;
             categoryList = _unitOfWork.Category.GetAll();
             subcategoryList = _unitOfWork.SubCategory.GetAll();
             brandList=_unitOfWork.Brand.GetAll();
@@ -254,6 +262,123 @@ namespace Inventory.Controllers
             //return Ok(JsonConvert.SerializeObject(new { data = subcategoryListDto}));
             return Json(subcategoryListDto);
         }
+        public async Task<IActionResult> GetProductDetails(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var products = await _unitOfWork.Product.GetAsync(id);
+            if (products == null)
+            {
+                return NotFound();
+            }
+            ViewData["CategoryList"] = categoryList;
+            ViewData["SubcategoryList"] = subcategoryList;
+            ViewData["BrandList"] = brandList;
+            ViewData["UnitList"] = unitList;
+            var productDto = _mapper.Map<ProductDto>(products);
+            productDto.Status = productDto.Status.Trim();
+            return PartialView("_ProductView", productDto);   
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditProduct(ProductDto productDto)
+        {
+            if (ModelState.IsValid)
+            {
+                if (productDto.ProductImg != null)
+                {
+                    if (productDto.Image != null)
+                    {
+                        var imageUrl = productDto.Image.TrimStart('/');
+                        imageUrl = Path.Combine(_webHostEnvironment.WebRootPath, imageUrl);
+                        if (System.IO.File.Exists(imageUrl))
+                        {
+                            System.IO.File.Delete(imageUrl);
+                            //return Ok("Image deleted successfully.");
+                        }
+                    }
+                    productDto.Image = await UploadImage(productDto.ProductImg);
+                }
+                var products = _mapper.Map<Product>(productDto);
+                _unitOfWork.Product.Update(products);
+                var productstatus = await _unitOfWork.SaveAsync();
+                if (productstatus)
+                {
+                    return Json(new { success = true,message= "Update successfully" }); // Return JSON with success = true
+                    //return View(brandDto);
+                }
+            }
+            ViewData["CategoryList"] = categoryList;
+            ViewData["SubcategoryList"] = subcategoryList;
+            ViewData["BrandList"] = brandList;
+            ViewData["UnitList"] = unitList;
+            ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
 
+            return PartialView("_ProductView", productDto);
+        }
+        //[HttpGet("RptRDLCPDF")]
+        [HttpGet]
+        public async Task<IActionResult> GenerateProductReport(string fileType)
+        {            
+
+            try
+            {
+                string procedureName = "ALL_REPORTS";
+                string Calltype = "PRODUCTS_INFO";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@CallType", Calltype)
+                };
+                var productDt = await _processAccess.GetDataSets(procedureName, parameters);
+                              
+                for(int i=0;i<productDt.Tables[0].Rows.Count; i++)
+                {
+                    productDt.Tables[0].Rows[i]["Image"] = new Uri(Path.Combine(_webHostEnvironment.WebRootPath, productDt.Tables[0].Rows[i]["Image"].ToString())).AbsoluteUri ;
+                }
+                //var isAuthenticated = User.Identity.IsAuthenticated;
+                //var username = User.Identity.Name ?? "Guest";
+                //var comcodClaim = User.Claims.FirstOrDefault(c => c.Type == "comcod");
+                //var comcod = comcodClaim?.Value ?? "3101";
+                //Company company = await _loginRepository.GetCompany(comcod);
+                //var userList = await _userRepository.GetUserList();
+                //string ComLogo= new Uri(Server.MapPath(@"~\Image\LOGO" + comcod + ".jpg")).AbsoluteUri;
+                //string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "Images", "Comp_Logo", $"{comcod}.jpg");
+                string companyName = "HD Clinal";
+                string companyAddress = "Mohakhali DOHS, Dhaka, Bangladesh";
+                string UserName = "Admin";
+                string ComLogo = new Uri(Path.Combine(_webHostEnvironment.WebRootPath,"assets", "img", "logo.png")).AbsoluteUri;
+                string printdate = System.DateTime.Now.ToString("dd.MM.yyyy hh:mm:ss tt");
+
+                LocalReport Rpt1 = new LocalReport();
+                DataTable dt = new DataTable();
+                Rpt1.LoadReportDefinition(RPTPathClass.GetReportFilePath("Reports.ProductReport"));
+                Rpt1 = Rpt1.SetRDLCReportDatasets(new Dictionary<string, object> { { "DataSet1", productDt.Tables[0] } });
+                //Rpt1.DataSources.Add(new ReportDataSource("DataSet1", userList));
+                // Rpt1.EnableExternalImages = true;
+                Rpt1.EnableExternalImages = true;
+
+                Rpt1.SetParameters(new ReportParameter("CompanyName", companyName));
+                Rpt1.SetParameters(new ReportParameter("CompanyAddress", companyAddress));
+                Rpt1.SetParameters(new ReportParameter("ComLogo", ComLogo));
+                Rpt1.SetParameters(new ReportParameter("ReportTitle", "Products Report"));
+                Rpt1.SetParameters(new ReportParameter("ReportFooter", "Printed from Computer Address:"+companyName+", User:"+ UserName+ ", Time:" + printdate));
+                //Rpt1.SetParameters(new ReportParameter("printFooter", ASTUtility.Concat(company != null ? company.comnam : "", username, printdate)));
+
+                string reportExtennsion = fileType == "pdf" ? fileType : (fileType== "msword" ? "docx":"xls");
+                string reportType= fileType == "pdf" ? fileType : (fileType == "msword" ? "word" : "excel");
+                string deviceInfo =
+                      @"<DeviceInfo><EmbedFonts>Full</EmbedFonts>" +
+                      "  <OutputFormat>" + fileType + "</OutputFormat>" +
+                      "</DeviceInfo>";
+                byte[] bytes = Rpt1.Render(reportType, deviceInfo);                                                           
+                return File(bytes, "application/"+ fileType, $"Report.{reportExtennsion}");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+
+        }
     }
 }
