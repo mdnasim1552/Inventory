@@ -20,7 +20,8 @@
     <script src="~/assets/js/dataTables.bootstrap4.min.js"></script>
 
     <script src="~/assets/js/bootstrap.bundle.min.js"></script>
-
+    <script src="~/assets/js/moment.min.js"></script>
+    <script src="~/assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="~/assets/plugins/toastr/toastr.min.js"></script>
     <script src="~/assets/plugins/toastr/toastr.js"></script>
 
@@ -36,6 +37,7 @@
           href="~/assets/img/favicon.jpg" />
     <link href="~/assets/css/jquery-ui.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" />
+    <link href="~/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/assets/plugins/toastr/toatr.css">
     <link href="~/assets/plugins/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/assets/css/animate.css" />
@@ -623,8 +625,8 @@
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul>
-                                <li><a href="newuser.html">New User </a></li>
-                                <li><a href="userlists.html">Users List</a></li>
+                                <li><a asp-action="Create" asp-controller="User">New User </a></li>
+                                <li><a asp-action="Index" asp-controller="User">Users List</a></li>
                             </ul>
                         </li>
                         <li class="submenu">

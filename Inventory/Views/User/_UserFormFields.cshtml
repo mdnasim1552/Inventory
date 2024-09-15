@@ -1,0 +1,106 @@
+﻿@model InventoryEntity.Account.UserDto
+@{
+    var roleList = ViewData["RoleList"] as IEnumerable<Inventory.Models.Userrole>;
+    var roleSelectList = roleList != null
+               ? new SelectList(roleList, "RoleId", "Role")
+               : new SelectList(Enumerable.Empty<Userrole>(), "RoleId", "Role");
+}
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label asp-for="Name">User Name</label>
+        <input asp-for="Name" type="text">
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" type="text">
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Password</label>
+        <div class="pass-group">
+            <input asp-for="Password" type="password" class=" pass-input">
+            <span class="fas toggle-password fa-eye-slash"></span>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label asp-for="Mobile">Mobile</label>
+        <input asp-for="Mobile" type="text">
+    </div>
+    <div class="form-group">
+        <label for="roleSelect">Role</label>
+        @* <select class="select">
+            <option>Select</option>
+            <option>Role</option>
+            <option>Role1</option>
+        </select> *@
+        <select class="select" id="roleSelect" asp-for="@Model.RoleId" required asp-items="roleSelectList">
+            <option value="" selected disabled>Choose Role</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword">Confirm Password</label>
+        <div class="pass-group">
+            <input asp-for="ConfirmPassword" type="password" class=" pass-inputs">
+            <span class="fas toggle-passworda fa-eye-slash"></span>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+@* <div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label> Profile Picture</label>
+        <div class="image-upload image-upload-new">
+            <input type="file">
+            <div class="image-uploads">
+                <img src="assets/img/icons/upload.svg" alt="img">
+                <h4>Drag and drop a file to upload</h4>
+            </div>
+        </div>
+    </div>
+</div> *@
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label asp-for="UserImg"> Profile Picture</label>
+        <div class="image-upload" style="position:relative;height:25vh;">
+            <input asp-for="UserImg" type="file" accept="image/*" id="fileInput" />
+            <div class="image-uploads" id="imageuloadContainer" style="margin-top: 5vh;">
+                <img src="~/assets/img/icons/upload.svg" alt="img" />
+                <h4>Drag and drop a file to upload</h4>
+            </div>
+            <div class="icons-items text-center" id="fileDetails" style="display: none;height: 100px;align-content: center;margin-top: 5vh;">
+                <span id="fileName"></span><br />
+                <span id="fileSize"></span><br />
+                <ul class="icons-list" style="list-style-type: none; padding: 0; margin: 0; display: flex; justify-content: center; align-items: center;position:absolute;top:0;right:0;">
+                    <li id="removeFile" style="display: flex; justify-content: center; align-items: center;cursor: pointer;">
+                        <i class="fa fa-times" data-bs-toggle="tooltip" title="Remove the image!"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hidden field for ImageUrl -->
+<input type="hidden" asp-for="Image" id="ImageUrlHiddenField" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#fileInput').on('change', function () {
+            var file = this.files[0];
+            if (file) {
+                $('#fileName').text('File Name: ' + file.name);
+                $('#fileSize').text('File Size: ' + (file.size / 1024).toFixed(2) + ' KB');
+                $('#fileDetails').show();
+                $('#imageuloadContainer').hide();
+                $('#fileInput').hide();
+            }
+        });
+        $('#removeFile').on('click', function () {
+            $('#fileInput').val('');
+            $('#fileDetails').hide();
+            $('#imageuloadContainer').show();
+            $('#fileInput').show();
+        })
+    });
+
+</script>
