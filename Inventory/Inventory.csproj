@@ -37,7 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="RDLCReports\" />
     <Folder Include="wwwroot\SubCategoryImages\" />
   </ItemGroup>
 

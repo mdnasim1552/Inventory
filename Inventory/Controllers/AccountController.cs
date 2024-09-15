@@ -192,6 +192,9 @@ namespace Inventory.Controllers
                     ClaimsPrincipal claimprincipal = new ClaimsPrincipal(identity);
                     var credentials = _mapper.Map<Credential>(registerdto);
                     credentials.Password = BCrypt.Net.BCrypt.HashPassword(registerdto.Password);
+                    var role = await _unitOfWork.Userrole.SingleOrDefaultAsync(u => u.Role == "Admin");
+                    credentials.RoleId = role.RoleId;
+                    credentials.CreatedOn = DateTime.Now;
                     _unitOfWork.Credential.Add(credentials);
                     var saveResult = await _unitOfWork.SaveAsync();
                     if (saveResult)

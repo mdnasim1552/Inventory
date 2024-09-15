@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InventoryRDLC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9a377b27ccedee2314e27158b77749add8f7e51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+411ebeb0d8c2f38de722ce92422f3234a3e9ba03")]
 [assembly: System.Reflection.AssemblyProductAttribute("InventoryRDLC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InventoryRDLC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
