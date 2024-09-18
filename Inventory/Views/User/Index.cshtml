@@ -109,7 +109,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table  datanew">
+                <table class="table" id="userdatanew">
                     <thead>
                         <tr>
                             <th>
@@ -130,14 +130,21 @@
                     <tbody>
                         @foreach (var user in Model)
                         {
-                            <tr>
+                            <tr data-id="@user.Id">
                                 <td>
                                     <label class="checkboxs">
                                         <input type="checkbox">
                                         <span class="checkmarks"></span>
                                     </label>
                                 </td>
-                                <td>@user.Name</td>
+                                <td class="productimgname">
+                                    <a href="javascript:void(0);" class="product-img">
+                                        <img src="@user.Image"
+                                             alt="user" />
+                                    </a>
+                                    <a href="javascript:void(0);">@user.Name</a>
+                                </td>
+                                @* <td>@user.Name</td> *@
                                 <td>@user.Mobile</td>
                                 <td>
                                     <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
@@ -147,10 +154,10 @@
                                 <td>@user.CreatedOn</td>
                                 <td><span class="bg-lightgreen badges">Active</span></td>
                                 <td>
-                                    <a class="me-3" href="newuseredit.html">
+                                    <a class="me-3" asp-action="Edit" asp-controller="User" asp-route-id="@user.Id">
                                         <img src="~/assets/img/icons/edit.svg" alt="img">
                                     </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                    <a class="me-3 deleteUserbtn" href="javascript:void(0);" data-id="@user.Id">
                                         <img src="~/assets/img/icons/delete.svg" alt="img">
                                     </a>
                                 </td>
@@ -168,4 +175,74 @@
     @{
                 <partial name="_ValidationScriptsPartial" />
     }
+    <script type="text/javascript">
+        var table = $('#userdatanew').DataTable({
+            "bFilter": true,
+            "sDom": 'fBtlpi',
+            'pagingType': 'numbers',
+            "ordering": true,
+            "language": {
+                search: ' ',
+                sLengthMenu: '_MENU_',
+                searchPlaceholder: "Search...",
+                info: "_START_ - _END_ of _TOTAL_ items",
+            },
+            initComplete: function (settings, json) {
+                $('.dataTables_filter').appendTo('#tableSearch');
+                $('.dataTables_filter').appendTo('.search-input');
+            },
+        });
+        $(".deleteUserbtn").on("click", function () {
+            var subcategoryId = $(this).data("id");
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+                confirmButtonClass: "btn btn-primary",
+                cancelButtonClass: "btn btn-danger ml-1",
+                buttonsStyling: !1
+            }).then(function (t) {
+                if (t.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete", "User")',
+                        data: { id: subcategoryId },
+                        success: function (response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    type: "success",
+                                    title: "Deleted!",
+                                    text: "Your user has been deleted.",
+                                    confirmButtonClass: "btn btn-success"
+                                });
+                                // Remove the brand row from the table
+                                //$('tr[data-id="' + brandId + '"]').remove();
+                                // Remove the brand row from the table using DataTable API
+                                table.row($('tr[data-id="' + subcategoryId + '"]')).remove().draw();
+                            } else {
+                                Swal.fire({
+                                    type: "error",
+                                    title: "Error!",
+                                    text: response.message,
+                                    confirmButtonClass: "btn btn-danger"
+                                });
+                            }
+                        },
+                        error: function () {
+                            Swal.fire({
+                                type: "error",
+                                title: "Error!",
+                                text: "An error occurred while processing your request.",
+                                confirmButtonClass: "btn btn-danger"
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1BaA7CTkfr9NlGXNN2T7Y6TgvrBmrfnht8O98ytvKKk=",
+  "Hash": "Rw/18pFjxe30wsWJrwXRLUh5kREqCHFMPGQneEgUpX0=",
   "Source": "Inventory",
   "BasePath": "_content/Inventory",
   "Mode": "Default",
@@ -50517,6 +50517,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UserImages\\20240915011453408_4a3_Screenshot 2024-08-0.png"
+    },
+    {
+      "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240916013341407_7e3_Screenshot 2024-09-0.png",
+      "SourceId": "Inventory",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\",
+      "BasePath": "_content/Inventory",
+      "RelativePath": "UserImages/20240916013341407_7e3_Screenshot 2024-09-0.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserImages\\20240916013341407_7e3_Screenshot 2024-09-0.png"
     }
   ]
 }
