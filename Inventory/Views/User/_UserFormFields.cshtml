@@ -15,9 +15,18 @@
         <input asp-for="Email" type="text">
     </div>
     <div class="form-group">
+        <label asp-for="Birthday">Birthday</label>
+        <div class="input-groupicon">
+            <input asp-for="Birthday" type="text" placeholder="DD-MM-YYYY" class="datetimepicker" required>
+            <div class="addonset">
+                <img src="~/assets/img/icons/calendars.svg" alt="img">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
         <label asp-for="Password">Password</label>
         <div class="pass-group">
-            <input asp-for="Password" type="password" class=" pass-input">
+            <input id="userPassword" asp-for="Password" type="password" class=" pass-input">
             <span class="fas toggle-password fa-eye-slash"></span>
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
@@ -40,9 +49,18 @@
         </select>
     </div>
     <div class="form-group">
+        <label asp-for="Gender">Gender</label>
+        <select class="select" asp-for="Gender" asp-items="@(new List<SelectListItem> {
+                new SelectListItem { Value = "M", Text = "Male" },
+                new SelectListItem { Value = "F", Text = "Female" }
+            })" required>
+            <option value="" selected disabled>-- Select Gender --</option>
+        </select>
+    </div>
+    <div class="form-group">
         <label asp-for="ConfirmPassword">Confirm Password</label>
         <div class="pass-group">
-            <input asp-for="ConfirmPassword" type="password" class=" pass-inputs">
+            <input id="userConfirmPassword" asp-for="ConfirmPassword" type="password" class=" pass-inputs">
             <span class="fas toggle-passworda fa-eye-slash"></span>
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
@@ -83,8 +101,14 @@
 </div>
 <!-- Hidden field for ImageUrl -->
 <input type="hidden" asp-for="Image" id="ImageUrlHiddenField" />
+<input type="hidden" asp-for="CreatedOn" />
 <script type="text/javascript">
     $(document).ready(function () {
+        // $('.datetimepicker').datepicker({
+        //     format: 'yyyy-MM-dd'
+        // });
+        $('#userPassword').val(@(Model?.Password ?? ""));//userConfirmPassword
+        $('#userConfirmPassword').val(@(Model?.Password ?? ""));
         $('#fileInput').on('change', function () {
             var file = this.files[0];
             if (file) {

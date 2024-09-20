@@ -89,6 +89,7 @@ namespace Inventory.Controllers
                     }
                     userDto.Image = await InventoryUtility.UploadImage(userDto.UserImg, uploadFolderPath, folderName);
                 }
+                userDto.Birthday = Convert.ToDateTime(userDto.Birthday).ToString("yyyy-MM-dd");
                 var user = _mapper.Map<Credential>(userDto);
                 _unitOfWork.Credential.Update(user);
                 var userstatus = await _unitOfWork.SaveAsync();
