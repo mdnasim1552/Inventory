@@ -24,7 +24,7 @@ namespace Inventory.Profiles
             .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
             .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.ConfirmPassword))
             .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender))
-            .ForMember(dest => dest.Birthday, opt => opt.MapFrom(src => src.Birthday))
+            .ForMember(dest => dest.Birthday, opt => opt.MapFrom(src =>Convert.ToDateTime(src.Birthday)))
             .ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => src.RoleId))
             .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image))
             .ForMember(dest => dest.Mobile, opt => opt.MapFrom(src => src.Mobile))

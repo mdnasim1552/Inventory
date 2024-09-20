@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rw/18pFjxe30wsWJrwXRLUh5kREqCHFMPGQneEgUpX0=",
+  "Hash": "XahEiPSPz0LjbfGVv4gGaM5NUPa8083NVcEYq5OFn6k=",
   "Source": "Inventory",
   "BasePath": "_content/Inventory",
   "Mode": "Default",
@@ -50500,25 +50500,6 @@
       "OriginalItemSpec": "wwwroot\\SubCategoryImages\\20240707023117693_833_Mouth_Wash.jpg"
     },
     {
-      "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240915011453408_4a3_Screenshot 2024-08-0.png",
-      "SourceId": "Inventory",
-      "SourceType": "Discovered",
-      "ContentRoot": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\",
-      "BasePath": "_content/Inventory",
-      "RelativePath": "UserImages/20240915011453408_4a3_Screenshot 2024-08-0.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\UserImages\\20240915011453408_4a3_Screenshot 2024-08-0.png"
-    },
-    {
       "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240916013341407_7e3_Screenshot 2024-09-0.png",
       "SourceId": "Inventory",
       "SourceType": "Discovered",
@@ -50536,6 +50517,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UserImages\\20240916013341407_7e3_Screenshot 2024-09-0.png"
+    },
+    {
+      "Identity": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240919003827248_c14_Screenshot 2024-08-3.png",
+      "SourceId": "Inventory",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\",
+      "BasePath": "_content/Inventory",
+      "RelativePath": "UserImages/20240919003827248_c14_Screenshot 2024-08-3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserImages\\20240919003827248_c14_Screenshot 2024-08-3.png"
     }
   ]
 }
