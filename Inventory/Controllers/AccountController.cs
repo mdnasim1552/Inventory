@@ -31,6 +31,12 @@ namespace Inventory.Controllers
         }
         public IActionResult Signin()
         {
+            // Check if the user is already authenticated
+            if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                // Redirect to the Home page if the user is already authenticated
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         [HttpPost]
@@ -42,13 +48,22 @@ namespace Inventory.Controllers
             if (ModelState.IsValid)
             {
                 var userInfo = await _unitOfWork.Credential.SingleOrDefaultAsync(c=>c.Email==logindto.Email);
+                var role = await _unitOfWork.Userrole.SingleOrDefaultAsync(u => u.RoleId == userInfo.RoleId);
                 if (userInfo != null && BCrypt.Net.BCrypt.Verify(logindto.Password, userInfo.Password))
                 {
 
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name,userInfo.Name),
-                        new Claim(ClaimTypes.Email,userInfo.Email)
+                        new Claim(ClaimTypes.Email,userInfo.Email),
+                        new Claim(ClaimTypes.Role,role.Role),
+                        new Claim(ClaimTypes.Gender,userInfo.Gender!=null?userInfo.Gender:""),
+                        new Claim("UserID",userInfo.Id.ToString()),
+                        new Claim("AdminID",userInfo.ParentId !=null?userInfo.ParentId.ToString():userInfo.Id.ToString()),
+                        new Claim("Designation",userInfo.Designation!=null?userInfo.Designation:"Designation"),
+                        new Claim("Image",String.IsNullOrEmpty( userInfo.Image) ? "/userimages/profile.png":userInfo.Image)
+                        //new Claim("Department","HR"),
+                        //new Claim("Admin","true")
                      };
                     ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);//we can use CookieAuthenticationDefaults.AuthenticationScheme (constant) instead of "MyCookieAuth"
                     ClaimsPrincipal claimprincipal = new ClaimsPrincipal(identity);
@@ -194,7 +209,7 @@ namespace Inventory.Controllers
                     credentials.Password = BCrypt.Net.BCrypt.HashPassword(registerdto.Password);
                     var role = await _unitOfWork.Userrole.SingleOrDefaultAsync(u => u.Role == "Admin");
                     credentials.RoleId = role.RoleId;
-                    credentials.CreatedOn = DateTime.Now;
+                    credentials.CreatedOn = DateTime.Now;                  
                     _unitOfWork.Credential.Add(credentials);
                     var saveResult = await _unitOfWork.SaveAsync();
                     if (saveResult)
@@ -220,6 +235,11 @@ namespace Inventory.Controllers
                 }
             }
             return View(credentialdto);
+        }
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

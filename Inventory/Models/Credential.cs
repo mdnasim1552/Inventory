@@ -38,6 +38,11 @@ public partial class Credential
     [Column(TypeName = "smalldatetime")]
     public DateTime? CreatedOn { get; set; }
 
+    public int? ParentId { get; set; }
+
+    [StringLength(100)]
+    public string? Designation { get; set; }
+
     [ForeignKey("RoleId")]
     [InverseProperty("Credentials")]
     public virtual Userrole Role { get; set; } = null!;

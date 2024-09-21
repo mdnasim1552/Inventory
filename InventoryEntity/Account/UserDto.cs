@@ -46,5 +46,8 @@ namespace InventoryEntity.Account
         public string? Mobile { get; set; }
         [Column(TypeName = "smalldatetime")]
         public DateTime? CreatedOn { get; set; }
+        public int? ParentId { get; set; }
+        [StringLength(100)]
+        public string? Designation { get; set; }
     }
 }
