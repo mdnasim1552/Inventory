@@ -89,6 +89,14 @@
       "PackagePath": "staticwebassets\\UserImages\\20240919003827248_c14_Screenshot 2024-08-3.png"
     },
     {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240922013612437_799_Screenshot 2024-08-0.png",
+      "PackagePath": "staticwebassets\\UserImages\\20240922013612437_799_Screenshot 2024-08-0.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\Profile.png",
+      "PackagePath": "staticwebassets\\UserImages\\Profile.png"
+    },
+    {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\css\\animate.css",
       "PackagePath": "staticwebassets\\assets\\css\\animate.css"
     },

@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Access Denied";
+    Layout = "~/Views/Shared/_SignInLayout.cshtml";
+}
+<div class="login-wrapper">
+    <div class="login-content">
+        <div class="login-userset">
+            <div class="login-logo">
+                <img src="~/assets/img/logo.png" alt="img" />
+            </div>
+            <div class="login-userheading">
+                <h3>Access Denied.</h3>
+                <h4>
+                    You don't have access to the page you are looking for.
+                </h4>
+            </div>
+            <div class="form-login">
+                <a class="btn btn-login" asp-action="Signin" asp-controller="Account">Back</a>
+            </div>
+        </div>
+    </div>
+    <div class="login-img">
+        <img src="~/assets/img/login.jpg" alt="img" />
+    </div>
+</div>

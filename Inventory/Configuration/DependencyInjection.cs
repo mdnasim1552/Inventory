@@ -1,6 +1,9 @@
 ﻿using Inventory.Data;
+using Inventory.Extensions;
+using Inventory.Models;
 using Inventory.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.CodeAnalysis.Options;
 
 namespace Inventory.Configuration
 {
@@ -24,8 +27,8 @@ namespace Inventory.Configuration
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
                 //options.Cookie.Name = "MyCookieAuth";
-                options.LoginPath = "/Account/Login";
-                //options.LogoutPath = "/Account/Logout";
+                options.LoginPath = "/Account/Signin";
+                options.LogoutPath = "/Account/Logout";
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
             });
@@ -46,18 +49,23 @@ namespace Inventory.Configuration
             //    options.AddPolicy("SupportPolicy", policy => policy.RequireRole(UserRole.Support.ToString()));
             //});
 
-            //services.AddAuthorization(options =>
-            //{
-            //    // Retrieve roles dynamically from the database
-            //    var roleService = services.BuildServiceProvider().GetService<IRoleService>();
-            //    var roles = roleService.GetRoles();
-
-            //    // Configure policies dynamically
-            //    foreach (var r in roles)
-            //    {
-            //        options.AddPolicy($"{r.role}Policy", policy => policy.RequireRole(r.roleid));
-            //    }
-            //});
+            services.AddAuthorization(options =>
+            {
+                // Retrieve roles dynamically from the database
+                var _unitOfWork = services.BuildServiceProvider().GetService<IUnitOfWork>();
+                var roles = _unitOfWork.Userrole.Find(u => u.Role != Policies.Admin);//_unitOfWork.Userrole.GetAll();
+                options.AddPolicy(Policies.Admin, policy => policy.RequireRole(Policies.Admin));
+                // Configure policies dynamically
+                foreach (var r in roles)
+                {
+                    options.AddPolicy(r.Role.Replace(" ", ""), policy =>
+                        policy.RequireAssertion(context =>
+                        context.User.IsInRole(Policies.Admin) || 
+                        context.User.IsInRole(r.Role)));
+                    //options.AddPolicy($"{r.Role.Replace(" ","")}Policy", policy => policy.RequireRole(Policies.Admin).RequireRole(r.Role));
+                    //options.AddPolicy($"{r.Role.Replace(" ", "")}Policy", policy => policy.RequireClaim(r.Role));
+                }
+            });
 
             return services;
         }

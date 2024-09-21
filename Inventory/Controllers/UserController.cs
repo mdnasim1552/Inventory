@@ -4,10 +4,13 @@ using Inventory.Models;
 using Inventory.UnitOfWork;
 using InventoryEntity.Account;
 using InventoryEntity.Product;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Inventory.Controllers
 {
+    //[Authorize(Policy = Policies.HumanResource)] 
+    [Authorize(Policy = Policies.Admin)]
     public class UserController : Controller
     {
         private readonly IMapper _mapper;
@@ -40,9 +43,12 @@ namespace Inventory.Controllers
         {
             if (ModelState.IsValid)
             {
+                //var isAuthenticated = User.Identity.IsAuthenticated;
+                var adminID =Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
                 userDto.Image = await InventoryUtility.UploadImage(userDto.UserImg, uploadFolderPath, folderName);
                 var users = _mapper.Map<Credential>(userDto);
                 users.CreatedOn = DateTime.Now;
+                users.ParentId = adminID;
                 _unitOfWork.Credential.Add(users);
                 var userstatus = await _unitOfWork.SaveAsync();
                 if (userstatus)
