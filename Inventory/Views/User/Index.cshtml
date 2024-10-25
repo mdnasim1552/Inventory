@@ -152,7 +152,17 @@
                                 </td>
                                 <td>@user.Role.Role</td>
                                 <td>@user.CreatedOn</td>
-                                <td><span class="bg-lightgreen badges">Active</span></td>
+                                <td>
+                                    @if (user.IsActive)
+                                    {
+                                        <span class="bg-lightgreen badges">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="bg-lightred badges">Inactive</span>
+                                    }
+
+                                </td>
                                 <td>
                                     <a class="me-3" asp-action="Edit" asp-controller="User" asp-route-id="@user.Id">
                                         <img src="~/assets/img/icons/edit.svg" alt="img">

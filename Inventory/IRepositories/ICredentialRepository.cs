@@ -6,6 +6,7 @@ namespace Inventory.IRepositories
     public interface ICredentialRepository : IRepository<Credential>
     {
         //void Update(Credential credential);
-        //Task<bool> EmailExistsAsync(string email);     
+        //Task<bool> EmailExistsAsync(string email);
+        Task<List<int>> GetUserIdListOnParent(int parentId);
     }
 }

@@ -5,6 +5,7 @@ using Inventory.Profiles;
 using Inventory.UnitOfWork;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using Inventory.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddAllRepository();//Register all repository by DependencyInjection
 builder.Services.AddAuthenticationAndAuthorization();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+builder.Services.AddSignalR();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,5 +45,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Signin}/{id?}");
-
+app.MapHub<UserHub>("/hubs/userStatusHub");
 app.Run();

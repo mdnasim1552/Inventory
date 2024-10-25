@@ -13,9 +13,13 @@ using Newtonsoft.Json;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Data;
 using InventoryRDLC;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Inventory.Extensions;
 
 namespace Inventory.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IMapper _mapper;
@@ -39,7 +43,19 @@ namespace Inventory.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category,p=>p.Brand);
+            //var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category,p=>p.Brand);
+
+            var userID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "UserID").Value);
+            var adminID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
+            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand);
+            var userIdList = await _unitOfWork.Credential.GetUserIdListOnParent(adminID);
+            //if (User.FindFirst(ClaimTypes.Role)?.Value == Policies.Admin)
+            //{
+            //    userIdList.Add(adminID);
+            //}
+            userIdList.Add(adminID);
+            productList = productList.Where(p => userIdList.Contains(p.CreatedBy)).ToList();
+            //productList = productList.Where(p => allowedUsers.Contains(p.CreatedBy)).ToList();
             ViewData["CategoryList"] = categoryList;
             ViewData["BrandList"] = brandList;
             return View(productList);
@@ -95,7 +111,9 @@ namespace Inventory.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "UserID").Value);
                 productDto.Image = await UploadImage(productDto.ProductImg);
+                productDto.CreatedBy= userID;
                 var products = _mapper.Map<Product>(productDto);
                 _unitOfWork.Product.Add(products);
                 var productstatus = await _unitOfWork.SaveAsync();

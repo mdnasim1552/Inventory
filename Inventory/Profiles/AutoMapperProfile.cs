@@ -49,6 +49,7 @@ namespace Inventory.Profiles
               .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
               .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
               .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image))
+              .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
               .ReverseMap();
 
             CreateMap<BrandDto, Brand>()
