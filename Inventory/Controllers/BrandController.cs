@@ -2,6 +2,7 @@
 using Inventory.Models;
 using Inventory.UnitOfWork;
 using InventoryEntity.Brand;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using System.Linq;
 
 namespace Inventory.Controllers
 {
+    [Authorize]
     public class BrandController : Controller
     {
         private readonly IMapper _mapper;

@@ -51,6 +51,7 @@ namespace InventoryEntity.Product
         [StringLength(500)]
         public string? Image { get; set; }
         public IFormFile? ProductImg { get; set; }
+        public int CreatedBy { get; set; }
 
     }
 }

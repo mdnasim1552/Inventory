@@ -6,6 +6,7 @@ using InventoryEntity.Account;
 using InventoryEntity.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 
 namespace Inventory.Controllers
 {
@@ -43,18 +44,29 @@ namespace Inventory.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var isAuthenticated = User.Identity.IsAuthenticated;
-                var adminID =Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
-                userDto.Image = await InventoryUtility.UploadImage(userDto.UserImg, uploadFolderPath, folderName);
-                var users = _mapper.Map<Credential>(userDto);
-                users.CreatedOn = DateTime.Now;
-                users.ParentId = adminID;
-                _unitOfWork.Credential.Add(users);
-                var userstatus = await _unitOfWork.SaveAsync();
-                if (userstatus)
+                bool emailExists = await _unitOfWork.Credential.AnyAsync(c => c.Email == userDto.Email);
+                if (emailExists)
                 {
-                    return RedirectToAction("Create");
+                    ModelState.AddModelError(string.Empty, "Email already exist.");
+                    return View(userDto);
                 }
+                else
+                {
+                    //var isAuthenticated = User.Identity.IsAuthenticated;
+                    var adminID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
+                    userDto.Image = await InventoryUtility.UploadImage(userDto.UserImg, uploadFolderPath, folderName);
+                    userDto.Birthday = Convert.ToDateTime(userDto.Birthday).ToString("yyyy-MM-dd");
+                    var users = _mapper.Map<Credential>(userDto);
+                    users.CreatedOn = DateTime.Now;
+                    users.ParentId = adminID;
+                    users.Password = BCrypt.Net.BCrypt.HashPassword(users.Password);
+                    _unitOfWork.Credential.Add(users);
+                    var userstatus = await _unitOfWork.SaveAsync();
+                    if (userstatus)
+                    {
+                        return RedirectToAction("Create");
+                    }
+                }                
             }
             ViewData["RoleList"] = roleList;
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
@@ -62,6 +74,7 @@ namespace Inventory.Controllers
         }
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.DisableInput = true;
             if (id == null)
             {
                 return NotFound();
@@ -79,6 +92,7 @@ namespace Inventory.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(UserDto userDto)
         {
+            ViewBag.DisableInput = true;
             if (ModelState.IsValid)
             {
                 if (userDto.UserImg != null)
@@ -97,6 +111,7 @@ namespace Inventory.Controllers
                 }
                 userDto.Birthday = Convert.ToDateTime(userDto.Birthday).ToString("yyyy-MM-dd");
                 var user = _mapper.Map<Credential>(userDto);
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
                 _unitOfWork.Credential.Update(user);
                 var userstatus = await _unitOfWork.SaveAsync();
                 if (userstatus)
@@ -104,6 +119,12 @@ namespace Inventory.Controllers
                     TempData["UpdateMessage"] = "Update successfully";
                     return RedirectToAction("Index");
                     //return View(brandDto);
+                }
+                else
+                {
+                    ViewData["RoleList"] = roleList;
+                    ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
+                    return View(userDto);
                 }
             }
             ViewData["RoleList"] = roleList;

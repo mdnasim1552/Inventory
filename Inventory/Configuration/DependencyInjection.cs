@@ -1,6 +1,8 @@
 ﻿using Inventory.Data;
 using Inventory.Extensions;
+using Inventory.IRepositories;
 using Inventory.Models;
+using Inventory.Repositories;
 using Inventory.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.CodeAnalysis.Options;
@@ -14,6 +16,7 @@ namespace Inventory.Configuration
 
             services.AddScoped<IUnitOfWork, Inventory.UnitOfWork.UnitOfWork>();
             services.AddScoped<IProcessAccess, ProcessAccess>();
+            services.AddSingleton<IConnectionManager, ConnectionManager>();
             //services.AddScoped<IUserRepository, UserRepository>();
             //services.AddScoped<IRoleService, RoleService>();
             //services.AddScoped<ILoginRepository, LoginRepository>();

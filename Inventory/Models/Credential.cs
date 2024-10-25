@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Inventory.Models;
 
 [Table("Credential")]
+[Index("Email", Name = "IX_Credential", IsUnique = true)]
 public partial class Credential
 {
     [Key]
@@ -42,6 +43,11 @@ public partial class Credential
 
     [StringLength(100)]
     public string? Designation { get; set; }
+
+    public bool IsActive { get; set; }
+
+    [InverseProperty("CreatedByNavigation")]
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 
     [ForeignKey("RoleId")]
     [InverseProperty("Credentials")]

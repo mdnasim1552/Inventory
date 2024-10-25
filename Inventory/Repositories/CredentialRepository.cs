@@ -14,7 +14,16 @@ namespace Inventory.Repositories
         {
             _db = db;
         }
-
+        public async Task<List<int>> GetUserIdListOnParent(int parentId)
+        {
+            var userIdList = await (from c in _db.Credentials where c.ParentId == parentId select c.Id).ToListAsync<int>();
+            //var adminEmail = await (from c in _db.Credentials
+            //                        join r in _db.Userroles
+            //                        on c.RoleId equals r.RoleId
+            //                        where r.Role == "Admin"
+            //                        select c.Email).SingleOrDefaultAsync();
+            return userIdList;
+        }
         //public void Update(Credential credential)
         //{
         //    _db.Credentials.Update(credential);
@@ -23,6 +32,6 @@ namespace Inventory.Repositories
         //{
         //    return await _db.Credentials.AnyAsync(c => c.Email == email);
         //}
-        
+
     }
 }

@@ -48,6 +48,8 @@ public partial class Product
     [StringLength(500)]
     public string? Image { get; set; }
 
+    public int CreatedBy { get; set; }
+
     [ForeignKey("BrandId")]
     [InverseProperty("Products")]
     public virtual Brand Brand { get; set; } = null!;
@@ -55,6 +57,10 @@ public partial class Product
     [ForeignKey("CategoryId")]
     [InverseProperty("Products")]
     public virtual Category Category { get; set; } = null!;
+
+    [ForeignKey("CreatedBy")]
+    [InverseProperty("Products")]
+    public virtual Credential CreatedByNavigation { get; set; } = null!;
 
     [ForeignKey("SubCategoryId")]
     [InverseProperty("Products")]

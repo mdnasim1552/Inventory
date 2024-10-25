@@ -4,12 +4,14 @@ using Inventory.UnitOfWork;
 using InventoryEntity.Brand;
 using InventoryEntity.Category;
 using InventoryEntity.SubCategory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Linq;
 
 namespace Inventory.Controllers
 {
+    [Authorize]
     public class SubCategoryController : Controller
     {
         private readonly IMapper _mapper;

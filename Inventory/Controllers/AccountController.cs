@@ -11,6 +11,7 @@ using Inventory.Models;
 using Microsoft.CodeAnalysis.Scripting;
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Inventory.Controllers

@@ -73,12 +73,32 @@
       "PackagePath": "staticwebassets\\ProductImages\\20240811003510425_d59_product56.jpg"
     },
     {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240923010105755_6a5_Toothpaste.png",
+      "PackagePath": "staticwebassets\\ProductImages\\20240923010105755_6a5_Toothpaste.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240923024529446_909_Pc_parts.jpg",
+      "PackagePath": "staticwebassets\\ProductImages\\20240923024529446_909_Pc_parts.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240923024730732_429_Pc_parts.jpg",
+      "PackagePath": "staticwebassets\\ProductImages\\20240923024730732_429_Pc_parts.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\ProductImages\\20240923024949802_abb_Mouth_Wash.jpg",
+      "PackagePath": "staticwebassets\\ProductImages\\20240923024949802_abb_Mouth_Wash.jpg"
+    },
+    {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\SubCategoryImages\\20240706201428784_474_Pc_parts.jpg",
       "PackagePath": "staticwebassets\\SubCategoryImages\\20240706201428784_474_Pc_parts.jpg"
     },
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\SubCategoryImages\\20240707023117693_833_Mouth_Wash.jpg",
       "PackagePath": "staticwebassets\\SubCategoryImages\\20240707023117693_833_Mouth_Wash.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\SubCategoryImages\\20240923005902267_68f_Toothpaste.png",
+      "PackagePath": "staticwebassets\\SubCategoryImages\\20240923005902267_68f_Toothpaste.png"
     },
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240916013341407_7e3_Screenshot 2024-09-0.png",
@@ -91,6 +111,38 @@
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240922013612437_799_Screenshot 2024-08-0.png",
       "PackagePath": "staticwebassets\\UserImages\\20240922013612437_799_Screenshot 2024-08-0.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240923023257330_a57_Toothpaste.png",
+      "PackagePath": "staticwebassets\\UserImages\\20240923023257330_a57_Toothpaste.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240923023548492_92c_Toothpaste.png",
+      "PackagePath": "staticwebassets\\UserImages\\20240923023548492_92c_Toothpaste.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240923023626735_7fd_Toothpaste.png",
+      "PackagePath": "staticwebassets\\UserImages\\20240923023626735_7fd_Toothpaste.png"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240923023801005_bec_Computer.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\20240923023801005_bec_Computer.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240923023827374_fdb_Computer.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\20240923023827374_fdb_Computer.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240923023901236_7bc_Computer.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\20240923023901236_7bc_Computer.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240923024226102_a62_Computer.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\20240923024226102_a62_Computer.jpg"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\20240923024406168_3a2_Pc_parts.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\20240923024406168_3a2_Pc_parts.jpg"
     },
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\UserImages\\Profile.png",
@@ -775,6 +827,22 @@
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\js\\script.js",
       "PackagePath": "staticwebassets\\assets\\js\\script.js"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\js\\signalr.js",
+      "PackagePath": "staticwebassets\\assets\\js\\signalr.js"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\js\\signalr.js.map",
+      "PackagePath": "staticwebassets\\assets\\js\\signalr.js.map"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\js\\signalr.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\signalr.min.js"
+    },
+    {
+      "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\js\\signalr.min.js.map",
+      "PackagePath": "staticwebassets\\assets\\js\\signalr.min.js.map"
     },
     {
       "Id": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\plugins\\alertify\\alertify.min.css",
