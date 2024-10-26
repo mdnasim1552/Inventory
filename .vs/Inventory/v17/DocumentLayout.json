@@ -3,16 +3,72 @@
   "WorkspaceRootPath": "F:\\ASP.NET Core MVC\\OnlineCV\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\models\\credential.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\models\\credential.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\repositories\\credentialrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\repositories\\credentialrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\user\\_userformfields.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\user\\_userformfields.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\hubs\\userhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\hubs\\userhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52F7C4D-DF43-41C0-B938-475E17C1B56B}|InventoryEntity\\InventoryEntity.csproj|f:\\asp.net core mvc\\onlinecv\\inventoryentity\\account\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C52F7C4D-DF43-41C0-B938-475E17C1B56B}|InventoryEntity\\InventoryEntity.csproj|solutionrelative:inventoryentity\\account\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\wwwroot\\js\\userhub.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\wwwroot\\js\\userhub.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\repositories\\connectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\repositories\\connectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52F7C4D-DF43-41C0-B938-475E17C1B56B}|InventoryEntity\\InventoryEntity.csproj|f:\\asp.net core mvc\\onlinecv\\inventoryentity\\account\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C52F7C4D-DF43-41C0-B938-475E17C1B56B}|InventoryEntity\\InventoryEntity.csproj|solutionrelative:inventoryentity\\account\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\shared\\_masterlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -21,10 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\irepositories\\iconnectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\irepositories\\iconnectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\repositories\\connectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\repositories\\connectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\unitofwork\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,18 +89,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C52F7C4D-DF43-41C0-B938-475E17C1B56B}|InventoryEntity\\InventoryEntity.csproj|f:\\asp.net core mvc\\onlinecv\\inventoryentity\\account\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C52F7C4D-DF43-41C0-B938-475E17C1B56B}|InventoryEntity\\InventoryEntity.csproj|solutionrelative:inventoryentity\\account\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C52F7C4D-DF43-41C0-B938-475E17C1B56B}|InventoryEntity\\InventoryEntity.csproj|f:\\asp.net core mvc\\onlinecv\\inventoryentity\\account\\credentialdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -65,10 +105,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\repositories\\unitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\repositories\\unitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\repositories\\emailsettingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -95,10 +131,6 @@
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\user\\_userformfields.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\user\\_userformfields.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\user\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\user\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -107,16 +139,8 @@
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\profiles\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\repositories\\credentialrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\repositories\\credentialrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\irepositories\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\irepositories\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\subcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -151,20 +175,8 @@
       "RelativeMoniker": "D:0:0:{C52F7C4D-DF43-41C0-B938-475E17C1B56B}|InventoryEntity\\InventoryEntity.csproj|solutionrelative:inventoryentity\\product\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\brandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\brandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\models\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -209,10 +221,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\wwwroot\\assets\\plugins\\fullcalendar\\fullcalendar.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\wwwroot\\assets\\plugins\\fullcalendar\\fullcalendar.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2E80067B-691C-4A35-A64E-036D5DD6A84D}|Inventory\\Inventory.csproj|f:\\asp.net core mvc\\onlinecv\\inventory\\views\\subcategory\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -342,8 +350,64 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Inventory\\Controllers\\ProductController.cs",
+              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Inventory\\Controllers\\ProductController.cs",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAwwDEAAACFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-08T15:06:02.121Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CredentialRepository.cs",
+              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\CredentialRepository.cs",
+              "RelativeDocumentMoniker": "Inventory\\Repositories\\CredentialRepository.cs",
+              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\CredentialRepository.cs",
+              "RelativeToolTip": "Inventory\\Repositories\\CredentialRepository.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAqwBAAAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-22T19:52:15.053Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Product\\Index.cshtml",
+              "RelativeDocumentMoniker": "Inventory\\Views\\Product\\Index.cshtml",
+              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Product\\Index.cshtml",
+              "RelativeToolTip": "Inventory\\Views\\Product\\Index.cshtml",
+              "ViewState": "AQIAAI0AAAAAAAAAAAAAAKUAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-08T15:10:41.994Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Product.cs",
+              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Inventory\\Models\\Product.cs",
+              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Models\\Product.cs",
+              "RelativeToolTip": "Inventory\\Models\\Product.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAAAD4AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-08T17:19:49.848Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -358,7 +422,33 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Credential.cs",
+              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Models\\Credential.cs",
+              "RelativeDocumentMoniker": "Inventory\\Models\\Credential.cs",
+              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Models\\Credential.cs",
+              "RelativeToolTip": "Inventory\\Models\\Credential.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-26T14:05:36.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 12,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Account\\LoginDto.cs",
+              "RelativeDocumentMoniker": "InventoryEntity\\Account\\LoginDto.cs",
+              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Account\\LoginDto.cs",
+              "RelativeToolTip": "InventoryEntity\\Account\\LoginDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-26T12:08:12.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "CredentialDto.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Account\\CredentialDto.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\Account\\CredentialDto.cs",
@@ -366,12 +456,11 @@
               "RelativeToolTip": "InventoryEntity\\Account\\CredentialDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T20:37:06.94Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-25T20:37:06.94Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 25,
               "Title": "UnitRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\UnitRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\Repositories\\UnitRepository.cs",
@@ -383,7 +472,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 27,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Configuration\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Inventory\\Configuration\\DependencyInjection.cs",
@@ -395,7 +484,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 20,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Program.cs",
               "RelativeDocumentMoniker": "Inventory\\Program.cs",
@@ -403,12 +492,11 @@
               "RelativeToolTip": "Inventory\\Program.cs",
               "ViewState": "AQIAABsAAAAAAAAAAAAAABoAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T14:15:36.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-21T14:15:36.21Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 15,
               "Title": "ConnectionManager.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\ConnectionManager.cs",
               "RelativeDocumentMoniker": "Inventory\\Repositories\\ConnectionManager.cs",
@@ -421,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 18,
               "Title": "IConnectionManager.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\IRepositories\\IConnectionManager.cs",
               "RelativeDocumentMoniker": "Inventory\\IRepositories\\IConnectionManager.cs",
@@ -429,12 +517,11 @@
               "RelativeToolTip": "Inventory\\IRepositories\\IConnectionManager.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAYAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T21:03:20.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-23T21:03:20.036Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 13,
               "Title": "Index.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\User\\Index.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\User\\Index.cshtml",
@@ -447,7 +534,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
               "Title": "UserHub.js",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\js\\UserHub.js",
               "RelativeDocumentMoniker": "Inventory\\wwwroot\\js\\UserHub.js",
@@ -460,20 +547,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "UserHub.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Hubs\\UserHub.cs",
               "RelativeDocumentMoniker": "Inventory\\Hubs\\UserHub.cs",
               "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Hubs\\UserHub.cs",
               "RelativeToolTip": "Inventory\\Hubs\\UserHub.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAowCwAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-04T19:09:24.626Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 21,
               "Title": "CategoryRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\CategoryRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\Repositories\\CategoryRepository.cs",
@@ -481,12 +568,11 @@
               "RelativeToolTip": "Inventory\\Repositories\\CategoryRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T20:09:06.626Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-22T20:09:06.626Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 30,
               "Title": "ICredentialRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\IRepositories\\ICredentialRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\IRepositories\\ICredentialRepository.cs",
@@ -498,7 +584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 28,
               "Title": "IEmailSettingRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\IRepositories\\IEmailSettingRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\IRepositories\\IEmailSettingRepository.cs",
@@ -510,7 +596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 34,
               "Title": "ICategoryRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\IRepositories\\ICategoryRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\IRepositories\\ICategoryRepository.cs",
@@ -522,7 +608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 44,
               "Title": "Userrole.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Models\\Userrole.cs",
               "RelativeDocumentMoniker": "Inventory\\Models\\Userrole.cs",
@@ -534,7 +620,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 45,
               "Title": "Policies.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Extensions\\Policies.cs",
               "RelativeDocumentMoniker": "Inventory\\Extensions\\Policies.cs",
@@ -546,7 +632,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 47,
               "Title": "ForgotPasswordConfirmation.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Account\\ForgotPasswordConfirmation.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Account\\ForgotPasswordConfirmation.cshtml",
@@ -558,32 +644,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "CredentialRepository.cs",
-              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\CredentialRepository.cs",
-              "RelativeDocumentMoniker": "Inventory\\Repositories\\CredentialRepository.cs",
-              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\CredentialRepository.cs",
-              "RelativeToolTip": "Inventory\\Repositories\\CredentialRepository.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAABIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T19:52:15.053Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "AccountController.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Inventory\\Controllers\\AccountController.cs",
               "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Inventory\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAAJkAAAAAAAAAAAAkwKEAAAANAAAA",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAswPQAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-03T17:04:06.067Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 46,
               "Title": "AccessDenied.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Account\\AccessDenied.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Account\\AccessDenied.cshtml",
@@ -595,20 +669,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Inventory\\Controllers\\ProductController.cs",
-              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Inventory\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAowDAAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T15:06:02.121Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 26,
               "Title": "EmailSettingRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\EmailSettingRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\Repositories\\EmailSettingRepository.cs",
@@ -620,32 +681,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "UserController.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Inventory\\Controllers\\UserController.cs",
               "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\UserController.cs",
               "RelativeToolTip": "Inventory\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAtwDwAAAAsAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAIAzwHEAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-14T09:32:40.448Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 11,
               "Title": "HomeController.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Inventory\\Controllers\\HomeController.cs",
               "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Inventory\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwAYAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T14:13:14.582Z"
+              "WhenOpened": "2024-09-21T14:13:14.582Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 31,
               "Title": "Index.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Home\\Index.cshtml",
@@ -657,7 +719,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 23,
               "Title": "_LoginStatusPartial.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Shared\\_LoginStatusPartial.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Shared\\_LoginStatusPartial.cshtml",
@@ -669,7 +731,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 17,
               "Title": "_MasterLayout.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Shared\\_MasterLayout.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Shared\\_MasterLayout.cshtml",
@@ -677,12 +739,11 @@
               "RelativeToolTip": "Inventory\\Views\\Shared\\_MasterLayout.cshtml",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAABYAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-03T16:07:32.706Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T16:07:32.706Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 51,
               "Title": "ResetPasswordConfirmation.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Account\\ResetPasswordConfirmation.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Account\\ResetPasswordConfirmation.cshtml",
@@ -694,7 +755,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 49,
               "Title": "ResetPassword.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Account\\ResetPassword.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Account\\ResetPassword.cshtml",
@@ -706,7 +767,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 53,
               "Title": "fullcalendar.min.js",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\plugins\\fullcalendar\\fullcalendar.min.js",
               "RelativeDocumentMoniker": "Inventory\\wwwroot\\assets\\plugins\\fullcalendar\\fullcalendar.min.js",
@@ -718,7 +779,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 54,
               "Title": "fullcalendar.min.css",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\plugins\\fullcalendar\\fullcalendar.min.css",
               "RelativeDocumentMoniker": "Inventory\\wwwroot\\assets\\plugins\\fullcalendar\\fullcalendar.min.css",
@@ -730,7 +791,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 32,
               "Title": "Create.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\User\\Create.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\User\\Create.cshtml",
@@ -742,19 +803,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 7,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\User\\Edit.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\User\\Edit.cshtml",
               "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\User\\Edit.cshtml",
               "RelativeToolTip": "Inventory\\Views\\User\\Edit.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAIBJwBIAAABEAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAABIAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-18T17:18:28.644Z"
+              "WhenOpened": "2024-09-18T17:18:28.644Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 39,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Product\\Edit.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Product\\Edit.cshtml",
@@ -766,31 +828,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Product\\Index.cshtml",
-              "RelativeDocumentMoniker": "Inventory\\Views\\Product\\Index.cshtml",
-              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Product\\Index.cshtml",
-              "RelativeToolTip": "Inventory\\Views\\Product\\Index.cshtml",
-              "ViewState": "AQIAAPkAAAAAAAAAAAAAAPsAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-08T15:10:41.994Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Product.cs",
-              "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "Inventory\\Models\\Product.cs",
-              "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Models\\Product.cs",
-              "RelativeToolTip": "Inventory\\Models\\Product.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAswD0AAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T17:19:49.848Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 29,
               "Title": "Signin.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Account\\Signin.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Account\\Signin.cshtml",
@@ -802,7 +840,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 58,
               "Title": "Signup.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Account\\Signup.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Account\\Signup.cshtml",
@@ -814,19 +852,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 6,
               "Title": "_UserFormFields.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\User\\_UserFormFields.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\User\\_UserFormFields.cshtml",
               "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\User\\_UserFormFields.cshtml",
               "RelativeToolTip": "Inventory\\Views\\User\\_UserFormFields.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGoAAAAsAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAGoAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-14T12:55:44.044Z"
+              "WhenOpened": "2024-09-14T12:55:44.044Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 40,
               "Title": "_ProductFormFields.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Product\\_ProductFormFields.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Product\\_ProductFormFields.cshtml",
@@ -838,7 +877,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 48,
               "Title": "InventoryUtility.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Extensions\\InventoryUtility.cs",
               "RelativeDocumentMoniker": "Inventory\\Extensions\\InventoryUtility.cs",
@@ -850,7 +889,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Account\\RegisterDto.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\Account\\RegisterDto.cs",
@@ -863,7 +902,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 56,
               "Title": "_BrandFormFields.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Brand\\_BrandFormFields.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Brand\\_BrandFormFields.cshtml",
@@ -875,7 +914,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 64,
               "Title": "appsettings.json",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\appsettings.json",
               "RelativeDocumentMoniker": "Inventory\\appsettings.json",
@@ -887,7 +926,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 65,
               "Title": "ProductReport.rdlc [Design]",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\Reports\\ProductReport.rdlc",
               "RelativeDocumentMoniker": "InventoryRDLC\\Reports\\ProductReport.rdlc",
@@ -899,7 +938,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 66,
               "Title": "InventoryRDLC.csproj",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj",
               "RelativeDocumentMoniker": "InventoryRDLC\\InventoryRDLC.csproj",
@@ -911,7 +950,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 69,
               "Title": "ProductRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\ProductRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\Repositories\\ProductRepository.cs",
@@ -923,7 +962,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 67,
               "Title": "IProcessAccess.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Data\\IProcessAccess.cs",
               "RelativeDocumentMoniker": "Inventory\\Data\\IProcessAccess.cs",
@@ -935,7 +974,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 68,
               "Title": "ProcessAccess.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Data\\ProcessAccess.cs",
               "RelativeDocumentMoniker": "Inventory\\Data\\ProcessAccess.cs",
@@ -947,7 +986,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 42,
               "Title": "ProductDto.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Product\\ProductDto.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\Product\\ProductDto.cs",
@@ -959,7 +998,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 33,
               "Title": "AutoMapperProfile.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Profiles\\AutoMapperProfile.cs",
               "RelativeDocumentMoniker": "Inventory\\Profiles\\AutoMapperProfile.cs",
@@ -971,7 +1010,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 70,
               "Title": "Inventory",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj",
               "RelativeDocumentMoniker": "Inventory\\Inventory.csproj",
@@ -982,7 +1021,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 71,
               "Title": "Employee.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Employee\\Employee.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\Employee\\Employee.cs",
@@ -994,7 +1033,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 63,
               "Title": "SubCategorySearch.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\SubCategory\\SubCategorySearch.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\SubCategory\\SubCategorySearch.cs",
@@ -1006,7 +1045,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 57,
               "Title": "BrandSearch.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Brand\\BrandSearch.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\Brand\\BrandSearch.cs",
@@ -1018,7 +1057,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 80,
               "Title": "BrandDto.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Brand\\BrandDto.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\Brand\\BrandDto.cs",
@@ -1030,7 +1069,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 24,
               "Title": "Repository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\UnitOfWork\\Repository.cs",
               "RelativeDocumentMoniker": "Inventory\\UnitOfWork\\Repository.cs",
@@ -1042,7 +1081,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 81,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Brand\\Edit.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Brand\\Edit.cshtml",
@@ -1054,7 +1093,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 41,
               "Title": "Create.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Product\\Create.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Product\\Create.cshtml",
@@ -1066,7 +1105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 37,
               "Title": "Create.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\SubCategory\\Create.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\SubCategory\\Create.cshtml",
@@ -1078,7 +1117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 73,
               "Title": "SubCategoryDto.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\SubCategory\\SubCategoryDto.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\SubCategory\\SubCategoryDto.cs",
@@ -1090,7 +1129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 72,
               "Title": "CategorySearch.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Category\\CategorySearch.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\Category\\CategorySearch.cs",
@@ -1102,7 +1141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 78,
               "Title": "jquery-ui.min.js",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\wwwroot\\assets\\js\\jquery-ui.min.js",
               "RelativeDocumentMoniker": "Inventory\\wwwroot\\assets\\js\\jquery-ui.min.js",
@@ -1114,7 +1153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 77,
               "Title": "ProductSearch.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Product\\ProductSearch.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\Product\\ProductSearch.cs",
@@ -1126,7 +1165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 36,
               "Title": "_SubCategoryFormFields.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\SubCategory\\_SubCategoryFormFields.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\SubCategory\\_SubCategoryFormFields.cshtml",
@@ -1138,7 +1177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 52,
               "Title": "Index.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\SubCategory\\Index.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\SubCategory\\Index.cshtml",
@@ -1150,7 +1189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 61,
               "Title": "Create.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Category\\Create.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Category\\Create.cshtml",
@@ -1162,7 +1201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 75,
               "Title": "Index.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Brand\\Index.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Brand\\Index.cshtml",
@@ -1174,7 +1213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 38,
               "Title": "_ProductView.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Product\\_ProductView.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Product\\_ProductView.cshtml",
@@ -1186,7 +1225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 74,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Category\\Edit.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Category\\Edit.cshtml",
@@ -1198,7 +1237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 62,
               "Title": "_CategoryFormFields.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Category\\_CategoryFormFields.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Category\\_CategoryFormFields.cshtml",
@@ -1210,7 +1249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 55,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\SubCategory\\Edit.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\SubCategory\\Edit.cshtml",
@@ -1222,7 +1261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 43,
               "Title": "BrandController.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\BrandController.cs",
               "RelativeDocumentMoniker": "Inventory\\Controllers\\BrandController.cs",
@@ -1234,7 +1273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 59,
               "Title": "Create.cshtml",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Views\\Brand\\Create.cshtml",
               "RelativeDocumentMoniker": "Inventory\\Views\\Brand\\Create.cshtml",
@@ -1246,7 +1285,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 76,
               "Title": "CategoryDto.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\Category\\CategoryDto.cs",
               "RelativeDocumentMoniker": "InventoryEntity\\Category\\CategoryDto.cs",
@@ -1258,7 +1297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 83,
               "Title": "SubCategory.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Models\\SubCategory.cs",
               "RelativeDocumentMoniker": "Inventory\\Models\\SubCategory.cs",
@@ -1270,7 +1309,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 84,
               "Title": "ISubCategoryRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\IRepositories\\ISubCategoryRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\IRepositories\\ISubCategoryRepository.cs",
@@ -1282,7 +1321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 79,
               "Title": "SubCategoryRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Repositories\\SubCategoryRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\Repositories\\SubCategoryRepository.cs",
@@ -1294,7 +1333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 50,
               "Title": "Category.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Models\\Category.cs",
               "RelativeDocumentMoniker": "Inventory\\Models\\Category.cs",
@@ -1306,7 +1345,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 82,
               "Title": "IUnitOfWork.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\UnitOfWork\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "Inventory\\UnitOfWork\\IUnitOfWork.cs",
@@ -1318,7 +1357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 19,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\UnitOfWork\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "Inventory\\UnitOfWork\\UnitOfWork.cs",
@@ -1326,12 +1365,11 @@
               "RelativeToolTip": "Inventory\\UnitOfWork\\UnitOfWork.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAgwCQAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T19:56:59.43Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-03T19:56:59.43Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 60,
               "Title": "IRepository.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\UnitOfWork\\IRepository.cs",
               "RelativeDocumentMoniker": "Inventory\\UnitOfWork\\IRepository.cs",
@@ -1343,7 +1381,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 35,
               "Title": "SubCategoryController.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\SubCategoryController.cs",
               "RelativeDocumentMoniker": "Inventory\\Controllers\\SubCategoryController.cs",
@@ -1355,15 +1393,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 10,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "Inventory\\Controllers\\CategoryController.cs",
               "ToolTip": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Controllers\\CategoryController.cs",
               "RelativeToolTip": "Inventory\\Controllers\\CategoryController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAuwGgAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T18:50:23.366Z"
+              "WhenOpened": "2024-07-03T18:50:23.366Z",
+              "EditorCaption": ""
             }
           ]
         }

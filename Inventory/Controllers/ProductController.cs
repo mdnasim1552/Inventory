@@ -47,7 +47,7 @@ namespace Inventory.Controllers
 
             var userID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "UserID").Value);
             var adminID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
-            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand);
+            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand,p=>p.CreatedByNavigation.Role);
             var userIdList = await _unitOfWork.Credential.GetUserIdListOnParent(adminID);
             //if (User.FindFirst(ClaimTypes.Role)?.Value == Policies.Admin)
             //{

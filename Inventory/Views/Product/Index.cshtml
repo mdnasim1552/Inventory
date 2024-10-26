@@ -163,7 +163,7 @@
                                 <td>@product.Price.ToString("F2")</td>
                                 <td>@product.Unit.ShortName</td>
                                 <td>@product.Quantity</td>
-                                <td>Admin</td>
+                                <td>@product.CreatedByNavigation.Role.Role</td>
                                 <td>
                                     <a class="me-3 view_product" data-id="@product.Id">
                                         <img src="~/assets/img/icons/eye.svg" alt="img" />
