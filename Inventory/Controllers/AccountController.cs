@@ -12,6 +12,9 @@ using Microsoft.CodeAnalysis.Scripting;
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using Inventory.Hubs;
+using System.Data;
 
 
 namespace Inventory.Controllers
@@ -22,13 +25,14 @@ namespace Inventory.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IConfiguration _configuration;
-
-        public AccountController(IMapper mapper, IUnitOfWork unitOfWork,IWebHostEnvironment webHostEnvironment,IConfiguration configuration)
+        private readonly IHubContext<UserHub> _userHubContext;
+        public AccountController(IMapper mapper, IUnitOfWork unitOfWork,IWebHostEnvironment webHostEnvironment,IConfiguration configuration, IHubContext<UserHub> userhubContext)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
             _configuration= configuration;
+            _userHubContext=userhubContext;
         }
         public IActionResult Signin()
         {
@@ -49,11 +53,25 @@ namespace Inventory.Controllers
             if (ModelState.IsValid)
             {
                 var userInfo = await _unitOfWork.Credential.SingleOrDefaultAsync(c=>c.Email==logindto.Email);
-                var role = await _unitOfWork.Userrole.SingleOrDefaultAsync(u => u.RoleId == userInfo.RoleId);
+                //var role = await _unitOfWork.Userrole.SingleOrDefaultAsync(u => u.RoleId == userInfo.RoleId);
                 if (userInfo != null && BCrypt.Net.BCrypt.Verify(logindto.Password, userInfo.Password))
                 {
+                    await ClaimsIdentitySignInAuthentication(userInfo, logindto.IsRemember);                    
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login Attempt!");
+                    return View(credentialdto);
 
-                    var claims = new List<Claim>
+                }
+            }
+            return View(credentialdto);
+        }
+        private async Task ClaimsIdentitySignInAuthentication(Credential userInfo, bool IsRemember=false)
+        {
+            var role = await _unitOfWork.Userrole.SingleOrDefaultAsync(u => u.RoleId == userInfo.RoleId);
+            var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name,userInfo.Name),
                         new Claim(ClaimTypes.Email,userInfo.Email),
@@ -66,23 +84,13 @@ namespace Inventory.Controllers
                         //new Claim("Department","HR"),
                         //new Claim("Admin","true")
                      };
-                    ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);//we can use CookieAuthenticationDefaults.AuthenticationScheme (constant) instead of "MyCookieAuth"
-                    ClaimsPrincipal claimprincipal = new ClaimsPrincipal(identity);
-                    var authProperties = new AuthenticationProperties
-                    {
-                        IsPersistent = logindto.IsRemember
-                    };
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimprincipal, authProperties);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login Attempt!");
-                    return View(credentialdto);
-
-                }
-            }
-            return View(credentialdto);
+            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);//we can use CookieAuthenticationDefaults.AuthenticationScheme (constant) instead of "MyCookieAuth"
+            ClaimsPrincipal claimprincipal = new ClaimsPrincipal(identity);
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = IsRemember
+            };
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimprincipal, authProperties);
         }
         public async Task<IActionResult> Logout()
         {
@@ -169,6 +177,7 @@ namespace Inventory.Controllers
 
             // Reset the user's password
             user.Password = hashedPassword;
+            //user.IsActive = false;
             _unitOfWork.Credential.Update(user);
             bool userUpdateStatus =await _unitOfWork.SaveAsync();
 
@@ -199,22 +208,18 @@ namespace Inventory.Controllers
                 }
                 else
                 {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name,registerdto.Name),
-                        new Claim(ClaimTypes.Email,registerdto.Email)                                  
-                     };
-                    ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);//we can use CookieAuthenticationDefaults.AuthenticationScheme (constant) instead of "MyCookieAuth"
-                    ClaimsPrincipal claimprincipal = new ClaimsPrincipal(identity);
                     var credentials = _mapper.Map<Credential>(registerdto);
                     credentials.Password = BCrypt.Net.BCrypt.HashPassword(registerdto.Password);
                     var role = await _unitOfWork.Userrole.SingleOrDefaultAsync(u => u.Role == "Admin");
                     credentials.RoleId = role.RoleId;
-                    credentials.CreatedOn = DateTime.Now;                  
+                    credentials.CreatedOn = DateTime.Now;
+                    //credentials.IsActive = true;
                     _unitOfWork.Credential.Add(credentials);
                     var saveResult = await _unitOfWork.SaveAsync();
                     if (saveResult)
                     {
+                        int generatedId = credentials.Id;
+
                         string url = _configuration.GetValue<string>("Urls:LoginUrl");
                         var adminEmail = _configuration.GetValue<string>("GlobalAdmin:Gmail");
                         string filepath = Path.Combine(_webHostEnvironment.WebRootPath, "EmailTemplate\\Welcome.cshtml");
@@ -225,7 +230,10 @@ namespace Inventory.Controllers
                         htmlstring = htmlstring.Replace("{{Password}}", registerdto.Password);//{{lgnurl}}
                         htmlstring = htmlstring.Replace("{{lgnurl}}", url);
                         bool status = await _unitOfWork.EmailSetting.SendEmailAsync(adminEmail,credentials.Email, "Account Created", htmlstring);
-                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimprincipal);
+
+
+                        var userInfo = await _unitOfWork.Credential.SingleOrDefaultAsync(c => c.Id == generatedId);
+                        await ClaimsIdentitySignInAuthentication(userInfo, false);                       
                         return RedirectToAction("Index", "Home");
                     }
                     else
