@@ -93,9 +93,9 @@
     </script>
 </head>
 <body>
-    <div id="global-loader">
+    @* <div id="global-loader">
         <div class="whirly-loader"></div>
-    </div>
+    </div> *@
 
     <div class="main-wrapper">
         <div class="header">
@@ -338,8 +338,8 @@
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
-                        <li >
-                            <a href="/Home/index">
+                        <li class="submenu">
+                            <a asp-action="Index" asp-controller="Home">
                                 <img src="~/assets/img/icons/dashboard.svg" alt="img" /><span>
                                     Dashboard
                                 </span>
@@ -653,36 +653,91 @@
             </div>
         </div>
 
-        <div class="page-wrapper">
+        <div class="page-wrapper" id="page-wrapper">
             @RenderBody()
         </div>
     </div>
 
     <script type="text/javascript">
+        // Handle browser back/forward buttons
+        $(window).on("popstate", function (e) {
+            var state = e.originalEvent.state;
+            if (state && state.path) {
+                $("#page-wrapper").load(state.path);
+                //setActiveMenu();
+            }
+        });
+        $(document).on("submit", "form[data-ajax='true']", function (e) {
+            e.preventDefault();
+
+            var $form = $(this);
+            var url = $form.attr("action");
+
+            $.ajax({
+                type: $form.attr("method"),
+                url: url,
+                data: $form.serialize(),
+                success: function (result) {
+                    $("#page-wrapper").html(result); // inject partial result
+                },
+                error: function () {
+                    $("#page-wrapper").html("<p>Error loading data</p>");
+                }
+            });
+        });
+
         $(document).ready(function () {
             function setActiveMenu() {
                 var currentPath = window.location.pathname;
-
+                $('#sidebar-menu a.active').removeClass('active');
+               
                 $('#sidebar-menu a').each(function () {
                     var $this = $(this);
                     var href = $this.attr('href');
-
                     // Check if the href matches the current path
                     if (href && currentPath.includes(href)) {
                         $this.addClass('active');                        
-                        $('#sidebar-menu ul li').removeClass('active');
+                        
+                        $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active');//trigger('click');
                     }
-                });
-            }
 
-            // Initialize the sidebar menu
-            function initSidebarMenu() {
-                $('#sidebar-menu a').on('click', function (e) {
+                });
+                
+            }
+            // function setActiveMenu() {
+            //     var currentPath = window.location.pathname;
+
+            //     // 1. Remove all active/subdrop first
+            //     $('#sidebar-menu a').removeClass('active');
+            //     $('#sidebar-menu li.submenu > a').removeClass('subdrop');
+            //     $('#sidebar-menu li.submenu ul').hide(); // hide all submenus
+
+            //     // 2. Add active to matching link
+            //     $('#sidebar-menu a').each(function () {
+            //         var $this = $(this);
+            //         var href = $this.attr('href');
+
+            //         // Make sure href is absolute or relative properly
+            //         if (href && currentPath.endsWith(href.replace(/^\/+/,''))) {
+            //             $this.addClass('active');
+
+            //             // If inside a submenu, open its parent
+            //             var $submenuParent = $this.closest('li.submenu');
+            //             if ($submenuParent.length) {
+            //                 $submenuParent.children('a').addClass('active subdrop');
+            //                 $submenuParent.children('ul').show(); // expand submenu
+            //             }
+            //         }
+            //     });
+            // }
+
+            $('#sidebar-menu a').on('click', function (e) {
+                    
                     if ($(this).parent().hasClass('submenu')) {
                         e.preventDefault();
 
                         if (!$(this).hasClass('subdrop')) {
-                            $('ul', $(this).parents('ul:first')).slideUp(250);
+                            $('ul', $(this).parents('ul:first')).slideUp(350);
                             $('a', $(this).parents('ul:first')).removeClass('subdrop');
                             $(this).next('ul').slideDown(350);
                             $(this).addClass('subdrop');
@@ -691,14 +746,32 @@
                             $(this).next('ul').slideUp(350);
                         }
                     }
-                });
-
-                setActiveMenu();
-            }
+                    setActiveMenu();
+             });
 
             // Call the initialization function
-            initSidebarMenu();
-            $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active subdrop');//.trigger('click');
+            setActiveMenu();
+            $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active subdrop');//trigger('click');
+
+                // Intercept clicks
+            $("#sidebar-menu a[asp-controller], #sidebar-menu a[href]").on("click", function (e) {
+                var url = $(this).attr("href");
+
+                if (url && url !== "#" && !url.startsWith("javascript")) {
+                    e.preventDefault();
+
+                    // Load page into wrapper
+                    $("#page-wrapper").load(url, function (response, status, xhr) {
+                        if (status === "error") {
+                            $("#page-wrapper").html("<p>Error loading content.</p>");
+                        } else {
+                            // Update browser URL without reloading
+                            window.history.pushState({ path: url }, "", url);
+                            setActiveMenu();
+                        }
+                    });
+                }               
+            });
         });
 
     </script>

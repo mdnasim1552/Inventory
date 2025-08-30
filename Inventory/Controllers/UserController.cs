@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Inventory.Data;
 using Inventory.Extensions;
 using Inventory.Models;
 using Inventory.UnitOfWork;
@@ -20,13 +21,15 @@ namespace Inventory.Controllers
         private readonly IEnumerable<Userrole> roleList = new List<Userrole>();
         private readonly string folderName = "UserImages";
         private readonly string uploadFolderPath;
-        public UserController(IMapper mapper, IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
+        private readonly TwilioService _twilioService;
+        public UserController(IMapper mapper, IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment, TwilioService twilioService)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
-            roleList = _unitOfWork.Userrole.Find(u=>u.Role!="Admin");
+            roleList = _unitOfWork.Userrole.Find(u => u.Role != "Admin");
             uploadFolderPath = Path.Combine(_webHostEnvironment.WebRootPath, folderName);
+            _twilioService = twilioService;
         }
         public async Task<IActionResult> Index()
         {
@@ -179,6 +182,19 @@ namespace Inventory.Controllers
                 }
             }
             return NotFound("Image not found.");
+        }
+        [HttpPost]
+        public IActionResult SendSms(string toPhoneNumber, string message)
+        {
+            try
+            {
+                var messageSid = _twilioService.SendSms(toPhoneNumber, message);
+                return Json(new { success = true, messageSid });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, error = ex.Message });
+            }
         }
     }
 }

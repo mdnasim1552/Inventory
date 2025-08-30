@@ -47,7 +47,7 @@
                 <div class="wordset">
                     <ul>
                         <li>
-                            <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf">
+                            <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf" id="pdfButton">
                                 <img src="~/assets/img/icons/pdf.svg" alt="img">
                             </a>
                         </li>
@@ -186,6 +186,26 @@
                 <partial name="_ValidationScriptsPartial" />
     }
     <script type="text/javascript">
+        $("#pdfButton").on("click",function(){
+            $.ajax({
+                url: '/User/SendSms',
+                type: 'POST',
+                data: {
+                    toPhoneNumber: '+880 1760 091552', // Replace with the recipient's phone number
+                    message: 'Hello from Twilio and ASP.NET Core!'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert('Message sent! SID: ' + response.messageSid);
+                    } else {
+                        alert('Error: ' + response.error);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
+            });
+        });
         var table = $('#userdatanew').DataTable({
             "bFilter": true,
             "sDom": 'fBtlpi',

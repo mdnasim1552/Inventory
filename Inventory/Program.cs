@@ -23,7 +23,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options=>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAllRepository();//Register all repository by DependencyInjection
 builder.Services.AddAuthenticationAndAuthorization();
-builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+//builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<AutoMapperProfile>();
+    // Add other mappings here
+});
 builder.Services.AddSignalR();
 var app = builder.Build();
 

@@ -17,6 +17,10 @@ namespace Inventory.Controllers
 
         public IActionResult Index()
         {
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("Index");
+            }
             return View();
         }
 

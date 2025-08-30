@@ -1,21 +1,24 @@
 ﻿using AutoMapper;
 using Inventory.Data;
+using Inventory.Extensions;
 using Inventory.Models;
 using Inventory.UnitOfWork;
 using InventoryEntity.Category;
+using InventoryEntity.DataTable;
 using InventoryEntity.Product;
 using InventoryEntity.SubCategory;
+using InventoryRDLC;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.NETCore;
 using Newtonsoft.Json;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Data;
-using InventoryRDLC;
-using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
-using Inventory.Extensions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.Linq.Dynamic.Core;
 
 namespace Inventory.Controllers
 {
@@ -58,12 +61,77 @@ namespace Inventory.Controllers
             //productList = productList.Where(p => allowedUsers.Contains(p.CreatedBy)).ToList();
             ViewData["CategoryList"] = categoryList;
             ViewData["BrandList"] = brandList;
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("Index", productList);
+            }
             return View(productList);
         }
         [HttpPost]
+        public async Task<IActionResult> GetProducts([FromForm] DataTablesRequest request, [FromForm] ProductSearch productSearch)
+        {
+            var userID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "UserID").Value);
+            var adminID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
+            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand, p => p.CreatedByNavigation.Role);
+            var userIdList = await _unitOfWork.Credential.GetUserIdListOnParent(adminID);
+
+            userIdList.Add(adminID);
+            productList = productList.Where(p => userIdList.Contains(p.CreatedBy)).ToList();
+            // apply search if provided
+            if (!string.IsNullOrWhiteSpace(request.Search.Value))
+            {
+                productList = productList
+                    .Where(p => p.Name.Contains(request.Search.Value, StringComparison.OrdinalIgnoreCase)
+                             || p.Sku.Contains(request.Search.Value, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+            var sortColumnIndex = request.Order[0].Column;
+            var sortColumnName = request.Columns[sortColumnIndex].Data;
+            var sortDirection = request.Order[0].Dir;
+            // Apply ordering dynamically
+            if (!string.IsNullOrEmpty(sortColumnName))
+            {
+                productList = productList.AsQueryable()
+                                         .OrderBy($"{sortColumnName} {sortDirection}")
+                                         .ToList();
+            }
+            var recordsTotal = productList.Count();
+            if (request.Length == -1)
+            {
+                request.Length = recordsTotal;
+            }
+            var data = productList.Skip(request.Start).Take(request.Length)
+                    .Select(p => new {
+                        p.Id,
+                        p.Name,
+                        p.Sku,
+                        Category = p.Category.Name,
+                        Brand = p.Brand.Name,
+                        Price = p.Price.ToString("F2"),
+                        Unit = p.Unit.ShortName,
+                        Quantity = p.Quantity,
+                        CreatedBy = p.CreatedByNavigation.Role.Role,
+                        p.Image
+                    }).ToList();
+            var json = JsonConvert.SerializeObject(new {
+                draw = request.Draw,
+                recordsTotal = recordsTotal,
+                recordsFiltered = recordsTotal,
+                data = data });
+            return Ok(json);
+            //return Json(new
+            //{
+            //    draw = 10,
+            //    recordsTotal = 10,
+            //    recordsFiltered = 10,  // Apply filtered count if you implement search
+            //    data = data
+            //});
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Index(ProductSearch productSearch)
         {
-            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand);
+            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand, p => p.CreatedByNavigation.Role);
 
             if (productSearch.CategoryId.HasValue)
             {
@@ -87,16 +155,21 @@ namespace Inventory.Controllers
                 productList = productList.Where(p => p.Price <= productSearch.Max_Price);
             }
 
-            ViewData["CategoryId"] = productSearch.CategoryId;
-            ViewData["SubCategoryId"] = productSearch.SubCategoryId;
-            ViewData["BrandId"] = productSearch.BrandId;
-            ViewData["Min_Price"] = productSearch.Min_Price;
-            ViewData["Max_Price"] = productSearch.Max_Price;
+            //ViewData["CategoryId"] = productSearch.CategoryId;
+            //ViewData["SubCategoryId"] = productSearch.SubCategoryId;
+            //ViewData["BrandId"] = productSearch.BrandId;
+            //ViewData["Min_Price"] = productSearch.Min_Price;
+            //ViewData["Max_Price"] = productSearch.Max_Price;
 
 
-            ViewData["CategoryList"] = categoryList;
-            ViewData["BrandList"] = brandList;
-            return View(productList);
+            //ViewData["CategoryList"] = categoryList;
+            //ViewData["BrandList"] = brandList;
+            //if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            //{
+            //    return PartialView("Index", productList);
+            //}          
+            //return View(productList);
+            return PartialView("_ProductList", productList);
         }
         public IActionResult Create()
         {

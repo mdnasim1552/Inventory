@@ -1,27 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj": {}
+    "G:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj": {}
   },
   "projects": {
-    "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj": {
+    "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj",
+        "projectUniqueName": "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj",
         "projectName": "InventoryEntity",
-        "projectPath": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj",
-        "packagesPath": "C:\\Users\\mdnas\\.nuget\\packages\\",
-        "outputPath": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\obj\\",
+        "projectPath": "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mdnas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -40,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -67,28 +71,31 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj": {
+    "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj",
+        "projectUniqueName": "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj",
         "projectName": "InventoryRDLC",
-        "projectPath": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj",
-        "packagesPath": "C:\\Users\\mdnas\\.nuget\\packages\\",
-        "outputPath": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\obj\\",
+        "projectPath": "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mdnas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -107,7 +114,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -142,40 +150,43 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj": {
+    "G:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj",
+        "projectUniqueName": "G:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj",
         "projectName": "Inventory",
-        "projectPath": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj",
-        "packagesPath": "C:\\Users\\mdnas\\.nuget\\packages\\",
-        "outputPath": "F:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\obj\\",
+        "projectPath": "G:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\Inventory.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET Core MVC\\OnlineCV\\Inventory\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mdnas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {
-              "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj": {
-                "projectPath": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj"
+              "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj": {
+                "projectPath": "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryEntity\\InventoryEntity.csproj"
               },
-              "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj": {
-                "projectPath": "F:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj"
+              "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj": {
+                "projectPath": "G:\\ASP.NET Core MVC\\OnlineCV\\InventoryRDLC\\InventoryRDLC.csproj"
               }
             }
           }
@@ -189,15 +200,16 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[15.0.1, )"
             },
             "BCrypt.Net-Next": {
               "target": "Package",
@@ -205,41 +217,41 @@
             },
             "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.CodeAnalysis.Analyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.3.4, )"
+              "version": "[4.14.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[9.0.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -247,11 +259,19 @@
             },
             "System.Collections.Immutable": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.8, )"
+            },
+            "System.Linq.Dynamic.Core": {
+              "target": "Package",
+              "version": "[1.6.7, )"
             },
             "System.Reflection.Metadata": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.8, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[7.12.2, )"
             }
           },
           "imports": [
@@ -273,7 +293,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
