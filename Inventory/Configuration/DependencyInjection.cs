@@ -17,6 +17,7 @@ namespace Inventory.Configuration
             services.AddScoped<IUnitOfWork, Inventory.UnitOfWork.UnitOfWork>();
             services.AddScoped<IProcessAccess, ProcessAccess>();
             services.AddSingleton<IConnectionManager, ConnectionManager>();
+            services.AddSingleton<TwilioService>();
             //services.AddScoped<IUserRepository, UserRepository>();
             //services.AddScoped<IRoleService, RoleService>();
             //services.AddScoped<ILoginRepository, LoginRepository>();

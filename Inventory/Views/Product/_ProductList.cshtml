@@ -1,0 +1,210 @@
+﻿@model IEnumerable<Inventory.Models.Product>
+
+<table class="table" id="productdatanew">
+    <thead>
+        <tr>
+            <th>
+                <label class="checkboxs">
+                    <input type="checkbox" id="select-all" />
+                    <span class="checkmarks"></span>
+                </label>
+            </th>
+            <th>Product Name</th>
+            <th>SKU</th>
+            <th>Category</th>
+            <th>Brand</th>
+            <th>price</th>
+            <th>Unit</th>
+            <th>Qty</th>
+            <th>Created By</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr data-id="@product.Id">
+                <td>
+                    <label class="checkboxs">
+                        <input type="checkbox" />
+                        <span class="checkmarks"></span>
+                    </label>
+                </td>
+                <td class="productimgname">
+                    <a href="javascript:void(0);" class="product-img">
+                        <img src="@product.Image"
+                             alt="product" />
+                    </a>
+                    <a href="javascript:void(0);">@product.Name</a>
+                </td>
+                <td>@product.Sku</td>
+                <td>@product.Category.Name</td>
+                <td>@product.Brand.Name</td>
+                <td>@product.Price.ToString("F2")</td>
+                <td>@product.Unit.ShortName</td>
+                <td>@product.Quantity</td>
+                <td>@product.CreatedByNavigation.Role.Role</td>
+                <td>
+                    <a class="me-3 view_product" data-id="@product.Id">
+                        <img src="~/assets/img/icons/eye.svg" alt="img" />
+                    </a>
+                    <a class="me-3" asp-action="Edit" asp-controller="Product" asp-route-id="@product.Id">
+                        <img src="~/assets/img/icons/edit.svg" alt="img" />
+                    </a>
+                    <a class="deleteproductdbtn" href="javascript:void(0);" data-id="@product.Id">
+                        <img src="~/assets/img/icons/delete.svg" alt="img" />
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var table = $('#productdatanew').DataTable({
+            "bFilter": true,
+            "sDom": 'fBtlpi',
+            'pagingType': 'numbers',
+            "ordering": true,
+            "language": {
+                search: ' ',
+                sLengthMenu: '_MENU_',
+                searchPlaceholder: "Search...",
+                info: "_START_ - _END_ of _TOTAL_ items",
+            },
+            initComplete: function (settings, json) {
+                $('.dataTables_filter').appendTo('#tableSearch');
+                $('.dataTables_filter').appendTo('.search-input');
+            },
+        });
+        $('#productdatanew').on("click", ".view_product", function () {
+            //var allData = table.rows().data().toArray();
+            var productId = $(this).data("id");
+            $.ajax({
+                url: '/Product/GetProductDetails', // Adjust the controller action URL as needed
+                type: 'GET',
+                data: { id: productId },
+                success: function (result) {
+                    $('#productModalBody').html(result); // Load the result into the modal body
+                    // $("#userModal").on("shown.bs.modal", function () {
+                    //     if ($('.product-slide').length > 0) {
+                    //         $('.product-slide').owlCarousel({
+                    //             items: 1,
+                    //             margin: 30,
+                    //             dots: false,
+                    //             nav: true,
+                    //             loop: false,
+                    //             responsiveClass: true,
+                    //             responsive: {
+                    //                 0: {
+                    //                     items: 1
+                    //                 },
+                    //                 800: {
+                    //                     items: 1
+                    //                 },
+                    //                 1170: {
+                    //                     items: 1
+                    //                 }
+                    //             }
+                    //         });
+                    //     }
+                    // });
+                    $("#userModal").modal("show"); // Show the modal
+                },
+                error: function () {
+                    alert('Error loading product details');
+                }
+            });
+            // $.ajax({
+            //     url: '/api/Users/updateData', // Your server-side update endpoint
+            //     method: 'POST',
+            //     contentType: 'application/json',
+            //     data: JSON.stringify(allData),
+            //     success: function (response) {
+            //         showContent('Data updated successfully');
+            //         //alert('Data updated successfully');
+            //     },
+            //     error: function (error) {
+            //         showContentFail('Error updating data');
+            //         //console.error('Error updating data:', error);
+            //     }
+            // });
+            //$("#userModal").modal("show");
+        });
+        $('#editProductForm').submit(function (event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            $.ajax({
+                url: '/Product/EditProduct',
+                type: 'POST',
+                data: $(this).serialize(), // Serialize the form data
+                success: function (response) {
+                    if (response.success) {
+                        showContent(response.message);
+                        $('#userModal').modal('hide'); // Hide the modal
+                        // Optionally, refresh the table or show a success message
+                    } else {
+                        $('#productModalBody').html(response); // Reload the form with validation errors
+                    }
+                },
+                error: function () {
+                    alert('Error saving product details');
+                }
+            });
+        });
+        $('#productdatanew').on("click", ".deleteproductdbtn", function () {
+            var productId = $(this).data("id");
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+                confirmButtonClass: "btn btn-primary",
+                cancelButtonClass: "btn btn-danger ml-1",
+                buttonsStyling: !1
+            }).then(function (t) {
+                if (t.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete", "Product")',
+                        data: { id: productId },
+                        success: function (response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    type: "success",
+                                    title: "Deleted!",
+                                    text: "Your brand has been deleted.",
+                                    confirmButtonClass: "btn btn-success"
+                                });
+                                // Remove the brand row from the table
+                                //$('tr[data-id="' + brandId + '"]').remove();
+                                // Remove the brand row from the table using DataTable API
+                                table.row($('tr[data-id="' + productId + '"]')).remove().draw();
+                            } else {
+                                Swal.fire({
+                                    type: "error",
+                                    title: "Error!",
+                                    text: response.message,
+                                    confirmButtonClass: "btn btn-danger"
+                                });
+                            }
+                        },
+                        error: function () {
+                            Swal.fire({
+                                type: "error",
+                                title: "Error!",
+                                text: "An error occurred while processing your request.",
+                                confirmButtonClass: "btn btn-danger"
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    });
+
+</script>

@@ -10,7 +10,8 @@
     var brandSelectedList = brandList != null
     ? new SelectList(brandList, "Id", "Name")
     : new SelectList(Enumerable.Empty<Brand>(), "Id", "Name");
-}
+} 
+@* <script src="~/assets/js/script.js"></script> *@
 <div class="content">
     <div class="page-header">
         <div class="page-title">
@@ -31,7 +32,7 @@
             <div class="table-top">
                 <div class="search-set">
                     <div class="search-path">
-                        <a class="btn btn-filter" id="filter_search">
+                        <a class="btn btn-filter" id="product_filter_search">
                             <img src="~/assets/img/icons/filter.svg" alt="img" />
                             <span>
                                 <img src="~/assets/img/icons/closes.svg" alt="img" />
@@ -70,7 +71,7 @@
                     </ul>
                 </div>
             </div>
-            <form method="post" asp-controller="Product" asp-action="Index">
+            <form id="filterForm" method="post" asp-controller="Product" asp-action="Index">
                 <div class="card mb-0" id="filter_inputs">
                     <div class="card-body pb-0">
                         <div class="row">
@@ -119,8 +120,9 @@
             </form>
             
 
-            <div class="table-responsive">
-                <table class="table" id="productdatanew">
+            <div class="table-responsive" id="productList">
+                @await Html.PartialAsync("__ProductList", Model)
+                @* <table class="table" id="productdatanew">
                     <thead>
                         <tr>
                             <th>
@@ -179,7 +181,7 @@
                         }
                         
                     </tbody>
-                </table>
+                </table> *@
             </div>
         </div>
     </div>
@@ -206,10 +208,7 @@
         </div>
     </div>
 </div>
-@section Scripts {
-    @{
-                <partial name="_ValidationScriptsPartial" />
-    }
+
     
     <style>
         .ui-slider-horizontal {
@@ -253,6 +252,33 @@
             if (updateMessage) {
                 showContent(updateMessage);
             }
+            if ($('.select').length > 0) {
+              $('.select').select2({
+                minimumResultsForSearch: -1,
+                width: '100%'
+              });
+            }
+            $("#product_filter_search").on("click",function(){
+                $('#filter_inputs').slideToggle("slow");
+                $('#filter_search').toggleClass("setclose");
+            });
+            $("#filterForm").on("submit", function (e) {
+                e.preventDefault();
+
+                var $form = $(this);
+
+                $.ajax({
+                    type: $form.attr("method"),
+                    url: $form.attr("action"),
+                    data: $form.serialize(),
+                    success: function (result) {
+                        $("#productList").html(result); // inject partial
+                    },
+                    error: function () {
+                        alert("Error updating product table.");
+                    }
+                });
+            });
             $("#pdfButton").on("click", function () {
                 // $.ajax({
                 //     url: "/Product/GenerateProductReport",
@@ -319,149 +345,149 @@
                     }
                 });
             }
-            var table = $('#productdatanew').DataTable({
-                "bFilter": true,
-                "sDom": 'fBtlpi',
-                'pagingType': 'numbers',
-                "ordering": true,
-                "language": {
-                    search: ' ',
-                    sLengthMenu: '_MENU_',
-                    searchPlaceholder: "Search...",
-                    info: "_START_ - _END_ of _TOTAL_ items",
-                },
-                initComplete: function (settings, json) {
-                    $('.dataTables_filter').appendTo('#tableSearch');
-                    $('.dataTables_filter').appendTo('.search-input');
-                },
-            });
-            $(".view_product").click(function () {
-                //var allData = table.rows().data().toArray();
-                var productId = $(this).data("id");
-                $.ajax({
-                    url: '/Product/GetProductDetails', // Adjust the controller action URL as needed
-                    type: 'GET',
-                    data: { id: productId },
-                    success: function (result) {
-                        $('#productModalBody').html(result); // Load the result into the modal body
-                        // $("#userModal").on("shown.bs.modal", function () {
-                        //     if ($('.product-slide').length > 0) {
-                        //         $('.product-slide').owlCarousel({
-                        //             items: 1,
-                        //             margin: 30,
-                        //             dots: false,
-                        //             nav: true,
-                        //             loop: false,
-                        //             responsiveClass: true,
-                        //             responsive: {
-                        //                 0: {
-                        //                     items: 1
-                        //                 },
-                        //                 800: {
-                        //                     items: 1
-                        //                 },
-                        //                 1170: {
-                        //                     items: 1
-                        //                 }
-                        //             }
-                        //         });
-                        //     }
-                        // }); 
-                        $("#userModal").modal("show"); // Show the modal
-                    },
-                    error: function () {
-                        alert('Error loading product details');
-                    }
-                });
-                // $.ajax({
-                //     url: '/api/Users/updateData', // Your server-side update endpoint
-                //     method: 'POST',
-                //     contentType: 'application/json',
-                //     data: JSON.stringify(allData),
-                //     success: function (response) {
-                //         showContent('Data updated successfully');
-                //         //alert('Data updated successfully');
-                //     },
-                //     error: function (error) {
-                //         showContentFail('Error updating data');
-                //         //console.error('Error updating data:', error);
-                //     }
-                // });
-                //$("#userModal").modal("show");
-            });
-            $('#editProductForm').submit(function (event) {
-                event.preventDefault(); // Prevent the form from submitting the default way
+        //     var table = $('#productdatanew').DataTable({
+        //         "bFilter": true,
+        //         "sDom": 'fBtlpi',
+        //         'pagingType': 'numbers',
+        //         "ordering": true,
+        //         "language": {
+        //             search: ' ',
+        //             sLengthMenu: '_MENU_',
+        //             searchPlaceholder: "Search...",
+        //             info: "_START_ - _END_ of _TOTAL_ items",
+        //         },
+        //         initComplete: function (settings, json) {
+        //             $('.dataTables_filter').appendTo('#tableSearch');
+        //             $('.dataTables_filter').appendTo('.search-input');
+        //         },
+        //     });
+        // $('#productdatanew').on("click", ".view_product", function () {
+        //         //var allData = table.rows().data().toArray();
+        //         var productId = $(this).data("id");
+        //         $.ajax({
+        //             url: '/Product/GetProductDetails', // Adjust the controller action URL as needed
+        //             type: 'GET',
+        //             data: { id: productId },
+        //             success: function (result) {
+        //                 $('#productModalBody').html(result); // Load the result into the modal body
+        //                 // $("#userModal").on("shown.bs.modal", function () {
+        //                 //     if ($('.product-slide').length > 0) {
+        //                 //         $('.product-slide').owlCarousel({
+        //                 //             items: 1,
+        //                 //             margin: 30,
+        //                 //             dots: false,
+        //                 //             nav: true,
+        //                 //             loop: false,
+        //                 //             responsiveClass: true,
+        //                 //             responsive: {
+        //                 //                 0: {
+        //                 //                     items: 1
+        //                 //                 },
+        //                 //                 800: {
+        //                 //                     items: 1
+        //                 //                 },
+        //                 //                 1170: {
+        //                 //                     items: 1
+        //                 //                 }
+        //                 //             }
+        //                 //         });
+        //                 //     }
+        //                 // }); 
+        //                 $("#userModal").modal("show"); // Show the modal
+        //             },
+        //             error: function () {
+        //                 alert('Error loading product details');
+        //             }
+        //         });
+        //         // $.ajax({
+        //         //     url: '/api/Users/updateData', // Your server-side update endpoint
+        //         //     method: 'POST',
+        //         //     contentType: 'application/json',
+        //         //     data: JSON.stringify(allData),
+        //         //     success: function (response) {
+        //         //         showContent('Data updated successfully');
+        //         //         //alert('Data updated successfully');
+        //         //     },
+        //         //     error: function (error) {
+        //         //         showContentFail('Error updating data');
+        //         //         //console.error('Error updating data:', error);
+        //         //     }
+        //         // });
+        //         //$("#userModal").modal("show");
+        //     });
+        //     $('#editProductForm').submit(function (event) {
+        //         event.preventDefault(); // Prevent the form from submitting the default way
 
-                $.ajax({
-                    url: '/Product/EditProduct',
-                    type: 'POST',
-                    data: $(this).serialize(), // Serialize the form data
-                    success: function (response) {
-                        if (response.success) {
-                            showContent(response.message);
-                            $('#userModal').modal('hide'); // Hide the modal
-                            // Optionally, refresh the table or show a success message
-                        } else {
-                            $('#productModalBody').html(response); // Reload the form with validation errors
-                        }
-                    },
-                    error: function () {
-                        alert('Error saving product details');
-                    }
-                });
-            });
-            $(".deleteproductdbtn").on("click", function () {
-                var productId = $(this).data("id");
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    type: "warning",
-                    showCancelButton: !0,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!",
-                    confirmButtonClass: "btn btn-primary",
-                    cancelButtonClass: "btn btn-danger ml-1",
-                    buttonsStyling: !1
-                }).then(function (t) {
-                    if (t.value) {
-                        $.ajax({
-                            type: "POST",
-                            url: '@Url.Action("Delete", "Product")',
-                            data: { id: productId },
-                            success: function (response) {
-                                if (response.success) {
-                                    Swal.fire({
-                                        type: "success",
-                                        title: "Deleted!",
-                                        text: "Your brand has been deleted.",
-                                        confirmButtonClass: "btn btn-success"
-                                    });
-                                    // Remove the brand row from the table
-                                    //$('tr[data-id="' + brandId + '"]').remove();
-                                    // Remove the brand row from the table using DataTable API
-                                    table.row($('tr[data-id="' + productId + '"]')).remove().draw();
-                                } else {
-                                    Swal.fire({
-                                        type: "error",
-                                        title: "Error!",
-                                        text: response.message,
-                                        confirmButtonClass: "btn btn-danger"
-                                    });
-                                }
-                            },
-                            error: function () {
-                                Swal.fire({
-                                    type: "error",
-                                    title: "Error!",
-                                    text: "An error occurred while processing your request.",
-                                    confirmButtonClass: "btn btn-danger"
-                                });
-                            }
-                        });
-                    }
-                });
-            });           
+        //         $.ajax({
+        //             url: '/Product/EditProduct',
+        //             type: 'POST',
+        //             data: $(this).serialize(), // Serialize the form data
+        //             success: function (response) {
+        //                 if (response.success) {
+        //                     showContent(response.message);
+        //                     $('#userModal').modal('hide'); // Hide the modal
+        //                     // Optionally, refresh the table or show a success message
+        //                 } else {
+        //                     $('#productModalBody').html(response); // Reload the form with validation errors
+        //                 }
+        //             },
+        //             error: function () {
+        //                 alert('Error saving product details');
+        //             }
+        //         });
+        //     });
+        //     $('#productdatanew').on("click", ".deleteproductdbtn", function () {
+        //         var productId = $(this).data("id");
+        //         Swal.fire({
+        //             title: "Are you sure?",
+        //             text: "You won't be able to revert this!",
+        //             type: "warning",
+        //             showCancelButton: !0,
+        //             confirmButtonColor: "#3085d6",
+        //             cancelButtonColor: "#d33",
+        //             confirmButtonText: "Yes, delete it!",
+        //             confirmButtonClass: "btn btn-primary",
+        //             cancelButtonClass: "btn btn-danger ml-1",
+        //             buttonsStyling: !1
+        //         }).then(function (t) {
+        //             if (t.value) {
+        //                 $.ajax({
+        //                     type: "POST",
+        //                     url: '@Url.Action("Delete", "Product")',
+        //                     data: { id: productId },
+        //                     success: function (response) {
+        //                         if (response.success) {
+        //                             Swal.fire({
+        //                                 type: "success",
+        //                                 title: "Deleted!",
+        //                                 text: "Your brand has been deleted.",
+        //                                 confirmButtonClass: "btn btn-success"
+        //                             });
+        //                             // Remove the brand row from the table
+        //                             //$('tr[data-id="' + brandId + '"]').remove();
+        //                             // Remove the brand row from the table using DataTable API
+        //                             table.row($('tr[data-id="' + productId + '"]')).remove().draw();
+        //                         } else {
+        //                             Swal.fire({
+        //                                 type: "error",
+        //                                 title: "Error!",
+        //                                 text: response.message,
+        //                                 confirmButtonClass: "btn btn-danger"
+        //                             });
+        //                         }
+        //                     },
+        //                     error: function () {
+        //                         Swal.fire({
+        //                             type: "error",
+        //                             title: "Error!",
+        //                             text: "An error occurred while processing your request.",
+        //                             confirmButtonClass: "btn btn-danger"
+        //                         });
+        //                     }
+        //                 });
+        //             }
+        //         });
+        //     });           
 
             $("#min_price,#max_price").on('change', function () {
 
@@ -564,4 +590,3 @@
         });
 
     </script>
-}
