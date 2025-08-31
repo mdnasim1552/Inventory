@@ -37,15 +37,19 @@
                         d.CategoryId = $('#categorySelect').val();
                         d.SubCategoryId = $('#subcategorySelect').val();
                         d.BrandId = $('#brandSelect').val();
-                        d.MinPrice = $('#min_price').val();
-                        d.MaxPrice = $('#max_price').val();
+                        d.Min_Price = $('#min_price').val();
+                        d.Max_Price = $('#max_price').val();
                         d.Search = d.search.value;
                     }
                 },
                 columns: [
-                    { data: null, render: function(data, type, row){
-                        return `<label class="checkboxs"><input type="checkbox" /><span class="checkmarks"></span></label>`;
-                    }, orderable: false },
+                    { 
+                        data: null,
+                        render: function(data, type, row){
+                            return `<label class="checkboxs"><input type="checkbox" /><span class="checkmarks"></span></label>`;
+                        }, 
+                        orderable: false 
+                    },
                     {
                         data: "Name", // we will render manually using row data
                         className: "productimgname",
@@ -60,12 +64,12 @@
                         orderable: true
                     },
                     { data: 'Sku' },
-                    { data: 'Category' },
-                    { data: 'Brand' },
+                    { data: 'CategoryName' },
+                    { data: 'BrandName' },
                     { data: 'Price' , orderable: true},
-                    { data: 'Unit' },
+                    { data: 'UnitShortName' },
                     { data: 'Quantity' },
-                    { data: 'CreatedBy' },
+                    { data: 'Role' },
                     { data: 'Id', render: function(data, type, row){
                         return `
                             <a class="me-3 view_product" data-id="${data}">
@@ -107,9 +111,16 @@
                 initComplete: function (settings, json) {
                     $('.dataTables_filter').appendTo('#tableSearch');
                     $('.dataTables_filter').appendTo('.search-input');
+                    $('#productdatanew thead tr th:first-child').removeClass();
                 }
             });
+            
 
+            $("#filterForm").on("submit", function(e) {               
+                e.preventDefault();
+                table.ajax.reload();  // ✅ DataTable fetches with new filters             
+            });
+            
         $('#productdatanew').on("click", ".view_product", function () {
             //var allData = table.rows().data().toArray();
             var productId = $(this).data("id");

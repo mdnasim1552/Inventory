@@ -50,6 +50,10 @@ namespace Inventory.Profiles
               .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
               .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image))
               .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
+              .ForPath(dest=>dest.Unit.ShortName,opt=>opt.MapFrom(src=>src.UnitShortName))
+              .ForPath(dest => dest.CreatedByNavigation.Role.Role, opt => opt.MapFrom(src => src.Role))
+              .ForPath(dest => dest.Category.Name, opt => opt.MapFrom(src => src.CategoryName))
+              .ForPath(dest => dest.Brand.Name, opt => opt.MapFrom(src => src.BrandName))
               .ReverseMap();
 
             CreateMap<BrandDto, Brand>()
