@@ -71,7 +71,7 @@
                     </ul>
                 </div>
             </div>
-            <form id="filterForm" method="post" asp-controller="Product" asp-action="Index">
+            <form id="filterForm" method="post">
                 <div class="card mb-0" id="filter_inputs">
                     <div class="card-body pb-0">
                         <div class="row">
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="col-lg col-sm-6 col-12">
                                         <div class="form-group">
-                                            <select class="select" name="BrandId" asp-for="@ViewData["BrandId"]" asp-items="brandSelectedList">
+                                            <select class="select" name="BrandId" id="brandSelect" asp-for="@ViewData["BrandId"]" asp-items="brandSelectedList">
                                                 <option value="" selected>Choose Brand</option>
                                             </select>
                                         </div>
@@ -121,67 +121,7 @@
             
 
             <div class="table-responsive" id="productList">
-                @await Html.PartialAsync("__ProductList", Model)
-                @* <table class="table" id="productdatanew">
-                    <thead>
-                        <tr>
-                            <th>
-                                <label class="checkboxs">
-                                    <input type="checkbox" id="select-all" />
-                                    <span class="checkmarks"></span>
-                                </label>
-                            </th>
-                            <th>Product Name</th>
-                            <th>SKU</th>
-                            <th>Category</th>
-                            <th>Brand</th>
-                            <th>price</th>
-                            <th>Unit</th>
-                            <th>Qty</th>
-                            <th>Created By</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach(var product in Model)
-                        {
-                            <tr data-id="@product.Id">
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox" />
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="@product.Image"
-                                             alt="product" />
-                                    </a>
-                                    <a href="javascript:void(0);">@product.Name</a>
-                                </td>
-                                <td>@product.Sku</td>
-                                <td>@product.Category.Name</td>
-                                <td>@product.Brand.Name</td>
-                                <td>@product.Price.ToString("F2")</td>
-                                <td>@product.Unit.ShortName</td>
-                                <td>@product.Quantity</td>
-                                <td>@product.CreatedByNavigation.Role.Role</td>
-                                <td>
-                                    <a class="me-3 view_product" data-id="@product.Id">
-                                        <img src="~/assets/img/icons/eye.svg" alt="img" />
-                                    </a>
-                                    <a class="me-3" asp-action="Edit" asp-controller="Product" asp-route-id="@product.Id">
-                                        <img src="~/assets/img/icons/edit.svg" alt="img" />
-                                    </a>
-                                    <a class="deleteproductdbtn" href="javascript:void(0);" data-id="@product.Id">
-                                        <img src="~/assets/img/icons/delete.svg" alt="img" />
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                        
-                    </tbody>
-                </table> *@
+                @await Html.PartialAsync("__ProductList", Model)                
             </div>
         </div>
     </div>
@@ -262,23 +202,24 @@
                 $('#filter_inputs').slideToggle("slow");
                 $('#filter_search').toggleClass("setclose");
             });
-            $("#filterForm").on("submit", function (e) {
-                e.preventDefault();
+            // $("#filterForm").on("submit", function (e) {
+            //     e.preventDefault();
 
-                var $form = $(this);
+            //     var $form = $(this);
 
-                $.ajax({
-                    type: $form.attr("method"),
-                    url: $form.attr("action"),
-                    data: $form.serialize(),
-                    success: function (result) {
-                        $("#productList").html(result); // inject partial
-                    },
-                    error: function () {
-                        alert("Error updating product table.");
-                    }
-                });
-            });
+            //     $.ajax({
+            //         type: $form.attr("method"),
+            //         url: $form.attr("action"),
+            //         data: $form.serialize(),
+            //         success: function (result) {
+            //             $("#productList").html(result); // inject partial
+            //         },
+            //         error: function () {
+            //             alert("Error updating product table.");
+            //         }
+            //     });
+            // });
+
             $("#pdfButton").on("click", function () {
                 // $.ajax({
                 //     url: "/Product/GenerateProductReport",

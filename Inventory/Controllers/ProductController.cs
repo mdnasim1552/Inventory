@@ -77,10 +77,32 @@ namespace Inventory.Controllers
 
             userIdList.Add(adminID);
             productList = productList.Where(p => userIdList.Contains(p.CreatedBy)).ToList();
+            if (productSearch.CategoryId.HasValue)
+            {
+                productList = productList.Where(p => p.CategoryId == productSearch.CategoryId);
+            }
+
+            if (productSearch.SubCategoryId.HasValue)
+            {
+                productList = productList.Where(p => p.SubCategoryId == productSearch.SubCategoryId);
+            }
+            if (productSearch.BrandId.HasValue)
+            {
+                productList = productList.Where(p => p.BrandId == productSearch.BrandId);
+            }
+            if (productSearch.Min_Price.HasValue)
+            {
+                productList = productList.Where(p => p.Price >= productSearch.Min_Price);
+            }
+            if (productSearch.Max_Price.HasValue)
+            {
+                productList = productList.Where(p => p.Price <= productSearch.Max_Price);
+            }
+            var productListDto = _mapper.Map<List<ProductDto>>(productList);
             // apply search if provided
             if (!string.IsNullOrWhiteSpace(request.Search.Value))
             {
-                productList = productList
+                productListDto = productListDto
                     .Where(p => p.Name.Contains(request.Search.Value, StringComparison.OrdinalIgnoreCase)
                              || p.Sku.Contains(request.Search.Value, StringComparison.OrdinalIgnoreCase))
                     .ToList();
@@ -91,28 +113,29 @@ namespace Inventory.Controllers
             // Apply ordering dynamically
             if (!string.IsNullOrEmpty(sortColumnName))
             {
-                productList = productList.AsQueryable()
+                productListDto = productListDto.AsQueryable()
                                          .OrderBy($"{sortColumnName} {sortDirection}")
                                          .ToList();
             }
-            var recordsTotal = productList.Count();
+            var recordsTotal = productListDto.Count();
             if (request.Length == -1)
             {
                 request.Length = recordsTotal;
             }
-            var data = productList.Skip(request.Start).Take(request.Length)
-                    .Select(p => new {
-                        p.Id,
-                        p.Name,
-                        p.Sku,
-                        Category = p.Category.Name,
-                        Brand = p.Brand.Name,
-                        Price = p.Price.ToString("F2"),
-                        Unit = p.Unit.ShortName,
-                        Quantity = p.Quantity,
-                        CreatedBy = p.CreatedByNavigation.Role.Role,
-                        p.Image
-                    }).ToList();
+            
+            var data = productListDto.Skip(request.Start).Take(request.Length).ToList();
+                    //.Select(p => new {
+                    //    p.Id,
+                    //    p.Name,
+                    //    p.Sku,
+                    //    CategoryName = p.CategoryName,
+                    //    BrandName = p.BrandName,
+                    //    Price = p.Price,
+                    //    UnitShortName = p.UnitShortName,
+                    //    Quantity = p.Quantity,
+                    //    Role = p.Role,
+                    //    p.Image
+                    //}).ToList();
             var json = JsonConvert.SerializeObject(new {
                 draw = request.Draw,
                 recordsTotal = recordsTotal,
@@ -169,7 +192,7 @@ namespace Inventory.Controllers
             //    return PartialView("Index", productList);
             //}          
             //return View(productList);
-            return PartialView("_ProductList", productList);
+            return PartialView("__ProductList", productList);
         }
         public IActionResult Create()
         {
