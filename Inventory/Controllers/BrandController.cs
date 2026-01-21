@@ -2,6 +2,7 @@
 using Inventory.Models;
 using Inventory.UnitOfWork;
 using InventoryEntity.Brand;
+using InventoryEntity.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,10 @@ namespace Inventory.Controllers
         {
             var brandList = await _unitOfWork.Brand.GetAllAsync();
             var brandListDto = _mapper.Map<List<BrandDto>>(brandList);
-
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(brandListDto);
+            }
             return View(brandListDto);
         }
         [HttpPost]
@@ -49,10 +53,18 @@ namespace Inventory.Controllers
             ViewData["SearchName"] = brandSearch.Name;
             ViewData["SearchDescription"] = brandSearch.Description;
             var brandListDto = _mapper.Map<List<BrandDto>>(brandList);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(brandListDto);
+            }
             return View(brandListDto);
         }
         public  IActionResult Create()
         {
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView();
+            }
             return View();
         }
         [HttpPost]

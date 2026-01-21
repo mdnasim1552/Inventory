@@ -200,6 +200,10 @@ namespace Inventory.Controllers
             ViewData["SubcategoryList"] = subcategoryList;
             ViewData["BrandList"] = brandList;
             ViewData["UnitList"] = unitList;
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView();
+            }
             return View();
         }
         [HttpPost]
@@ -215,6 +219,7 @@ namespace Inventory.Controllers
                 var productstatus = await _unitOfWork.SaveAsync();
                 if (productstatus)
                 {
+                    TempData["CreatedMessage"] = "Created successfully";
                     return RedirectToAction("Create");
                 }
             }
@@ -223,6 +228,10 @@ namespace Inventory.Controllers
             ViewData["BrandList"] = brandList;
             ViewData["UnitList"] = unitList;
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(productDto);
+            }
             return View(productDto);
         }
 
@@ -243,6 +252,11 @@ namespace Inventory.Controllers
             ViewData["UnitList"] = unitList;
             var productDto = _mapper.Map<ProductDto>(products);
             productDto.Status = productDto.Status.Trim();
+            //return PartialView(productDto);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(productDto);
+            }
             return View(productDto);
         }
         [HttpPost]
@@ -279,6 +293,11 @@ namespace Inventory.Controllers
             ViewData["BrandList"] = brandList;
             ViewData["UnitList"] = unitList;
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
+            //return PartialView(productDto);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(productDto);
+            }
             return View(productDto);
         }
 
@@ -391,9 +410,9 @@ namespace Inventory.Controllers
             ViewData["SubcategoryList"] = subcategoryList;
             ViewData["BrandList"] = brandList;
             ViewData["UnitList"] = unitList;
-            var productDto = _mapper.Map<ProductDto>(products);
+            var productDto = _mapper.Map<ProductViewDto>(products);
             productDto.Status = productDto.Status.Trim();
-            return PartialView("_ProductView", productDto);   
+            return PartialView("_ProductView", productDto);
         }
         [HttpPost]
         public async Task<IActionResult> EditProduct(ProductDto productDto)

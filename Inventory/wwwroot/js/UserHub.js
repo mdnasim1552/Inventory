@@ -3,7 +3,7 @@
 connection.on("ReceiveStatusUpdate", function (userId, isActive) {
     if ($("#userdatanew").length) {
         // Find the row with the corresponding user ID and update the status
-        var statusCell = $("#userdatanew tr[data-id='" + userId + "']").find("td:eq(7) span");
+        var statusCell = $("#userdatanew tr[data-id='" + userId + "']").find("td:eq(6) span");
         if (isActive) {
             statusCell.removeClass("bg-lightred").addClass("bg-lightgreen").text("Active");
         } else {
@@ -11,12 +11,8 @@ connection.on("ReceiveStatusUpdate", function (userId, isActive) {
         }
     }
 });
-function newWindowLoadedOnClient() {
-    connection.send("NotifyStatusChange");
-}
 function fullfilled() {
     console.log("Connection to user hub establish successfully.");
-    newWindowLoadedOnClient();
 }
 function rejected() {
 

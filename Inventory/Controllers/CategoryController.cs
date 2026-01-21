@@ -3,6 +3,7 @@ using Inventory.Models;
 using Inventory.UnitOfWork;
 using InventoryEntity.Brand;
 using InventoryEntity.Category;
+using InventoryEntity.Product;
 using InventoryEntity.SubCategory;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,13 +22,17 @@ namespace Inventory.Controllers
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
-            categoryList = _unitOfWork.Category.GetAll();
+            categoryList =_unitOfWork.Category.GetAllAsNoTracking();
         }
         public async Task<IActionResult> Index()
         {
             var CategoryList = await _unitOfWork.Category.GetAllAsync();
             var CategoryListDto = _mapper.Map<List<CategoryDto>>(CategoryList);
             ViewData["CategoryList"] = categoryList;
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("Index", CategoryListDto);
+            }
             return View(CategoryListDto);
         }
         [HttpPost]
@@ -48,10 +53,18 @@ namespace Inventory.Controllers
             ViewData["CategoryId"] = categorySearch.CategoryId;
             ViewData["CategoryCode"] = categorySearch.CategoryCode;
             var categoryListDto = _mapper.Map<List<CategoryDto>>(CategoryList);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(categoryListDto);
+            }
             return View(categoryListDto);
         }
         public IActionResult Create()
         {
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView();
+            }
             return View();
         }
         [HttpPost]
@@ -85,7 +98,10 @@ namespace Inventory.Controllers
             }
 
             var categoryDto = _mapper.Map<CategoryDto>(categories);
-
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(categoryDto);
+            }
             return View(categoryDto);
         }
         [HttpPost]
@@ -118,6 +134,10 @@ namespace Inventory.Controllers
                 }
             }
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(categoryDto);
+            }
             return View(categoryDto);
         }
 

@@ -54,6 +54,9 @@ public partial class Product
     [InverseProperty("Products")]
     public virtual Brand Brand { get; set; } = null!;
 
+    [InverseProperty("Product")]
+    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
+
     [ForeignKey("CategoryId")]
     [InverseProperty("Products")]
     public virtual Category Category { get; set; } = null!;

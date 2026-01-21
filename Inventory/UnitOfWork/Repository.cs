@@ -46,7 +46,14 @@ namespace Inventory.UnitOfWork
         {
             return dbSet.ToList();
         }
-
+        public async Task<IEnumerable<TEntity>> GetAllAsNoTrackingAsync()
+        {
+            return await dbSet.AsNoTracking().ToListAsync();
+        }
+        public IEnumerable<TEntity> GetAllAsNoTracking()
+        {
+            return dbSet.AsNoTracking().ToList();
+        }
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await dbSet.ToListAsync();
