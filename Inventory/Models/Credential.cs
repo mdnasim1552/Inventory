@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 namespace Inventory.Models;
 
 [Table("Credential")]
-[Index("Email", Name = "IX_Credential", IsUnique = true)]
 public partial class Credential
 {
     [Key]

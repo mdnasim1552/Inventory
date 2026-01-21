@@ -155,6 +155,12 @@
         //     showContentFail('Your dasdadad');
         //     showContent('Your dasdadad');
         // });
+        if ($('.select').length > 0) {
+           $('.select').select2({
+             minimumResultsForSearch: -1,
+             width: '100%'
+           });      
+        }
         $('#fileInput').on('change', function () {
             var file = this.files[0];
             if (file) {
@@ -171,7 +177,7 @@
             $('#imageuloadContainer').show();
             $('#fileInput').show();
         })
-        var categoryId = $('#categorySelect').val();
+        var categoryId = @(Model?.CategoryId ?? 0);
         var selectedSubCategoryId = @(Model?.SubCategoryId ?? 0); // assuming SubCategoryId is part of the model
 
         if (categoryId) {

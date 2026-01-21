@@ -283,39 +283,6 @@
 
                 <li class="nav-item dropdown has-arrow main-drop">
                     <partial name="_LoginStatusPartial" />
-                    @* <a href="javascript:void(0);"
-                       class="dropdown-toggle nav-link userset"
-                       data-bs-toggle="dropdown">
-                        <span class="user-img">
-                            <img src="~/assets/img/profiles/avator1.jpg" alt="" />
-                            <span class="status online"></span>
-                        </span>
-                    </a>
-                    <div class="dropdown-menu menu-drop-user">
-                        <div class="profilename">
-                            <div class="profileset">
-                                <span class="user-img">
-                                    <img src="~/assets/img/profiles/avator1.jpg" alt="" />
-                                    <span class="status online"></span>
-                                </span>
-                                <div class="profilesets">
-                                    <h6>John Doe</h6>
-                                    <h5>Admin</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0" />
-                            <a class="dropdown-item" href="profile.html">
-                                <i class="me-2" data-feather="user"></i> My Profile
-                            </a>
-                            <a class="dropdown-item" href="generalsettings.html"><i class="me-2" data-feather="settings"></i>Settings</a>
-                            <hr class="m-0" />
-                            <a class="dropdown-item logout pb-0" asp-action="Logout" asp-controller="Account">
-                                <img src="~/assets/img/icons/log-out.svg"
-                                     class="me-2"
-                                     alt="img" />Logout
-                            </a>
-                        </div>
-                    </div> *@
                 </li>
             </ul>
 
@@ -663,7 +630,24 @@
         $(window).on("popstate", function (e) {
             var state = e.originalEvent.state;
             if (state && state.path) {
-                $("#page-wrapper").load(state.path);
+                $("#page-wrapper").load(state.path, function () {
+                    if ($(this).parent().hasClass('submenu')) {
+                        e.preventDefault();
+
+                        if (!$(this).hasClass('subdrop')) {
+                            $('ul', $(this).parents('ul:first')).slideUp(350);
+                            $('a', $(this).parents('ul:first')).removeClass('subdrop');
+                            $(this).next('ul').slideDown(350);
+                            $(this).addClass('subdrop');
+                        } else if ($(this).hasClass('subdrop')) {
+                            $(this).removeClass('subdrop');
+                            $(this).next('ul').slideUp(350);
+                        }
+                    }
+                    setActiveMenu(); // 🔥 REQUIRED
+                    $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active subdrop');//trigger('click');
+                });
+
                 //setActiveMenu();
             }
         });
@@ -672,11 +656,13 @@
 
             var $form = $(this);
             var url = $form.attr("action");
-
+            var formData = new FormData(this); // ✅ includes files
             $.ajax({
                 type: $form.attr("method"),
                 url: url,
-                data: $form.serialize(),
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function (result) {
                     $("#page-wrapper").html(result); // inject partial result
                 },
@@ -687,50 +673,6 @@
         });
 
         $(document).ready(function () {
-            function setActiveMenu() {
-                var currentPath = window.location.pathname;
-                $('#sidebar-menu a.active').removeClass('active');
-               
-                $('#sidebar-menu a').each(function () {
-                    var $this = $(this);
-                    var href = $this.attr('href');
-                    // Check if the href matches the current path
-                    if (href && currentPath.includes(href)) {
-                        $this.addClass('active');                        
-                        
-                        $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active');//trigger('click');
-                    }
-
-                });
-                
-            }
-            // function setActiveMenu() {
-            //     var currentPath = window.location.pathname;
-
-            //     // 1. Remove all active/subdrop first
-            //     $('#sidebar-menu a').removeClass('active');
-            //     $('#sidebar-menu li.submenu > a').removeClass('subdrop');
-            //     $('#sidebar-menu li.submenu ul').hide(); // hide all submenus
-
-            //     // 2. Add active to matching link
-            //     $('#sidebar-menu a').each(function () {
-            //         var $this = $(this);
-            //         var href = $this.attr('href');
-
-            //         // Make sure href is absolute or relative properly
-            //         if (href && currentPath.endsWith(href.replace(/^\/+/,''))) {
-            //             $this.addClass('active');
-
-            //             // If inside a submenu, open its parent
-            //             var $submenuParent = $this.closest('li.submenu');
-            //             if ($submenuParent.length) {
-            //                 $submenuParent.children('a').addClass('active subdrop');
-            //                 $submenuParent.children('ul').show(); // expand submenu
-            //             }
-            //         }
-            //     });
-            // }
-
             $('#sidebar-menu a').on('click', function (e) {
                     
                     if ($(this).parent().hasClass('submenu')) {
@@ -773,7 +715,23 @@
                 }               
             });
         });
+        function setActiveMenu() {
+                var currentPath = window.location.pathname;
+                $('#sidebar-menu a.active').removeClass('active');
 
+                $('#sidebar-menu a').each(function () {
+                    var $this = $(this);
+                    var href = $this.attr('href');
+                    // Check if the href matches the current path
+                    if (href && currentPath.includes(href)) {
+                        $this.addClass('active');
+
+                        $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active');//trigger('click');
+                    }
+
+                });
+
+        }
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

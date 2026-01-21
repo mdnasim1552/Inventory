@@ -17,12 +17,15 @@ namespace InventoryEntity.Product
         public string Name { get; set; } = null!;
 
         public int CategoryId { get; set; }
+        public string? CategoryName { get; set; }
 
         public int SubCategoryId { get; set; }
 
         public int BrandId { get; set; }
-
+        public string? BrandName { get; set; }
         public int UnitId { get; set; }
+        public string? UnitShortName { get; set; }
+        public string? Role { get; set; }
 
         [StringLength(50)]
         public string? Sku { get; set; }

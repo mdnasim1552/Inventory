@@ -6,7 +6,7 @@
            ? new SelectList(categoryList, "Id", "Name")
            : new SelectList(Enumerable.Empty<Category>(), "Id", "Name");
 }
-<div class="content">
+<div class="content" id="FullBody">
     <div class="page-header">
         <div class="page-title">
             <h4>Product Category list</h4>
@@ -26,7 +26,7 @@
             <div class="table-top">
                 <div class="search-set">
                     <div class="search-path">
-                        <a class="btn btn-filter" id="filter_search">
+                        <a class="btn btn-filter" id="category_filter_search">
                             <img src="~/assets/img/icons/filter.svg" alt="img" />
                             <span>
                                 <img src="~/assets/img/icons/closes.svg" alt="img" />
@@ -65,7 +65,7 @@
                     </ul>
                 </div>
             </div>
-            <form method="post" asp-controller="Category" asp-action="Index">
+            <form method="post" asp-controller="Category" asp-action="Index" data-ajax="true">
                 <div class="card" id="filter_inputs">
                     <div class="card-body pb-0">
                         <div class="row">
@@ -87,10 +87,10 @@
                                     <input name="CategoryCode" type="hidden" id="CategoryHiddenCode" />
                                 </div>
                             </div>
-                            
+
                             <div class="col-lg-1 col-sm-6 col-12 ms-auto">
                                 <div class="form-group">
-                                   @*  <a class="btn btn-filters ms-auto">
+                                    @*  <a class="btn btn-filters ms-auto">
                                         <img src="~/assets/img/icons/search-whites.svg"
                                              alt="img" />
                                     </a> *@
@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </form>
-            
+
             <div class="table-responsive">
                 <table class="table" id="categorydatanew">
                     <thead>
@@ -145,6 +145,9 @@
                                     <a class="me-3" asp-action="Edit" asp-controller="Category" asp-route-id="@category.Id">
                                         <img src="~/assets/img/icons/edit.svg" alt="img" />
                                     </a>
+                                    <a class="me-3 edit_category" href="javascript:void(0);" data-id="@category.Id">
+                                        <img src="/assets/img/icons/edit.svg" alt="img" />
+                                    </a>
                                     <a class="me-3 deleteCategorybtn" href="javascript:void(0);" data-id="@category.Id">
                                         <img src="~/assets/img/icons/delete.svg" alt="img" />
                                     </a>
@@ -158,104 +161,122 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($('.select').length > 0) {
+          $('.select').select2({
+            minimumResultsForSearch: -1,
+            width: '100%'
+          });
+        }
+        $("#category_filter_search").on("click",function(){
+            $('#filter_inputs').slideToggle("slow");
+            $('#filter_search').toggleClass("setclose");
+        });
+        var updateMessage = '@TempData["UpdateMessage"]';
+        if (updateMessage) {
+            showContent(updateMessage);
+        }
+        var table = $('#categorydatanew').DataTable({
+            "bFilter": true,
+            "sDom": 'fBtlpi',
+            'pagingType': 'numbers',
+            "ordering": true,
+            "language": {
+                search: ' ',
+                sLengthMenu: '_MENU_',
+                searchPlaceholder: "Search...",
+                info: "_START_ - _END_ of _TOTAL_ items",
+            },
+            initComplete: function (settings, json) {
+                $('.dataTables_filter').appendTo('#tableSearch');
+                $('.dataTables_filter').appendTo('.search-input');
+            },
+        });
 
-@section Scripts {
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var updateMessage = '@TempData["UpdateMessage"]';
-            if (updateMessage) {
-                showContent(updateMessage);
-            }
-            var table = $('#categorydatanew').DataTable({
-                "bFilter": true,
-                "sDom": 'fBtlpi',
-                'pagingType': 'numbers',
-                "ordering": true,
-                "language": {
-                    search: ' ',
-                    sLengthMenu: '_MENU_',
-                    searchPlaceholder: "Search...",
-                    info: "_START_ - _END_ of _TOTAL_ items",
-                },
-                initComplete: function (settings, json) {
-                    $('.dataTables_filter').appendTo('#tableSearch');
-                    $('.dataTables_filter').appendTo('.search-input');
-                },
-            });
-
-            $(".deleteCategorybtn").on("click", function () {
-                var brandId = $(this).data("id");
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    type: "warning",
-                    showCancelButton: !0,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!",
-                    confirmButtonClass: "btn btn-primary",
-                    cancelButtonClass: "btn btn-danger ml-1",
-                    buttonsStyling: !1
-                }).then(function (t) {
-                    if (t.value) {
-                        $.ajax({
-                            type: "POST",
-                            url: '@Url.Action("Delete", "Category")',
-                            data: { id: brandId },
-                            success: function (response) {
-                                if (response.success) {
-                                    Swal.fire({
-                                        type: "success",
-                                        title: "Deleted!",
-                                        text: "Your category has been deleted.",
-                                        confirmButtonClass: "btn btn-success"
-                                    });
-                                    // Remove the brand row from the table
-                                    //$('tr[data-id="' + brandId + '"]').remove();
-                                    // Remove the brand row from the table using DataTable API
-                                    table.row($('tr[data-id="' + brandId + '"]')).remove().draw();
-                                } else {
-                                    Swal.fire({
-                                        type: "error",
-                                        title: "Error!",
-                                        text: response.message,
-                                        confirmButtonClass: "btn btn-danger"
-                                    });
-                                }
-                            },
-                            error: function () {
+        $(".deleteCategorybtn").on("click", function () {
+            var brandId = $(this).data("id");
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+                confirmButtonClass: "btn btn-primary",
+                cancelButtonClass: "btn btn-danger ml-1",
+                buttonsStyling: !1
+            }).then(function (t) {
+                if (t.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete", "Category")',
+                        data: { id: brandId },
+                        success: function (response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    type: "success",
+                                    title: "Deleted!",
+                                    text: "Your category has been deleted.",
+                                    confirmButtonClass: "btn btn-success"
+                                });
+                                // Remove the brand row from the table
+                                //$('tr[data-id="' + brandId + '"]').remove();
+                                // Remove the brand row from the table using DataTable API
+                                table.row($('tr[data-id="' + brandId + '"]')).remove().draw();
+                            } else {
                                 Swal.fire({
                                     type: "error",
                                     title: "Error!",
-                                    text: "An error occurred while processing your request.",
+                                    text: response.message,
                                     confirmButtonClass: "btn btn-danger"
                                 });
                             }
-                        });
-                    }
-                });
-            });
-
-            $('#categorySelect').change(function () {
-                var categoryId = $(this).val();
-                $.ajax({
-                    type: "GET",
-                    url: '@Url.Action("GetCategoryCodeById", "Category")',
-                    data: { Id: categoryId },
-                    success: function (data) {
-                        $('#CategoryCode').val(data)
-                        $('#CategoryHiddenCode').val(data);
-                    },
-                    error: function () {
-                        console.error("There was an error fetching the category code:", error);
-                    }
-                });                
+                        },
+                        error: function () {
+                            Swal.fire({
+                                type: "error",
+                                title: "Error!",
+                                text: "An error occurred while processing your request.",
+                                confirmButtonClass: "btn btn-danger"
+                            });
+                        }
+                    });
+                }
             });
         });
 
-    </script>
-}
+        $('#categorySelect').change(function () {
+            var categoryId = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetCategoryCodeById", "Category")',
+                data: { Id: categoryId },
+                success: function (data) {
+                    $('#CategoryCode').val(data)
+                    $('#CategoryHiddenCode').val(data);
+                },
+                error: function () {
+                    console.error("There was an error fetching the category code:", error);
+                }
+            });
+        });
+
+        $('#categorydatanew').on("click", ".edit_category", function() {
+            var categoryId = $(this).data("id");
+            var url = '/Category/Edit/' + categoryId;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(result) {
+                    $('#FullBody').html(result);
+                },
+                error: function() {
+                    alert('Error loading edit form');
+                }
+            });
+        });
+    });
+
+</script>

@@ -68,10 +68,5 @@ namespace Inventory.Hubs
 
             await base.OnDisconnectedAsync(exception);
         }
-        public async Task NotifyStatusChange(string userId, bool isActive)
-        {
-            // Notify all clients that a user's status has changed
-            await Clients.All.SendAsync("ReceiveStatusUpdate", userId, isActive);
-        } 
     }
 }

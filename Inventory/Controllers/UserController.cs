@@ -4,6 +4,7 @@ using Inventory.Extensions;
 using Inventory.Models;
 using Inventory.UnitOfWork;
 using InventoryEntity.Account;
+using InventoryEntity.Category;
 using InventoryEntity.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,11 +36,20 @@ namespace Inventory.Controllers
         {
             var userList =await _unitOfWork.Credential.GetAllIncluding(u => u.Role);
             userList = userList.Where(u => u.Role.Role != "Admin");
+
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(userList);
+            }
             return View(userList);
         }
         public ActionResult Create()
         {
             ViewData["RoleList"] = roleList;
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView();
+            }
             return View();
         }
         [HttpPost]
@@ -73,6 +83,10 @@ namespace Inventory.Controllers
             }
             ViewData["RoleList"] = roleList;
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(userDto);
+            }
             return View(userDto);
         }
         public async Task<IActionResult> Edit(int? id)
@@ -90,6 +104,10 @@ namespace Inventory.Controllers
             ViewData["RoleList"] = roleList;
             var userDto = _mapper.Map<UserDto>(user);
             //productDto.Status = productDto.Status.Trim();
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(userDto);
+            }
             return View(userDto);
         }
         [HttpPost]
@@ -127,11 +145,19 @@ namespace Inventory.Controllers
                 {
                     ViewData["RoleList"] = roleList;
                     ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
+                    if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                    {
+                        return PartialView(userDto);
+                    }
                     return View(userDto);
                 }
             }
             ViewData["RoleList"] = roleList;
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(userDto);
+            }
             return View(userDto);
         }
         [HttpPost]

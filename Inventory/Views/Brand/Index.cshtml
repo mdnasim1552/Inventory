@@ -22,7 +22,7 @@
             <div class="table-top">
                 <div class="search-set">
                     <div class="search-path">
-                        <a class="btn btn-filter" id="filter_search">
+                        <a class="btn btn-filter" id="brand_filter_search">
                             <img src="~/assets/img/icons/filter.svg" alt="img" />
                             <span>
                                 <img src="~/assets/img/icons/closes.svg" alt="img" />
@@ -142,13 +142,13 @@
         </div>
     </div>
 </div>
-@section Scripts {
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#brand_filter_search").on("click",function(){
+                $('#filter_inputs').slideToggle("slow");
+                $('#filter_search').toggleClass("setclose");
+            });
+
             var updateMessage = '@TempData["UpdateMessage"]';
             if (updateMessage) {
                 showContent(updateMessage);
@@ -247,4 +247,3 @@
         });
 
     </script>
-}

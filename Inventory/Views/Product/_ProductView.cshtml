@@ -1,4 +1,4 @@
-﻿@model InventoryEntity.Product.ProductDto
+﻿@model InventoryEntity.Product.ProductViewDto
 @{
     var categoryList = ViewData["CategoryList"] as IEnumerable<Inventory.Models.Category>;
     var categorySelectList = categoryList != null
@@ -13,7 +13,6 @@
     ? new SelectList(unitList, "Id", "Name")
     : new SelectList(Enumerable.Empty<Unit>(), "Id", "Name");
 }
-<script src="~/assets/js/script.js"></script>
 <div class="row">
     <div class="col-lg-8 col-sm-12">
         <div class="card" style="margin:0 !important;">

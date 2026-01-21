@@ -3,6 +3,7 @@ using Inventory.Models;
 using Inventory.UnitOfWork;
 using InventoryEntity.Brand;
 using InventoryEntity.Category;
+using InventoryEntity.Product;
 using InventoryEntity.SubCategory;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,10 @@ namespace Inventory.Controllers
             var SubCategoryList = await _unitOfWork.SubCategory.GetAllIncluding(sc=>sc.Category);
             //var CategoryListDto = _mapper.Map<List<CategoryDto>>(CategoryList);
             ViewData["CategoryList"] = categoryList;
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(SubCategoryList);
+            }
             return View(SubCategoryList);
         }
         [HttpPost]
@@ -55,11 +60,20 @@ namespace Inventory.Controllers
             ViewData["SubCategoryCode"] = subCategorySearch.SubCategoryCode;
             //var subCategoryListDto = _mapper.Map<List<SubCategoryDto>>(subcategoryList);
             ViewData["CategoryList"] = categoryList;
+
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(subcategoryList);
+            }
             return View(subcategoryList);
         }
         public async Task<IActionResult> Create()
         {
             ViewData["CategoryList"] = categoryList;
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView();
+            }
             return View();
         }
         [HttpPost]
@@ -78,6 +92,10 @@ namespace Inventory.Controllers
             }
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
             ViewData["CategoryList"] = categoryList;
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(subcategoryDto);
+            }
             return View(subcategoryDto);
         }
 
@@ -95,6 +113,10 @@ namespace Inventory.Controllers
             ViewData["CategoryList"] = categoryList;
             var subcategoryDto = _mapper.Map<SubCategoryDto>(subcategories);
 
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(subcategoryDto);
+            }
             return View(subcategoryDto);
         }
         [HttpPost]
@@ -128,6 +150,10 @@ namespace Inventory.Controllers
             }
             ViewData["CategoryList"] = categoryList;
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView(subcategoryDto);
+            }
             return View(subcategoryDto);
         }
 
