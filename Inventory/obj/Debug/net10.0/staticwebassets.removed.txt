@@ -1,0 +1,1 @@
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\coronaryDiagram\styles.css

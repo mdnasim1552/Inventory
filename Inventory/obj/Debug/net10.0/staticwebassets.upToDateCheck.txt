@@ -2,7 +2,9 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-ea
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-zip-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\moon.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-ppt.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\points.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\distribute-horizontal.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\cjs\index.js.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\telephone-plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bug.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\markdown.svg
@@ -33,8 +35,10 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house-e
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar3.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\grid-3x2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hand-index-thumb-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\shapes\standard.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-slash.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\css\jquery-ui.min.css
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\README.md
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\ion-rangeslider\js\custom-rangeslider.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cup.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\save2-fill.svg
@@ -52,11 +56,13 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house-s
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\exclamation-lg.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-exclamation.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\caret-left-square-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\coronaryDiagram\restoreFromSnapshot.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\x-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\eyedropper.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\inbox.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\7-circle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-down-square-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\View.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\exclamation-octagon-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard2-data-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-standing-dress.svg
@@ -75,6 +81,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\patch-c
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\exclude.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\telephone-outbound-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pip-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\line.squaredLength.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-up-left.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\js\bootstrap.bundle.min.js
@@ -90,6 +97,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\briefca
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-left-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\journal-plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\umbrella.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Dom\methods.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-plus-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\fullscreen-exit.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\safe-fill.svg
@@ -98,6 +106,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield.
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\lungs.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\three-dots.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bag-x-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\CellView.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ubuntu.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\c-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\volume-mute.svg
@@ -108,10 +117,12 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-l
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dash-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\caret-right-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrows-collapse.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\coronaryDiagram\branchFactory.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\capsule.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\map.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\kanban.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-no-right-turn.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\vec.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\snow3.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\code-slash.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\github.svg
@@ -121,6 +132,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-3
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\twitter-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\stopwatch-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\link-45deg.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\GraphLayerCollection.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-zip.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\7-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\slash-circle-fill.svg
@@ -137,16 +149,20 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\box-arr
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\grid-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\search-heart-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\windows.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\line.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dash-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\align-bottom.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cart-check.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-down-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-event-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\linkTools\Anchor.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-sleet-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\stop-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pin-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\env\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\safe.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\skip-backward-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\skip-backward-btn-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\skip-end-fill.svg
@@ -175,11 +191,13 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\airplan
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bank2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\easel-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-check-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\anchors\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bell-slash-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-heart-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-tm.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-smile-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\dist\joint.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-surprise-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\window-plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-slash-fill.svg
@@ -216,6 +234,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-9
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-fill-minus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bell.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-smile.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\cellTools\Boundary.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\delete.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\type-h6.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ev-front-fill.svg
@@ -232,6 +251,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cart-pl
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\trash3.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\indent.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\phone.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\README.md
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\database-slash.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\usb.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\rulers.svg
@@ -250,8 +270,10 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\morris\raphael-min
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\wifi-1.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-do-not-enter-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\cellTools\Connect.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\usb-plug-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\image-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\attributes\legacy.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\car-front.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dpad.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-circle.svg
@@ -271,6 +293,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboa
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-up-right-circle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\log-out.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\attributes\props.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\safe2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\tablet-landscape.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-pdf.svg
@@ -311,20 +334,26 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboa
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\skip-start-btn-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\truck-flatbed.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-check-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\highlighters\addClass.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\types.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\js\script.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-intersection-t-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-dash-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\align-middle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\motherboard-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\postcard-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\polygon.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-railroad.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-diff-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\tag-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\connectors\curve.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\plus-square-dotted.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-grin.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-zip.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\terminal-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\util\util.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\layout\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\easel3.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sunset-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-fog2.svg
@@ -334,6 +363,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bag-hea
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ban-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\exclamation-triangle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\stop-btn-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\polyline.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\0-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\rewind-btn-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar4-week.svg
@@ -344,6 +374,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dash-lg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\fuel-pump-diesel.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\database-fill-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\code.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\esm\index.mjs.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dice-3.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\aspect-ratio-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
@@ -374,10 +405,12 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calenda
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-fill-up.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard-check-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrows-fullscreen.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\GraphLayersController.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house-check-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-break-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bookmark-heart-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\backpack3-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\connectors\smooth.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\product.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pip.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\countup\jquery.counterup.min.js
@@ -394,9 +427,11 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\send-x-
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-break-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-image.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building-fill-exclamation.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\getStrokePoints.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\camera-video.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-left-heart.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\display.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\package.json
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar3-range-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sort-numeric-up.svg
@@ -405,6 +440,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\skip-st
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\voicemail.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\align-center.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pci-card-sound.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\connectors\normal.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\lamp.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\check-all.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-m4p.svg
@@ -418,21 +454,25 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetyp
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\escape.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\fire.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\play-btn.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\highlighters\stroke.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hdmi-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-exclamation.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-music-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\border-outer.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\usb-micro.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\elementTools\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\raty\jquery.raty.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\scrollbar\scroll.min.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\suitcase.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\flower2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-ttf.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard2-heart-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Dom\animations.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\feather.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\copy.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cookie.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\puzzle.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\geometry.helpers.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pentagon.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\type-h2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-fill.svg
@@ -468,6 +508,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\text-wr
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\basket2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\tree-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-left-quote-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Dom\Event.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\twitter-bootstrap-wizard\form-wizard.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-slides-fill.svg
@@ -476,6 +517,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bandaid
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\life-preserver.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard-plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\database-down.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\GraphTopologyIndex.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-text-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\menu-button.svg
@@ -485,13 +527,16 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\gender-
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\database-fill-check.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-haze2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\list-ol.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\CellCollection.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-hail.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\brightness-low.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\caret-up-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\edit.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\util\utilHelpers.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\diagram-2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\heart-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cash-coin.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\type-h1.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\stack.svg
@@ -505,6 +550,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\incogni
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\mortarboard-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pin-map-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\9-circle-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\Graph.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ui-checks.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-ad.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-check.svg
@@ -517,6 +563,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cart-x.
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\amazon.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-dots-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\symmetry-vertical.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\linkTools\Arrowhead.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\icons\feather\feather.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-play-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\journal-check.svg
@@ -537,6 +584,8 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\send-da
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ban.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\train-lightrail-front.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\binoculars-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\connectors\rounded.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\line.bearing.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard2-plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chevron-right.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building-lock.svg
@@ -544,6 +593,8 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\mouse-f
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\grid-3x3-gap-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\telephone-inbound-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\nvme.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\highlighters\index.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\HighlighterView.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sticky-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\box-arrow-in-up-right.svg
@@ -565,6 +616,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\css\bootstrap.
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\send-arrow-down.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-turn-slight-left.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-open-heart.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\coronaryDiagram\splitLinkAndInertObject.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bag-plus-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-90deg-down.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\flot\chart-data.js
@@ -595,8 +647,11 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\snow.sv
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-frown-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\chartjs\chart.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\return1.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\line.length.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\util\getRectPoint.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\check.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-text.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\polyfills\number.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\closes.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\box2-heart.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\unlock.svg
@@ -620,9 +675,11 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\dollar.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\0-circle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\unindent.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hexagon-half.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\intersection.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\icons\weather\weathericons.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-x-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-bar-graph-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\GridLayerView.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\reply.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-4k-fill.svg
@@ -673,7 +730,9 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-9
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-x-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\passport-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\skip-backward-btn.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\LayerView.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\device-hdd-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\dist\geometry.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\mailbox2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-arrow-up.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\2-circle-fill.svg
@@ -698,6 +757,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bricks.
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-astonished.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\line.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ticket-perforated-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\coronaryDiagram\insertObjectInsideLink.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cc-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\fullcalendar\jquery.fullcalendar.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-zip-fill.svg
@@ -726,6 +786,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house-e
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\flower3.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-sass.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\lightbox\glightbox.min.css
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\linkTools\Vertices.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\layout-wtf.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-turn-slight-right.svg
@@ -738,7 +799,9 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\view-st
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\slash-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building-add.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\heartbreak.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\Element.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-shaded.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\util\wrappers.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\exclamation-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-plus-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-tsx.svg
@@ -778,17 +841,23 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-8
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\threads-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\code-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\display-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\LegacyGraphLayerView.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Dom\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\jquery\dist\jquery.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\paragraph.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\usb-mini.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\path.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\p-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-arrow-down.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-person-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar4.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\polyfills\base64.js
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\V\traverse.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\boombox.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building-fill-dash.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\point.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\soundwave.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\4-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-tm-fill.svg
@@ -799,6 +868,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-d
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\symmetry-horizontal.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-fill-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-post.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\dist\joint.nowrap.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-sun.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\telephone.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shift.svg
@@ -828,9 +898,11 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboa
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\optical-audio-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-minus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-cc.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\dist\version.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\check-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-wc.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\stickynote\sticky.js
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\dist\joint.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bus-front.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\check-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\question-square.svg
@@ -840,6 +912,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\x-lg.sv
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cassette.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pen.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building-fill-slash.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\rect.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hourglass.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\info-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\square-half.svg
@@ -849,6 +922,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetyp
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-binary.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\projector.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\8-circle.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\cjs\index.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\js\bootstrap.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bing.svg
@@ -858,6 +932,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cart-x-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar2-x.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Dom\Dom.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-month-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\peace.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\patch-exclamation.svg
@@ -899,12 +974,14 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hdd-sta
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\js\jquery.dataTables.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\mouse3-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\layout\ports\portLabel.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dice-1.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\mailbox-flag.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bookmark-plus-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\send.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-medical.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\amd.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\bench\stroke.bench.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-x-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-heart-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cc-circle-fill.svg
@@ -945,12 +1022,15 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\lock.sv
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hdd-network.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\rewind-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bookmark-check.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\curve.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\attributes\defs.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-cc-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cc-circle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\5-circle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\dragula\js\dragula.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\menu-app.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\LinkView.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\terminal-dash.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\js\signalr.js.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bar-chart-steps.svg
@@ -972,12 +1052,15 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelop
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\4-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sort-up-alt.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-bar-right.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\index.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\scissors.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\film.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hearts.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\extend.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar3-event-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-arrow-up-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\icons\typicons\typicons.css
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\shapes\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-lock2-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\layer-backward.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bounding-box.svg
@@ -995,6 +1078,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calenda
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-fill-plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\telegram.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\cellTools\Control.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\alt.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\c-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\box-seam.svg
@@ -1003,6 +1087,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\send-pl
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\css\style.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\record-btn-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\balloon-heart-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\mvcUtils.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-tear-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\3-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-easel-fill.svg
@@ -1015,6 +1100,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\marker-tip.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\border-bottom.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-ruled-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\routers\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar3-week-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cart3.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-easel.svg
@@ -1038,6 +1124,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\box-arr
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\easel2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\backspace.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\scanners.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Dom\events.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bar-chart.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ear.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\plugin.svg
@@ -1050,9 +1137,11 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\lightbu
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\postage-heart-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\eject-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\balloon-heart.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\package.json
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\door-closed.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\floppy-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-lightning.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\types.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\rainbow.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\wikipedia.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filter.svg
@@ -1068,8 +1157,10 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-te
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\edit-6.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-text.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\router.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\util\cloneCells.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-arms-up.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\boxes.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\routers\normal.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar2-x-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-post-fill.svg
@@ -1153,7 +1244,10 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\search-whites.sv
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\play-circle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house-gear.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-arrow-down.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\cellTools\Button.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\highlighters\mask.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\airplane-engines-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\polyfills\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dice-6-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard-check.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\outlet.svg
@@ -1175,6 +1269,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\border-
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\patch-question-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\heart-pulse.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\box-arrow-right.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\dist\joint.nowrap.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\distribute-vertical.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-bar-left.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\search.svg
@@ -1184,6 +1279,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\dash1.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\scrollbar\custom-scroll.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-arrow-up.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\linkTools\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building-dash.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\rss-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\repeat-1.svg
@@ -1198,6 +1294,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\tropica
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house-door-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-rain-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-upload-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\highlighters\opacity.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\circle-half.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cup-hot-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrows-vertical.svg
@@ -1281,16 +1378,19 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\folder2
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-binary.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\book-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-angry-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\coronaryDiagram\index.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-quote.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\list-stars.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\exclamation-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\train-freight-front-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\attributes\offset.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\bootstrap-icons.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\medium.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar2-week-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\menu-button-wide-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\vector-pen.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\easel.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\polyfills\array.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-no-parking.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\text-paragraph.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\excel.svg
@@ -1299,6 +1399,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\buildin
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building-down.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\backspace-reverse-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-tear.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\cellTools\HoverConnect.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\css\bootstrap-datetimepicker.min.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\search-white.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dash-square.svg
@@ -1317,6 +1418,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\motherb
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bar-chart-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\jquery-validation\dist\additional-methods.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\square-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\routers\rightAngle.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-x-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dash-circle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-turn-left-fill.svg
@@ -1327,6 +1429,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelop
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\window-dash.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\font\bootstrap-icons.json
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\caret-left-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\GraphLayer.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\material\materialdesignicons.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-psd.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ticket-perforated.svg
@@ -1343,11 +1446,14 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calenda
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\repeat.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-paper.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\elementTools\HoverConnect.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\util\svgTagTemplate.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\virus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-no-left-turn.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-down-left-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\toggle-off.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\symbols.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\union.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-left-dots-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\droplet-fill.svg
@@ -1393,6 +1499,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetyp
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-ad-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\owlcarousel\owl.carousel.min.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cursor-text.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\constants.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-haze2-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\backpack2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dpad-fill.svg
@@ -1436,6 +1543,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cone-st
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\record-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sort-numeric-down.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\attributes\shape.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-through-heart-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-left-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-txt.svg
@@ -1451,6 +1559,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-xlsx.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-check-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\square.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\polyfills\typedArray.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\signpost-split-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\caret-down-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\play-circle-fill.svg
@@ -1485,12 +1594,15 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\android
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\layout-three-columns.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\box-arrow-in-right.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pin-angle.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Data.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-return-right.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cash-stack.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-do-not-enter.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard-heart-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\V\namespace.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house-down-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\device-ssd.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\attributes\connection.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\octagon-half.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-wheelchair.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\icons\pe7\pe-icon-7.css
@@ -1498,6 +1610,8 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\plus-sq
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hammer.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\border-style.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\layout\ports\port.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\routers\orthogonal.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\box-arrow-in-down-left.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dash-square-dotted.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bookmarks-fill.svg
@@ -1505,6 +1619,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house-x
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\trash3-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\skip-forward-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\taxi-front.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\alg\Deque.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bootstrap-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\rocket.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\safe2-fill.svg
@@ -1518,6 +1633,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bag-che
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\taxi-front-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\paypal.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\battery.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\ToolsView.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clock-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bookmark-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pause-circle.svg
@@ -1536,10 +1652,12 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\water.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-sh.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\linkTools\RotateLabel.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\check-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\steam.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-left-text.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\record-circle.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\attributes\text.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\strava.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-fill-exclamation.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-check.svg
@@ -1556,6 +1674,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\icons\ionic\ionico
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-download.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\3-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\eye-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\config\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\diamond-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chevron-double-right.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-intersection-fill.svg
@@ -1568,6 +1687,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\transla
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\funnel-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\vimeo.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\folder-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\attributes\eval.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\reddit.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\list-nested.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-up-right.svg
@@ -1576,6 +1696,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-co
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\brilliance.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\transparency.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\send-exclamation.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\linkTools\Segments.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hexagon-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\textarea-resize.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\tiktok.svg
@@ -1587,6 +1708,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\geo-alt
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-plus-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\table.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\capslock-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\connectionPoints\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\globe-asia-australia.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bar-chart-line.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-font-fill.svg
@@ -1613,6 +1735,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\regex.s
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-sd.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\card-image.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calculator-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\V\transform.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cart-dash-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cart-check-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\reply-all.svg
@@ -1627,6 +1750,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-in
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\circle-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\align-top.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\dollar-square.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\Link.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-down-right-circle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-minus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-yield.svg
@@ -1651,6 +1775,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\option.
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-date-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\morris\morris.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-slides-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\GraphLayerView.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bag-plus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-bar-graph-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\stickynote\sticky.css
@@ -1669,7 +1794,9 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\delete1.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-repeat.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\gear.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cpu.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Model.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-square-dots.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\bezier.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\door-open-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-stop.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\camera-video-fill.svg
@@ -1690,6 +1817,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetyp
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\twitter-bootstrap-wizard\prettify.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\sales1.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\jquery\dist\jquery.js
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\ElementView.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dash.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\patch-check.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\train-freight-front.svg
@@ -1697,6 +1825,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\telepho
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\rewind.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pc-horizontal.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-down-left-circle.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\dist\vectorizer.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sort-numeric-down-alt.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-check-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\battery-charging.svg
@@ -1706,6 +1835,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\termina
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\octagon-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-right-dots.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\crosshair.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\g\ellipse.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\folder-minus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\3-circle.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\info-square-fill.svg
@@ -1719,6 +1849,8 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ui-radi
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\share-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chevron-bar-left.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bank.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\connectors\jumpover.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\routers\metro.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-ppt-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-raw.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-fog.svg
@@ -1729,6 +1861,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\floppy.
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\fontawesome\webfonts\fa-solid-900.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-square-quote-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\list-task.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\util\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\database-dash.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-right-dots-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\plus-circle.svg
@@ -1736,9 +1869,11 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\grid.sv
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\vinyl.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\reception-4.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\scanner.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\Paper.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\css\site.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\graph-up.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-minus-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\ViewBase.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\card-checklist.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hdd-stack-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\gender-ambiguous.svg
@@ -1750,6 +1885,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard2-check.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\building-fill-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shield-plus.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Listener.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\border-center.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cash.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sun-fill.svg
@@ -1758,6 +1894,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\toggles
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\hdd-network-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-word.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\toggles.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\Cell.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\camera-video-off-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\tree.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-haze.svg
@@ -1766,6 +1903,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\smartwa
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-heart.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ticket.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\caret-down-square.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\esm\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\jquery\LICENSE.txt
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-ruled-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\award.svg
@@ -1808,6 +1946,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\databas
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-lightning-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard2-minus-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\discord.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\util\calc.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cone.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\toggle2-on.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\stoplights.svg
@@ -1816,6 +1955,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\houses-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\collection-play-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\question-octagon-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\attributes\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\telephone-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\signal.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\mask.svg
@@ -1835,8 +1975,10 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-ea
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filter-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar2-event.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\download.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Collection.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\rss.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\pie-chart.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\connectors\straight.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\info-lg.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cup-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\zoom-in.svg
@@ -1844,8 +1986,10 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-co
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-minus-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\columns-gap.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\magnet-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\dist\geometry.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-down-left-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\gender-male.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\ToolView.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-mp4.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\valentine.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\calendars.svg
@@ -1872,6 +2016,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\house-d
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\printer.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bus-front-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\diamond-half.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\stack-overflow.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bezier.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\coin.svg
@@ -1881,6 +2026,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\js\signalr.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\suit-diamond.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\reception-0.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\globe.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\getStrokeRadius.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\qr-code.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\jquery\dist\jquery.min.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\cash.svg
@@ -1889,6 +2035,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\send-sl
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-up-right-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\fontawesome\css\fontawesome.min.css
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\train-front-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\dia\ports.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\suit-spade.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\suitcase-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bandaid-fill.svg
@@ -1896,6 +2043,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sticky.
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\phone-flip.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-wink-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\broadcast-pin.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\coronaryDiagram\regionConstraints.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-person.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-check.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\question-square-fill.svg
@@ -1925,6 +2073,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-r
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-richtext-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\recycle.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\linkAnchors\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\journal-arrow-down.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-turn-left.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\caret-up-square.svg
@@ -1959,6 +2108,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-in
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard2.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\asterisk.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-sleet.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\simulatePressure.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\plugins\select2\js\select2.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\geo-alt-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\justify.svg
@@ -1974,6 +2124,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sliders
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar3-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard-data.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\routers\oneSide.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\volume-down-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\send-exclamation-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\modem.svg
@@ -1999,6 +2150,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sim-sla
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\7-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar-month.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-plus-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\routers\manhattan.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\camera-video-off.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\slash-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\check-lg.svg
@@ -2012,6 +2164,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\emoji-s
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-bmp.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\grid-3x3.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\layout-text-sidebar.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Dom\vars.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\type-strikethrough.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboard-pulse.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrows-collapse-vertical.svg
@@ -2027,8 +2180,10 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\clipboa
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-intersection-side.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\list.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\usb-c-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\core.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\mastodon.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\skip-forward-circle.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\V\create.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\box-seam-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\puzzle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-up-circle.svg
@@ -2049,6 +2204,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\image-a
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bookmark-star.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\files.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\align-end.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\polyfills\string.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\badge-ar-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\usb-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\sign-intersection.svg
@@ -2103,8 +2259,10 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-ea
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\duffle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\unlock-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\telephone-plus-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\coronaryDiagram\addNoteToElement.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\broadcast.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-left-quote.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Dom\props.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\boombox-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\border-right.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\grip-vertical.svg
@@ -2113,6 +2271,8 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\tv-fill
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\filetype-jpg.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-fill-x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-left-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\cellTools\helpers.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\connectors\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\x.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-font.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-right.svg
@@ -2122,6 +2282,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\heart-h
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\earbuds.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\check2-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\stopwatch.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\mvc\Events.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-up-circle-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\dice-3-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\chat-left.svg
@@ -2189,6 +2350,8 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-s
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-up-left-square-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\arrow-down-right-square.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\dash4.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\css\coronaryDiagram.css
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\getStrokeOutlinePoints.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\displayport.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\layout-split.svg
@@ -2199,6 +2362,7 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\plus-ci
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\shadows.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\reception-1.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\brush.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\connectionStrategies\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\file-earmark-play.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\person-gear.svg
@@ -2213,10 +2377,12 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\eye1.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\funnel.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\ui-radios-grid.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\highlighters\list.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\door-closed-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\trash12.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-at-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\img\icons\mail.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\dist\vectorizer.min.js
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\bag-heart.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\people-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\assets\js\bootstrap-datetimepicker.min.js
@@ -2254,10 +2420,14 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\thermom
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\volume-off.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\envelope-x-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\luggage-fill.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\src\V\index.mjs
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\calendar2-week.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\cloud-minus.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\skip-forward.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\getStroke.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\whatsapp.svg
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\@joint\core\joint.mjs
+G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\perfect-freehand\dist\types\index.d.ts.map
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\phone-landscape-fill.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\meta.svg
 G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\lib\bootstrap-icons\icons\snapchat.svg
@@ -2837,9 +3007,170 @@ wwwroot\assets\plugins\twitter-bootstrap-wizard\form-wizard.css
 wwwroot\assets\plugins\twitter-bootstrap-wizard\form-wizard.js
 wwwroot\assets\plugins\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js
 wwwroot\assets\plugins\twitter-bootstrap-wizard\prettify.js
+wwwroot\css\coronaryDiagram.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\js\coronaryDiagram\addNoteToElement.js
+wwwroot\js\coronaryDiagram\branchFactory.js
+wwwroot\js\coronaryDiagram\index.js
+wwwroot\js\coronaryDiagram\insertObjectInsideLink.js
+wwwroot\js\coronaryDiagram\regionConstraints.js
+wwwroot\js\coronaryDiagram\restoreFromSnapshot.js
+wwwroot\js\coronaryDiagram\splitLinkAndInertObject.js
 wwwroot\js\site.js
+wwwroot\lib\@joint\core\LICENSE
+wwwroot\lib\@joint\core\README.md
+wwwroot\lib\@joint\core\dist\geometry.js
+wwwroot\lib\@joint\core\dist\geometry.min.js
+wwwroot\lib\@joint\core\dist\joint.d.ts
+wwwroot\lib\@joint\core\dist\joint.js
+wwwroot\lib\@joint\core\dist\joint.min.js
+wwwroot\lib\@joint\core\dist\joint.nowrap.js
+wwwroot\lib\@joint\core\dist\joint.nowrap.min.js
+wwwroot\lib\@joint\core\dist\vectorizer.js
+wwwroot\lib\@joint\core\dist\vectorizer.min.js
+wwwroot\lib\@joint\core\dist\version.mjs
+wwwroot\lib\@joint\core\index.js
+wwwroot\lib\@joint\core\joint.mjs
+wwwroot\lib\@joint\core\package.json
+wwwroot\lib\@joint\core\src\V\create.mjs
+wwwroot\lib\@joint\core\src\V\index.mjs
+wwwroot\lib\@joint\core\src\V\namespace.mjs
+wwwroot\lib\@joint\core\src\V\transform.mjs
+wwwroot\lib\@joint\core\src\V\traverse.mjs
+wwwroot\lib\@joint\core\src\alg\Deque.mjs
+wwwroot\lib\@joint\core\src\anchors\index.mjs
+wwwroot\lib\@joint\core\src\cellTools\Boundary.mjs
+wwwroot\lib\@joint\core\src\cellTools\Button.mjs
+wwwroot\lib\@joint\core\src\cellTools\Connect.mjs
+wwwroot\lib\@joint\core\src\cellTools\Control.mjs
+wwwroot\lib\@joint\core\src\cellTools\HoverConnect.mjs
+wwwroot\lib\@joint\core\src\cellTools\helpers.mjs
+wwwroot\lib\@joint\core\src\config\index.mjs
+wwwroot\lib\@joint\core\src\connectionPoints\index.mjs
+wwwroot\lib\@joint\core\src\connectionStrategies\index.mjs
+wwwroot\lib\@joint\core\src\connectors\curve.mjs
+wwwroot\lib\@joint\core\src\connectors\index.mjs
+wwwroot\lib\@joint\core\src\connectors\jumpover.mjs
+wwwroot\lib\@joint\core\src\connectors\normal.mjs
+wwwroot\lib\@joint\core\src\connectors\rounded.mjs
+wwwroot\lib\@joint\core\src\connectors\smooth.mjs
+wwwroot\lib\@joint\core\src\connectors\straight.mjs
+wwwroot\lib\@joint\core\src\core.mjs
+wwwroot\lib\@joint\core\src\dia\Cell.mjs
+wwwroot\lib\@joint\core\src\dia\CellCollection.mjs
+wwwroot\lib\@joint\core\src\dia\CellView.mjs
+wwwroot\lib\@joint\core\src\dia\Element.mjs
+wwwroot\lib\@joint\core\src\dia\ElementView.mjs
+wwwroot\lib\@joint\core\src\dia\Graph.mjs
+wwwroot\lib\@joint\core\src\dia\GraphLayer.mjs
+wwwroot\lib\@joint\core\src\dia\GraphLayerCollection.mjs
+wwwroot\lib\@joint\core\src\dia\GraphLayerView.mjs
+wwwroot\lib\@joint\core\src\dia\GraphLayersController.mjs
+wwwroot\lib\@joint\core\src\dia\GraphTopologyIndex.mjs
+wwwroot\lib\@joint\core\src\dia\GridLayerView.mjs
+wwwroot\lib\@joint\core\src\dia\HighlighterView.mjs
+wwwroot\lib\@joint\core\src\dia\LayerView.mjs
+wwwroot\lib\@joint\core\src\dia\LegacyGraphLayerView.mjs
+wwwroot\lib\@joint\core\src\dia\Link.mjs
+wwwroot\lib\@joint\core\src\dia\LinkView.mjs
+wwwroot\lib\@joint\core\src\dia\Paper.mjs
+wwwroot\lib\@joint\core\src\dia\ToolView.mjs
+wwwroot\lib\@joint\core\src\dia\ToolsView.mjs
+wwwroot\lib\@joint\core\src\dia\attributes\connection.mjs
+wwwroot\lib\@joint\core\src\dia\attributes\defs.mjs
+wwwroot\lib\@joint\core\src\dia\attributes\eval.mjs
+wwwroot\lib\@joint\core\src\dia\attributes\index.mjs
+wwwroot\lib\@joint\core\src\dia\attributes\legacy.mjs
+wwwroot\lib\@joint\core\src\dia\attributes\offset.mjs
+wwwroot\lib\@joint\core\src\dia\attributes\props.mjs
+wwwroot\lib\@joint\core\src\dia\attributes\shape.mjs
+wwwroot\lib\@joint\core\src\dia\attributes\text.mjs
+wwwroot\lib\@joint\core\src\dia\index.mjs
+wwwroot\lib\@joint\core\src\dia\ports.mjs
+wwwroot\lib\@joint\core\src\dia\symbols.mjs
+wwwroot\lib\@joint\core\src\elementTools\HoverConnect.mjs
+wwwroot\lib\@joint\core\src\elementTools\index.mjs
+wwwroot\lib\@joint\core\src\env\index.mjs
+wwwroot\lib\@joint\core\src\g\bezier.mjs
+wwwroot\lib\@joint\core\src\g\curve.mjs
+wwwroot\lib\@joint\core\src\g\ellipse.mjs
+wwwroot\lib\@joint\core\src\g\extend.mjs
+wwwroot\lib\@joint\core\src\g\geometry.helpers.mjs
+wwwroot\lib\@joint\core\src\g\index.mjs
+wwwroot\lib\@joint\core\src\g\intersection.mjs
+wwwroot\lib\@joint\core\src\g\line.bearing.mjs
+wwwroot\lib\@joint\core\src\g\line.length.mjs
+wwwroot\lib\@joint\core\src\g\line.mjs
+wwwroot\lib\@joint\core\src\g\line.squaredLength.mjs
+wwwroot\lib\@joint\core\src\g\path.mjs
+wwwroot\lib\@joint\core\src\g\point.mjs
+wwwroot\lib\@joint\core\src\g\points.mjs
+wwwroot\lib\@joint\core\src\g\polygon.mjs
+wwwroot\lib\@joint\core\src\g\polyline.mjs
+wwwroot\lib\@joint\core\src\g\rect.mjs
+wwwroot\lib\@joint\core\src\g\types.mjs
+wwwroot\lib\@joint\core\src\highlighters\addClass.mjs
+wwwroot\lib\@joint\core\src\highlighters\index.mjs
+wwwroot\lib\@joint\core\src\highlighters\list.mjs
+wwwroot\lib\@joint\core\src\highlighters\mask.mjs
+wwwroot\lib\@joint\core\src\highlighters\opacity.mjs
+wwwroot\lib\@joint\core\src\highlighters\stroke.mjs
+wwwroot\lib\@joint\core\src\layout\index.mjs
+wwwroot\lib\@joint\core\src\layout\ports\port.mjs
+wwwroot\lib\@joint\core\src\layout\ports\portLabel.mjs
+wwwroot\lib\@joint\core\src\linkAnchors\index.mjs
+wwwroot\lib\@joint\core\src\linkTools\Anchor.mjs
+wwwroot\lib\@joint\core\src\linkTools\Arrowhead.mjs
+wwwroot\lib\@joint\core\src\linkTools\RotateLabel.mjs
+wwwroot\lib\@joint\core\src\linkTools\Segments.mjs
+wwwroot\lib\@joint\core\src\linkTools\Vertices.mjs
+wwwroot\lib\@joint\core\src\linkTools\index.mjs
+wwwroot\lib\@joint\core\src\mvc\Collection.mjs
+wwwroot\lib\@joint\core\src\mvc\Data.mjs
+wwwroot\lib\@joint\core\src\mvc\Dom\Dom.mjs
+wwwroot\lib\@joint\core\src\mvc\Dom\Event.mjs
+wwwroot\lib\@joint\core\src\mvc\Dom\animations.mjs
+wwwroot\lib\@joint\core\src\mvc\Dom\events.mjs
+wwwroot\lib\@joint\core\src\mvc\Dom\index.mjs
+wwwroot\lib\@joint\core\src\mvc\Dom\methods.mjs
+wwwroot\lib\@joint\core\src\mvc\Dom\props.mjs
+wwwroot\lib\@joint\core\src\mvc\Dom\vars.mjs
+wwwroot\lib\@joint\core\src\mvc\Events.mjs
+wwwroot\lib\@joint\core\src\mvc\Listener.mjs
+wwwroot\lib\@joint\core\src\mvc\Model.mjs
+wwwroot\lib\@joint\core\src\mvc\View.mjs
+wwwroot\lib\@joint\core\src\mvc\ViewBase.mjs
+wwwroot\lib\@joint\core\src\mvc\index.mjs
+wwwroot\lib\@joint\core\src\mvc\mvcUtils.mjs
+wwwroot\lib\@joint\core\src\polyfills\array.js
+wwwroot\lib\@joint\core\src\polyfills\base64.js
+wwwroot\lib\@joint\core\src\polyfills\index.mjs
+wwwroot\lib\@joint\core\src\polyfills\number.js
+wwwroot\lib\@joint\core\src\polyfills\string.js
+wwwroot\lib\@joint\core\src\polyfills\typedArray.js
+wwwroot\lib\@joint\core\src\routers\index.mjs
+wwwroot\lib\@joint\core\src\routers\manhattan.mjs
+wwwroot\lib\@joint\core\src\routers\metro.mjs
+wwwroot\lib\@joint\core\src\routers\normal.mjs
+wwwroot\lib\@joint\core\src\routers\oneSide.mjs
+wwwroot\lib\@joint\core\src\routers\orthogonal.mjs
+wwwroot\lib\@joint\core\src\routers\rightAngle.mjs
+wwwroot\lib\@joint\core\src\shapes\index.mjs
+wwwroot\lib\@joint\core\src\shapes\standard.mjs
+wwwroot\lib\@joint\core\src\util\calc.mjs
+wwwroot\lib\@joint\core\src\util\cloneCells.mjs
+wwwroot\lib\@joint\core\src\util\getRectPoint.mjs
+wwwroot\lib\@joint\core\src\util\index.mjs
+wwwroot\lib\@joint\core\src\util\svgTagTemplate.mjs
+wwwroot\lib\@joint\core\src\util\util.mjs
+wwwroot\lib\@joint\core\src\util\utilHelpers.mjs
+wwwroot\lib\@joint\core\src\util\wrappers.mjs
+wwwroot\lib\@joint\core\types\geometry.d.ts
+wwwroot\lib\@joint\core\types\index.d.ts
+wwwroot\lib\@joint\core\types\joint.d.ts
+wwwroot\lib\@joint\core\types\joint.head.d.ts
+wwwroot\lib\@joint\core\types\vectorizer.d.ts
 wwwroot\lib\bootstrap-icons\bootstrap-icons.svg
 wwwroot\lib\bootstrap-icons\font\bootstrap-icons.css
 wwwroot\lib\bootstrap-icons\font\bootstrap-icons.json
@@ -4953,3 +5284,30 @@ wwwroot\lib\jquery\LICENSE.txt
 wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
+wwwroot\lib\perfect-freehand\LICENSE
+wwwroot\lib\perfect-freehand\README.md
+wwwroot\lib\perfect-freehand\dist\cjs\index.js
+wwwroot\lib\perfect-freehand\dist\cjs\index.js.map
+wwwroot\lib\perfect-freehand\dist\esm\index.mjs
+wwwroot\lib\perfect-freehand\dist\esm\index.mjs.map
+wwwroot\lib\perfect-freehand\dist\types\bench\stroke.bench.d.ts
+wwwroot\lib\perfect-freehand\dist\types\bench\stroke.bench.d.ts.map
+wwwroot\lib\perfect-freehand\dist\types\constants.d.ts
+wwwroot\lib\perfect-freehand\dist\types\constants.d.ts.map
+wwwroot\lib\perfect-freehand\dist\types\getStroke.d.ts
+wwwroot\lib\perfect-freehand\dist\types\getStroke.d.ts.map
+wwwroot\lib\perfect-freehand\dist\types\getStrokeOutlinePoints.d.ts
+wwwroot\lib\perfect-freehand\dist\types\getStrokeOutlinePoints.d.ts.map
+wwwroot\lib\perfect-freehand\dist\types\getStrokePoints.d.ts
+wwwroot\lib\perfect-freehand\dist\types\getStrokePoints.d.ts.map
+wwwroot\lib\perfect-freehand\dist\types\getStrokeRadius.d.ts
+wwwroot\lib\perfect-freehand\dist\types\getStrokeRadius.d.ts.map
+wwwroot\lib\perfect-freehand\dist\types\index.d.ts
+wwwroot\lib\perfect-freehand\dist\types\index.d.ts.map
+wwwroot\lib\perfect-freehand\dist\types\simulatePressure.d.ts
+wwwroot\lib\perfect-freehand\dist\types\simulatePressure.d.ts.map
+wwwroot\lib\perfect-freehand\dist\types\types.d.ts
+wwwroot\lib\perfect-freehand\dist\types\types.d.ts.map
+wwwroot\lib\perfect-freehand\dist\types\vec.d.ts
+wwwroot\lib\perfect-freehand\dist\types\vec.d.ts.map
+wwwroot\lib\perfect-freehand\package.json
