@@ -597,6 +597,7 @@
                             <ul>
                                 <li><a asp-action="Create" asp-controller="User">New User </a></li>
                                 <li><a asp-action="Index" asp-controller="User">Users List</a></li>
+                                <li><a asp-action="CoronaryDiagram" asp-controller="User">Coronary Diagram</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
@@ -670,6 +671,22 @@
                     $("#page-wrapper").html("<p>Error loading data</p>");
                 }
             });
+        });
+        $(document).on("click", "a.spa-link", function (e) {
+            var url = $(this).attr("href");
+            if (url && url !== "#" && !url.startsWith("javascript")) {    
+                e.preventDefault();
+                // Load page into wrapper
+                $("#page-wrapper").load(url, function (response, status, xhr) {
+                    if (status === "error") {
+                        $("#page-wrapper").html("<p>Error loading content.</p>");
+                    } else {
+                        // Update browser URL without reloading
+                        window.history.pushState({ path: url }, "", url);
+                        setActiveMenu();
+                    }
+                });
+            }
         });
 
         $(document).ready(function () {

@@ -52,6 +52,14 @@ namespace Inventory.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> CoronaryDiagram()
+        {
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_CoronaryDiagram");
+            }
+            return View("_CoronaryDiagram");
+        }
         [HttpPost]
         public async Task<IActionResult> Create(UserDto userDto)
         {
