@@ -45,11 +45,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\js\dist\" />
     <Folder Include="wwwroot\SubCategoryImages\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\js\UserHub.js" />
   </ItemGroup>
-
+  <Target Name="NpmBuild" BeforeTargets="Build">
+    <Exec Command="npm install" />
+    <Exec Command="npm run build" />
+  </Target>
 </Project>

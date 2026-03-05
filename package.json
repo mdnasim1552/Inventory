@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@joint/core": "^4.2.4",
-    "perfect-freehand": "^1.2.3"
-  }
-}
