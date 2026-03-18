@@ -98,10 +98,50 @@ joint.shapes.custom.Worm = joint.dia.Element.define('custom.Worm', {
         }
     ]
 });
+joint.shapes.custom.Stent = joint.dia.Element.define('custom.Stent', {
+
+    size: { width: 60, height: 30 },
+
+    attrs: {
+
+        body: {
+            d: '',
+            fill: {
+                type: 'linearGradient',
+                stops: [
+                    { offset: '0%', color: '#D3D3D3' },   // top highlight
+                    { offset: '50%', color: '#8F8F8F' },  // metallic depth
+                    { offset: '100%', color: '#D3D3D3' }  // bottom highlight
+                ]
+            },
+            stroke: '#555555',
+            strokeWidth: 1.2
+        },
+
+        mesh: {
+            d: '',
+            fill: 'none',
+            stroke: '#000000',   // black mesh
+            strokeWidth: 1.6,
+            strokeLinejoin: 'round',
+            strokeLinecap: 'round',
+            opacity: 0.9
+        }
+
+    }
+
+}, {
+
+    markup: [
+        { tagName: 'path', selector: 'body' },
+        { tagName: 'path', selector: 'mesh' }
+    ]
+
+});
 joint.shapes.custom.UpBottomStroke = joint.dia.Element.define('custom.UpBottomStroke', {
     size: { width: 1, height: 1 }, // small because we position paths absolutely
     attrs: {
-        root: { class: 'custom-shape' }, 
+        root: { class: 'custom-shape' },
         topPath: { d: '', fill: 'none', stroke: 'blue', strokeWidth: 8 },
         bottomPath: { d: '', fill: 'none', stroke: 'orange', strokeWidth: 8 },
         fillBody: { d: '', fill: '#aa0000', stroke: 'none' } // optional fill
@@ -120,32 +160,31 @@ joint.shapes.custom.UpBottomStroke = joint.dia.Element.define('custom.UpBottomSt
 joint.shapes.custom.FormNote = joint.dia.Element.define(
     'custom.FormNote',
     {
-        size: { width: 350, height: 150 },
-    },
-    {
+        size: { width: 220, height: 120 },
+
+        attrs: {
+            body: {
+                refWidth: '100%',
+                refHeight: '100%',
+                fill: '#fffbe6',
+                stroke: '#333',
+                rx: 10,
+                ry: 10
+            },
+            fo: {
+                refWidth: '100%',
+                refHeight: '100%'
+            }
+        },
+
         markup: [
             {
                 tagName: 'rect',
-                selector: 'body',
-                attributes: {
-                    width: 350,
-                    height: 150,
-                    fill: '#fffbe6',
-                    stroke: '#333',
-                    rx: 10,
-                    ry: 10
-                }
+                selector: 'body'
             },
             {
                 tagName: 'foreignObject',
                 selector: 'fo',
-                attributes: {
-                    width: 350,
-                    height: 150,
-                    x: 0,
-                    y: 0,
-                    overflow: 'hidden'
-                },
                 children: [
                     {
                         tagName: 'div',
@@ -168,32 +207,99 @@ joint.shapes.custom.FormNoteView = joint.dia.ElementView.extend({
         if (!container) return this;
 
         container.innerHTML = `
-    <div class="FormNoteViewDiv"
-    ">
-        <div class="FormNoteViewInnerDiv">
-            <label class="FormNoteViewLable">Vessel:</label>
-            <input type="number" min="1" max="100" joint-selector="vesselInput"/>
-        </div>
-    </div>
-`;
-const input = container.querySelector('[joint-selector="vesselInput"]');
+            <div class="FormNoteViewDiv">
+                <label joint-selector="noteHeaderLabel">Stenosis:</label>
+                <div class="FormNoteViewInnerDiv" joint-selector="heightDiv">
+                    <label class="FormNoteViewLable">Percent:</label>
+                    <input type="number" min="1" max="100" joint-selector="vesselHeightInput"/>
+                </div>
+                <div class="FormNoteViewInnerDiv" joint-selector="widthDiv">
+                    <label class="FormNoteViewLable">Width:&nbsp;&nbsp;&nbsp;</label>
+                    <input type="number" min="1" max="100" joint-selector="vesselWidthInput"/>
+                </div>
+                <div class="FormNoteViewInnerDiv" joint-selector="lengthDiv">
+                    <label class="FormNoteViewLable">Length:&nbsp;</label>
+                    <input type="number" min="1" max="100" joint-selector="vesselLengthInput"/>
+                </div>
+            </div>
+        `;
 
-        // 🔥 Restore saved value
-        input.value = this.model.get('vesselValue') || '';
-        const MAX = 100;
-        // 🔥 Save to model when changed
-        input.addEventListener('input', (e) => {
-            let value = parseFloat(e.target.value);
-
-            // If value is above max, clamp it
-            if (!isNaN(value) && value > MAX) {
-                value = MAX;
-                e.target.value = value; // update input
+        const parentId = this.model.get('attachedTo');
+        if (parentId) {
+            const graph = this.paper.model; // assuming paper is accessible
+            const parent = graph.getCell(parentId);
+            const noteHeaderLabel = container.querySelector('[joint-selector="noteHeaderLabel"]');
+            const heightDiv = container.querySelector('[joint-selector="heightDiv"]');
+            const widthDiv = container.querySelector('[joint-selector="widthDiv"]');
+            if (parent && (parent.get('type') === 'custom.Worm')) {
+                noteHeaderLabel.textContent = 'Oclusion:';
+                if (heightDiv) heightDiv.style.display = 'none';
+                if (widthDiv) widthDiv.style.display = 'none';
+            } else if (parent && parent.get('type') === 'custom.Stent') {
+                noteHeaderLabel.textContent = 'Stent:';
+                if (heightDiv) heightDiv.style.display = 'none';
             }
+            else if (parent && parent.get('type') === 'custom.UpBottomStroke') {
+                noteHeaderLabel.textContent = 'Stenosis:';
+                if (widthDiv) widthDiv.style.display = 'none';
+            }
+        }
+        if (!container.dataset.initialized) {
+            const lengthInput = container.querySelector('[joint-selector="vesselLengthInput"]');
+            const heightInput = container.querySelector('[joint-selector="vesselHeightInput"]');
+            const widthtInput = container.querySelector('[joint-selector="vesselWidthInput"]');
+            lengthInput.value = this.model.get('vesselLengthValue') || '';
+            heightInput.value = this.model.get('vesselHeightInput') || '';
+            widthtInput.value = this.model.get('vesselWidthInput') || '';
+            const MAX = 100;
+            lengthInput.addEventListener('input', (e) => {
+                let value = parseFloat(e.target.value);
+                if (!isNaN(value) && value > MAX) {
+                    value = MAX;
+                    e.target.value = value;
+                }
+                this.model.set('vesselLengthValue', value);
+            });
+            heightInput.addEventListener('input', (e) => {
+                let value = parseFloat(e.target.value);
+                if (!isNaN(value) && value > MAX) {
+                    value = MAX;
+                    e.target.value = value;
+                }
+                this.model.set('vesselHeightInput', value);
+            });
+            widthtInput.addEventListener('input', (e) => {
+                let value = parseFloat(e.target.value);
+                if (!isNaN(value) && value > MAX) {
+                    value = MAX;
+                    e.target.value = value;
+                }
+                this.model.set('vesselWidthInput', value);
+            });
+            container.dataset.initialized = "true";
+        }
+        requestAnimationFrame(() => {
 
-            // Update model
-            this.model.set('vesselValue', value);
+            const content = container.firstElementChild;
+
+            const width = content.scrollWidth + 2;
+            const height = content.scrollHeight + 2;
+
+            this.model.resize(width, height);
+
+            this.model.attr({
+                body: {
+                    width: width,
+                    height: height
+                },
+                fo: {
+                    width: width,
+                    height: height
+                }
+            });
+
         });
+
         return this;
     }
 });
@@ -324,9 +430,9 @@ class Branch extends joint.dia.Link {
                     // Custom attributes
                     organicStroke: true,
                     organicStrokeSize: 20,
-                    organicStrokeThinning:0,
-                    organicStrokeTaper:false,
-                    organicStrokeStartCap:true,
+                    organicStrokeThinning: 0,
+                    organicStrokeTaper: false,
+                    organicStrokeStartCap: true,
                 },
             },
         };
@@ -430,11 +536,11 @@ class Branch extends joint.dia.Link {
                     thinning: attrs['organic-stroke-thinning'] ?? 0, // <-- read from attrs
                     simulatePressure: false,
                     last: true,
-                    end:{
+                    end: {
                         taper: attrs['organic-stroke-taper'] ?? false,
-                        cap:false
+                        cap: false
                     },
-                    start:{
+                    start: {
                         cap: attrs['organic-stroke-start-cap'] ?? true,
                     }
                 });
@@ -573,12 +679,12 @@ function undo() {
         // }
         switch (op.type) {
             case 'snapshot':
-                restoreFromSnapshot.restoreFromSnapshot(graph, op.before,shapeNamespace,joint); // restore manually
+                restoreFromSnapshot.restoreFromSnapshot(graph, op.before, shapeNamespace, joint); // restore manually
                 refreshPaper();
                 break;
             case 'addElement': op.element.remove(); break;
             case 'removeElement': graph.addCell(op.element); break;
-            case 'moveElement': 
+            case 'moveElement':
                 op.element.position(op.from.x, op.from.y);
                 break;
             case 'moveAttachment':
@@ -590,7 +696,7 @@ function undo() {
                 RefreshElementAfterUndoAndRedo(op.element);
                 break;
             case 'addLink':
-                op.link.remove(); 
+                op.link.remove();
                 // if(undoStack.length>1){
                 //     op.link.remove(); 
                 // }
@@ -638,12 +744,12 @@ function redo() {
         // }
         switch (op.type) {
             case 'snapshot':
-                restoreFromSnapshot.restoreFromSnapshot(graph, op.after,shapeNamespace,joint); 
+                restoreFromSnapshot.restoreFromSnapshot(graph, op.after, shapeNamespace, joint);
                 refreshPaper();
                 break;
             case 'addElement': graph.addCell(op.element); break;
             case 'removeElement': op.element.remove(); break;
-            case 'moveElement': 
+            case 'moveElement':
                 op.element.position(op.to.x, op.to.y);
                 break;
             case 'moveAttachment':
@@ -683,15 +789,18 @@ function redo() {
     undoStack.push(ops);
     isRestoring = false;
 }
-function RefreshElementAfterUndoAndRedo(element){
+function RefreshElementAfterUndoAndRedo(element) {
     if (element.get('type') === 'custom.Worm') {
-        insertObjectInsideLink.updateWormShape(element,graph,paper);
-    } 
-    else if(element.get('type') === 'custom.UpBottomStroke') {
-        insertObjectInsideLink.updateUpBottomStrokeShape(element,graph,paper);
+        insertObjectInsideLink.updateWormShape(element, graph, paper);
+    }
+    else if (element.get('type') === 'custom.Stent') {
+        insertObjectInsideLink.updateStentShape(element, graph, paper);
+    }
+    else if (element.get('type') === 'custom.UpBottomStroke') {
+        insertObjectInsideLink.updateUpBottomStrokeShape(element, graph, paper);
     }
     else {
-        insertObjectInsideLink.updateRectanglePosition(element,graph,paper,joint,isRestoring);
+        insertObjectInsideLink.updateRectanglePosition(element, graph, paper, joint, isRestoring);
     }
 }
 // --- Keyboard shortcuts ---
@@ -700,15 +809,17 @@ document.addEventListener('keydown', e => {
     // Undo
     if ((e.ctrlKey || e.metaKey) && key === 'z' && !e.shiftKey) {
         e.preventDefault();
-        if(undoStack.length>2){
+        if (undoStack.length > 2) {
             undo();
+            insertObjectInsideLink.LoadGridData(graph.toJSON());
         }
-        
+
     }
     // Redo
     if ((e.ctrlKey || e.metaKey) && ((key === 'y') || (e.shiftKey && key === 'z'))) {
         e.preventDefault();
         redo();
+        insertObjectInsideLink.LoadGridData(graph.toJSON());
     }
 });
 
@@ -873,13 +984,15 @@ graph.on('change:source change:target', function (link) {
     }
     RefreshElementsOfGraph(link);
 });
-function RefreshElementsOfGraph(link){
+function RefreshElementsOfGraph(link) {
     graph.getElements().forEach(el => {
         const attachment = el.get('linkAttachment');
         if (attachment && attachment.linkId === link.id) {
             if (el.get('type') === 'custom.Worm') {
                 insertObjectInsideLink.updateWormShape(el, graph, paper);
-            } 
+            } else if (el.get('type') === 'custom.Stent') {
+                insertObjectInsideLink.updateStentShape(el, graph, paper);
+            }
             else if (el.get('type') === 'custom.UpBottomStroke') {
                 insertObjectInsideLink.updateUpBottomStrokeShape(el, graph, paper);
             }
@@ -992,15 +1105,16 @@ function showElementMenu({ x, y, elementView, isNote }) {
                     }
                 }
                 model.remove();
+                insertObjectInsideLink.LoadGridData(graph.toJSON());
             }
-        }else if (action === 'add-note') {
-            addNoteToElement.addNoteToElement(graph,paper,joint,model,x,y);
+        } else if (action === 'add-note') {
+            addNoteToElement.addNoteToElement(graph, paper, joint, model);
         }
         elementMenu.style.display = 'none';
         menuOpen = false;
     };
 }
-graph.on('change:vesselValue', function(note, value) {
+graph.on('change:vesselLengthValue', function (note, value) {
     const elementId = note.get('attachedTo');
     if (!elementId) return;
 
@@ -1012,11 +1126,66 @@ graph.on('change:vesselValue', function(note, value) {
 
     element.set('linkAttachment', {
         ...attachment,
-        widthPercent: value
+        lengthPercent: value
     });
     if (element.isElement() && element.get('type') === 'custom.Worm') {
         insertObjectInsideLink.updateWormShape(element, graph, paper);
-    } else if(element.isElement() && element.get('type') === 'custom.UpBottomStroke') {
+    } else if (element.isElement() && element.get('type') === 'custom.Stent') {
+        insertObjectInsideLink.updateStentShape(element, graph, paper);
+    }
+    else if (element.isElement() && element.get('type') === 'custom.UpBottomStroke') {
+        insertObjectInsideLink.updateUpBottomStrokeShape(element, graph, paper);
+    }
+    else {
+        insertObjectInsideLink.updateRectanglePosition(element, graph, paper, joint, isRestoring);
+    }
+});
+graph.on('change:vesselHeightInput', function (note, value) {
+    const elementId = note.get('attachedTo');
+    if (!elementId) return;
+
+    const element = graph.getCell(elementId);
+    if (!element) return;
+
+    const attachment = element.get('linkAttachment');
+    if (!attachment) return;
+
+    element.set('linkAttachment', {
+        ...attachment,
+        heightPercent: value
+    });
+    if (element.isElement() && element.get('type') === 'custom.Worm') {
+        insertObjectInsideLink.updateWormShape(element, graph, paper);
+    } else if (element.isElement() && element.get('type') === 'custom.Stent') {
+        insertObjectInsideLink.updateStentShape(element, graph, paper);
+    }
+    else if (element.isElement() && element.get('type') === 'custom.UpBottomStroke') {
+        insertObjectInsideLink.updateUpBottomStrokeShape(element, graph, paper);
+    }
+    else {
+        insertObjectInsideLink.updateRectanglePosition(element, graph, paper, joint, isRestoring);
+    }
+});
+graph.on('change:vesselWidthInput', function (note, value) {
+    const elementId = note.get('attachedTo');
+    if (!elementId) return;
+
+    const element = graph.getCell(elementId);
+    if (!element) return;
+
+    const attachment = element.get('linkAttachment');
+    if (!attachment) return;
+
+    element.set('linkAttachment', {
+        ...attachment,
+        widthMM: value
+    });
+    if (element.isElement() && element.get('type') === 'custom.Worm') {
+        insertObjectInsideLink.updateWormShape(element, graph, paper);
+    } else if (element.isElement() && element.get('type') === 'custom.Stent') {
+        insertObjectInsideLink.updateStentShape(element, graph, paper);
+    }
+    else if (element.isElement() && element.get('type') === 'custom.UpBottomStroke') {
         insertObjectInsideLink.updateUpBottomStrokeShape(element, graph, paper);
     }
     else {
@@ -1046,7 +1215,7 @@ paper.el.addEventListener('contextmenu', (evt) => {
     const vertexIndex = getVertexIndexFromMouse(view, paper, evt);
     const segmentIndex = getNearestSegmentIndex(view, paper, evt);
     //if (vertexIndex === -1) return; // Not a vertex
-    if (vertexIndex === -1) {      
+    if (vertexIndex === -1) {
         if (segmentIndex !== -1) {
             showLinkColorMenu({
                 x: evt.clientX,
@@ -1165,32 +1334,42 @@ function showLinkColorMenu({ x, y, linkView, segmentIndex }) {
         if (!link) return;
         const linkView = paper.findViewByModel(link);
         if (!linkView) return;
-        if (color && !action){
+
+        const localPoint = paper.clientToLocalPoint({ x: x, y: y });
+        const connection = linkView.getConnection();
+        const totalLength = connection.length();
+        const closestLength = connection.closestPointLength(localPoint);
+        let ratio = Math.max(0, Math.min(1, closestLength / totalLength));
+
+        if (color && !action) {
             executeWithSnapshot(graph, () => {
                 splitLinkAndInertObject.splitLinkWithChildren(linkView, activeSegmentIndex, color, Branch);
             });
             colorMenu.style.display = 'none';
-        }else{
+        } else {
             if (!action) return;
             if (action === 'hide-label') {
                 hideAllLinkLabels();
-            }else if(action === 'show-label') {
+            } else if (action === 'show-label') {
                 showAllLinkLabels();
-            }else if(action==='add-rectangle'){
-                insertObjectInsideLink.insertRectangleOnLink(link,x,y,graph,paper,joint.shapes.standard.Rectangle,joint,isRestoring);
-            }else if(action==='divide-segment'){                
+            } else if (action === 'add-rectangle') {
+                insertObjectInsideLink.insertRectangleOnLink(link, ratio, x, y, graph, paper, joint.shapes.standard.Rectangle, joint, isRestoring);
+            } else if (action === 'divide-segment') {
                 executeWithSnapshot(graph, () => {
-                    splitLinkAndInertObject.splitLinkAtPointWithRectangle(linkView, x,y,paper,Branch,joint.shapes.standard.Rectangle);
+                    splitLinkAndInertObject.splitLinkAtPointWithRectangle(linkView, x, y, paper, Branch, joint.shapes.standard.Rectangle);
                 });
-            }else if(action==='add-worm'){ 
-                insertObjectInsideLink.insertWormOnLink(link,x,y,color,graph,paper,joint);
-            }else if(action==='add-up-bottom-stroke'){
-                insertObjectInsideLink.insertUpBottomStroke(link,x,y,graph,paper,joint);
+            } else if (action === 'add-worm') {
+                insertObjectInsideLink.insertWormOnLink(link, ratio, color, graph, paper, joint);
+            } else if (action === 'add-stent') {
+                insertObjectInsideLink.insertStentOnLink(link, ratio, color, graph, paper, joint);
             }
-            
+            else if (action === 'add-up-bottom-stroke') {
+                insertObjectInsideLink.insertUpBottomStroke(link, ratio, graph, paper, joint);
+            }
+
             colorMenu.style.display = 'none';
         }
-        
+
         menuOpen = false;
     };
 }
@@ -1214,7 +1393,7 @@ function executeWithSnapshot(graph, fn) {
     // }]);
     redoStack.length = 0;
 }
-paper.on('element:pointermove', function(view, evt, x, y) {
+paper.on('element:pointermove', function (view, evt, x, y) {
     const element = view.model;
     const attachment = element.get('linkAttachment');
     if (!attachment) return;
@@ -1234,11 +1413,15 @@ paper.on('element:pointermove', function(view, evt, x, y) {
     element.set('linkAttachment', {
         linkId: attachment.linkId,
         ratio: ratio,
-        widthPercent: attachment.widthPercent || 10,
+        lengthPercent: attachment.lengthPercent,
+        heightPercent: attachment.heightPercent,
+        widthMM: attachment.widthMM,
     });
     if (element.isElement() && element.get('type') === 'custom.Worm') {
         insertObjectInsideLink.updateWormShape(element, graph, paper);
-    } else if(element.isElement() && element.get('type') === 'custom.UpBottomStroke') {
+    } else if (element.isElement() && element.get('type') === 'custom.Stent') {
+        insertObjectInsideLink.updateStentShape(element, graph, paper);
+    } else if (element.isElement() && element.get('type') === 'custom.UpBottomStroke') {
         insertObjectInsideLink.updateUpBottomStrokeShape(element, graph, paper);
     }
     else {
@@ -1254,25 +1437,259 @@ paper.on('element:pointerdown', (view, evt) => {
     dragStartPosition.set(element.id, element.get('linkAttachment').ratio);
 });
 
-paper.on('element:pointerup', (view, evt) => {
+// paper.on('element:pointerup', (view, evt) => {
+//     const element = view.model;
+//     const attachment = element.get('linkAttachment');
+//     if (!attachment) return;
+
+//     const startRatio = dragStartPosition.get(element.id);
+//     dragStartPosition.delete(element.id);
+
+//     const endRatio = element.get('linkAttachment').ratio;
+
+//     if (startRatio === undefined || startRatio === endRatio) return;
+
+//     pushOperation({
+//         type: 'moveAttachment',
+//         element: element,
+//         from: startRatio,
+//         to: endRatio
+//     });
+// });
+paper.on('element:pointerup', (view) => {
+
     const element = view.model;
     const attachment = element.get('linkAttachment');
     if (!attachment) return;
 
+    const link = graph.getCell(attachment.linkId);
+    if (!link) return;
+
     const startRatio = dragStartPosition.get(element.id);
     dragStartPosition.delete(element.id);
 
-    const endRatio = element.get('linkAttachment').ratio;
+    const safeRatio = resolveAttachmentCollision(element, graph, link, paper);
+
+    if (safeRatio !== attachment.ratio) {
+
+        element.set('linkAttachment', {
+            ...attachment,
+            ratio: safeRatio
+        });
+
+        updateElementPosition(element, graph, paper, joint);
+
+    }
+
+    const endRatio = safeRatio;
 
     if (startRatio === undefined || startRatio === endRatio) return;
 
     pushOperation({
         type: 'moveAttachment',
-        element: element,
+        element,
         from: startRatio,
         to: endRatio
     });
+
 });
+export function updateElementPosition(element, graph, paper, joint, isRestoring = false) {
+
+    const type = element.get('type');
+
+    if (type === 'custom.Worm') {
+
+        insertObjectInsideLink.updateWormShape(element, graph, paper);
+
+    }
+    else if (type === 'custom.UpBottomStroke') {
+
+        insertObjectInsideLink.updateUpBottomStrokeShape(element, graph, paper);
+
+    }
+    else if (type === 'custom.Stent') {
+
+        insertObjectInsideLink.updateStentShape(element, graph, paper);
+
+    }
+    else {
+
+        insertObjectInsideLink.updateRectanglePosition(
+            element,
+            graph,
+            paper,
+            joint,
+            isRestoring
+        );
+
+    }
+}
+export function resolveAttachmentCollision(element, graph, link, paper) {
+
+    const attachment = element.get('linkAttachment');
+    if (!attachment) return attachment?.ratio;
+
+    const linkView = paper.findViewByModel(link);
+    if (!linkView) return attachment.ratio;
+
+    const connection = linkView.getConnection();
+    if (!connection) return attachment.ratio;
+
+    const totalLength = connection.length();
+    if (!totalLength) return attachment.ratio;
+
+    let ratio = attachment.ratio;
+
+    function getElementLength(el) {
+
+        const a = el.get('linkAttachment');
+        const type = el.get('type');
+
+        if (type === 'custom.Worm' || type === 'custom.UpBottomStroke' || type === 'custom.Stent') {
+            const percent = a.lengthPercent || 10;
+            return (percent / 100) * totalLength;
+        }
+
+        return el.size()?.width || 40;
+    }
+
+    const currentLength = getElementLength(element);
+    const currentHalf = (currentLength / totalLength) / 2;
+
+    const others = graph.getElements()
+        .filter(el => {
+            const a = el.get('linkAttachment');
+            return a && a.linkId === link.id && el.id !== element.id;
+        })
+        .map(el => {
+
+            const len = getElementLength(el);
+            const half = (len / totalLength) / 2;
+
+            return {
+                ratio: el.get('linkAttachment').ratio,
+                half
+            };
+
+        })
+        .sort((a, b) => a.ratio - b.ratio);
+
+    let newRatio = ratio;
+
+    // 🔹 BACKWARD resolve first
+    for (let i = others.length - 1; i >= 0; i--) {
+
+        const o = others[i];
+        const minGap = currentHalf + o.half;
+
+        if (Math.abs(newRatio - o.ratio) < minGap) {
+            newRatio = o.ratio - minGap;
+        }
+
+    }
+
+    // 🔹 if reached start boundary → try forward
+    if (newRatio < currentHalf) {
+
+        newRatio = ratio;
+
+        for (const o of others) {
+
+            const minGap = currentHalf + o.half;
+
+            if (Math.abs(newRatio - o.ratio) < minGap) {
+                newRatio = o.ratio + minGap;
+            }
+
+        }
+
+    }
+
+    return Math.max(currentHalf, Math.min(1 - currentHalf, newRatio));
+}
+// export function resolveAttachmentCollision(element, graph, link, paper) {
+
+//     const attachment = element.get('linkAttachment');
+//     if (!attachment) return attachment?.ratio;
+
+//     const linkView = paper.findViewByModel(link);
+//     if (!linkView) return attachment.ratio;
+
+//     const connection = linkView.getConnection();
+//     if (!connection) return attachment.ratio;
+
+//     const totalLength = connection.length();
+//     if (!totalLength) return attachment.ratio;
+
+//     let ratio = attachment.ratio;
+
+//     function getElementLength(el) {
+
+//         const a = el.get('linkAttachment');
+//         const type = el.get('type');
+
+//         if (type === 'custom.Worm' || type === 'custom.UpBottomStroke') {
+//             const percent = a.lengthPercent || 10;
+//             return (percent / 100) * totalLength;
+//         }
+
+//         return el.size()?.width || 40;
+//     }
+
+//     const currentLength = getElementLength(element);
+//     const currentHalf = (currentLength / totalLength) / 2;
+
+//     const others = graph.getElements()
+//         .filter(el => {
+//             const a = el.get('linkAttachment');
+//             return a && a.linkId === link.id && el.id !== element.id;
+//         })
+//         .map(el => {
+
+//             const len = getElementLength(el);
+//             const half = (len / totalLength) / 2;
+
+//             return {
+//                 ratio: el.get('linkAttachment').ratio,
+//                 half
+//             };
+
+//         })
+//         .sort((a, b) => a.ratio - b.ratio);
+
+//     let newRatio = ratio;
+
+//     // forward resolve
+//     for (const o of others) {
+
+//         const minGap = currentHalf + o.half;
+
+//         if (Math.abs(newRatio - o.ratio) < minGap) {
+//             newRatio = o.ratio + minGap;
+//         }
+
+//     }
+
+//     // backward resolve if needed
+//     if (newRatio > 1 - currentHalf) {
+
+//         newRatio = ratio;
+
+//         for (let i = others.length - 1; i >= 0; i--) {
+
+//             const o = others[i];
+//             const minGap = currentHalf + o.half;
+
+//             if (Math.abs(newRatio - o.ratio) < minGap) {
+//                 newRatio = o.ratio - minGap;
+//             }
+
+//         }
+
+//     }
+
+//     return Math.max(currentHalf, Math.min(1 - currentHalf, newRatio));
+// }
 function hideAllLinkLabels() {
     graph.getLinks().forEach(link => {
         const labels = link.labels();
@@ -1288,7 +1705,7 @@ function hideAllLinkLabels() {
         });
     });
 }
-function showAllLinkLabels(){
+function showAllLinkLabels() {
     graph.getLinks().forEach(link => {
         const labels = link.labels();
         labels.forEach((label, index) => {
@@ -1344,24 +1761,45 @@ function deleteVertex(linkView, vertexIndex) {
 const labelLayerEl = paper.getLayerNode('labels');
 labelLayerEl.parentElement.appendChild(labelLayerEl);
 // Events
-function onPaperLinkMouseEnter(linkView,evt) {
+function onPaperLinkMouseEnter(linkView, evt) {
     if (menuOpen) return;
+    if (cabgMode) return;
+    const model = linkView.model;
+
+    // 🔥 PRIORITY: bring CABG to front
+    //if (model.get('isCABG')) {
+    //    model.toFront();
+    //}
     const target = evt.target;
     if (target.closest('.custom-shape')) return;
     // Scale the tools based on the width of the link.
     const branchWidth = linkView.model.attr('line/organicStrokeSize') || 5;
     const scale = Math.max(1, Math.min(2, branchWidth / 5));
-    const toolsView = new joint.dia.ToolsView({
-        tools: [
-            new joint.linkTools.Vertices({
-                snapRadius: 0,              // allow very close placement
-                redundancyRemoval: false,   // DO NOT auto-remove
-                vertexAdding: true
+    const tools = [
+        new joint.linkTools.Vertices({
+            snapRadius: 0,              // allow very close placement
+            redundancyRemoval: false,   // DO NOT auto-remove
+            vertexAdding: true
+        }),
+
+        //new joint.linkTools.Remove({ scale }),
+    ];
+    if (linkView.model.get('isCABG')) {
+        tools.push(
+            new joint.linkTools.Remove({
+                distance: '35%',   // center of link
+                scale: 3,
             }),
+            new joint.linkTools.SourceAnchor({ restrictArea: false, scale: 3 }),
+            new joint.linkTools.TargetAnchor({ restrictArea: false, scale: 3 }),
+        );
+    } else {
+        tools.push(
             new joint.linkTools.SourceAnchor({ restrictArea: false, scale }),
-            //new joint.linkTools.Remove({ scale }),
-        ],
-    });
+            new joint.linkTools.TargetAnchor({ restrictArea: false, scale }),
+        );
+    }
+    const toolsView = new joint.dia.ToolsView({ tools });
     linkView.addTools(toolsView);
 }
 function onPaperLinkMouseLeave(linkView) {
@@ -1554,13 +1992,14 @@ function refreshPaper() {
         if (view) view.update();
     });
 }
-document.getElementById('saveBtn').addEventListener('click', () => {
+$(document).on('click', '#saveBtn', function () {
     const json = graph.toJSON();
     localStorage.setItem('mySavedDiagram', JSON.stringify(json));
     console.log(json);
+    console.log(parseStenosis(json));
     alert('Diagram saved successfully!');
 });
-document.getElementById('loadBtn').addEventListener('click', () => {
+$(document).on('click', '#loadBtn', function () {
     const savedJSON = localStorage.getItem('mySavedDiagram');
     if (!savedJSON) {
         alert('No saved diagram found.');
@@ -1578,15 +2017,424 @@ document.getElementById('loadBtn').addEventListener('click', () => {
         alert('Failed to load diagram. Check console for errors.');
     }
 });
-document.getElementById('undoBtn').addEventListener('click', () => {
-    if(undoStack.length>2){
+$(document).on('click', '#undoBtn', function () {
+    if (undoStack.length > 2) {
         undo();
+        insertObjectInsideLink.LoadGridData(graph.toJSON());
     }
 });
-document.getElementById('redoBtn').addEventListener('click', () => {
+$(document).on('click', '#redoBtn', function () {
+    //const data = [
+    //    {
+    //        vessel: null,
+    //        object: "UpBottomStroke",
+    //        percent: 50
+    //    },
+    //    {
+    //        vessel: "PRCA2",
+    //        object: "Worm",
+    //        percent: 50
+    //    }
+    //];
+
+    //$("#vesselGrid").data("kendoGrid").dataSource.data(data);
     redo();
+    insertObjectInsideLink.LoadGridData(graph.toJSON());
 });
+$(document).on('click', '#insertBtn', function () {
+    const vesselName = "PRCA";
+    const objectType = "Worm";
+    // insertObjectByVessel(vesselName, objectType);
+    insertObjectByVessel(vesselName, "UpBottomStroke");
+});
+function parseStenosis(graphJSON) {
+
+    const cells = graphJSON.cells || graphJSON;
+
+    const linkMap = new Map();
+    const noteMap = new Map();
+    const results = [];
+
+    // -------- Pass 1 : index links + notes --------
+    for (const cell of cells) {
+
+        if (cell.type === "Branch") {
+            linkMap.set(cell.id, cell);
+        }
+
+        if (cell.type === "custom.FormNote") {
+            noteMap.set(cell.id, cell);
+        }
+    }
+
+    // -------- Pass 2 : process custom shapes --------
+    for (const cell of cells) {
+
+        if (cell.type !== "custom.UpBottomStroke" &&
+            cell.type !== "custom.Worm") continue;
+
+        const linkId = cell.linkAttachment?.linkId;
+        const ratio = cell.linkAttachment?.ratio;
+
+        const link = linkMap.get(linkId);
+        if (!link) continue;
+
+        let vesselName = null;
+
+        if (link.labels) {
+            for (const label of link.labels) {
+
+                const min = label.range?.min ?? 0;
+                const max = label.range?.max ?? 1;
+
+                if (ratio >= min && ratio <= max) {
+                    vesselName = label.attrs?.labelText?.text;
+                    break;
+                }
+            }
+        }
+        const noteId = cell.attachedNotes?.[0]?.noteId;
+        const formNote = noteMap.get(noteId);
+
+        const percent = formNote?.vesselHeightInput ?? null;
+
+        results.push({
+            vessel: vesselName,
+            object: cell.type.replace("custom.", ""),
+            percent: percent
+        });
+    }
+
+    return results;
+}
+function insertObjectByVessel(vesselName, objectType) {
+
+    const links = graph.getLinks();
+
+    for (const link of links) {
+
+        const labels = link.get('labels');
+        if (!labels) continue;
+
+        for (const label of labels) {
+
+            const name = label.attrs?.labelText?.text;
+
+            if (name !== vesselName) continue;
+
+            // middle of label range
+            const min = label.range?.min ?? 0;
+            const max = label.range?.max ?? 1;
+
+            const ratio = (min + max) / 2;
+
+            const linkView = paper.findViewByModel(link);
+            if (!linkView) return;
+
+            const point = linkView.getPointAtRatio(ratio);
+
+
+            const x = point.x;
+            const y = point.y;
+
+            if (objectType === "Worm") {
+                insertObjectInsideLink.insertWormOnLink(link, ratio, "#000000", graph, paper, joint);
+            }
+
+            if (objectType === "UpBottomStroke") {
+                insertObjectInsideLink.insertUpBottomStroke(link, ratio, graph, paper, joint);
+            }
+
+            return;
+        }
+    }
+
+    console.warn("Vessel not found:", vesselName);
+}
+let cabgMode = false;
+let startPoint = null;
+let startAnchor = null;
+let startMarker = null;
+let btnType = null;
+$(document).on('click', '#addCABGBtn', function () {
+    cabgMode = true;
+    startPoint = null;
+    startAnchor = null;
+    btnType = 'CABG';
+    removeStartMarker();
+    paper.el.style.cursor = 'crosshair';
+});
+$(document).on('click', '#addRetrogradeFlowBtn', function () {
+    cabgMode = true;
+    startPoint = null;
+    startAnchor = null;
+    btnType = 'RetrogradeFlow';
+    removeStartMarker();
+    paper.el.style.cursor = 'crosshair';
+});
+
+// CLICK ON EMPTY AREA
+paper.on('blank:pointerdown', function (evt, x, y) {
+
+    if (!cabgMode) return;
+
+    if (!startPoint) {
+
+        startPoint = { x, y };
+        addStartMarker(x, y);
+    } else {
+
+        createCABG(startPoint, { x, y }, startAnchor, null);
+
+        resetCABGMode();
+    }
+
+});
+
+
+// CLICK ON LINK
+paper.on('link:pointerdown', function (linkView, evt, x, y) {
+
+    if (!cabgMode) return;
+
+    if (!startPoint) {
+
+        startPoint = { x, y };
+
+        startAnchor = {
+            linkView: linkView,
+            point: { x, y }
+        };
+        addStartMarker(x, y);
+
+    } else {
+
+        const endAnchor = {
+            linkView: linkView,
+            point: { x, y }
+        };
+
+        createCABG(startPoint, { x, y }, startAnchor, endAnchor);
+
+        resetCABGMode();
+    }
+
+});
+
+function addStartMarker(x, y) {
+    removeStartMarker();
+    startMarker = new joint.shapes.standard.Circle();
+
+    const size = 30; // bigger marker
+    startMarker.position(x - size / 2, y - size / 2); // center the circle
+    startMarker.resize(size, size);
+
+    startMarker.attr({
+        body: { fill: 'red', stroke: 'black', strokeWidth: 1 }
+    });
+
+    graph.addCell(startMarker);
+}
+
+function removeStartMarker() {
+    if (startMarker) {
+        startMarker.remove();
+        startMarker = null;
+    }
+}
+function getCurvedVertices(start, end, offsetAmount = 30) {
+    const midX = (start.x + end.x) / 2;
+    const midY = (start.y + end.y) / 2;
+
+    const dx = end.x - start.x;
+    const dy = end.y - start.y;
+    const length = Math.sqrt(dx * dx + dy * dy);
+
+    // Avoid division by zero
+    if (length === 0) return [];
+
+    // perpendicular offset
+    const offsetX = -dy / length * offsetAmount;
+    const offsetY = dx / length * offsetAmount;
+
+    return [{ x: midX + offsetX, y: midY + offsetY }];
+}
+function createCABG(start, end, startAnchor, endAnchor) {
+    let cabg = null;
+    if (btnType === 'CABG') {
+        cabg = new Branch({
+            z: 100,
+            isCABG: true,
+            attrs: {
+                line: {
+                    fill: "#FFFFFF",
+                    stroke: '#9F3E9F',
+                    strokeWidth: 5,
+                    organicStrokeSize: 30,
+                    //organicStrokeThinning: 0.6,
+                    organicStrokeTaper: false,
+                    strokeDasharray: '20 20',
+                    strokeDashoffset: 0,
+                    organicStrokeStartCap: false
+                },
+            },
+            vertices: getCurvedVertices(start, end, 100)
+        });
+    } else {
+        cabg = new joint.shapes.standard.Link({
+            z: 101,
+            isCABG: true,
+            attrs: {
+                line: {
+                    stroke: 'RED',
+                    strokeWidth: 20,
+                    targetMarker: {
+                        fill: 'RED',
+                        stroke: 'none',
+                        d: 'M 5 -20 L -25 0 L 5 20 Z'
+                    },
+                    pointerEvents: 'stroke',
+                },
+            },
+            //vertices: getCurvedVertices(start, end, 100)
+        });
+    }
+
+
+    let startRatio = null;
+    let endRatio = null;
+    let sourceLink = null;
+    //const cabg = new joint.shapes.standard.Link();
+
+    // SOURCE
+    if (startAnchor) {
+
+        const ratio = getLinkRatio(startAnchor.linkView, startAnchor.point);
+        startRatio = ratio;
+        sourceLink = startAnchor.linkView;
+        cabg.source({
+            id: startAnchor.linkView.model.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: ratio }
+            }
+        });
+
+    } else {
+
+        cabg.source(start);
+    }
+
+    // TARGET
+    if (endAnchor) {
+
+        const ratio = getLinkRatio(endAnchor.linkView, endAnchor.point);
+        endRatio = ratio;
+        cabg.target({
+            id: endAnchor.linkView.model.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: ratio }
+            }
+        });
+
+    } else {
+
+        cabg.target(end);
+    }
+
+    graph.addCell(cabg);
+    if (btnType === 'RetrogradeFlow') {
+        if (startAnchor && endAnchor &&
+            startAnchor.linkView === endAnchor.linkView) {
+
+            requestAnimationFrame(() => {
+                applySegmentVertices(
+                    cabg,
+                    startAnchor.linkView,
+                    startRatio,
+                    endRatio
+                );
+            });
+        }
+    }
+}
+
+
+function resetCABGMode() {
+    btnType = null;
+    cabgMode = false;
+    startPoint = null;
+    startAnchor = null;
+    removeStartMarker();
+    paper.el.style.cursor = 'default';
+}
+
+
+function getLinkRatio(linkView, point) {
+
+    const connection = linkView.getConnection();
+
+    const totalLength = connection.length();
+
+    if (totalLength === 0) return 0;
+
+    const closestLength = connection.closestPointLength(point);
+
+    return closestLength / totalLength;
+}
 hideAllLinkLabels();
+function applySegmentVertices(cabg, linkView, startRatio, endRatio) {
+
+    const link = linkView.model;
+    const connection = linkView.getConnection();
+    if (!connection) return;
+
+    const totalLength = connection.length();
+
+    let startLen = startRatio * totalLength;
+    let endLen = endRatio * totalLength;
+    if (startLen < endLen) {
+        startLen = startLen + 50;
+        endLen = endLen - 50;
+    } else {
+        startLen = startLen - 50;
+        endLen = endLen + 50;
+    }
+    const forward = startLen <= endLen; // direction
+
+    // Swap if backwards
+    if (!forward) {
+        [startLen, endLen] = [endLen, startLen];
+    }
+
+    // Original vertices of the parent link
+    const originalVertices = link.vertices() || [];
+
+    // Map each vertex to its length along the path
+    const verticesWithLen = originalVertices.map(v => ({
+        pt: v,
+        len: connection.closestPointLength(v)
+    }));
+
+    // Filter vertices strictly inside start/end
+    let filtered = verticesWithLen
+        .filter(v => v.len > startLen && v.len < endLen)
+        .map(v => v.pt);
+
+    // Sort vertices along the path
+    filtered.sort((a, b) => connection.closestPointLength(a) - connection.closestPointLength(b));
+
+    // Include exact start/end points
+    const startPt = connection.pointAtLength(startLen);
+    const endPt = connection.pointAtLength(endLen);
+
+    const result = forward
+        ? [startPt, ...filtered, endPt]
+        : [endPt, ...filtered.reverse(), startPt]; // reverse if backwards
+
+    cabg.vertices(result);
+}
 setTimeout(() => {
     paper.unfreeze();
 }, 0);

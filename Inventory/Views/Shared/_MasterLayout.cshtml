@@ -718,7 +718,12 @@
 
                 if (url && url !== "#" && !url.startsWith("javascript")) {
                     e.preventDefault();
-
+                    // **Decide normal load vs SPA load**
+                    if (url.includes("CoronaryDiagram")) {
+                        // Let browser do full page reload
+                        window.location.href = url;
+                        return;
+                    }
                     // Load page into wrapper
                     $("#page-wrapper").load(url, function (response, status, xhr) {
                         if (status === "error") {
