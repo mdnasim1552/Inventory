@@ -1,3 +1,0 @@
-G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\dist\diagram1.bundle.css
-G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\dist\diagram1.bundle.js.LICENSE.txt
-G:\ASP.NET Core MVC\OnlineCV\Inventory\wwwroot\js\dist\diagram1.bundle.js

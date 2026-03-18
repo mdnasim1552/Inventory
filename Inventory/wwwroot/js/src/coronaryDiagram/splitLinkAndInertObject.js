@@ -32,7 +32,7 @@ export function splitLinkWithChildren(linkView, coloredSegmentIndex, color, Bran
                     ...(i === coloredSegmentIndex ? { fill: color } : {}),
                     ...(i === segmentCount - 1 && baseLineAttrs.organicStrokeThinning > 0
                         ? { organicStrokeThinning: baseLineAttrs.organicStrokeThinning }
-                        : {organicStrokeThinning:0,organicStrokeSize:30})
+                        : { organicStrokeThinning: 0, organicStrokeSize: 30 })
                 }
             }
         });
@@ -76,7 +76,7 @@ export function splitLinkWithChildren(linkView, coloredSegmentIndex, color, Bran
     return segments;
 }
 
-export function splitLinkAtPointWithRectangle(linkView, x,y,paper, Branch,Rectangle) {
+export function splitLinkAtPointWithRectangle(linkView, x, y, paper, Branch, Rectangle) {
 
     const graph = linkView.model.graph;
     const original = linkView.model;
@@ -107,7 +107,7 @@ export function splitLinkAtPointWithRectangle(linkView, x,y,paper, Branch,Rectan
     // 1️⃣ Create rectangle
     const width = 60;
     const height = 30;
-    
+
     const rect = new Rectangle();
 
     rect.resize(width, height);

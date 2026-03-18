@@ -1,6 +1,6 @@
 // function restoreFromSnapshot(graph, snapshot, shapeNamespace) {
 //     if (!snapshot || !snapshot.cells) return;
-    
+
 //     // 1️⃣ Clear current graph
 //     graph.clear();
 //     const cells = [];
@@ -97,7 +97,7 @@
 //         }
 //     });
 // }
-export function restoreFromSnapshot(graph, snapshot, shapeNamespace,joint) {
+export function restoreFromSnapshot(graph, snapshot, shapeNamespace, joint) {
     if (!snapshot?.cells?.length) return;
 
     graph.clear();

@@ -1,6 +1,8 @@
-﻿<link href="~/css/coronarydiagram.css" rel="stylesheet" />
+﻿@* <link href="~/css/coronarydiagram.css" rel="stylesheet" /> *@
 @* <script type="module" src="~/js/coronarydiagram/index.js"></script> *@
+<link href="~/js/dist/coronarydiagram.bundle.css" rel="stylesheet" />
 <script type="module" src="~/js/dist/coronarydiagram.bundle.js"></script>
+
 <div id="element-menu" class="context-menu">
     <ul>
         <li data-action="delete">Delete</li>
@@ -16,7 +18,7 @@
 </div>
 <div id="link-color-menu" class="context-menu">
     <ul>
-        <li>
+        <!-- <li>
             Color
             <ul>
                 <li data-color="#ff0000">Red</li>
@@ -24,22 +26,180 @@
                 <li data-color="#0055ff">Blue</li>
                 <li data-color="#000000">Black</li>
             </ul>
-        </li>
+        </li> -->
         <li data-action="hide-label">Hide Labels</li>
         <li data-action="show-label">Show Labels</li>
-        <li data-action="add-rectangle">Add Rectangle</li>
-        <li data-action="divide-segment">Divide Segment</li>
+        <!-- <li data-action="add-rectangle">Add Rectangle</li> -->
+        <!-- <li data-action="divide-segment">Divide Segment</li> -->
         <li data-action="add-worm" data-color="#000000">Oclusion</li>
+        <li data-action="add-stent" data-color="#000000">Stent</li>
         <li data-action="add-up-bottom-stroke">Stenosis</li>
     </ul>
 </div>
 <div id="diagramBtncontrols">
     <button id="saveBtn">Save Diagram</button>
     <button id="loadBtn">Load Diagram</button>
+    <button id="insertBtn">Insert Stents</button>
+    <button id="addRetrogradeFlowBtn">Add Retrograde Flow</button>
+    <button id="addCABGBtn">Add CABG</button>
     <button id="undoBtn">Undo</button>
     <button id="redoBtn">Redo</button>
 </div>
-<div id="paper-wrapper">
-    <div id="paper">
+<div class="content" id="FullBody">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Coronary Diagram</h4>
+            <h6>Manage your heart</h6>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="table-top">
+                        <div class="search-set">
+                            <div class="search-path">
+                                <a class="btn btn-filter" id="diagram_filter_search">
+                                    <img src="~/assets/img/icons/filter.svg" alt="img" />
+                                    <span>
+                                        <img src="~/assets/img/icons/closes.svg" alt="img" />
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="search-input">
+                                <a class="btn btn-searchset">
+                                    <img src="~/assets/img/icons/search-white.svg" alt="img" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="wordset">
+                            <ul>
+                                <li>
+                                    <a data-bs-toggle="tooltip"
+                                       data-bs-placement="top"
+                                       title="pdf">
+                                        <img src="~/assets/img/icons/pdf.svg" alt="img" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip"
+                                       data-bs-placement="top"
+                                       title="excel">
+                                        <img src="~/assets/img/icons/excel.svg" alt="img" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip"
+                                       data-bs-placement="top"
+                                       title="print">
+                                        <img src="~/assets/img/icons/printer.svg" alt="img" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form method="post" asp-controller="Category" asp-action="Index" data-ajax="true">
+                        <div class="card" id="filter_inputs">
+                            <div class="card-body pb-0">
+                                <div class="row">
+                                    <div class="col-lg-2 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            @* <select class="select">
+                                        <option>Choose Category</option>
+                                        <option>Computers</option>
+                                    </select> *@
+                                            @* <select class="select" name="CategoryId" id="categorySelect" asp-items="categorySelectList" asp-for="@ViewData["CategoryId"]">
+                                                <option value="" selected>Choose Category</option>
+                                            </select> *@
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <input type="text" id="CategoryCode" disabled value="@ViewData["CategoryCode"]" placeholder="Category Code" />
+                                            <input name="CategoryCode" type="hidden" id="CategoryHiddenCode" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+                                        <div class="form-group">
+                                            @*  <a class="btn btn-filters ms-auto">
+                                        <img src="~/assets/img/icons/search-whites.svg"
+                                             alt="img" />
+                                    </a> *@
+                                            <button type="submit" class="btn btn-filters ms-auto">
+                                                <img src="~/assets/img/icons/search-whites.svg" alt="img" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive">
+                        <table class="table" id="vesselGrid">
+                            <thead>
+                                <tr>
+                                    <th>Artery/Segment</th>
+                                    <th>Object</th>
+                                    <th>Percentage</th>
+                                    <th>Length</th>
+                                    <th>Width (mm)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div id="diagram-paper-wrapper">
+                        <div id="paper">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    var vesselTable; // 👈 global
+    $(document).ready(function () {
+        vesselTable = $('#vesselGrid').DataTable({
+             data: [],
+             columns: [
+                 { data: 'vessel', defaultContent: '' },
+                 { data: 'object', defaultContent: '' },
+                 { data: 'hpercent', defaultContent: '' },
+                 { data: 'lpercent', defaultContent: '' },
+                 { data: 'widthMM', defaultContent: '' }
+             ],
+             paging: true,
+             lengthMenu: [
+                 [5,10,20, 25, 50, -1],
+                 ['5 rows','10 rows', '20 rows', '25 rows', '50 rows', 'Show all']
+             ],
+             // "lengthMenu": [10, 20, 30, 40, 50, 100, [-1, "All"]],
+             pageLength: 5, // Default page size
+             pagingType: 'numbers',
+             ordering: true,
+             language: {
+                 search: ' ',
+                 sLengthMenu: '_MENU_',
+                 searchPlaceholder: "Search...",
+                 info: "_START_ - _END_ of _TOTAL_ items",
+             },
+             initComplete: function (settings, json) {
+                 $('.dataTables_filter').appendTo('#tableSearch');
+                 $('.dataTables_filter').appendTo('.search-input');
+             }
+        });
+         $("#diagram_filter_search").on("click",function(){
+            $('#filter_inputs').slideToggle("slow");
+            $('#filter_search').toggleClass("setclose");
+        });
+    });
+ </script>

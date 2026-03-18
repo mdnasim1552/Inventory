@@ -1,39 +1,27 @@
 import * as addNoteToElement from './addNoteToElement.js';
-export function insertUpBottomStroke(link, x,y,graph, paper,joint) {
+export function insertUpBottomStroke(link, ratio, graph, paper, joint) {
     graph.startBatch();
 
     const linkView = paper.findViewByModel(link);
     if (!linkView) return;
-
-    const localPoint = paper.clientToLocalPoint({
-        x: x,
-        y: y
-    });
-
-    const connection = linkView.getConnection();
-
-    const totalLength = connection.length();
-    const closestLength = connection.closestPointLength(localPoint);
-    // let ratio = closestLength / totalLength;
-    // ratio = Math.max(0, Math.min(1, ratio));
-    // ratio = Math.round(ratio * 1000) / 1000; // optional: 0.001 precision
-    let ratio = Math.max(0, Math.min(1, closestLength / totalLength));
     const upBottomStrokeShape = new joint.shapes.custom.UpBottomStroke();
 
     upBottomStrokeShape.set('linkAttachment', {
         linkId: link.id,
         ratio,
-        widthPercent:10 // default to 10% of link length, can be adjusted
+        lengthPercent: 10, // default to 10% of link length, can be adjusted
+        heightPercent: 50,
     });
 
     graph.addCell(upBottomStrokeShape);
-    addNoteToElement.addNoteToElement(graph,paper,joint,upBottomStrokeShape,x,y);
     updateUpBottomStrokeShape(upBottomStrokeShape, graph, paper);
+    addNoteToElement.addNoteToElement(graph, paper, joint, upBottomStrokeShape);
     graph.stopBatch();
     linkView.removeTools();
 
 }
-export function updateUpBottomStrokeShape(upBottomStrokeShape,graph,paper) {
+export function updateUpBottomStrokeShape(upBottomStrokeShape, graph, paper) {
+
     const attachment = upBottomStrokeShape.get('linkAttachment');
     if (!attachment) return;
 
@@ -50,50 +38,74 @@ export function updateUpBottomStrokeShape(upBottomStrokeShape,graph,paper) {
     upBottomStrokeShape.rotate(0);
 
     const ratio = attachment.ratio;
-    const segments = 6;
-    const baseHeight = 30;
-    const pixelLength = 60;
-    const widthPercent = attachment.widthPercent || 10; // fallback
+    const segments = 10;
 
-    const totalLength = connection.length();
-    //const upBottomStrokeShapeLength = pixelLength / totalLength;
-    const upBottomStrokeShapeLength = (widthPercent / 100) / 2;
-    const step = upBottomStrokeShapeLength / segments;
-    const safeRatio = Math.max(
-        upBottomStrokeShapeLength,
-        Math.min(1 - upBottomStrokeShapeLength, ratio)
-    );
+    const lengthPercent = attachment.lengthPercent || 10;
+    const heightPercent = attachment.heightPercent || 50;
+
+    const baseHeight = 30;
     const thinning = link.attr('line/organicStrokeThinning') || 0;
+
     let organicSize = link.attr('line/organicStrokeSize') || baseHeight;
-    if (thinning != 0) {
-        organicSize = organicSize + (organicSize + (link.attr('line/strokeWidth') || 2)) / 2;
+
+    if (thinning !== 0) {
+        organicSize =
+            organicSize +
+            (organicSize + (link.attr('line/strokeWidth') || 2)) / 2;
     }
+
+    const shapeLength = (lengthPercent / 100) / 2;
+    const step = shapeLength / segments;
+
+    const safeRatio = Math.max(
+        shapeLength,
+        Math.min(1 - shapeLength, ratio)
+    );
 
     const topPoints = [];
     const bottomPoints = [];
 
+    let avgStroke = 0;
+    let count = 0;
+
     for (let i = -segments; i <= segments; i++) {
-        //let r = Math.max(0, Math.min(1, ratio + i * step));
-        let r = safeRatio + i * step;
+
+        const r = safeRatio + i * step;
+
         const p = connection.pointAt(r);
         if (!p) continue;
 
-        const delta = step / 2;//0.002;
+        const delta = step / 2;
+
         const before = connection.pointAt(Math.max(0, r - delta));
         const after = connection.pointAt(Math.min(1, r + delta));
+
         if (!before || !after) continue;
 
         const dx = after.x - before.x;
         const dy = after.y - before.y;
+
         const len = Math.sqrt(dx * dx + dy * dy);
         if (!len) continue;
 
         const perpX = -dy / len;
         const perpY = dx / len;
-        const height = organicSize * (1 - thinning * r);
 
-        topPoints.push(`${p.x + perpX * height/2},${p.y + perpY * height/2}`);
-        bottomPoints.unshift(`${p.x - perpX * height/2},${p.y - perpY * height/2}`);
+        // thinning along link
+        const thinningFactor = (1 - thinning * r);
+        const localSize = organicSize * thinningFactor;
+
+        // stroke thickness
+        const strokeWidth = (heightPercent / 100) * localSize / 2;
+
+        // keep stroke fully inside link
+        const offset = (localSize - strokeWidth) / 2;
+
+        topPoints.push(`${p.x + perpX * offset},${p.y + perpY * offset}`);
+        bottomPoints.unshift(`${p.x - perpX * offset},${p.y - perpY * offset}`);
+
+        avgStroke += strokeWidth;
+        count++;
     }
 
     if (!topPoints.length || !bottomPoints.length) return;
@@ -101,48 +113,49 @@ export function updateUpBottomStrokeShape(upBottomStrokeShape,graph,paper) {
     const fillD = `M ${topPoints.join(' L ')} L ${bottomPoints.join(' L ')} Z`;
     const topD = `M ${topPoints.join(' L ')}`;
     const bottomD = `M ${bottomPoints.join(' L ')}`;
-    const color = link.attr('line/fill');
-    upBottomStrokeShape.attr({
-        fillBody: { d: fillD,fill:color, stroke: color }, // fill color matches link
-        topPath: { d: topD, stroke: 'yellow' },      // top stroke color
-        bottomPath: { d: bottomD, stroke: 'yellow' } // bottom stroke color
-    });
 
-    //linkView.removeTools();
+    const finalStrokeWidth = avgStroke / count;
+
+    const color = link.attr('line/fill');
+
+    upBottomStrokeShape.attr({
+        fillBody: {
+            d: fillD,
+            fill: color,
+            stroke: color
+        },
+        topPath: {
+            d: topD,
+            stroke: '#FF8F00',
+            strokeWidth: finalStrokeWidth
+        },
+        bottomPath: {
+            d: bottomD,
+            stroke: '#FF8F00',
+            strokeWidth: finalStrokeWidth
+        }
+    });
+    LoadGridData(graph.toJSON());
 }
-export function insertWormOnLink(link, x,y,color,graph, paper,joint) {
+export function insertWormOnLink(link, ratio, color, graph, paper, joint) {
     graph.startBatch();
     const linkView = paper.findViewByModel(link);
     if (!linkView) return;
-
-    const localPoint = paper.clientToLocalPoint({
-        x: x,
-        y: y
-    });
-
-    const connection = linkView.getConnection();
-
-    const totalLength = connection.length();
-    const closestLength = connection.closestPointLength(localPoint);
-    // let ratio = closestLength / totalLength;
-    // ratio = Math.max(0, Math.min(1, ratio));
-    // ratio = Math.round(ratio * 1000) / 1000; // optional: 0.001 precision
-    let ratio = Math.max(0, Math.min(1, closestLength / totalLength));
     const worm = new joint.shapes.custom.Worm();
     worm.attr('body/fill', color);
     worm.set('linkAttachment', {
         linkId: link.id,
         ratio,
-        widthPercent:10 // default to 10% of link length, can be adjusted
+        lengthPercent: 10, // default to 10% of link length, can be adjusted
     });
 
     graph.addCell(worm);
-    addNoteToElement.addNoteToElement(graph,paper,joint,worm,x,y);
     updateWormShape(worm, graph, paper);
+    addNoteToElement.addNoteToElement(graph, paper, joint, worm);
     graph.stopBatch();
     linkView.removeTools();
 }
-export function updateWormShape(worm,graph,paper) {
+export function updateWormShape(worm, graph, paper) {
 
     const attachment = worm.get('linkAttachment');
     if (!attachment) return;
@@ -165,35 +178,36 @@ export function updateWormShape(worm,graph,paper) {
     const baseHeight = 30;
 
 
-    const pixelLength =  60;
-    const widthPercent = attachment.widthPercent || 10;
+    const pixelLength = 60;
+    const lengthPercent = attachment.lengthPercent || 10;
+    const heightPercent = attachment.heightPercent || 50;
     const totalLength = connection.length();
     //const wormLength = pixelLength / totalLength; // convert px to ratio 
-    const wormLength = (widthPercent / 100) / 2;
+    const wormLength = (lengthPercent / 100) / 2;
     const step = wormLength / segments;
     const safeRatio = Math.max(
         wormLength,
         Math.min(1 - wormLength, ratio)
     );
-    
+
     const thinning = link.attr('line/organicStrokeThinning') || 0;
     let organicSize = (link.attr('line/organicStrokeSize') || baseHeight);
-    if(thinning!=0){
-        organicSize=organicSize+(organicSize+link.attr('line/strokeWidth'))/2;
+    if (thinning != 0) {
+        organicSize = organicSize + (organicSize + link.attr('line/strokeWidth')) / 2;
     }
     const top = [];
     const bottom = [];
 
     for (let i = -segments; i <= segments; i++) {
         let r = safeRatio + i * step;
-       // let r = ratio + i *step;// 0.01;
+        // let r = ratio + i *step;// 0.01;
         //r = Math.max(0, Math.min(1, r));
         const p = connection.pointAt(r);
         if (!p) continue;
 
         const delta = step / 2;//0.002;
         const before = connection.pointAt(Math.max(0, r - delta));
-        const after  = connection.pointAt(Math.min(1, r + delta));
+        const after = connection.pointAt(Math.min(1, r + delta));
         if (!before || !after) continue;
 
         const dx = after.x - before.x;
@@ -203,34 +217,176 @@ export function updateWormShape(worm,graph,paper) {
 
         const perpX = -dy / len;
         const perpY = dx / len;
-        const height =organicSize * (1 - thinning * r);
-        top.push(`${p.x + perpX * height/2},${p.y + perpY * height/2}`);
-        bottom.unshift(`${p.x - perpX * height/2},${p.y - perpY * height/2}`);
+        const height = organicSize * (1 - thinning * r);
+        top.push(`${p.x + perpX * height / 2},${p.y + perpY * height / 2}`);
+        bottom.unshift(`${p.x - perpX * height / 2},${p.y - perpY * height / 2}`);
     }
 
     const pathD = `M ${top.join(' L ')} L ${bottom.join(' L ')} Z`;
 
     worm.attr('body/d', pathD);
     //linkView.removeTools();
+    LoadGridData(graph.toJSON());
 }
-export function insertRectangleOnLink(link,x,y,graph, paper,Rectangle,joint,isRestoring) {
+export function insertStentOnLink(link, ratio, color, graph, paper, joint) {
     graph.startBatch();
     const linkView = paper.findViewByModel(link);
     if (!linkView) return;
-
-    const localPoint = paper.clientToLocalPoint({
-        x: x,
-        y: y
+    const stent = new joint.shapes.custom.Stent();
+    //stent.attr('body/fill', color);
+    stent.set('linkAttachment', {
+        linkId: link.id,
+        ratio,
+        lengthPercent: 10, // default to 10% of link length, can be adjusted
+        widthMM: 10,
     });
 
+    graph.addCell(stent);
+    updateStentShape(stent, graph, paper);
+    addNoteToElement.addNoteToElement(graph, paper, joint, stent);
+    graph.stopBatch();
+    linkView.removeTools();
+}
+export function updateStentShape(stent, graph, paper) {
+
+    const attachment = stent.get('linkAttachment');
+    if (!attachment) return;
+
+    const link = graph.getCell(attachment.linkId);
+    if (!link) return;
+
+    const linkView = paper.findViewByModel(link);
+    if (!linkView) return;
+
     const connection = linkView.getConnection();
+    if (!connection) return;
+
+    // 🚀 CRITICAL FIX
+    stent.position(0, 0);
+    stent.rotate(0);
+
+    const ratio = attachment.ratio;
+    const segments = 6;
+    const baseHeight = 30;
+
+
+    const pixelLength = 60;
+    const lengthPercent = attachment.lengthPercent || 10;
+    const heightPercent = attachment.heightPercent || 50;
+    const totalLength = connection.length();
+    //const wormLength = pixelLength / totalLength; // convert px to ratio 
+    const stentLength = (lengthPercent / 100) / 2;
+    const step = stentLength / segments;
+    const safeRatio = Math.max(
+        stentLength,
+        Math.min(1 - stentLength, ratio)
+    );
+
+    const thinning = link.attr('line/organicStrokeThinning') || 0;
+    let organicSize = (link.attr('line/organicStrokeSize') || baseHeight);
+    if (thinning != 0) {
+        organicSize = organicSize + (organicSize + link.attr('line/strokeWidth')) / 2;
+    }
+    const top = [];
+    const bottom = [];
+
+    for (let i = -segments; i <= segments; i++) {
+        let r = safeRatio + i * step;
+        // let r = ratio + i *step;// 0.01;
+        //r = Math.max(0, Math.min(1, r));
+        const p = connection.pointAt(r);
+        if (!p) continue;
+
+        const delta = step / 2;//0.002;
+        const before = connection.pointAt(Math.max(0, r - delta));
+        const after = connection.pointAt(Math.min(1, r + delta));
+        if (!before || !after) continue;
+
+        const dx = after.x - before.x;
+        const dy = after.y - before.y;
+        const len = Math.sqrt(dx * dx + dy * dy);
+        if (!len) continue;
+
+        const perpX = -dy / len;
+        const perpY = dx / len;
+        const height = organicSize * (1 - thinning * r);
+        top.push(`${p.x + perpX * height / 2},${p.y + perpY * height / 2}`);
+        bottom.unshift(`${p.x - perpX * height / 2},${p.y - perpY * height / 2}`);
+    }
+
+    const pathD = `M ${top.join(' L ')} L ${bottom.join(' L ')} Z`;
+
+    stent.attr('body/d', pathD);
+    generateStentMesh(
+        stent,
+        connection,
+        safeRatio,
+        stentLength,
+        organicSize,
+        thinning
+    );
+    //linkView.removeTools();
+    LoadGridData(graph.toJSON());
+}
+function generateStentMesh(stent, connection, centerRatio, length, vesselWidth, thinning = 0) {
 
     const totalLength = connection.length();
-    const closestLength = connection.closestPointLength(localPoint);
-    // let ratio = closestLength / totalLength;
-    // ratio = Math.max(0, Math.min(1, ratio));
-    // ratio = Math.round(ratio * 1000) / 1000; // optional: 0.001 precision
-    let ratio = Math.max(0, Math.min(1, closestLength / totalLength));
+    const stentPixelLength = totalLength * (length * 2);
+
+    // spacing proportional to vessel width
+    const zigSpacing = vesselWidth * 0.3;
+
+    // compute segment count
+    let zigSegments = Math.round(stentPixelLength / zigSpacing);
+
+    // ensure even
+    if (zigSegments % 2 !== 0) zigSegments++;
+
+    // clamp
+    zigSegments = Math.max(8, Math.min(zigSegments, 60));
+
+    const topPoints = [];
+    const bottomPoints = [];
+
+    for (let i = 0; i <= zigSegments; i++) {
+
+        const r = centerRatio - length + (i / zigSegments) * (length * 2);
+        const p = connection.pointAt(r);
+        if (!p) continue;
+
+        const delta = 0.002;
+        const before = connection.pointAt(Math.max(0, r - delta));
+        const after = connection.pointAt(Math.min(1, r + delta));
+        if (!before || !after) continue;
+
+        const dx = after.x - before.x;
+        const dy = after.y - before.y;
+        const len = Math.sqrt(dx * dx + dy * dy);
+        if (!len) continue;
+
+        const perpX = -dy / len;
+        const perpY = dx / len;
+
+        // 🔹 Apply thinning like the body
+        const currentHeight = vesselWidth * (1 - thinning * r) * 0.35;
+
+        const offset = (i % 2 === 0 ? currentHeight : -currentHeight);
+
+        // top zig
+        topPoints.push(`${p.x + perpX * offset},${p.y + perpY * offset}`);
+
+        // bottom zig
+        bottomPoints.push(`${p.x - perpX * offset},${p.y - perpY * offset}`);
+    }
+
+    const meshPath = `M ${topPoints.join(' L ')} M ${bottomPoints.join(' L ')}`;
+
+    stent.attr('mesh/d', meshPath);
+}
+export function insertRectangleOnLink(link, ratio, x, y, graph, paper, Rectangle, joint, isRestoring) {
+    graph.startBatch();
+    const linkView = paper.findViewByModel(link);
+    if (!linkView) return;
     const rect = new Rectangle({
         size: { width: 40, height: 30 }, // height will auto-adjust
         attrs: {
@@ -246,12 +402,12 @@ export function insertRectangleOnLink(link,x,y,graph, paper,Rectangle,joint,isRe
     });
 
     graph.addCell(rect);
-    updateRectanglePosition(rect, graph, paper,joint,isRestoring);
+    updateRectanglePosition(rect, graph, paper, joint, isRestoring);
     graph.stopBatch();
 }
 export function updateRectanglePosition(rect, graph, paper, joint, isRestoring) {
 
-      const attachment = rect.get('linkAttachment');
+    const attachment = rect.get('linkAttachment');
     if (!attachment) return;
 
     const link = graph.getCell(attachment.linkId);
@@ -299,9 +455,9 @@ export function updateRectanglePosition(rect, graph, paper, joint, isRestoring) 
     if (!point) return;
 
     // compute tangent manually
-    const delta =  0.002;
+    const delta = 0.002;
     const before = connection.pointAt(Math.max(0, ratio - delta));
-    const after  = connection.pointAt(Math.min(1, ratio + delta));
+    const after = connection.pointAt(Math.min(1, ratio + delta));
     if (!before || !after) return;
 
     const tangent = { x: after.x - before.x, y: after.y - before.y };
@@ -331,8 +487,8 @@ export function updateRectanglePosition(rect, graph, paper, joint, isRestoring) 
     const baseHeight = 30;
 
     const dynamicHeight = baseHeight - (curvature * totalLength * 0.1);//baseHeight - (curvature * 40);
-// const localLength = Math.sqrt((after.x - before.x)**2 + (after.y - before.y)**2);
-// const dynamicHeight = Math.max(12, Math.min(baseHeight, localLength*0.8, baseHeight - curvature*totalLength*0.1));
+    // const localLength = Math.sqrt((after.x - before.x)**2 + (after.y - before.y)**2);
+    // const dynamicHeight = Math.max(12, Math.min(baseHeight, localLength*0.8, baseHeight - curvature*totalLength*0.1));
 
     const finalHeight = Math.max(12, dynamicHeight);
 
@@ -343,4 +499,82 @@ export function updateRectanglePosition(rect, graph, paper, joint, isRestoring) 
         point.y - finalHeight / 2
     );
     rect.rotate(angle, true);
+    LoadGridData(graph.toJSON());
+}
+
+export function LoadGridData(graphJSON) {
+
+    const cells = graphJSON.cells || graphJSON;
+
+    const linkMap = new Map();
+    const noteMap = new Map();
+    const results = [];
+
+    // -------- Pass 1 : index links + notes --------
+    for (const cell of cells) {
+
+        if (cell.type === "Branch") {
+            linkMap.set(cell.id, cell);
+        }
+
+        if (cell.type === "custom.FormNote") {
+            noteMap.set(cell.id, cell);
+        }
+    }
+
+    // -------- Pass 2 : process custom shapes --------
+    for (const cell of cells) {
+
+        if (cell.type !== "custom.UpBottomStroke" &&
+            cell.type !== "custom.Worm"
+            && cell.type !== "custom.Stent") continue;
+
+        const linkId = cell.linkAttachment?.linkId;
+        const ratio = cell.linkAttachment?.ratio;
+
+        const link = linkMap.get(linkId);
+        if (!link) continue;
+
+        let vesselName = null;
+
+        if (link.labels) {
+            for (const label of link.labels) {
+
+                const min = label.range?.min ?? 0;
+                const max = label.range?.max ?? 1;
+
+                if (ratio >= min && ratio <= max) {
+                    vesselName = label.attrs?.labelText?.text;
+                    break;
+                }
+            }
+        }
+        const noteId = cell.attachedNotes?.[0]?.noteId;
+        const formNote = noteMap.get(noteId);
+
+        const hpercent = cell.linkAttachment?.heightPercent;// formNote?.vesselHeightInput ?? null;
+        const lpercent = cell.linkAttachment?.lengthPercent;//formNote?.vesselLengthInput ?? null;
+        const widthMM = cell.linkAttachment?.widthMM;
+        let objectName = '';
+        if (cell.type.replace("custom.", "") === 'Worm') {
+            objectName = 'Oclusion';
+        } else if (cell.type.replace("custom.", "") === 'UpBottomStroke') {
+            objectName = 'Stenosis';
+        } else {
+            objectName = cell.type.replace("custom.", "");
+        }
+        results.push({
+            vessel: vesselName,
+            object: objectName,
+            hpercent: hpercent,
+            lpercent: lpercent,
+            widthMM: widthMM,
+        });
+    }
+    vesselTable.clear();        // remove old data
+    vesselTable.rows.add(results); // add new data
+    vesselTable.draw();         // refresh UI
+    //$("#vesselGrid").data("kendoGrid").dataSource.data(results);
+    //console.log(results);
+    //return results;
 }
