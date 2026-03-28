@@ -428,12 +428,12 @@
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul>
-                                <li><a href="customerlist.html">Customer List</a></li>
-                                <li><a href="addcustomer.html">Add Customer </a></li>
-                                <li><a href="supplierlist.html">Supplier List</a></li>
-                                <li><a href="addsupplier.html">Add Supplier </a></li>
-                                <li><a href="userlist.html">User List</a></li>
-                                <li><a href="adduser.html">Add User</a></li>
+                                <li><a asp-action="Index" asp-controller="Customer">Customer List</a></li>
+                                <li><a asp-action="Create" asp-controller="Customer">Add Customer </a></li>
+                                <li><a asp-action="Index" asp-controller="Supplier">Supplier List</a></li>
+                                <li><a asp-action="Create" asp-controller="Supplier">Add Supplier </a></li>
+                                <li><a asp-action="Index" asp-controller="User">User List</a></li>
+                                <li><a asp-action="Create" asp-controller="User">Add User</a></li>
                                 <li><a href="storelist.html">Store List</a></li>
                                 <li><a href="addstore.html">Add Store</a></li>
                             </ul>
@@ -590,13 +590,11 @@
                         <li class="submenu">
                             <a href="javascript:void(0);">
                                 <img src="~/assets/img/icons/users1.svg" alt="img" /><span>
-                                    Users
+                                    Diagrams
                                 </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul>
-                                <li><a asp-action="Create" asp-controller="User">New User </a></li>
-                                <li><a asp-action="Index" asp-controller="User">Users List</a></li>
                                 <li><a asp-action="CoronaryDiagram" asp-controller="User">Coronary Diagram</a></li>
                             </ul>
                         </li>

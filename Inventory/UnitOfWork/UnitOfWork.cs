@@ -15,6 +15,9 @@ namespace Inventory.UnitOfWork
         public ISubCategoryRepository SubCategory { get; private set; }
         public ICategoryRepository Category { get; private set; }
         public IProductRepository Product { get; private set; }
+        public ICustomerRepository Customer { get; private set; }
+        public ISupplierRepository Supplier { get; set; }
+        public IStoreRepository Store { get; private set; }
         public IUnitRepository Unit { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -28,6 +31,9 @@ namespace Inventory.UnitOfWork
             SubCategory = new SubCategoryRepository(context);
             Category = new CategoryRepository(context);
             Product=new ProductRepository(context);
+            Customer=new CustomerRepository(context);
+            Supplier=new SupplierRepository(context);
+            Store=new StoreRepository(context);
             Unit = new UnitRepository(context);
         }
 

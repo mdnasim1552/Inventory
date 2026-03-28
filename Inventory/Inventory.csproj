@@ -45,6 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Store\" />
     <Folder Include="wwwroot\js\dist\" />
     <Folder Include="wwwroot\SubCategoryImages\" />
   </ItemGroup>

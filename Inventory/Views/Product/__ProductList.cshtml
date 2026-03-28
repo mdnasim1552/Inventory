@@ -24,6 +24,27 @@
 
     </tbody>
 </table>
+<div class="modal fade " id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Product Details</h1>
+                @* <h4>Product Details</h4>
+                <h6>Full details of a product</h6> *@
+                <button type="button" class="fa fa-times" data-bs-dismiss="modal" aria-label="Close" style="color:black !important;"></button>
+            </div>
+            <form id="editProductForm">
+                <div class="modal-body" id="productModalBody">
+                </div>
+                <div class="modal-footer" style="margin-right:10px;display:inline-block;padding:0; float:right;">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    @* <button type="button" class="btn btn-primary">Send message</button> *@
+                    <button type="submit" class="btn btn-sm btn-primary" id="submitid">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     $(document).ready(function () {
             var table = $('#productdatanew').DataTable({

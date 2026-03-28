@@ -13,14 +13,14 @@
 }
 
 
-<div class="content">
+<div class="content" id="FullBody">
     <div class="page-header">
         <div class="page-title">
             <h4>User List</h4>
             <h6>Manage your User</h6>
         </div>
         <div class="page-btn">
-            <a href="newuser.html" class="btn btn-added">
+            <a asp-action="Create" asp-controller="User" class="btn btn-added">
                 <img src="~/assets/img/icons/plus.svg" alt="img">Add
                 User
             </a>
@@ -164,8 +164,11 @@
 
                                 </td>
                                 <td>
-                                    <a class="me-3" asp-action="Edit" asp-controller="User" asp-route-id="@user.Id">
+                                   @*  <a class="me-3" asp-action="Edit" asp-controller="User" asp-route-id="@user.Id">
                                         <img src="~/assets/img/icons/edit.svg" alt="img">
+                                    </a> *@
+                                    <a class="me-3 edit_user" href="javascript:void(0);" data-id="@user.Id">
+                                        <img src="/assets/img/icons/edit.svg" alt="img" />
                                     </a>
                                     <a class="me-3 deleteUserbtn" href="javascript:void(0);" data-id="@user.Id">
                                         <img src="~/assets/img/icons/delete.svg" alt="img">
@@ -180,12 +183,7 @@
     </div>
 
 </div>
-
-@section Scripts {
-    @{
-                <partial name="_ValidationScriptsPartial" />
-    }
-    <script type="text/javascript">
+<script type="text/javascript">
         $("#pdfButton").on("click",function(){
             $.ajax({
                 url: '/User/SendSms',
@@ -274,5 +272,22 @@
                 }
             });
         });
+     $('#userdatanew').on("click", ".edit_user", function() {
+            var userId = $(this).data("id");
+            var url = '/User/Edit/' + userId;
+            $.ajax({
+                url: url, // GET action returning PartialView
+                type: 'GET',
+                success: function(result) {
+                    // Replace __ProductList with Edit partial
+                    $('#FullBody').html(result);
+                    //window.history.pushState({ path: url }, "", url);
+                    // Re-parse validation for the form
+                    //$.validator.unobtrusive.parse("#supplierList");
+                },
+                error: function() {
+                    alert('Error loading edit form');
+                }
+            });
+        });
     </script>
-}

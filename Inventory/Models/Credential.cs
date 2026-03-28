@@ -43,6 +43,8 @@ public partial class Credential
     [StringLength(100)]
     public string? Designation { get; set; }
 
+    public int? StoreId { get; set; }
+
     public bool IsActive { get; set; }
 
     [InverseProperty("CreatedByNavigation")]
@@ -51,4 +53,8 @@ public partial class Credential
     [ForeignKey("RoleId")]
     [InverseProperty("Credentials")]
     public virtual Userrole Role { get; set; } = null!;
+
+    [ForeignKey("StoreId")]
+    [InverseProperty("Credentials")]
+    public virtual Store? Store { get; set; }
 }
