@@ -104,6 +104,12 @@
 <input type="hidden" asp-for="CreatedOn" />
 <script type="text/javascript">
     $(document).ready(function () {
+        if ($('.select').length > 0) {
+           $('.select').select2({
+             minimumResultsForSearch: -1,
+             width: '100%'
+           });
+        }
         // $('.datetimepicker').datepicker({
         //     format: 'yyyy-MM-dd'
         // });

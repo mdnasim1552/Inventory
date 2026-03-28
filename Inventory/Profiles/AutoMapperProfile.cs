@@ -5,6 +5,9 @@ using InventoryEntity.Brand;
 using InventoryEntity.Category;
 using InventoryEntity.SubCategory;
 using InventoryEntity.Product;
+using InventoryEntity.Customer;
+using InventoryEntity.Supplier;
+using InventoryEntity.Store;
 
 namespace Inventory.Profiles
 {
@@ -96,6 +99,36 @@ namespace Inventory.Profiles
                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image))
                .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId))
                .ReverseMap();
+            CreateMap<CustomerDto, Customer>()
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+               .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+               .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
+               .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country))
+               .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
+               .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
+               .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+               .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image))
+               .ReverseMap();
+            CreateMap<SupplierDto, Supplier>()
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+               .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+               .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
+               .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country))
+               .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
+               .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
+               .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+               .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image))
+               .ReverseMap();
+            CreateMap<StoreDto, Store>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone))
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreatedAt))
+                .ReverseMap();
         }
     }
 }

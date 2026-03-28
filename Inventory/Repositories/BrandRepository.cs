@@ -2,7 +2,6 @@
 using Inventory.IRepositories;
 using Inventory.Models;
 using Inventory.UnitOfWork;
-using NuGet.Protocol.Core.Types;
 
 namespace Inventory.Repositories
 {

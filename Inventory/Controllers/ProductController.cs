@@ -46,19 +46,13 @@ namespace Inventory.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            //var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category,p=>p.Brand);
-
-            var userID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "UserID").Value);
-            var adminID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
-            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand,p=>p.CreatedByNavigation.Role);
-            var userIdList = await _unitOfWork.Credential.GetUserIdListOnParent(adminID);
-            //if (User.FindFirst(ClaimTypes.Role)?.Value == Policies.Admin)
-            //{
-            //    userIdList.Add(adminID);
-            //}
-            userIdList.Add(adminID);
-            productList = productList.Where(p => userIdList.Contains(p.CreatedBy)).ToList();
-            //productList = productList.Where(p => allowedUsers.Contains(p.CreatedBy)).ToList();
+            //var userID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "UserID").Value);
+            //var adminID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
+            //var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand,p=>p.CreatedByNavigation.Role);
+            //var userIdList = await _unitOfWork.Credential.GetUserIdListOnParent(adminID);
+            //userIdList.Add(adminID);
+            //productList = productList.Where(p => userIdList.Contains(p.CreatedBy)).ToList();
+            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand, p => p.CreatedByNavigation.Role);
             ViewData["CategoryList"] = categoryList;
             ViewData["BrandList"] = brandList;
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
@@ -70,13 +64,13 @@ namespace Inventory.Controllers
         [HttpPost]
         public async Task<IActionResult> GetProducts([FromForm] DataTablesRequest request, [FromForm] ProductSearch productSearch)
         {
-            var userID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "UserID").Value);
-            var adminID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
+            //var userID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "UserID").Value);
+            //var adminID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
+            //var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand, p => p.CreatedByNavigation.Role);
+            //var userIdList = await _unitOfWork.Credential.GetUserIdListOnParent(adminID);
+            //userIdList.Add(adminID);
+            //productList = productList.Where(p => userIdList.Contains(p.CreatedBy)).ToList();
             var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand, p => p.CreatedByNavigation.Role);
-            var userIdList = await _unitOfWork.Credential.GetUserIdListOnParent(adminID);
-
-            userIdList.Add(adminID);
-            productList = productList.Where(p => userIdList.Contains(p.CreatedBy)).ToList();
             if (productSearch.CategoryId.HasValue)
             {
                 productList = productList.Where(p => p.CategoryId == productSearch.CategoryId);
@@ -98,7 +92,7 @@ namespace Inventory.Controllers
             {
                 productList = productList.Where(p => p.Price <= productSearch.Max_Price);
             }
-            var productListDto = _mapper.Map<List<ProductDto>>(productList);
+            var productListDto = _mapper.Map<List<ProductViewDto>>(productList);
             // apply search if provided
             if (!string.IsNullOrWhiteSpace(request.Search.Value))
             {

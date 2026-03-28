@@ -65,6 +65,9 @@ public partial class Product
     [InverseProperty("Products")]
     public virtual Credential CreatedByNavigation { get; set; } = null!;
 
+    [InverseProperty("Product")]
+    public virtual ICollection<ProductStore> ProductStores { get; set; } = new List<ProductStore>();
+
     [ForeignKey("SubCategoryId")]
     [InverseProperty("Products")]
     public virtual SubCategory SubCategory { get; set; } = null!;

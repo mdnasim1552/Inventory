@@ -100,6 +100,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcX0NhdGVnb3J5Rm9ybUZpZWxkcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Customer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Customer/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Customer/_CustomerFormFields.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcX0N1c3RvbWVyRm9ybUZpZWxkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Customer/_CustomerList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcX0N1c3RvbWVyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Customer/_CustomerView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcX0N1c3RvbWVyVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -170,6 +194,30 @@ build_metadata.AdditionalFiles.CssScope =
 
 [G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/SubCategory/_SubCategoryFormFields.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViQ2F0ZWdvcnlcX1N1YkNhdGVnb3J5Rm9ybUZpZWxkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Supplier/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Supplier/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Supplier/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Supplier/_SupplierFormFields.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcX1N1cHBsaWVyRm9ybUZpZWxkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Supplier/_SupplierList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcX1N1cHBsaWVyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/Supplier/_SupplierView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcX1N1cHBsaWVyVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/ASP.NET Core MVC/OnlineCV/Inventory/Views/User/Create.cshtml]

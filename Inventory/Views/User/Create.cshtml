@@ -26,15 +26,17 @@
         </div>
     </form>
 </div>
-
-@section Scripts {
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-        });
-
-    </script>
-}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var updateMessage = '@TempData["CreatedMessage"]';
+        if (updateMessage) {
+            showContent(updateMessage);
+        }
+        if ($('.select').length > 0) {
+            $('.select').select2({
+                minimumResultsForSearch: -1,
+                width: '100%'
+            });
+        }
+    });
+</script>

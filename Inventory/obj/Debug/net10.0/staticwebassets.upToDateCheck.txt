@@ -2460,6 +2460,7 @@ wwwroot\BrandImages\20240714203144205_9ad_realme.png
 wwwroot\CategoryImages\20240704001956274_446_Electronics.jpg
 wwwroot\CategoryImages\20240704002638278_c3e_Hygiene.jpg
 wwwroot\CategoryImages\20240704003648384_da6_Footwear.jpg
+wwwroot\CustomerImages\20260328115940230_ecf_484790131_2479395692.jpg
 wwwroot\EmailTemplate\Forgotpassword.cshtml
 wwwroot\EmailTemplate\Welcome.cshtml
 wwwroot\Images\Login_page_background.jpg
@@ -2483,9 +2484,12 @@ wwwroot\ProductImages\20260117142530417_ba9_Screenshot_176425602.png
 wwwroot\ProductImages\20260117142620787_a3a_20240801213032099_8a.jpg
 wwwroot\ProductImages\20260117142912438_b19_Screenshot_176425602.png
 wwwroot\ProductImages\20260117143212615_29d_20240801213032099_8a.jpg
+wwwroot\ProductImages\20260325203735195_3a4_1773247345006.jpg
+wwwroot\ProductImages\20260328103522556_0cf_484790131_2479395692.jpg
 wwwroot\SubCategoryImages\20240706201428784_474_Pc_parts.jpg
 wwwroot\SubCategoryImages\20240707023117693_833_Mouth_Wash.jpg
 wwwroot\SubCategoryImages\20240923005902267_68f_Toothpaste.png
+wwwroot\SupplierImages\20260328162349153_ae7_484790131_2479395692.jpg
 wwwroot\UserImages\20240916013341407_7e3_Screenshot 2024-09-0.png
 wwwroot\UserImages\20240919003827248_c14_Screenshot 2024-08-3.png
 wwwroot\UserImages\20240922013612437_799_Screenshot 2024-08-0.png

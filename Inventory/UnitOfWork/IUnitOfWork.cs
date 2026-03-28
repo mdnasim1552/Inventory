@@ -12,6 +12,9 @@ namespace Inventory.UnitOfWork
         ISubCategoryRepository SubCategory { get; }
         ICategoryRepository Category { get; }
         IProductRepository Product { get; }
+        ICustomerRepository Customer { get; }
+        ISupplierRepository Supplier { get; }
+        IStoreRepository Store { get; }
         IUnitRepository Unit { get; }
         void Saved();
         Task<bool> SaveAsync();

@@ -1,0 +1,131 @@
+﻿@model InventoryEntity.Customer.CustomerDto
+<div class="row">
+    <div class="col-lg-8 col-sm-12">
+        <div class="card" style="margin:0 !important;">
+            <div class="card-body">
+                <div class="productdetails">
+                    <ul class="product-bar">
+                        <li>
+                            <h4>Customer Name</h4>
+                            @* <label asp-for="Name">Customer Name</label> *@
+                            <input asp-for="Name" type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Email</h4>
+                            <input asp-for="Email" type="text" style="width:70% !important; border:none;padding: 10px;" readonly="@(ViewBag.DisableInput == true ? "readonly" : null)">
+                        </li>
+                        <li>
+                            <h4>Phone</h4>
+                            <input asp-for="PhoneNumber" type="text" style="width:70% !important; border:none;padding: 10px;">
+                        </li>
+                        <li>
+                            <h4>Country</h4>
+                            <select class="select" asp-for="Country" style="width:70% !important; border:none;padding: 10px;" asp-items="@(new List<SelectListItem> {
+                                                                                  new SelectListItem { Value = "Bangladesh", Text = "Bangladesh" }
+                                                                                })" required>
+                                <option value="" selected disabled>-- Choose Country --</option>
+                            </select>
+                        </li>
+                        <li>
+                            <h4>City</h4>
+                            <select class="select" asp-for="City" style="width:70% !important; border:none;padding: 10px;" asp-items="@(new List<SelectListItem> {
+                                                                                                                                 new SelectListItem { Value = "Dhaka", Text = "Dhaka" },
+                                                                                                                                 new SelectListItem { Value = "Barishal", Text = "Barishal" },
+                                                                                                                                 new SelectListItem { Value = "Chattogram", Text = "Chattogram" },
+                                                                                                                                 new SelectListItem { Value = "Khulna", Text = "Khulna" },
+                                                                                                                                 new SelectListItem { Value = "Rajshahi", Text = "Rajshahi" },
+                                                                                                                                 new SelectListItem { Value = "Rangpur", Text = "Rangpur" },
+                                                                                                                                 new SelectListItem { Value = "Mymensingh ", Text = "Mymensingh " },
+                                                                                                                                 new SelectListItem { Value = "Sylhet ", Text = "Sylhet " }
+                                                                                                                           })" required>
+                                <option value="" selected disabled>-- Choose City --</option>
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Address</h4>
+                            <input asp-for="Address" style="width:70% !important; border:none;padding: 10px;" type="text">
+                        </li>
+                        <li>
+                            <h4>Description</h4>
+                            <textarea asp-for="Description" class="form-control" style="width:70% !important; border:none;padding: 10px;"></textarea>
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="slider-product-details">
+                    <div class="owl-carousel owl-theme product-slide">
+                        <div class="slider-product">
+                            <img src="@Model.Image" style="width:100% !important;" alt="img">
+                            <h4>@Model.Name</h4>
+                            <h6 class="image-size">Loading...</h6>
+                        </div>
+                        <div class="slider-product">
+                            <img src="@Model.Image" style="width:100% !important;" alt="img">
+                            <h4>@Model.Name</h4>
+                            <h6 class="image-size">Loading...</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" asp-for="Image" id="ImageUrlHiddenField" />
+<style>
+    .select2-container {
+        min-width: 70% !important;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var imageUrl = "@Model.Image";
+        $.ajax({
+            type: 'HEAD',
+            url: imageUrl,
+            success: function (data, textStatus, xhr) {
+                var imageSize = xhr.getResponseHeader('Content-Length');
+                if (imageSize) {
+                    var sizeInKB = (imageSize / 1024).toFixed(2);
+                    $('.image-size').text(sizeInKB + ' KB');
+                } else {
+                    $('.image-size').text('Size not available');
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error fetching image size: ' + errorThrown);
+                $('.image-size').text('Error fetching size');
+            }
+        });
+        if ($('.product-slide').length > 0) {
+            $('.product-slide').owlCarousel({
+              items: 1,
+              margin: 30,
+              dots: false,
+              nav: true,
+              loop: false,
+              responsiveClass: true,
+              responsive: {
+                0 : {
+                  items: 1
+                },
+                800 : {
+                  items: 1
+                },
+                1170 : {
+                  items: 1
+                }
+              }
+            });
+        }
+
+    });
+
+</script>

@@ -24,6 +24,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Credential> Credentials { get; set; }
 
+    public virtual DbSet<Customer> Customers { get; set; }
+
     public virtual DbSet<EmailSetting> EmailSettings { get; set; }
 
     public virtual DbSet<Message> Messages { get; set; }
@@ -34,7 +36,13 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<ProductStore> ProductStores { get; set; }
+
+    public virtual DbSet<Store> Stores { get; set; }
+
     public virtual DbSet<SubCategory> SubCategories { get; set; }
+
+    public virtual DbSet<Supplier> Suppliers { get; set; }
 
     public virtual DbSet<Unit> Units { get; set; }
 
@@ -85,6 +93,8 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.Role).WithMany(p => p.Credentials)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_RoleId_Credential");
+
+            entity.HasOne(d => d.Store).WithMany(p => p.Credentials).HasConstraintName("FK_Credential_Store");
         });
 
         modelBuilder.Entity<EmailSetting>(entity =>
@@ -145,11 +155,36 @@ public partial class ApplicationDbContext : DbContext
                 .HasConstraintName("FK_Product_Unit");
         });
 
+        modelBuilder.Entity<ProductStore>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__ProductS__3214EC070CBE1085");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.ProductStores)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ProductStore_Product");
+
+            entity.HasOne(d => d.Store).WithMany(p => p.ProductStores)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ProductStore_Store");
+        });
+
+        modelBuilder.Entity<Store>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Store__3214EC070AEF3F1E");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
+        });
+
         modelBuilder.Entity<SubCategory>(entity =>
         {
             entity.HasOne(d => d.Category).WithMany(p => p.SubCategories)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_SubCategory_Category");
+        });
+
+        modelBuilder.Entity<Supplier>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Supplier__3214EC0777A18D76");
         });
 
         modelBuilder.Entity<Unit>(entity =>

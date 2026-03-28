@@ -3091,7 +3091,6 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\staticwebassets.build.j
 G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\staticwebassets.development.json
 G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\swae.build.ex.cache
-G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\Inventory.csproj.Up2Date
 G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\Inventory.dll
 G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\refint\Inventory.dll
@@ -3115,3 +3114,4 @@ G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\compressed\qj89qw4ape-{
 G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\compressed\44knybf97i-{0}-mnwl77xpqj-mnwl77xpqj.gz
 G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\compressed\1w6aj99w2y-{0}-0hxgi59nb7-0hxgi59nb7.gz
 G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\compressed\b5wnam1d9g-{0}-6totj721th-6totj721th.gz
+G:\ASP.NET Core MVC\OnlineCV\Inventory\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
