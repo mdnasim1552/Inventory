@@ -33,72 +33,63 @@ body {
     min-width: 160px;
     font-family: sans-serif;
 }
+.context-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 6px 0;
+}
 
-    .context-menu ul {
-        list-style: none;
-        margin: 0;
-        padding: 6px 0;
-    }
+.context-menu li {
+    position: relative;
+    padding: 8px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.context-menu li:hover {
+    background: #444;
+}
 
-    .context-menu li {
-        position: relative;
-        padding: 8px 14px;
-        cursor: pointer;
-        white-space: nowrap;
-    }
-
-        .context-menu li:hover {
-            background: #444;
-        }
-
-        .context-menu li > ul {
-            position: absolute;
-            top: -6px;
-            left: 100%;
-            background: #222;
-            border-radius: 6px;
-            box-shadow: 0 8px 20px rgba(0,0,0,.35);
-            display: none;
-            min-width: 140px;
-            padding: 6px 0;
-        }
-
-            .context-menu li:hover > ul,
-            .context-menu li > ul:hover {
-                display: block;
-            }
-
-            .context-menu li > ul li {
-                padding: 8px 14px;
-            }
-
-                .context-menu li > ul li:hover {
-                    background: #555;
-                }
-
-        .context-menu li:has(ul)::after {
-            content: "▶";
-            position: absolute;
-            right: 10px;
-            font-size: 10px;
-            opacity: 0.7;
-        }
-
+.context-menu li > ul {
+    position: absolute;
+    top: -6px;
+    left: 100%;
+    background: #222;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.35);
+    display: none;
+    min-width: 140px;
+    padding: 6px 0;
+}
+.context-menu li:hover > ul,
+.context-menu li > ul:hover {
+    display: block;
+}
+.context-menu li > ul li {
+    padding: 8px 14px;
+}
+.context-menu li > ul li:hover {
+    background: #555;
+}
+.context-menu li:has(ul)::after {
+    content: "▶";
+    position: absolute;
+    right: 10px;
+    font-size: 10px;
+    opacity: 0.7;
+}
 .context-menu {
     position: fixed;
     z-index: 99999;
 }
-
 #diagram-paper-wrapper {
-    width: 540px;
-    height: 540px;
-    margin: 35px auto auto auto;
+    width: 570px;
+    height: 570px;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: visible;
 }
-
 #paper {
     position: relative;
     width: 100%;
@@ -114,22 +105,47 @@ body {
 .joint-link path {
     filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.4));
 }
-
-#diagramBtncontrols {
-    position: fixed;
-    top: 0px;
-    right: 48px;
-    z-index: 1000;
-    background: rgba(255,255,255,0.9);
-    padding: 5px 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+#diagramControlsWrapper {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+    pointer-events: none;
 }
-
-    #diagramBtncontrols button {
-        margin-right: 5px;
-    }
-
+#diagramBtncontrols {
+    width:425px;
+    background: rgba(255,255,255,0.95);
+    padding: 10px;
+    border-radius: 10px;
+    display: grid; /* 👈 Use CSS Grid */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns, adjust as needed */
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    /* Hidden by default */
+    transform: translateY(-120%);
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+#diagramBtncontrols.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+#saveBtn{
+    display:none;
+}
+#toggleControlsBtn {
+    display: block;
+    margin: 0 auto;
+    z-index: 1;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+    pointer-events: auto;
+}
 .FormNoteViewDiv {
     box-sizing: border-box;
     background: #fffbe6;
@@ -144,29 +160,24 @@ body {
     gap: 20px;
     width: fit-content;
 }
-
 .FormNoteViewInnerDiv {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-
-    .FormNoteViewInnerDiv label {
-        font-weight: bold;
-        margin-right: 10px;
-    }
-
-    .FormNoteViewInnerDiv input {
-        padding: 8px;
-        font-size: 28px;
-    }
-
+.FormNoteViewInnerDiv label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+.FormNoteViewInnerDiv input {
+    padding: 8px;
+    font-size: 28px;
+}
 .form-note-container {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 }
-
 .FormNoteViewDiv > label {
     font-size: 45px;
     font-weight: bold;
