@@ -51,7 +51,7 @@ export function buildBranches(Branch) {
             ],
             labels: [
                 {
-                    range: { min: 0, max: 1 },
+                    range: { min: 0, max: 1},
                     attrs: { labelText: { text: 'LAD SP' } },
                     position: { distance: 0.5, angle: 10 }
                 },
@@ -503,6 +503,13 @@ export function buildBranches(Branch) {
                 { x: 894, y: 1382 }, { x: 945, y: 1335 }, { x: 994, y: 1296 }, { x: 1040, y: 1345 }, { x: 1109, y: 1390 }, { x: 1189, y: 1416 }, { x: 1260, y: 1428 }, { x: 1323, y: 1416 },
                 { x: 1400, y: 1371 }, { x: 1453, y: 1327 }
             ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: 'CIRC AV' } },
+                    position: { distance: 0.5, angle: 10 }
+                }
+            ],
             style: { fill: "#007F9D", stroke: '#000000', strokeWidth: 5, organicStrokeSize: 35, organicStrokeThinning: 0, organicStrokeTaper: 0, organicStrokeStartCap: false, strokeDasharray: '20 20', strokeDashoffset: 0 }
         },
         {
@@ -513,6 +520,13 @@ export function buildBranches(Branch) {
             target: { x: 1216, y: 1731 },
             vertices: [
                 { x: 1306, y: 1457 }, { x: 1290, y: 1492 }, { x: 1283, y: 1542 }, { x: 1287, y: 1605 }, { x: 1276, y: 1660 }, { x: 1254, y: 1702 }
+            ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: '1st LPL' } },
+                    position: { distance: 0.7, angle: 10 }
+                }
             ],
             style: { fill: "#007F9D", stroke: '#000000', strokeWidth: 5, organicStrokeSize: 20, organicStrokeThinning: 0.6, organicStrokeTaper: 1, strokeDasharray: '20 20', strokeDashoffset: 0, organicStrokeStartCap: false }
         },
@@ -526,6 +540,13 @@ export function buildBranches(Branch) {
                 { x: 1204, y: 1447 }, { x: 1190, y: 1504 }, { x: 1205, y: 1558 }, { x: 1198, y: 1600 }, { x: 1167, y: 1643 }, { x: 1153, y: 1669 },
                 { x: 1150, y: 1705 }, { x: 1152, y: 1731 },
             ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: '2nd LPL' } },
+                    position: { distance: 0.5, angle: 10 }
+                }
+            ],
             style: { fill: "#007F9D", stroke: '#000000', strokeWidth: 5, organicStrokeSize: 20, organicStrokeThinning: 0.6, organicStrokeTaper: 1, strokeDasharray: '20 20', strokeDashoffset: 0, organicStrokeStartCap: false }
         },
         {
@@ -536,6 +557,13 @@ export function buildBranches(Branch) {
             target: { x: 1091, y: 1764 },
             vertices: [
                 { x: 1120, y: 1427 }, { x: 1117, y: 1603 }, { x: 1082, y: 1658 }, { x: 1079, y: 1701 },
+            ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: '3rd LPL' } },
+                    position: { distance: 0.6, angle: 10 }
+                }
             ],
             style: { fill: "#007F9D", stroke: '#000000', strokeWidth: 5, organicStrokeSize: 20, organicStrokeThinning: 0.6, organicStrokeTaper: 1, strokeDasharray: '20 20', strokeDashoffset: 0, organicStrokeStartCap: false }
         },
@@ -548,6 +576,13 @@ export function buildBranches(Branch) {
             vertices: [
                 { x: 1010, y: 1372 }, { x: 1004, y: 1460 }, { x: 1006, y: 1554 }, { x: 1015, y: 1664 },
             ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: 'IPDA' } },
+                    position: { distance: 0.5, angle: 10 }
+                }
+            ],
             style: { fill: "#007F9D", stroke: '#000000', strokeWidth: 5, organicStrokeSize: 30, organicStrokeThinning: 0.6, organicStrokeTaper: 1, strokeDasharray: '20 20', strokeDashoffset: 0, organicStrokeStartCap: false }
         },
         {
@@ -558,6 +593,13 @@ export function buildBranches(Branch) {
             target: { x: 842, y: 1268 },
             vertices: [
                 { x: 981, y: 1399 }, { x: 938, y: 1370 }, { x: 890, y: 1328 }, { x: 852, y: 1287 }
+            ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: '1st pDSP' } },
+                    position: { distance: 0.5, angle: 10 }
+                }
             ],
             style: { fill: "#007F9D", stroke: '#000000', strokeWidth: 5, organicStrokeSize: 20, organicStrokeThinning: 0.6, organicStrokeTaper: 1, strokeDasharray: '20 20', strokeDashoffset: 0, organicStrokeStartCap: false }
         },
@@ -570,6 +612,13 @@ export function buildBranches(Branch) {
             vertices: [
                 { x: 984, y: 1547 }
             ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: '2nd pDSP' } },
+                    position: { distance: 0.5, angle: 10 }
+                }
+            ],
             style: { fill: "#007F9D", stroke: '#000000', strokeWidth: 5, organicStrokeSize: 20, organicStrokeThinning: 0.6, organicStrokeTaper: 1, strokeDasharray: '20 20', strokeDashoffset: 0, organicStrokeStartCap: false }
         },
         {
@@ -580,6 +629,13 @@ export function buildBranches(Branch) {
             target: { x: 931, y: 1612 },
             vertices: [
                 { x: 992, y: 1657 }
+            ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: '3rd pDSP' } },
+                    position: { distance: 0.5, angle: 10 }
+                }
             ],
             style: { fill: "#007F9D", stroke: '#000000', strokeWidth: 5, organicStrokeSize: 20, organicStrokeThinning: 0.6, organicStrokeTaper: 1, strokeDasharray: '20 20', strokeDashoffset: 0, organicStrokeStartCap: false }
         },
