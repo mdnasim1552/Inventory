@@ -1,0 +1,232 @@
+﻿<table class="table" id="storedatanew">
+    <thead>
+        <tr>
+            <th>
+                <label class="checkboxs">
+                    <input type="checkbox" id="select-all" />
+                    <span class="checkmarks"></span>
+                </label>
+            </th>
+            <th>Store Name</th>
+            <th>Code</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Created At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<div class="modal fade " id="storeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Store Details</h1>
+                @* <h4>Product Details</h4>
+                <h6>Full details of a product</h6> *@
+                <button type="button" class="fa fa-times" data-bs-dismiss="modal" aria-label="Close" style="color:black !important;"></button>
+            </div>
+            <form id="editStoreForm">
+                <div class="modal-body" id="storeModalBody">
+                </div>
+                <div class="modal-footer" style="margin-right:10px;display:inline-block;padding:0; float:right;">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    @* <button type="button" class="btn btn-primary">Send message</button> *@
+                    <button type="submit" class="btn btn-sm btn-primary" id="submitid">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+            var table = $('#storedatanew').DataTable({
+                serverSide: true,      // enable server-side processing
+                processing: true,      // show processing indicator
+                ajax: {
+                    url: '/Store/GetStores',   // your server-side URL
+                    type: 'POST',
+                    data: function(d) {
+                        // You can send extra filter parameters here
+                        d.Name = $('#storeName').val();
+                        d.PhoneNumber = $('#storePhoneNumber').val();
+                        d.Code = $('#storeCode').val();
+                    }
+                },
+                columns: [
+                    {
+                        data: null,
+                        render: function(data, type, row){
+                            return `<label class="checkboxs"><input type="checkbox" /><span class="checkmarks"></span></label>`;
+                        },
+                        orderable: false
+                    },
+                    {
+                        data: "Name", // we will render manually using row data
+                        orderable: true
+                    },
+                    { data: 'Code' },
+                    { data: 'Address' },
+                    { data: 'Phone' },
+                    { 
+                        data: 'CreatedAt',
+                        render: function (data, type, row) {
+                                if (!data) return '';
+
+                                var date = new Date(data);
+
+                                return date.toLocaleString('en-GB', {
+                                    day: '2-digit',
+                                    month: 'short',
+                                    year: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    hour12: true
+                                });
+                            
+                        }
+                    },
+                    { data: 'Id', render: function(data, type, row){
+                        return `
+                            <a class="me-3 view_store" data-id="${data}">
+                                <img src="/assets/img/icons/eye.svg" alt="img" />
+                            </a>
+                            <a class="me-3 edit_store" href="javascript:void(0);" data-id="${data}">
+                                <img src="/assets/img/icons/edit.svg" alt="img" />
+                            </a>
+                            <a class="deleteStoredbtn" href="javascript:void(0);" data-id="${data}">
+                                <img src="/assets/img/icons/delete.svg" alt="img" />
+                            </a>`;
+                    }, orderable: false }
+                ],
+                columnDefs: [
+                    {
+                        // 'targets': [1,2,3],
+                        // 'orderable': false, // orderable false if (index === 0 || index === 1 || index === 2 || index === 11) return;
+                    },
+                    {
+                        // 'targets': [0,10],
+                        // 'visible': false
+                    }
+                ],
+                paging: true,
+                lengthMenu: [
+                    [5,10,20, 25, 50, -1],
+                    ['5 rows','10 rows', '20 rows', '25 rows', '50 rows', 'Show all']
+                ],
+                // "lengthMenu": [10, 20, 30, 40, 50, 100, [-1, "All"]],
+                pageLength: 5, // Default page size
+                pagingType: 'numbers',
+                ordering: true,
+                language: {
+                    search: ' ',
+                    sLengthMenu: '_MENU_',
+                    searchPlaceholder: "Search...",
+                    info: "_START_ - _END_ of _TOTAL_ items",
+                },
+                initComplete: function (settings, json) {
+                    $('.dataTables_filter').appendTo('#tableSearch');
+                    $('.dataTables_filter').appendTo('.search-input');
+                    $('#storedatanew thead tr th:first-child').removeClass();
+                }
+            });
+
+
+            $("#filterForm").on("submit", function(e) {
+                e.preventDefault();
+                table.ajax.reload();  // ✅ DataTable fetches with new filters
+            });
+
+        $('#storedatanew').on("click", ".view_store", function () {
+            //var allData = table.rows().data().toArray();
+            var storeId = $(this).data("id");
+            $.ajax({
+                url: '/Store/GetStoreDetails', // Adjust the controller action URL as needed
+                type: 'GET',
+                data: { id: storeId },
+                success: function (result) {
+                    $('#storeModalBody').html(result); // Load the result into the modal body
+                    $("#storeModal").modal("show"); // Show the modal
+                },
+                error: function () {
+                    alert('Error loading product details');
+                }
+            });
+        });
+        $('#editStoreForm').submit(function (event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            $.ajax({
+                url: '/Store/EditStore',
+                type: 'POST',
+                data: $(this).serialize(), // Serialize the form data
+                success: function (response) {
+                    if (response.success) {
+                        showContent(response.message);
+                        $('#storeModal').modal('hide'); // Hide the modal
+                        // Optionally, refresh the table or show a success message
+                    } else {
+                        $('#storeModalBody').html(response); // Reload the form with validation errors
+                    }
+                },
+                error: function () {
+                    alert('Error saving product details');
+                }
+            });
+        });
+        $('#storedatanew').on("click", ".deleteStoredbtn", function () {
+            var storeId = $(this).data("id");
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+                confirmButtonClass: "btn btn-primary",
+                cancelButtonClass: "btn btn-danger ml-1",
+                buttonsStyling: !1
+            }).then(function (t) {
+                if (t.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete", "Store")',
+                        data: { id: storeId },
+                        success: function (response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    type: "success",
+                                    title: "Deleted!",
+                                    text: "Your brand has been deleted.",
+                                    confirmButtonClass: "btn btn-success"
+                                });
+                                // Remove the brand row from the table
+                                //$('tr[data-id="' + brandId + '"]').remove();
+                                // Remove the brand row from the table using DataTable API
+                                table.row($('tr[data-id="' + storeId + '"]')).remove().draw();
+                            } else {
+                                Swal.fire({
+                                    type: "error",
+                                    title: "Error!",
+                                    text: response.message,
+                                    confirmButtonClass: "btn btn-danger"
+                                });
+                            }
+                        },
+                        error: function () {
+                            Swal.fire({
+                                type: "error",
+                                title: "Error!",
+                                text: "An error occurred while processing your request.",
+                                confirmButtonClass: "btn btn-danger"
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    });
+
+</script>
