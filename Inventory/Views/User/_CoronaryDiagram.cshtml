@@ -154,10 +154,29 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-7">
-                    <div id="diagram-paper-wrapper">
-                        <div id="paper">
+                <div class="col-md-7 position-relative">
+                    <div id="diagramControlsWrapper">
+                        <!-- Toggle Button (attached to panel) -->
+                        <button id="toggleControlsBtn" class="btn btn-primary shadow">
+                            <i class="fa fa-chevron-down"></i>
+                        </button>
+                        <!-- Sliding Panel -->
+                        <div id="diagramBtncontrols" class="shadow">
+                            <button class="btn btn-sm btn-outline-primary" id="saveBtn">Save</button>
+                            <button class="btn btn-sm btn-outline-secondary" id="loadBtn">Load</button>
+                            <button class="btn btn-sm btn-outline-success" id="insertBtn">Stents</button>
+                            <button class="btn btn-sm btn-outline-info" id="addRetrogradeFlowBtn">Retrograde</button>
+                            <button class="btn btn-sm btn-outline-info" id="addCABGBtn">CABG</button>
+                            <button class="btn btn-sm btn-outline-info" id="leftDomBtn">Left-Dominance</button>
+                            <button class="btn btn-sm btn-outline-info" id="rightDomBtn">Right-Dominance</button>
+                            <button class="btn btn-sm btn-outline-info" id="coDomBtn">Co-Dominance</button>
+                            <button class="btn btn-sm btn-outline-dark" id="toggleLblBtn">Show Labels</button>
+                            <button class="btn btn-sm btn-outline-dark" id="undoBtn">Undo</button>
+                            <button class="btn btn-sm btn-outline-dark" id="redoBtn">Redo</button>
                         </div>
+                    </div>
+                    <div id="diagram-paper-wrapper">
+                        <div id="paper"></div>
                     </div>
                 </div>
             </div>
