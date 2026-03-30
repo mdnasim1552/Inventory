@@ -1,0 +1,41 @@
+﻿@model InventoryEntity.Store.StoreDto
+<div class="row">
+    <div class="col-lg-8 col-sm-12">
+        <div class="card" style="margin:0 !important;">
+            <div class="card-body">
+                <div class="productdetails">
+                    <ul class="product-bar">
+                        <li>
+                            <h4>Store Name</h4>
+                            <input asp-for="Name" type="text" style="width:70% !important; border:none;padding: 10px;" />
+                            <input asp-for="@Model.Id" type="hidden" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Code</h4>
+                            <input asp-for="Code" type="text" style="width:70% !important; border:none;padding: 10px;" readonly="@(ViewBag.DisableInput == true ? "readonly" : null)">
+                        </li>                       
+                        <li>
+                            <h4>Address</h4>
+                            <input asp-for="Address" style="width:70% !important; border:none;padding: 10px;" type="text">
+                        </li>
+                        <li>
+                            <h4>Phone</h4>
+                            <input asp-for="Phone" type="text" style="width:70% !important; border:none;padding: 10px;">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .select2-container {
+        min-width: 70% !important;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+</script>
