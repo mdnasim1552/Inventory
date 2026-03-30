@@ -1,13 +1,23 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
 
-/.vs/Inventory/CopilotIndices/17.14.1577.30250
-/.vs/Inventory/v17/.suo
-/Inventory/obj/Debug/net10.0/Inventory.AssemblyInfo.cs
-/Inventory/obj/Debug/net10.0/Inventory.AssemblyInfoInputs.cache
-/.vs/Inventory/CopilotIndices/17.14.1577.30250/CodeChunks.db
-/.vs/Inventory/CopilotIndices/17.14.1577.30250/SemanticSymbols.db
-/.vs/Inventory/DesignTimeBuild/.dtbcache.v2
-/.vs/Inventory/v17/DocumentLayout.backup.json
-/.vs/Inventory/v17/DocumentLayout.json
+# Build results
+bin/
+obj/
+Debug/
+Release/
+
+# ASP.NET Core
+wwwroot/lib/
+wwwroot/temp/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
