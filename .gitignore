@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Inventory/CopilotIndices/17.14.1577.30250
+/.vs/Inventory/v17/.suo
+/Inventory/obj/Debug/net10.0/Inventory.AssemblyInfo.cs
+/Inventory/obj/Debug/net10.0/Inventory.AssemblyInfoInputs.cache
