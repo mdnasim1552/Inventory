@@ -232,7 +232,7 @@ joint.shapes.custom.FormNoteView = joint.dia.ElementView.extend({
             const heightDiv = container.querySelector('[joint-selector="heightDiv"]');
             const widthDiv = container.querySelector('[joint-selector="widthDiv"]');
             if (parent && (parent.get('type') === 'custom.Worm')) {
-                noteHeaderLabel.textContent = 'Oclusion:';
+                noteHeaderLabel.textContent = 'Oclusion:';               
                 if (heightDiv) heightDiv.style.display = 'none';
                 if (widthDiv) widthDiv.style.display = 'none';
             } else if (parent && parent.get('type') === 'custom.Stent') {
@@ -1348,11 +1348,7 @@ function showLinkColorMenu({ x, y, linkView, segmentIndex }) {
             colorMenu.style.display = 'none';
         } else {
             if (!action) return;
-            if (action === 'hide-label') {
-                hideAllLinkLabels();
-            } else if (action === 'show-label') {
-                showAllLinkLabels();
-            } else if (action === 'add-rectangle') {
+            if (action === 'add-rectangle') {
                 insertObjectInsideLink.insertRectangleOnLink(link, ratio, x, y, graph, paper, joint.shapes.standard.Rectangle, joint, isRestoring);
             } else if (action === 'divide-segment') {
                 executeWithSnapshot(graph, () => {
@@ -1419,9 +1415,9 @@ paper.on('element:pointermove', function (view, evt, x, y) {
     });
     if (element.isElement() && element.get('type') === 'custom.Worm') {
         insertObjectInsideLink.updateWormShape(element, graph, paper);
-    } else if (element.isElement() && element.get('type') === 'custom.Stent') {
+    }else if (element.isElement() && element.get('type') === 'custom.Stent') {
         insertObjectInsideLink.updateStentShape(element, graph, paper);
-    } else if (element.isElement() && element.get('type') === 'custom.UpBottomStroke') {
+    }else if (element.isElement() && element.get('type') === 'custom.UpBottomStroke') {
         insertObjectInsideLink.updateUpBottomStrokeShape(element, graph, paper);
     }
     else {
@@ -1741,6 +1737,10 @@ function onBlankAndElementdownClick(e) {
     menuOpen = false;
     activeLabelEditor?.remove();
     activeLabelEditor = null;
+
+    const panel = $("#diagramBtncontrols");
+    panel.removeClass("show");
+    $("#toggleControlsBtn i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
 }
 function deleteVertex(linkView, vertexIndex) {
     const link = linkView.model;
@@ -1775,13 +1775,13 @@ function onPaperLinkMouseEnter(linkView, evt) {
     // Scale the tools based on the width of the link.
     const branchWidth = linkView.model.attr('line/organicStrokeSize') || 5;
     const scale = Math.max(1, Math.min(2, branchWidth / 5));
-    const tools = [
+    const tools= [
         new joint.linkTools.Vertices({
             snapRadius: 0,              // allow very close placement
             redundancyRemoval: false,   // DO NOT auto-remove
             vertexAdding: true
         }),
-
+        
         //new joint.linkTools.Remove({ scale }),
     ];
     if (linkView.model.get('isCABG')) {
@@ -1790,8 +1790,8 @@ function onPaperLinkMouseEnter(linkView, evt) {
                 distance: '35%',   // center of link
                 scale: 3,
             }),
-            new joint.linkTools.SourceAnchor({ restrictArea: false, scale: 3 }),
-            new joint.linkTools.TargetAnchor({ restrictArea: false, scale: 3 }),
+            new joint.linkTools.SourceAnchor({ restrictArea: false, scale:3 }),
+            new joint.linkTools.TargetAnchor({ restrictArea: false, scale:3 }),
         );
     } else {
         tools.push(
@@ -1992,14 +1992,14 @@ function refreshPaper() {
         if (view) view.update();
     });
 }
-$(document).on('click', '#saveBtn', function () {
+$("#saveBtn").on("click", function () {
     const json = graph.toJSON();
     localStorage.setItem('mySavedDiagram', JSON.stringify(json));
     console.log(json);
     console.log(parseStenosis(json));
     alert('Diagram saved successfully!');
 });
-$(document).on('click', '#loadBtn', function () {
+$("#loadBtn").on("click", function () {
     const savedJSON = localStorage.getItem('mySavedDiagram');
     if (!savedJSON) {
         alert('No saved diagram found.');
@@ -2017,13 +2017,13 @@ $(document).on('click', '#loadBtn', function () {
         alert('Failed to load diagram. Check console for errors.');
     }
 });
-$(document).on('click', '#undoBtn', function () {
+$("#undoBtn").on("click", function () {
     if (undoStack.length > 2) {
         undo();
         insertObjectInsideLink.LoadGridData(graph.toJSON());
     }
 });
-$(document).on('click', '#redoBtn', function () {
+$("#redoBtn").on("click", function () {
     //const data = [
     //    {
     //        vessel: null,
@@ -2041,7 +2041,7 @@ $(document).on('click', '#redoBtn', function () {
     redo();
     insertObjectInsideLink.LoadGridData(graph.toJSON());
 });
-$(document).on('click', '#insertBtn', function () {
+document.getElementById('insertBtn').addEventListener('click', () => {
     const vesselName = "PRCA";
     const objectType = "Worm";
     // insertObjectByVessel(vesselName, objectType);
@@ -2156,23 +2156,326 @@ let startPoint = null;
 let startAnchor = null;
 let startMarker = null;
 let btnType = null;
-$(document).on('click', '#addCABGBtn', function () {
+$("#addCABGBtn").on("click", function () {
     cabgMode = true;
     startPoint = null;
     startAnchor = null;
     btnType = 'CABG';
     removeStartMarker();
     paper.el.style.cursor = 'crosshair';
+
+    const panel = $("#diagramBtncontrols");
+    panel.removeClass("show");
+    $("#toggleControlsBtn i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
 });
-$(document).on('click', '#addRetrogradeFlowBtn', function () {
+$("#toggleLblBtn").on("click", function () {
+    const isShowing = $(this).text() === "Hide Labels";
+
+    if (isShowing) {
+        hideAllLinkLabels();
+        $(this).text("Show Labels");
+    } else {
+        showAllLinkLabels();
+        $(this).text("Hide Labels");
+    }
+});
+$("#addRetrogradeFlowBtn").on("click", function () {
     cabgMode = true;
     startPoint = null;
     startAnchor = null;
     btnType = 'RetrogradeFlow';
     removeStartMarker();
     paper.el.style.cursor = 'crosshair';
-});
 
+    const panel = $("#diagramBtncontrols");
+    panel.removeClass("show");
+    $("#toggleControlsBtn i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+});
+$("#toggleControlsBtn").on("click", function () {
+    const panel = $("#diagramBtncontrols");
+    const icon = $(this).find("i");
+
+    panel.toggleClass("show");
+
+    // Change arrow direction
+    if (panel.hasClass("show")) {
+        icon.removeClass("fa-chevron-down").addClass("fa-chevron-up");
+    } else {
+        icon.removeClass("fa-chevron-up").addClass("fa-chevron-down");
+    }
+});
+$("#leftDomBtn").on("click", function () {
+    const mB2LinkModel = graph.getCell('mB2Link');
+    const mB2LinkChild1Model = graph.getCell('mB2LinkChild1');
+    const mB2LinkChild2Model = graph.getCell('mB2LinkChild2');
+    const mB2LinkChild3Model = graph.getCell('mB2LinkChild3');
+    const mB2LinkChild4Model = graph.getCell('mB2LinkChild4');
+    if (!mB2LinkModel) return;
+
+    // 3️⃣ Update the link
+    mB2LinkModel.set({
+        source: { x: 994, y: 1296 },
+        target: { x: 1491, y: 1294 },
+        vertices: [
+            { x: 1040, y: 1345 }, { x: 1109, y: 1390 }, { x: 1189, y: 1416 }, { x: 1260, y: 1428 }, { x: 1323, y: 1416 },
+            { x: 1400, y: 1371 }, { x: 1453, y: 1327 }
+        ],
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: 'CIRC AV' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ]
+    });
+    mB2LinkChild1Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .67 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: '1st LPL' } },
+                position: { distance: 0.7, angle: 10 }
+            }
+        ],
+    });
+    mB2LinkChild2Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .47 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: '2nd LPL' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ]
+    });
+    mB2LinkChild3Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .27 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: '3rd LPL' } },
+                position: { distance: 0.6, angle: 10 }
+            }
+        ]
+    });
+    mB2LinkChild4Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .03 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: 'IPDA' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ]
+    });
+    hideAllLinkLabels();
+    $("#toggleLblBtn").text("Show Labels");
+});
+$("#rightDomBtn").on("click", function () {
+    const mB2LinkModel = graph.getCell('mB2Link');
+    const mB2LinkChild1Model = graph.getCell('mB2LinkChild1');
+    const mB2LinkChild2Model = graph.getCell('mB2LinkChild2');
+    const mB2LinkChild3Model = graph.getCell('mB2LinkChild3');
+    const mB2LinkChild4Model = graph.getCell('mB2LinkChild4');
+    if (!mB2LinkModel) return;
+
+    // 3️⃣ Update the link
+    mB2LinkModel.set({
+        source: { x: 827, y: 1431 },
+        target: { x: 1342, y: 1407 },
+        vertices: [
+            { x: 894, y: 1382 }, { x: 945, y: 1335 }, { x: 994, y: 1296 }, { x: 1040, y: 1345 }, { x: 1109, y: 1390 }, { x: 1189, y: 1416 }, { x: 1260, y: 1428 }
+        ],
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: 'rPAV' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ]
+    });
+    mB2LinkChild1Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .97 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: '1st RPL' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ],
+    });
+    mB2LinkChild2Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .8 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: '2nd RPL' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ]
+    });
+    mB2LinkChild3Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .63 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: '1st RPL' } },
+                position: { distance: 0.6, angle: 10 }
+            }
+        ]
+    });
+    mB2LinkChild4Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .36 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: 'rPDA' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ]
+    });
+    hideAllLinkLabels();
+    $("#toggleLblBtn").text("Show Labels");
+});
+$("#coDomBtn").on("click", function () {
+    const mB2LinkModel = graph.getCell('mB2Link');
+    const mB2LinkChild1Model = graph.getCell('mB2LinkChild1');
+    const mB2LinkChild2Model = graph.getCell('mB2LinkChild2');
+    const mB2LinkChild3Model = graph.getCell('mB2LinkChild3');
+    const mB2LinkChild4Model = graph.getCell('mB2LinkChild4');
+    if (!mB2LinkModel) return;
+
+    // 3️⃣ Update the link
+    mB2LinkModel.set({
+        source: { x: 827, y: 1431 },
+        target: { x: 1491, y: 1294 },
+        vertices: [
+            { x: 894, y: 1382 }, { x: 945, y: 1335 }, { x: 994, y: 1296 }, { x: 1040, y: 1345 }, { x: 1109, y: 1390 }, { x: 1189, y: 1416 }, { x: 1260, y: 1428 }, { x: 1323, y: 1416 },
+            { x: 1400, y: 1371 }, { x: 1453, y: 1327 }
+        ],
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: 'CIRC AV' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ]
+    });
+    mB2LinkChild1Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .75 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: '1st LPL' } },
+                position: { distance: 0.7, angle: 10 }
+            }
+        ],
+    });
+    mB2LinkChild2Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .6 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: '2nd LPL' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ]
+    });
+    mB2LinkChild3Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .48 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: '3rd LPL' } },
+                position: { distance: 0.6, angle: 10 }
+            }
+        ]
+    });
+    mB2LinkChild4Model.set({
+        source: {
+            id: mB2LinkModel.id,
+            anchor: {
+                name: 'connectionRatio',
+                args: { ratio: .28 } // 👈 new ratio here
+            }
+        },
+        labels: [
+            {
+                range: { min: 0, max: 1 },
+                attrs: { labelText: { text: 'IPDA' } },
+                position: { distance: 0.5, angle: 10 }
+            }
+        ]
+    });
+    hideAllLinkLabels();
+    $("#toggleLblBtn").text("Show Labels");
+});
 // CLICK ON EMPTY AREA
 paper.on('blank:pointerdown', function (evt, x, y) {
 
