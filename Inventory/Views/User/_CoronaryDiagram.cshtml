@@ -138,6 +138,33 @@
                             </div>
                         </div>
                     </form>
+                    <div>
+    @(Html.Kendo().DropDownList()
+        .Name("objectDropdownlist")
+        .DataTextField("Text")
+        .DataValueField("Value")
+        .OptionLabel("-- Select Object --")
+        .HtmlAttributes(new { @class = "form-control width200px" })
+        .BindTo(new List<SelectListItem>()
+        {
+            new SelectListItem() { Text = "Oclusion", Value = "Worm" },
+            new SelectListItem() { Text = "Stent", Value = "Stent" },
+            new SelectListItem() { Text = "Stenosis", Value = "UpBottomStroke" }
+        })
+        @* .HtmlAttributes(new { style = "width: 200px;margin-right:" }) *@
+     )
+    @(Html.Kendo().ComboBox()
+       .Name("arteryComboBox")
+       .DataTextField("Text")
+       .DataValueField("Value")
+       .Placeholder("-- Select Artery/Segment --")
+       .Filter("contains")
+       .MinLength(1)
+       .Suggest(true)
+       .HtmlAttributes(new { @class = "form-control w-auto" })
+    )
+    <button id="insert-object" type="button" class="btn btn-primary float-end " title='Add Object'>Add</button>
+</div>
                     <div class="table-responsive">
                         <table class="table" id="vesselGrid">
                             <thead>
