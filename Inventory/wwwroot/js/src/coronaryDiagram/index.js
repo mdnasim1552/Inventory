@@ -2083,11 +2083,11 @@ $("#redoBtn").on("click", function () {
     insertObjectInsideLink.LoadGridData(graph.toJSON());
 });
 $("#insert-object").on("click", function () {
-    const objectDropdown = $("#objectDropdownlist").data("kendoDropDownList");
-    const arteryCombo = $("#arteryComboBox").data("kendoComboBox");
+    const objectDropdown = $("#objectDropdownlist");
+    const arteryCombo = $("#arteryComboBox");
 
-    const objectType = objectDropdown.value();
-    const vesselName = arteryCombo.value() || arteryCombo.text();
+    const objectType = objectDropdown.val();
+    const vesselName = arteryCombo.val();
     console.log(objectType + " " + vesselName);
     if (!objectType || !vesselName) {
         alert("Please select both Object and Artery");
@@ -2829,11 +2829,32 @@ function getAllLabelTexts(graph) {
 }
 function bindArteryDropdown() {
     const data = getAllLabelTexts(graph);
-    const dropdown = $("#arteryComboBox").data("kendoComboBox");
-    dropdown.setDataSource(new kendo.data.DataSource({
-        data: data
-    }));
-    dropdown.refresh();
+    const dropdown = $("#arteryComboBox");
+
+    // 🔥 Destroy previous Select2 (IMPORTANT)
+    if (dropdown.hasClass("select2-hidden-accessible")) {
+        dropdown.select2('destroy');
+    }
+
+    // Clear old options
+    dropdown.empty();
+
+    // Default option
+    dropdown.append('<option value="">-- Select Artery/Segment --</option>');
+
+    // Append new options
+    data.forEach(item => {
+        dropdown.append(
+            `<option value="${item.Value}">${item.Text}</option>`
+        );
+    });
+
+    // 🔥 Reinitialize Select2
+    dropdown.select2({
+        placeholder: "-- Select Artery/Segment --",
+        allowClear: true,
+        width: '100%'
+    });
 }
 setTimeout(bindArteryDropdown, 100);
 setTimeout(() => {
