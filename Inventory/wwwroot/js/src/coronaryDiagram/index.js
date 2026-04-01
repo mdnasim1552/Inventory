@@ -1995,9 +1995,50 @@ function refreshPaper() {
 $("#saveBtn").on("click", function () {
     const json = graph.toJSON();
     localStorage.setItem('mySavedDiagram', JSON.stringify(json));
+
+    graph.getCells().forEach(cell => {
+        const type = cell.get('type');
+        if (type === 'custom.FormNote' || type === 'standard.Link') {
+            graph.removeCells([cell]);
+        }
+    });
+    refreshPaper();
+    setTimeout(() => {
+        const svg = paper.svg;
+        const serializer = new XMLSerializer();
+        const svgString = serializer.serializeToString(svg);
+
+        // ✅ Encode as Base64
+        const base64 = btoa(unescape(encodeURIComponent(svgString)));
+        const dataURL = `data:image/svg+xml;base64,${base64}`;
+        //console.log("JSON size:", JSON.stringify(json).length / 1024, "KB");
+        //console.log("SVG size:", dataURL.length / 1024, "KB");
+        
+        // ✅ SEND TO SERVER
+        $.ajax({
+            url: '/DCP/Home/SaveDiagram',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                diagramJson: JSON.stringify(json),
+                thumbnail: dataURL
+            }),
+            success: function () {
+                window.parent.setThumbnail(dataURL);
+                window.parent.closeKendoWindow('coronary_diagram-add-window');
+                alert('Diagram saved successfully!');
+            },
+            error: function () {
+                alert('Error saving diagram!');
+            }
+        });
+        //window.parent.closeKendoWindow('coronary_diagram-add-window');
+    }, 50);
+    
     console.log(json);
     console.log(parseStenosis(json));
-    alert('Diagram saved successfully!');
+    //alert('Diagram saved successfully!');
+    //window.parent.showAlert('Diagram saved successfully!');
 });
 $("#loadBtn").on("click", function () {
     const savedJSON = localStorage.getItem('mySavedDiagram');
@@ -2041,11 +2082,19 @@ $("#redoBtn").on("click", function () {
     redo();
     insertObjectInsideLink.LoadGridData(graph.toJSON());
 });
-document.getElementById('insertBtn').addEventListener('click', () => {
-    const vesselName = "PRCA";
-    const objectType = "Worm";
-    // insertObjectByVessel(vesselName, objectType);
-    insertObjectByVessel(vesselName, "UpBottomStroke");
+$("#insert-object").on("click", function () {
+    const objectDropdown = $("#objectDropdownlist").data("kendoDropDownList");
+    const arteryCombo = $("#arteryComboBox").data("kendoComboBox");
+
+    const objectType = objectDropdown.value();
+    const vesselName = arteryCombo.value() || arteryCombo.text();
+    console.log(objectType + " " + vesselName);
+    if (!objectType || !vesselName) {
+        alert("Please select both Object and Artery");
+        return;
+    }
+
+    insertObjectByVessel(vesselName, objectType);
 });
 function parseStenosis(graphJSON) {
 
@@ -2136,15 +2185,33 @@ function insertObjectByVessel(vesselName, objectType) {
 
             const x = point.x;
             const y = point.y;
+            const exists = graph.getElements().some(el => {
+                const attachment = el.get('linkAttachment');
 
+                if (!attachment || !attachment.linkId || attachment.ratio == null) {
+                    return false;
+                }
+                //console.log(attachedLinkId);
+                //console.log(link.id);
+                //console.log(attachedRatio + " " + min + " " + max);
+                return (
+                    attachment.linkId === link.id &&
+                    attachment.ratio >= min &&
+                    attachment.ratio <= max
+                );
+            });
+
+            if (exists) {
+                alert("Object already exists in this vessel segment!");
+                return;
+            }
             if (objectType === "Worm") {
                 insertObjectInsideLink.insertWormOnLink(link, ratio, "#000000", graph, paper, joint);
-            }
-
-            if (objectType === "UpBottomStroke") {
+            } else if (objectType === "UpBottomStroke") {
                 insertObjectInsideLink.insertUpBottomStroke(link, ratio, graph, paper, joint);
+            } else if (objectType === "Stent") {
+                insertObjectInsideLink.insertStentOnLink(link, ratio, "#000000", graph, paper, joint);
             }
-
             return;
         }
     }
@@ -2738,6 +2805,37 @@ function applySegmentVertices(cabg, linkView, startRatio, endRatio) {
 
     cabg.vertices(result);
 }
+function getAllLabelTexts(graph) {
+    const result = new Set(); // avoid duplicates
+
+    graph.getCells().forEach(cell => {
+        if (cell.isLink()) {
+            const labels = cell.get('labels') || [];
+
+            labels.forEach(label => {
+                const text = label?.attrs?.labelText?.text;
+
+                if (text && text.trim() !== "") {
+                    result.add(text.trim());
+                }
+            });
+        }
+    });
+
+    return Array.from(result).map(t => ({
+        Text: t,
+        Value: t
+    }));
+}
+function bindArteryDropdown() {
+    const data = getAllLabelTexts(graph);
+    const dropdown = $("#arteryComboBox").data("kendoComboBox");
+    dropdown.setDataSource(new kendo.data.DataSource({
+        data: data
+    }));
+    dropdown.refresh();
+}
+setTimeout(bindArteryDropdown, 100);
 setTimeout(() => {
     paper.unfreeze();
 }, 0);
