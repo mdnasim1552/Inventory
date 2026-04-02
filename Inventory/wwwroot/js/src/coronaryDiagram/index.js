@@ -1785,7 +1785,7 @@ function onPaperLinkMouseEnter(linkView, evt) {
         
         //new joint.linkTools.Remove({ scale }),
     ];
-    if (linkView.model.get('isCABG')) {
+    if (linkView.model.get('isCABG') || linkView.model.get('isRetro')){
         tools.push(
             new joint.linkTools.Remove({
                 distance: '35%',   // center of link
@@ -2383,7 +2383,7 @@ function createCABGOrRetrograde(start, end, startAnchor, endAnchor) {
     } else {
         cabg = new joint.shapes.standard.Link({
             z: 101,
-            isCABG: true,
+            isRetro: true,
             attrs: {
                 line: {
                     stroke: 'RED',
