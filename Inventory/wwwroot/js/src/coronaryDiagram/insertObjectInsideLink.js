@@ -578,3 +578,65 @@ export function LoadGridData(graphJSON) {
     //console.log(results);
     //return results;
 }
+export function insertObjectByVessel(vesselName, objectType, graph, paper, joint) {
+
+    const links = graph.getLinks();
+
+    for (const link of links) {
+
+        const labels = link.get('labels');
+        if (!labels) continue;
+
+        for (const label of labels) {
+
+            const name = label.attrs?.labelText?.text;
+
+            if (name !== vesselName) continue;
+
+            // middle of label range
+            const min = label.range?.min ?? 0;
+            const max = label.range?.max ?? 1;
+
+            const ratio = (min + max) / 2;
+
+            const linkView = paper.findViewByModel(link);
+            if (!linkView) return;
+
+            const point = linkView.getPointAtRatio(ratio);
+
+
+            const x = point.x;
+            const y = point.y;
+            const exists = graph.getElements().some(el => {
+                const attachment = el.get('linkAttachment');
+
+                if (!attachment || !attachment.linkId || attachment.ratio == null) {
+                    return false;
+                }
+                //console.log(attachedLinkId);
+                //console.log(link.id);
+                //console.log(attachedRatio + " " + min + " " + max);
+                return (
+                    attachment.linkId === link.id &&
+                    attachment.ratio >= min &&
+                    attachment.ratio <= max
+                );
+            });
+
+            if (exists) {
+                alert("Object already exists in this vessel segment!");
+                return;
+            }
+            if (objectType === "Worm") {
+                insertWormOnLink(link, ratio, "#000000", graph, paper, joint);
+            } else if (objectType === "UpBottomStroke") {
+                insertUpBottomStroke(link, ratio, graph, paper, joint);
+            } else if (objectType === "Stent") {
+                insertStentOnLink(link, ratio, "#000000", graph, paper, joint);
+            }
+            return;
+        }
+    }
+
+    console.warn("Vessel not found:", vesselName);
+}
