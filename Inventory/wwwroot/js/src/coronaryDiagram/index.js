@@ -2134,16 +2134,17 @@ $("#redoBtn").on("click", function () {
     insertObjectInsideLink.LoadGridData(graph.toJSON());
 });
 $("#insert-object").on("click", function () {
-    const objectDropdown = $("#objectDropdownlist").data("kendoDropDownList");
-    const arteryCombo = $("#arteryComboBox").data("kendoComboBox");
+    const objectDropdown = $("#objectDropdownlist");
+    const arteryCombo = $("#arteryComboBox");
 
-    const objectType = objectDropdown.value();
-    const vesselName = arteryCombo.value() || arteryCombo.text();
+    const objectType = objectDropdown.val();
+    const vesselName = arteryCombo.val();
     console.log(objectType + " " + vesselName);
     if (!objectType || !vesselName) {
         alert("Please select both Object and Artery");
         return;
     }
+
     insertObjectInsideLink.insertObjectByVessel(vesselName, objectType, graph, paper, joint);
 });
 function extractFlowInfoFromJSON(graphJSON) {

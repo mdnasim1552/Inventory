@@ -10,6 +10,7 @@ bin/
 obj/
 Debug/
 Release/
+node_modules/
 
 # ASP.NET Core
 wwwroot/lib/

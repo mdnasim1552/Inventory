@@ -52,8 +52,8 @@
   <ItemGroup>
     <None Include="wwwroot\js\UserHub.js" />
   </ItemGroup>
-  <Target Name="NpmBuild" BeforeTargets="Build">
+  <!--<Target Name="NpmBuild" BeforeTargets="Build">
     <Exec Command="npm install" />
     <Exec Command="npm run build" />
-  </Target>
+  </Target>-->
 </Project>

@@ -134,9 +134,9 @@
                             <div class="form-group">
                                 <select class="select" id="objectDropdownlist">
                                     <option value="" selected>-- Select Object --</option>
-                                    <option value="Worm" selected>Oclusion</option>
-                                    <option value="Stent" selected>Stent</option>
-                                    <option value="UpBottomStroke" selected>Stenosis</option>
+                                    <option value="Worm" >Oclusion</option>
+                                    <option value="Stent" >Stent</option>
+                                    <option value="UpBottomStroke" >Stenosis</option>
                                 </select>
                             </div>
                         </div>
@@ -152,32 +152,6 @@
                                 <button id="insert-object" type="button" class="btn btn-primary float-end " title='Add Object'>Add</button>
                             </div>
                         </div>
-                       
-                        
-                        @* @(Html.Kendo().DropDownList()
-                            .Name("objectDropdownlist")
-                            .DataTextField("Text")
-                            .DataValueField("Value")
-                            .OptionLabel("-- Select Object --")
-                            .HtmlAttributes(new { @class = "form-control width200px" })
-                            .BindTo(new List<SelectListItem>()
-                            {
-                                new SelectListItem() { Text = "Oclusion", Value = "Worm" },
-                                new SelectListItem() { Text = "Stent", Value = "Stent" },
-                                new SelectListItem() { Text = "Stenosis", Value = "UpBottomStroke" }
-                            })
-                         ) *@
-                        @* @(Html.Kendo().ComboBox()
-                           .Name("arteryComboBox")
-                           .DataTextField("Text")
-                           .DataValueField("Value")
-                           .Placeholder("-- Select Artery/Segment --")
-                           .Filter("contains")
-                           .MinLength(1)
-                           .Suggest(true)
-                           .HtmlAttributes(new { @class = "form-control w-auto" })
-                        ) *@
-                        
                     </div>
                     <div class="table-responsive">
                         <table class="table" id="vesselGrid">
@@ -237,7 +211,7 @@
                 minimumResultsForSearch: -1,
                 width: '100%'
               });
-            }
+        }
         vesselTable = $('#vesselGrid').DataTable({
              data: [],
              columns: [
