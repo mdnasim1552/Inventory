@@ -2087,6 +2087,7 @@ $("#saveBtn").on("click", function () {
     
     console.log(json);
     console.log(parseStenosis(json));
+    console.log(extractFlowInfoFromJSON(json));
     //alert('Diagram saved successfully!');
     //window.parent.showAlert('Diagram saved successfully!');
 });
@@ -2145,6 +2146,76 @@ $("#insert-object").on("click", function () {
     }
     insertObjectInsideLink.insertObjectByVessel(vesselName, objectType, graph, paper, joint);
 });
+function extractFlowInfoFromJSON(graphJSON) {
+    const result = {
+        cabg: [],
+        retrograde: []
+    };
+
+    if (!graphJSON || !Array.isArray(graphJSON.cells)) return result;
+
+    graphJSON.cells.forEach(cell => {
+        // Only process links
+        if (cell.type !== 'link' && !cell.source) return;
+
+        const isCABG = cell.isCABG;
+        const isRetro = cell.isRetro;
+
+        if (isCABG) {
+            result.cabg.push({
+                id: cell.id,
+                source: cell.source,
+                target: cell.target,
+                vertices: cell.vertices || []
+            });
+        }
+
+        if (isRetro) {
+            result.retrograde.push({
+                id: cell.id,
+                source: cell.source,
+                target: cell.target,
+                vertices: cell.vertices || []
+            });
+        }
+    });
+
+    return result;
+}
+//function extractFlowInfo(graph) {
+//    const result = {
+//        cabg: [],
+//        retrograde: []
+//    };
+
+//    graph.getCells().forEach(cell => {
+//        // Only care about links
+//        if (!cell.isLink || !cell.isLink()) return;
+
+//        const isCABG = cell.get('isCABG');
+//        const isRetro = cell.get('isRetro');
+
+//        if (isCABG) {
+//            result.cabg.push({
+//                id: cell.id,
+//                source: cell.get('source'),
+//                target: cell.get('target'),
+//                vertices: cell.get('vertices') || []
+//            });
+//        }
+
+//        if (isRetro) {
+//            result.retrograde.push({
+//                id: cell.id,
+//                source: cell.get('source'),
+//                target: cell.get('target'),
+//                vertices: cell.get('vertices') || []
+//            });
+//        }
+//    });
+
+//    return result;
+//}
 function parseStenosis(graphJSON) {
 
     const cells = graphJSON.cells || graphJSON;
@@ -2169,7 +2240,8 @@ function parseStenosis(graphJSON) {
     for (const cell of cells) {
 
         if (cell.type !== "custom.UpBottomStroke" &&
-            cell.type !== "custom.Worm") continue;
+            cell.type !== "custom.Worm"
+            && cell.type !== "custom.Stent") continue;
 
         const linkId = cell.linkAttachment?.linkId;
         const ratio = cell.linkAttachment?.ratio;
