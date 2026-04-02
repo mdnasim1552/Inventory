@@ -1764,7 +1764,7 @@ labelLayerEl.parentElement.appendChild(labelLayerEl);
 // Events
 function onPaperLinkMouseEnter(linkView, evt) {
     if (menuOpen) return;
-    if (cabgMode) return;
+    if (cabgOrRetroMode) return;
     const model = linkView.model;
 
     // 🔥 PRIORITY: bring CABG to front
@@ -1997,15 +1997,64 @@ $("#saveBtn").on("click", function () {
     const json = graph.toJSON();
     localStorage.setItem('mySavedDiagram', JSON.stringify(json));
 
-    graph.getCells().forEach(cell => {
-        const type = cell.get('type');
-        if (type === 'custom.FormNote' || type === 'standard.Link') {
-            graph.removeCells([cell]);
+    //graph.getCells().forEach(cell => {
+    //    const type = cell.get('type');
+    //    if (type === 'custom.FormNote' || type === 'standard.Link') {
+    //        graph.removeCells([cell]);
+    //    }
+    //});
+    const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
+    style.textContent = `
+        .FormNoteViewDiv {
+            box-sizing: border-box;
+            background: #fffbe6;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 35px;
+            font-family: sans-serif;
+            font-size: 28px;
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            gap: 20px;
+            width: fit-content;
         }
-    });
+        .FormNoteViewInnerDiv {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .FormNoteViewInnerDiv label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .FormNoteViewInnerDiv input {
+            padding: 8px;
+            font-size: 28px;
+        }
+        .form-note-container {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .FormNoteViewDiv > label {
+            font-size: 45px;
+            font-weight: bold;
+        }
+    `;
+
     refreshPaper();
     setTimeout(() => {
         const svg = paper.svg;
+        svg.insertBefore(style, svg.firstChild);
+        svg.setAttribute("viewBox", `0 0 ${svg.clientWidth} ${svg.clientHeight}`);
+        svg.setAttribute("width", "100%");
+        svg.setAttribute("height", "100%");
+        const inputs = svg.querySelectorAll('input');
+
+        inputs.forEach(input => {
+            input.setAttribute('value', input.value);
+        });
         const serializer = new XMLSerializer();
         const svgString = serializer.serializeToString(svg);
 
@@ -2026,7 +2075,7 @@ $("#saveBtn").on("click", function () {
             }),
             success: function () {
                 window.parent.setThumbnail(dataURL);
-                window.parent.closeKendoWindow('coronary_diagram-add-window');
+                //window.parent.closeKendoWindow('coronary_diagram-add-window');
                 alert('Diagram saved successfully!');
             },
             error: function () {
@@ -2084,17 +2133,16 @@ $("#redoBtn").on("click", function () {
     insertObjectInsideLink.LoadGridData(graph.toJSON());
 });
 $("#insert-object").on("click", function () {
-    const objectDropdown = $("#objectDropdownlist");
-    const arteryCombo = $("#arteryComboBox");
+    const objectDropdown = $("#objectDropdownlist").data("kendoDropDownList");
+    const arteryCombo = $("#arteryComboBox").data("kendoComboBox");
 
-    const objectType = objectDropdown.val();
-    const vesselName = arteryCombo.val();
+    const objectType = objectDropdown.value();
+    const vesselName = arteryCombo.value() || arteryCombo.text();
     console.log(objectType + " " + vesselName);
     if (!objectType || !vesselName) {
         alert("Please select both Object and Artery");
         return;
     }
-
     insertObjectInsideLink.insertObjectByVessel(vesselName, objectType, graph, paper, joint);
 });
 function parseStenosis(graphJSON) {
@@ -2157,13 +2205,13 @@ function parseStenosis(graphJSON) {
 
     return results;
 }
-let cabgMode = false;
+let cabgOrRetroMode = false;
 let startPoint = null;
 let startAnchor = null;
 let startMarker = null;
 let btnType = null;
 $("#addCABGBtn").on("click", function () {
-    cabgMode = true;
+    cabgOrRetroMode = true;
     startPoint = null;
     startAnchor = null;
     btnType = 'CABG';
@@ -2186,7 +2234,7 @@ $("#toggleLblBtn").on("click", function () {
     }
 });
 $("#addRetrogradeFlowBtn").on("click", function () {
-    cabgMode = true;
+    cabgOrRetroMode = true;
     startPoint = null;
     startAnchor = null;
     btnType = 'RetrogradeFlow';
@@ -2228,7 +2276,7 @@ $("#coDomBtn").on("click", function () {
 // CLICK ON EMPTY AREA
 paper.on('blank:pointerdown', function (evt, x, y) {
 
-    if (!cabgMode) return;
+    if (!cabgOrRetroMode) return;
 
     if (!startPoint) {
 
@@ -2236,7 +2284,7 @@ paper.on('blank:pointerdown', function (evt, x, y) {
         addStartMarker(x, y);
     } else {
 
-        createCABG(startPoint, { x, y }, startAnchor, null);
+        createCABGOrRetrograde(startPoint, { x, y }, startAnchor, null);
 
         resetCABGMode();
     }
@@ -2247,7 +2295,7 @@ paper.on('blank:pointerdown', function (evt, x, y) {
 // CLICK ON LINK
 paper.on('link:pointerdown', function (linkView, evt, x, y) {
 
-    if (!cabgMode) return;
+    if (!cabgOrRetroMode) return;
 
     if (!startPoint) {
 
@@ -2266,7 +2314,7 @@ paper.on('link:pointerdown', function (linkView, evt, x, y) {
             point: { x, y }
         };
 
-        createCABG(startPoint, { x, y }, startAnchor, endAnchor);
+        createCABGOrRetrograde(startPoint, { x, y }, startAnchor, endAnchor);
 
         resetCABGMode();
     }
@@ -2311,7 +2359,7 @@ function getCurvedVertices(start, end, offsetAmount = 30) {
 
     return [{ x: midX + offsetX, y: midY + offsetY }];
 }
-function createCABG(start, end, startAnchor, endAnchor) {
+function createCABGOrRetrograde(start, end, startAnchor, endAnchor) {
     let cabg = null;
     if (btnType === 'CABG') {
         cabg = new Branch({
@@ -2415,7 +2463,7 @@ function createCABG(start, end, startAnchor, endAnchor) {
 
 function resetCABGMode() {
     btnType = null;
-    cabgMode = false;
+    cabgOrRetroMode = false;
     startPoint = null;
     startAnchor = null;
     removeStartMarker();
