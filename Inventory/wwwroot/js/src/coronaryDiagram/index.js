@@ -2286,7 +2286,7 @@ paper.on('blank:pointerdown', function (evt, x, y) {
 
         createCABGOrRetrograde(startPoint, { x, y }, startAnchor, null);
 
-        resetCABGMode();
+        resetCABGOrRetroMode();
     }
 
 });
@@ -2316,7 +2316,7 @@ paper.on('link:pointerdown', function (linkView, evt, x, y) {
 
         createCABGOrRetrograde(startPoint, { x, y }, startAnchor, endAnchor);
 
-        resetCABGMode();
+        resetCABGOrRetroMode();
     }
 
 });
@@ -2461,7 +2461,7 @@ function createCABGOrRetrograde(start, end, startAnchor, endAnchor) {
 }
 
 
-function resetCABGMode() {
+function resetCABGOrRetroMode() {
     btnType = null;
     cabgOrRetroMode = false;
     startPoint = null;
