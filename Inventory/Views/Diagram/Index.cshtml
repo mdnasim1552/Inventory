@@ -1,5 +1,6 @@
 ﻿@* <link href="~/css/coronarydiagram.css" rel="stylesheet" /> *@
 @* <script type="module" src="~/js/coronarydiagram/index.js"></script> *@
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <link href="~/js/dist/coronarydiagram.bundle.css" rel="stylesheet" />
 <script type="module" src="~/js/dist/coronarydiagram.bundle.js"></script>
 
@@ -134,9 +135,9 @@
                             <div class="form-group">
                                 <select class="select" id="objectDropdownlist">
                                     <option value="" selected>-- Select Object --</option>
-                                    <option value="Worm" selected>Oclusion</option>
-                                    <option value="Stent" selected>Stent</option>
-                                    <option value="UpBottomStroke" selected>Stenosis</option>
+                                    <option value="Worm">Oclusion</option>
+                                    <option value="Stent">Stent</option>
+                                    <option value="UpBottomStroke">Stenosis</option>
                                 </select>
                             </div>
                         </div>
@@ -211,6 +212,7 @@
                             <button class="btn btn-sm btn-outline-info" id="rightDomBtn">Right-Dominance</button>
                             <button class="btn btn-sm btn-outline-info" id="coDomBtn">Co-Dominance</button>
                             <button class="btn btn-sm btn-outline-dark" id="toggleLblBtn">Show Labels</button>
+                            <button class="btn btn-sm btn-outline-dark" id="printBtn">Print</button>
                             <button class="btn btn-sm btn-outline-dark" id="undoBtn">Undo</button>
                             <button class="btn btn-sm btn-outline-dark" id="redoBtn">Redo</button>
                         </div>
@@ -218,6 +220,9 @@
                     <div id="diagram-paper-wrapper">
                         <div id="paper"></div>
                     </div>
+                </div>
+                <div class="col-lg-12">
+                    <button id="saveDiagramBtn" class="btn btn-submit me-2">Save</button>
                 </div>
             </div>
         </div>
@@ -270,6 +275,9 @@
          $("#diagram_filter_search").on("click",function(){
             $('#filter_inputs').slideToggle("slow");
             $('#filter_search').toggleClass("setclose");
+        });
+        $("#saveDiagramBtn").on("click",function(){
+            $("#saveBtn").click();
         });
     });
 </script>

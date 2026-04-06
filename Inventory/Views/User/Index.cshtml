@@ -120,7 +120,8 @@
                             </th>
                             <th>User name </th>
                             <th>Phone</th>
-                            <th>email</th>
+                            <th>Email</th>
+                            <th>Store</th>
                             <th>Role</th>
                             <th>Created On</th>
                             <th>Status</th>
@@ -147,9 +148,9 @@
                                 @* <td>@user.Name</td> *@
                                 <td>@user.Mobile</td>
                                 <td>
-                                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                       data-cfemail="fb8f9394969a88bb9e839a968b979ed5989496">[email&#160;protected]</a>
+                                    @user.Email
                                 </td>
+                                <td>@user.Store?.Name</td>
                                 <td>@user.Role.Role</td>
                                 <td>@user.CreatedOn</td>
                                 <td>

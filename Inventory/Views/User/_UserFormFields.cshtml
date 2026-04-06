@@ -1,5 +1,10 @@
 ﻿@model InventoryEntity.Account.UserDto
 @{
+    var storeList = ViewData["StoreList"] as IEnumerable<Inventory.Models.Store>;
+    var storeSelectList = storeList!=null
+               ? new SelectList(storeList, "Id", "Name")
+               : new SelectList(Enumerable.Empty<Store>(), "Id", "Name");
+
     var roleList = ViewData["RoleList"] as IEnumerable<Inventory.Models.Userrole>;
     var roleSelectList = roleList != null
                ? new SelectList(roleList, "RoleId", "Role")
@@ -36,6 +41,12 @@
     <div class="form-group">
         <label asp-for="Mobile">Mobile</label>
         <input asp-for="Mobile" type="text">
+    </div>
+    <div class="form-group">
+        <label for="storeSelect">Store</label>
+        <select class="select" id="storeSelect" asp-for="@Model.StoreId" required asp-items="storeSelectList">
+            <option value="" selected disabled>Choose Store</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="roleSelect">Role</label>

@@ -357,8 +357,8 @@
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul>
-                                <li><a href="purchaselist.html">Purchase List</a></li>
-                                <li><a href="addpurchase.html">Add Purchase</a></li>
+                                <li><a asp-action="Index" asp-controller="Purchase">Purchase List</a></li>
+                                <li><a asp-action="Create" asp-controller="Purchase">Add Purchase</a></li>
                                 <li><a href="importpurchase.html">Import Purchase</a></li>
                             </ul>
                         </li>
@@ -717,7 +717,7 @@
                 if (url && url !== "#" && !url.startsWith("javascript")) {
                     e.preventDefault();
                     // **Decide normal load vs SPA load**
-                    if (url.includes("CoronaryDiagram")) {
+                    if (url.includes("Diagram")) {
                         // Let browser do full page reload
                         window.location.href = url;
                         return;

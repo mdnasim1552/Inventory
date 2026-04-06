@@ -27,23 +27,7 @@ public partial class Product
     [StringLength(50)]
     public string? Sku { get; set; }
 
-    public int? MinQuantity { get; set; }
-
-    public int Quantity { get; set; }
-
     public string? Description { get; set; }
-
-    [Column(TypeName = "decimal(18, 6)")]
-    public decimal? Tax { get; set; }
-
-    [Column(TypeName = "decimal(18, 6)")]
-    public decimal? Discount { get; set; }
-
-    [StringLength(10)]
-    public string Status { get; set; } = null!;
-
-    [Column(TypeName = "decimal(18, 6)")]
-    public decimal Price { get; set; }
 
     [StringLength(500)]
     public string? Image { get; set; }
@@ -67,6 +51,12 @@ public partial class Product
 
     [InverseProperty("Product")]
     public virtual ICollection<ProductStore> ProductStores { get; set; } = new List<ProductStore>();
+
+    [InverseProperty("Product")]
+    public virtual ICollection<PurchaseItem> PurchaseItems { get; set; } = new List<PurchaseItem>();
+
+    [InverseProperty("Product")]
+    public virtual ICollection<StockTransferItem> StockTransferItems { get; set; } = new List<StockTransferItem>();
 
     [ForeignKey("SubCategoryId")]
     [InverseProperty("Products")]

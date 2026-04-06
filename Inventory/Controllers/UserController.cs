@@ -20,6 +20,7 @@ namespace Inventory.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IEnumerable<Userrole> roleList = new List<Userrole>();
+        private readonly IEnumerable<Store> storeList = new List<Store>();
         private readonly string folderName = "UserImages";
         private readonly string uploadFolderPath;
         private readonly TwilioService _twilioService;
@@ -29,12 +30,13 @@ namespace Inventory.Controllers
             _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
             roleList = _unitOfWork.Userrole.Find(u => u.Role != "Admin");
+            storeList= _unitOfWork.Store.GetAll();
             uploadFolderPath = Path.Combine(_webHostEnvironment.WebRootPath, folderName);
             _twilioService = twilioService;
         }
         public async Task<IActionResult> Index()
         {
-            var userList =await _unitOfWork.Credential.GetAllIncluding(u => u.Role);
+            var userList =await _unitOfWork.Credential.GetAllIncluding(u => u.Role,u=>u.Store);
             userList = userList.Where(u => u.Role.Role != "Admin");
 
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
@@ -46,6 +48,7 @@ namespace Inventory.Controllers
         public ActionResult Create()
         {
             ViewData["RoleList"] = roleList;
+            ViewData["StoreList"] = storeList;
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView();
@@ -90,6 +93,7 @@ namespace Inventory.Controllers
                 }                
             }
             ViewData["RoleList"] = roleList;
+            ViewData["StoreList"] = storeList;
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
@@ -109,6 +113,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
+            ViewData["StoreList"] = storeList;
             ViewData["RoleList"] = roleList;
             var userDto = _mapper.Map<UserDto>(user);
             //productDto.Status = productDto.Status.Trim();
@@ -152,6 +157,7 @@ namespace Inventory.Controllers
                 else
                 {
                     ViewData["RoleList"] = roleList;
+                    ViewData["StoreList"] = storeList;
                     ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
                     if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
                     {
@@ -161,6 +167,7 @@ namespace Inventory.Controllers
                 }
             }
             ViewData["RoleList"] = roleList;
+            ViewData["StoreList"] = storeList;
             ModelState.AddModelError(string.Empty, "Fill the form again correctly!");
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {

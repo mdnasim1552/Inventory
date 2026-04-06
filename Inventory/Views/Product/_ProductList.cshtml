@@ -13,9 +13,7 @@
             <th>SKU</th>
             <th>Category</th>
             <th>Brand</th>
-            <th>price</th>
             <th>Unit</th>
-            <th>Qty</th>
             <th>Created By</th>
             <th>Action</th>
         </tr>
@@ -40,9 +38,7 @@
                 <td>@product.Sku</td>
                 <td>@product.Category.Name</td>
                 <td>@product.Brand.Name</td>
-                <td>@product.Price.ToString("F2")</td>
                 <td>@product.Unit.ShortName</td>
-                <td>@product.Quantity</td>
                 <td>@product.CreatedByNavigation.Role.Role</td>
                 <td>
                     <a class="me-3 view_product" data-id="@product.Id">

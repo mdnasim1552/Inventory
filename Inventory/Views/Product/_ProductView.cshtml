@@ -73,41 +73,6 @@
                             <input asp-for="@Model.Sku" type="text" style="width:70% !important; border:none;padding: 10px;" />
                         </li>
                         <li>
-                            <h4>Minimum Qty</h4>
-                            @* <h6>@Model.MinQuantity</h6> *@
-                            <input asp-for="@Model.MinQuantity" type="text" style="width:70% !important; border:none;padding: 10px;" />
-                        </li>
-                        <li>
-                            <h4>Quantity</h4>
-                            @* <h6>@Model.Quantity</h6> *@
-                            <input asp-for="@Model.Quantity" type="text" style="width:70% !important; border:none;padding: 10px;" />
-                        </li>
-                        <li>
-                            <h4>Tax %</h4>
-                            @* <h6>@Convert.ToDouble(Model.Tax).ToString("#,##0.00;(#,##0.00);0") %</h6> *@
-                            <input asp-for="@Model.Tax" type="text" style="width:70% !important; border:none;padding: 10px;" />
-                        </li>
-                        <li>
-                            <h4>Discount %</h4>
-                            @* <h6>@Convert.ToDouble(Model.Discount).ToString("#,##0.00;(#,##0.00);0") %</h6> *@
-                            <input asp-for="@Model.Discount" type="text" style="width:70% !important; border:none;padding: 10px;" />
-                        </li>
-                        <li>
-                            <h4>Price</h4>
-                            @* <h6>@Convert.ToDouble(Model.Price).ToString("#,##0.00;(#,##0.00);0")</h6> *@
-                            <input asp-for="@Model.Price" type="text" style="width:70% !important; border:none;padding: 10px;" />
-                        </li>
-                        <li>
-                            <h4>Status</h4>
-                            @* <h6>@Model.Status</h6> *@
-                            <select class="select" asp-for="Status" asp-items="@(new List<SelectListItem> {
-                            new SelectListItem { Value = "Open", Text = "Open" },
-                            new SelectListItem { Value = "Closed", Text = "Closed" }
-                            })" required style="width:70% !important; border:none;padding: 10px;">
-                                <option value="" selected disabled>-- Select Status --</option>
-                            </select>
-                        </li>
-                        <li>
                             <h4>Description</h4>
                             @* <h6>@Model.Description</h6> *@
                             <textarea asp-for="@Model.Description" style="width:70% !important; border:none;padding: 10px;"></textarea>

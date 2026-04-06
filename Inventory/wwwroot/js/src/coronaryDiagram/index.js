@@ -2066,7 +2066,7 @@ $("#saveBtn").on("click", function () {
         
         // ✅ SEND TO SERVER
         $.ajax({
-            url: '/DCP/Home/SaveDiagram',
+            url: '/Diagram/SaveDiagram',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -2074,7 +2074,7 @@ $("#saveBtn").on("click", function () {
                 thumbnail: dataURL
             }),
             success: function () {
-                window.parent.setThumbnail(dataURL);
+                //window.parent.setThumbnail(dataURL);
                 //window.parent.closeKendoWindow('coronary_diagram-add-window');
                 alert('Diagram saved successfully!');
             },
@@ -2090,6 +2090,110 @@ $("#saveBtn").on("click", function () {
     console.log(extractFlowInfoFromJSON(json));
     //alert('Diagram saved successfully!');
     //window.parent.showAlert('Diagram saved successfully!');
+});
+$("#printBtn").on("click", function () {
+    const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
+    style.textContent = `
+        .FormNoteViewDiv {
+            box-sizing: border-box;
+            background: #fffbe6;
+            
+            border-radius: 10px;
+            padding: 35px;
+            font-family: sans-serif;
+            font-size: 28px;
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            gap: 20px;
+            width: fit-content;
+        }
+        .FormNoteViewInnerDiv {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .FormNoteViewInnerDiv label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .FormNoteViewInnerDiv input {
+            padding: 8px;
+            font-size: 28px;
+        }
+        .form-note-container {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .FormNoteViewDiv > label {
+            font-size: 45px;
+            font-weight: bold;
+        }
+    `;
+    const svg = paper.svg;
+    svg.insertBefore(style, svg.firstChild);
+    svg.setAttribute("viewBox", `0 0 ${svg.clientWidth} ${svg.clientHeight}`);
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    const inputs = svg.querySelectorAll('input');
+
+    inputs.forEach(input => {
+        input.setAttribute('value', input.value);
+    });
+    const serializer = new XMLSerializer();
+    const svgString = serializer.serializeToString(svg);
+
+    // ✅ Encode as Base64
+    const base64 = btoa(unescape(encodeURIComponent(svgString)));
+    const dataURL = `data:image/svg+xml;base64,${base64}`;
+    // ✅ Open print window
+    const printWindow = window.open('', '_blank');
+
+    const doc = printWindow.document;
+
+    // ✅ A4 PERFECT LAYOUT
+    doc.open();
+    doc.write(`
+        <html>
+        <head>
+            <title>Print Diagram</title>
+            <style>
+                body {
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .page {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="page">
+                <img src="${dataURL}" />
+            </div>
+        </body>
+        </html>
+    `);
+    doc.close();
+
+    // ✅ Smooth print (no freeze issue)
+    printWindow.onload = function () {
+        setTimeout(() => {
+            printWindow.focus();
+            printWindow.print();
+        }, 300);
+    };
 });
 $("#loadBtn").on("click", function () {
     const savedJSON = localStorage.getItem('mySavedDiagram');

@@ -11,7 +11,5 @@ namespace InventoryEntity.Product
         public int? CategoryId { get; set; }
         public int? SubCategoryId { get; set; }
         public int? BrandId { get; set; }
-        public int? Min_Price { get; set;}
-        public int? Max_Price { get;set;}
     }
 }

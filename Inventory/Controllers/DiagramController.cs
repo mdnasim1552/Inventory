@@ -16,5 +16,19 @@ namespace Inventory.Controllers
             }
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> SaveDiagram([FromBody] Diagram diagram)
+        {
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("Index");
+            }
+            return View();
+        }
+        public class Diagram
+        {
+            public string diagramJson { get; set; }
+            public string thumbnail { get; set; }
+        }
     }
 }

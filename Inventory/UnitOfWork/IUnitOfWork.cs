@@ -15,6 +15,7 @@ namespace Inventory.UnitOfWork
         ICustomerRepository Customer { get; }
         ISupplierRepository Supplier { get; }
         IStoreRepository Store { get; }
+        IPurchaseRepository Purchase { get; }
         IUnitRepository Unit { get; }
         void Saved();
         Task<bool> SaveAsync();

@@ -6,23 +6,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.Models;
 
-[Table("ProductStore")]
-public partial class ProductStore
+[Table("PurchaseItem")]
+public partial class PurchaseItem
 {
     [Key]
     public int Id { get; set; }
 
-    public int ProductId { get; set; }
+    public int PurchaseId { get; set; }
 
-    public int StoreId { get; set; }
+    public int ProductId { get; set; }
 
     public int Quantity { get; set; }
 
     [Column(TypeName = "decimal(18, 6)")]
-    public decimal CostPrice { get; set; }
-
-    [Column(TypeName = "decimal(18, 6)")]
-    public decimal SalePrice { get; set; }
+    public decimal UnitCost { get; set; }
 
     [Column(TypeName = "decimal(18, 6)")]
     public decimal? Tax { get; set; }
@@ -30,14 +27,14 @@ public partial class ProductStore
     [Column(TypeName = "decimal(18, 6)")]
     public decimal? Discount { get; set; }
 
-    [Column(TypeName = "datetime")]
-    public DateTime? UpdatedAt { get; set; }
+    [Column(TypeName = "decimal(18, 6)")]
+    public decimal? Total { get; set; }
 
     [ForeignKey("ProductId")]
-    [InverseProperty("ProductStores")]
+    [InverseProperty("PurchaseItems")]
     public virtual Product Product { get; set; } = null!;
 
-    [ForeignKey("StoreId")]
-    [InverseProperty("ProductStores")]
-    public virtual Store Store { get; set; } = null!;
+    [ForeignKey("PurchaseId")]
+    [InverseProperty("PurchaseItems")]
+    public virtual Purchase Purchase { get; set; } = null!;
 }

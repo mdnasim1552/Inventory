@@ -1,0 +1,184 @@
+﻿@model InventoryEntity.Purchase.PurchaseDto
+@{
+    var supplierList = ViewData["SupplierList"] as IEnumerable<Inventory.Models.Supplier>;
+    var supplierSelectList = supplierList != null
+           ? new SelectList(supplierList, "Id", "Name")
+           : new SelectList(Enumerable.Empty<Supplier>(), "Id", "Name");
+
+    var productList = ViewData["ProductList"] as IEnumerable<Inventory.Models.Product>;
+    var productSelectList = productList != null
+           ? new SelectList(productList, "Id", "Name")
+           : new SelectList(Enumerable.Empty<Product>(), "Id", "Name");
+}
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label for="supplierSelect">Supplier Name</label>
+        <div class="d-flex align-items-center gap-2">
+            <select class="form-select" id="supplierSelect" asp-for="@Model.SupplierId" asp-items="supplierSelectList" required>
+                <option value="" selected disabled>Choose Supplier</option>
+            </select>
+
+            <div class="add-icon">
+                <a href="javascript:void(0);"><img src="~/assets/img/icons/plus1.svg" alt="img"></a>
+            </div>
+        </div>
+    </div>
+</div>
+@* <div class="col-lg-2 col-sm-2 col-2 ps-0">
+    <div class="add-icon">
+        <a href="javascript:void(0);"><img src="~/assets/img/icons/plus1.svg" alt="img"></a>
+    </div>
+</div> *@
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label asp-for="PurchaseDate">Purchase Date </label>
+        <div class="input-groupicon">
+            <input asp-for="PurchaseDate" type="text" placeholder="DD-MM-YYYY" class="datetimepicker">
+            <div class="addonset">
+                <img src="~/assets/img/icons/calendars.svg" alt="img">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label asp-for="InvoiceNo">Invoice No</label>
+        <input asp-for="InvoiceNo" type="text">
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="form-group">
+        <label asp-for="Invoice_File">Invoice File</label>
+        <div class="image-upload" style="position:relative;">
+            <input asp-for="Invoice_File" type="file" accept="image/*" id="fileInput" />
+            <div class="image-uploads" id="imageuloadContainer">
+                <img src="~/assets/img/icons/upload.svg" alt="img" />
+                <h4>Drag and drop a file to upload</h4>
+            </div>
+            <div class="icons-items text-center" id="fileDetails" style="display: none;height: 100px;align-content: center;">
+                <span id="fileName"></span><br />
+                <span id="fileSize"></span><br />
+                <ul class="icons-list" style="list-style-type: none; padding: 0; margin: 0; display: flex; justify-content: center; align-items: center;position:absolute;top:0;right:0;">
+                    <li id="removeFile" style="display: flex; justify-content: center; align-items: center;cursor: pointer;">
+                        <i class="fa fa-times" data-bs-toggle="tooltip" title="Remove the image!"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label asp-for="Tax" >Tax</label>
+        <input class="form-control" asp-for="Tax" type="number">
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label asp-for="Discount">Discount</label>
+        <input class="form-control" asp-for="Discount" type="number">
+    </div>
+</div>
+
+<div class="col-lg-12">
+    @* <button class="btn btn-primary" id="addPurchaseItem">Add Purchase Item</button> *@
+    <table class="table" id="productdatanew">
+        <thead>
+            <tr>
+                <th>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="add-icon" id="addPurchaseItem">
+                            <a href="javascript:void(0);"><img src="~/assets/img/icons/plus1.svg" alt="img"></a>
+                        </div>Product Name
+                    </div>
+                    
+                 </th>
+                <th>Oty</th>
+                <th>Cost</th>
+                <th>Tax(%)</th>
+                <th>Discount</th>
+                <th>Total Cost</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           @*  @if (Model.PurchaseItems.Any())
+            {
+                @foreach (var productItem in Model.PurchaseItems)
+                {
+                    <tr>
+                        <td class="productimgname">
+                            <a href="javascript:void(0);" class="product-img">
+                                <img src="@productItem.Product.Image"
+                                     alt="product" />
+                            </a>
+                            <a href="javascript:void(0);">@productItem.Product.Name</a>
+                        </td>
+                        <td>@productItem.Quantity</td>
+                        <td>@productItem.UnitCost</td>
+                        <td>@productItem.Tax</td>
+                        <td>@productItem.Discount</td>
+                        <td>@productItem.Total</td>
+                        <td>
+                            <a class="deleteProductItembtn" href="javascript:void(0);">
+                                <img src="~/assets/img/icons/delete.svg" alt="img" />
+                            </a>
+                        </td>
+                    </tr>
+                }
+            } *@
+           
+
+        </tbody>
+    </table>
+</div>
+<div class="col-lg-12 float-md-right">
+    <div class="total-order">
+        <ul>
+            <li>
+                <h4>Order Tax</h4>
+                <h5>$ 0.00 (0.00%)</h5>
+            </li>
+            <li>
+                <h4>Discount	</h4>
+                <h5>$ 0.00</h5>
+            </li>
+            <li>
+                <h4>Shipping</h4>
+                <h5>$ 0.00</h5>
+            </li>
+            <li class="total">
+                <h4>Grand Total</h4>
+                <h5>$ 0.00</h5>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Hidden field for ImageUrl -->
+<input type="hidden" asp-for="InvoiceFile" id="ImageUrlHiddenField" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($('.select').length > 0) {
+           $('.select').select2({
+             minimumResultsForSearch: -1,
+             width: '100%'
+           });
+        }
+        $('#fileInput').on('change', function () {
+            var file = this.files[0];
+            if (file) {
+                $('#fileName').text('File Name: ' + file.name);
+                $('#fileSize').text('File Size: ' + (file.size / 1024).toFixed(2) + ' KB');
+                $('#fileDetails').show();
+                $('#imageuloadContainer').hide();
+                $('#fileInput').hide();
+            }
+        });
+        $('#removeFile').on('click', function () {
+            $('#fileInput').val('');
+            $('#fileDetails').hide();
+            $('#imageuloadContainer').show();
+            $('#fileInput').show();
+        });
+    });
+</script>

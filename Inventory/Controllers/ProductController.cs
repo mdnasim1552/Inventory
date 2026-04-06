@@ -84,14 +84,6 @@ namespace Inventory.Controllers
             {
                 productList = productList.Where(p => p.BrandId == productSearch.BrandId);
             }
-            if (productSearch.Min_Price.HasValue)
-            {
-                productList = productList.Where(p => p.Price >= productSearch.Min_Price);
-            }
-            if (productSearch.Max_Price.HasValue)
-            {
-                productList = productList.Where(p => p.Price <= productSearch.Max_Price);
-            }
             var productListDto = _mapper.Map<List<ProductViewDto>>(productList);
             // apply search if provided
             if (!string.IsNullOrWhiteSpace(request.Search.Value))
@@ -162,14 +154,6 @@ namespace Inventory.Controllers
             if (productSearch.BrandId.HasValue)
             {
                 productList = productList.Where(p => p.BrandId == productSearch.BrandId);
-            }
-            if (productSearch.Min_Price.HasValue)
-            {
-                productList = productList.Where(p => p.Price >= productSearch.Min_Price);
-            }
-            if (productSearch.Max_Price.HasValue)
-            {
-                productList = productList.Where(p => p.Price <= productSearch.Max_Price);
             }
 
             //ViewData["CategoryId"] = productSearch.CategoryId;
@@ -245,7 +229,6 @@ namespace Inventory.Controllers
             ViewData["BrandList"] = brandList;
             ViewData["UnitList"] = unitList;
             var productDto = _mapper.Map<ProductDto>(products);
-            productDto.Status = productDto.Status.Trim();
             //return PartialView(productDto);
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
@@ -405,7 +388,6 @@ namespace Inventory.Controllers
             ViewData["BrandList"] = brandList;
             ViewData["UnitList"] = unitList;
             var productDto = _mapper.Map<ProductViewDto>(products);
-            productDto.Status = productDto.Status.Trim();
             return PartialView("_ProductView", productDto);
         }
         [HttpPost]

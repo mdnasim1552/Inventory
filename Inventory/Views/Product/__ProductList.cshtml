@@ -13,9 +13,7 @@
             <th>SKU</th>
             <th>Category</th>
             <th>Brand</th>
-            <th>price</th>
             <th>Unit</th>
-            <th>Qty</th>
             <th>Created By</th>
             <th>Action</th>
         </tr>
@@ -58,8 +56,6 @@
                         d.CategoryId = $('#categorySelect').val();
                         d.SubCategoryId = $('#subcategorySelect').val();
                         d.BrandId = $('#brandSelect').val();
-                        d.Min_Price = $('#min_price').val();
-                        d.Max_Price = $('#max_price').val();
                         d.Search = d.search.value;
                     }
                 },
@@ -87,9 +83,7 @@
                     { data: 'Sku' },
                     { data: 'CategoryName' },
                     { data: 'BrandName' },
-                    { data: 'Price' , orderable: true},
                     { data: 'UnitShortName' },
-                    { data: 'Quantity' },
                     { data: 'Role' },
                     { data: 'Id', render: function(data, type, row){
                         return `

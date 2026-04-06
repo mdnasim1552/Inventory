@@ -38,6 +38,7 @@ namespace InventoryEntity.Account
         public string Birthday { get; set; } = null!;
 
         public int? RoleId { get; set; }
+        public int? StoreId { get; set; }
 
         [StringLength(500)]
         public string? Image { get; set; }

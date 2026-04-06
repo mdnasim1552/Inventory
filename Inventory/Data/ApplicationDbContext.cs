@@ -38,6 +38,14 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<ProductStore> ProductStores { get; set; }
 
+    public virtual DbSet<Purchase> Purchases { get; set; }
+
+    public virtual DbSet<PurchaseItem> PurchaseItems { get; set; }
+
+    public virtual DbSet<StockTransfer> StockTransfers { get; set; }
+
+    public virtual DbSet<StockTransferItem> StockTransferItems { get; set; }
+
     public virtual DbSet<Store> Stores { get; set; }
 
     public virtual DbSet<SubCategory> SubCategories { get; set; }
@@ -129,10 +137,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.Property(e => e.Discount).HasDefaultValue(0.00m, "DF_Product_Discount");
             entity.Property(e => e.Sku).IsFixedLength();
-            entity.Property(e => e.Status).IsFixedLength();
-            entity.Property(e => e.Tax).HasDefaultValue(0.00m, "DF_Product_Tax");
 
             entity.HasOne(d => d.Brand).WithMany(p => p.Products)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -159,6 +164,10 @@ public partial class ApplicationDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__ProductS__3214EC070CBE1085");
 
+            entity.Property(e => e.Discount).HasDefaultValue(0m, "DF_ProductStore_Discount");
+            entity.Property(e => e.Tax).HasDefaultValue(0m, "DF_ProductStore_Tax");
+            entity.Property(e => e.UpdatedAt).HasDefaultValueSql("(getdate())", "DF_ProductStore_UpdatedAt");
+
             entity.HasOne(d => d.Product).WithMany(p => p.ProductStores)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ProductStore_Product");
@@ -166,6 +175,54 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.Store).WithMany(p => p.ProductStores)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ProductStore_Store");
+        });
+
+        modelBuilder.Entity<Purchase>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Purchase__3214EC07F0CD26AF");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())", "DF__Purchase__Create__75F77EB0");
+            entity.Property(e => e.PurchaseDate).HasDefaultValueSql("(getdate())", "DF__Purchase__Purcha__75035A77");
+
+            entity.HasOne(d => d.Supplier).WithMany(p => p.Purchases)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Purchase_Supplier");
+        });
+
+        modelBuilder.Entity<PurchaseItem>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Purchase__3214EC073F74A64E");
+
+            entity.Property(e => e.Discount).HasDefaultValue(0m);
+            entity.Property(e => e.Tax).HasDefaultValue(0m);
+
+            entity.HasOne(d => d.Product).WithMany(p => p.PurchaseItems)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_PurchaseItem_Product");
+
+            entity.HasOne(d => d.Purchase).WithMany(p => p.PurchaseItems)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_PurchaseItem_Purchase");
+        });
+
+        modelBuilder.Entity<StockTransfer>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__StockTra__3214EC07DCB0A9A7");
+
+            entity.Property(e => e.TransferDate).HasDefaultValueSql("(getdate())");
+        });
+
+        modelBuilder.Entity<StockTransferItem>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__StockTra__3214EC0748E0C4AA");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.StockTransferItems)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_STI_Product");
+
+            entity.HasOne(d => d.StockTransfer).WithMany(p => p.StockTransferItems)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_STI_Transfer");
         });
 
         modelBuilder.Entity<Store>(entity =>

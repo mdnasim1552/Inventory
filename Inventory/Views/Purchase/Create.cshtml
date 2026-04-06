@@ -1,0 +1,200 @@
+﻿@model InventoryEntity.Purchase.PurchaseDto
+@{
+    ViewData["Title"] = "Add Purchase";
+    var productList = ViewData["ProductList"] as IEnumerable<Inventory.Models.Product>;
+    var productSelectList = productList != null
+           ? new SelectList(productList, "Id", "Name")
+           : new SelectList(Enumerable.Empty<Product>(), "Id", "Name");
+}
+<div class="content">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Add Purchase</h4>
+            <h6>Create new purchase</h6>
+        </div>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <form id="purchaseForm" asp-controller="Purchase" asp-action="Create" method="post" enctype="multipart/form-data" data-ajax="true">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    @* <partial name="_ProductFormFields" model="Model" /> *@
+                    @await Html.PartialAsync("_PurchaseFormFields", Model)
+                    <input type="hidden" id="PurchaseItemsJson" name="PurchaseItemsJson" />
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-submit me-2">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal fade " id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Purchase Item Details</h1>
+                @* <h4>Product Details</h4>
+                <h6>Full details of a product</h6> *@
+                <button type="button" class="fa fa-times" data-bs-dismiss="modal" aria-label="Close" style="color:black !important;"></button>
+            </div>
+            <form id="editPurchaseItemForm">
+                <div class="modal-body" id="productModalBody">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="productSelect">Product Name</label>
+                                <select class="select" id="productSelect" asp-items="productSelectList" required>
+                                    <option value="" selected disabled>Choose Product</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.Quantity">Quantity</label>
+                                <input id="piQuantity" class="form-control" asp-for="@Model.PurchaseItem.Quantity" type="number">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.UnitCost">Cost</label>
+                                <input id="piUnitCost" class="form-control" asp-for="@Model.PurchaseItem.UnitCost" type="number">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.Tax">Tax</label>
+                                <input id="piTax" class="form-control" asp-for="@Model.PurchaseItem.Tax" type="number">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.Discount">Discount</label>
+                                <input id="piDiscount" class="form-control" asp-for="@Model.PurchaseItem.Discount" type="number">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-right:10px;display:inline-block;padding:0; float:right;">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    @* <button type="button" class="btn btn-primary">Send message</button> *@
+                    <button type="submit" class="btn btn-sm btn-primary" id="submitid">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var updateMessage = '@TempData["CreatedMessage"]';
+        if (updateMessage) {
+            showContent(updateMessage);
+        }
+        if ($('.select').length > 0) {
+            $('.select').select2({
+                minimumResultsForSearch: -1,
+                width: '100%'
+            });
+        }
+        $("#addPurchaseItem").on("click", function (e) {
+            $("#userModal").modal("show");
+        });
+        let purchaseItems = [];
+        $('#editPurchaseItemForm').submit(function (event) {
+            event.preventDefault();
+
+            const productId = $('#productSelect').val();
+            const productName = $('#productSelect option:selected').text();
+            const quantity = parseFloat($('#piQuantity').val()) || 0;
+            const unitCost = parseFloat($('#piUnitCost').val()) || 0;
+            const tax = parseFloat($('#piTax').val()) || 0;
+            const discount = parseFloat($('#piDiscount').val()) || 0;
+
+            if (!productId || quantity <= 0 || unitCost <= 0) {
+                alert("Please fill required fields");
+                return;
+            }
+
+            // 🔥 Calculate total
+            let subtotal = quantity * unitCost;
+            let taxAmount = subtotal * (tax / 100);
+            let discountAmount = subtotal * (discount / 100);
+            let total = subtotal + taxAmount - discountAmount;
+
+            // Save to array (for backend later)
+            purchaseItems.push({
+                productId,
+                productName,
+                quantity,
+                unitCost,
+                tax,
+                discount,
+                total
+            });
+
+            // Add row to table
+            appendRow(productId, productName, quantity, unitCost, tax, discount, total);
+
+            // Close modal
+            $("#userModal").modal("hide");
+
+            // Reset form
+            this.reset();
+        });
+        function appendRow(productId, productName, qty, cost, tax, discount, total) {
+            const row = `
+                <tr>
+                    <td>${productName}</td>
+                    <td>${qty}</td>
+                    <td>${cost.toFixed(2)}</td>
+                    <td>${tax}%</td>
+                    <td>${discount}%</td>
+                    <td>${total.toFixed(2)}</td>
+                    <td>
+                        <a href="javascript:void(0);" class="deleteRow">
+                            <img src="/assets/img/icons/delete.svg" />
+                        </a>
+                    </td>
+                </tr>
+            `;
+
+            $("#productdatanew tbody").append(row);
+        }
+        $('#productdatanew').on('click', '.deleteRow', function () {
+            const index = $(this).closest('tr').index();
+            purchaseItems.splice(index, 1); // remove from array
+            $(this).closest('tr').remove();
+        });
+        // $('form').on('submit', function () {
+        //     $('<input>').attr({
+        //         type: 'hidden',
+        //         name: 'PurchaseItemsJson',
+        //         value: JSON.stringify(purchaseItems)
+        //     }).appendTo(this);
+        // });
+        $('#purchaseForm').on('submit', function () {
+            $('#PurchaseItemsJson').val(JSON.stringify(purchaseItems));
+        });
+        const existingJson = $('#PurchaseItemsJson').val();
+
+        if (existingJson) {
+            purchaseItems = JSON.parse(existingJson);
+
+            purchaseItems.forEach(item => {
+                appendRow(
+                    item.productId,
+                    item.productName,
+                    item.quantity,
+                    item.unitCost,
+                    item.tax,
+                    item.discount,
+                    item.total
+                );
+            });
+        }
+    });
+</script>
