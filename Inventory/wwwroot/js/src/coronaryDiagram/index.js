@@ -2097,8 +2097,6 @@ $("#printBtn").on("click", function () {
         .FormNoteViewDiv {
             box-sizing: border-box;
             background: #fffbe6;
-            
-            border-radius: 10px;
             padding: 35px;
             font-family: sans-serif;
             font-size: 28px;
@@ -2125,6 +2123,8 @@ $("#printBtn").on("click", function () {
             width: 100%;
             height: 100%;
             box-sizing: border-box;
+            border: 2px solid #333;
+            overflow: hidden;
         }
         .FormNoteViewDiv > label {
             font-size: 45px;
@@ -2176,9 +2176,32 @@ $("#printBtn").on("click", function () {
                     width: 100%;
                     height: 100%;
                 }
+                #printPageBtn {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 10px 20px;
+                    background: #007bff;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    z-index: 9999;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                }
+                #printPageBtn:hover {
+                    background: #0056b3;
+                }
+                @media print {
+                    #printPageBtn {
+                        display: none;
+                    }
+                }
             </style>
         </head>
         <body>
+            <button id="printPageBtn">Print</button>
             <div class="page">
                 <img src="${dataURL}" />
             </div>
@@ -2190,6 +2213,8 @@ $("#printBtn").on("click", function () {
     // ✅ Smooth print (no freeze issue)
     printWindow.onload = function () {
         setTimeout(() => {
+            const btn = printWindow.document.getElementById('printPageBtn');
+            if (btn) btn.addEventListener('click', () => printWindow.print());
             printWindow.focus();
             printWindow.print();
         }, 300);
