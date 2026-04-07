@@ -2008,8 +2008,6 @@ $("#saveBtn").on("click", function () {
         .FormNoteViewDiv {
             box-sizing: border-box;
             background: #fffbe6;
-            border: 2px solid #333;
-            border-radius: 10px;
             padding: 35px;
             font-family: sans-serif;
             font-size: 28px;
@@ -2036,6 +2034,8 @@ $("#saveBtn").on("click", function () {
             width: 100%;
             height: 100%;
             box-sizing: border-box;
+            border: 2px solid #333;
+            overflow: hidden;
         }
         .FormNoteViewDiv > label {
             font-size: 45px;
