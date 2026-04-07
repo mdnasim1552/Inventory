@@ -122,6 +122,7 @@ export function restoreFromSnapshot(graph, snapshot, shapeNamespace, joint) {
                 case 'custom.Region': cell = new joint.shapes.custom.Region(data); break;
                 case 'custom.Worm': cell = new joint.shapes.custom.Worm(data); break;
                 case 'custom.UpBottomStroke': cell = new joint.shapes.custom.UpBottomStroke(data); break;
+                case 'custom.Stent': cell = new joint.shapes.custom.Stent(data); break;
                 case 'custom.FormNote': cell = new joint.shapes.custom.FormNote(data); break;
                 case 'standard.Link': cell = new joint.shapes.standard.Link(data); break;
                 default: return;

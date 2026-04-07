@@ -2091,134 +2091,365 @@ $("#saveBtn").on("click", function () {
     //alert('Diagram saved successfully!');
     //window.parent.showAlert('Diagram saved successfully!');
 });
+//$("#printBtn").on("click", function () {
+//    const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
+//    style.textContent = `
+//        .FormNoteViewDiv {
+//            box-sizing: border-box;
+//            background: #fffbe6;
+//            padding: 35px;
+//            font-family: sans-serif;
+//            font-size: 28px;
+//            display: flex;
+//            flex-direction: column;
+//            /* justify-content: center; */
+//            gap: 20px;
+//            width: fit-content;
+//        }
+//        .FormNoteViewInnerDiv {
+//            display: flex;
+//            flex-direction: row;
+//            align-items: center;
+//        }
+//        .FormNoteViewInnerDiv label {
+//            font-weight: bold;
+//            margin-right: 10px;
+//        }
+//        .FormNoteViewInnerDiv input {
+//            padding: 8px;
+//            font-size: 28px;
+//        }
+//        .form-note-container {
+//            width: 100%;
+//            height: 100%;
+//            box-sizing: border-box;
+//            border: 2px solid #333;
+//            overflow: hidden;
+//        }
+//        .FormNoteViewDiv > label {
+//            font-size: 45px;
+//            font-weight: bold;
+//        }
+//    `;
+//    const svg = paper.svg;
+//    svg.insertBefore(style, svg.firstChild);
+//    svg.setAttribute("viewBox", `0 0 ${svg.clientWidth} ${svg.clientHeight}`);
+//    svg.setAttribute("width", "100%");
+//    svg.setAttribute("height", "100%");
+//    const inputs = svg.querySelectorAll('input');
+
+//    inputs.forEach(input => {
+//        input.setAttribute('value', input.value);
+//    });
+//    const serializer = new XMLSerializer();
+//    const svgString = serializer.serializeToString(svg);
+
+//    // ✅ Encode as Base64
+//    const base64 = btoa(unescape(encodeURIComponent(svgString)));
+//    const dataURL = `data:image/svg+xml;base64,${base64}`;
+//    // ✅ Open print window
+//    const printWindow = window.open('', '_blank');
+
+//    const doc = printWindow.document;
+
+//    // ✅ A4 PERFECT LAYOUT
+//    doc.open();
+//    doc.write(`
+//        <html>
+//        <head>
+//            <title>Print Diagram</title>
+//            <style>
+//                body {
+//                    margin: 0;
+//                    display: flex;
+//                    justify-content: center;
+//                    align-items: center;
+//                }
+//                .page {
+//                    width: 100%;
+//                    height: 100%;
+//                    display: flex;
+//                    justify-content: center;
+//                    align-items: center;
+//                }
+//                img {
+//                    width: 100%;
+//                    height: 100%;
+//                }
+//                #printPageBtn {
+//                    position: fixed;
+//                    top: 20px;
+//                    right: 20px;
+//                    padding: 10px 20px;
+//                    background: #007bff;
+//                    color: #fff;
+//                    border: none;
+//                    border-radius: 5px;
+//                    font-size: 16px;
+//                    cursor: pointer;
+//                    z-index: 9999;
+//                    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+//                }
+//                #printPageBtn:hover {
+//                    background: #0056b3;
+//                }
+//                @media print {
+//                    #printPageBtn {
+//                        display: none;
+//                    }
+//                }
+//            </style>
+//        </head>
+//        <body>
+//            <button id="printPageBtn">Print</button>
+//            <div class="page">
+//                <img src="${dataURL}" />
+//            </div>
+//        </body>
+//        </html>
+//    `);
+//    doc.close();
+
+//    // ✅ Smooth print (no freeze issue)
+//    printWindow.onload = function () {
+//        setTimeout(() => {
+//            const btn = printWindow.document.getElementById('printPageBtn');
+//            if (btn) btn.addEventListener('click', () => printWindow.print());
+//            printWindow.focus();
+//            printWindow.print();
+//        }, 300);
+//    };
+//});
 $("#printBtn").on("click", function () {
-    const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
-    style.textContent = `
-        .FormNoteViewDiv {
-            box-sizing: border-box;
-            background: #fffbe6;
-            padding: 35px;
-            font-family: sans-serif;
-            font-size: 28px;
-            display: flex;
-            flex-direction: column;
-            /* justify-content: center; */
-            gap: 20px;
-            width: fit-content;
-        }
-        .FormNoteViewInnerDiv {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-        .FormNoteViewInnerDiv label {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        .FormNoteViewInnerDiv input {
-            padding: 8px;
-            font-size: 28px;
-        }
-        .form-note-container {
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-            border: 2px solid #333;
-            overflow: hidden;
-        }
-        .FormNoteViewDiv > label {
-            font-size: 45px;
-            font-weight: bold;
-        }
-    `;
-    const svg = paper.svg;
-    svg.insertBefore(style, svg.firstChild);
-    svg.setAttribute("viewBox", `0 0 ${svg.clientWidth} ${svg.clientHeight}`);
-    svg.setAttribute("width", "100%");
-    svg.setAttribute("height", "100%");
-    const inputs = svg.querySelectorAll('input');
 
-    inputs.forEach(input => {
-        input.setAttribute('value', input.value);
+    const savedJSON = localStorage.getItem('mySavedDiagram');
+    if (!savedJSON) {
+        alert("No saved diagram found!");
+        return;
+    }
+
+    const snapshot = JSON.parse(savedJSON);
+
+    // ✅ Wrapper
+    const wrapper = document.createElement('div');
+    wrapper.id = "copy-diagram-paper-wrapper";
+    wrapper.style.width = "100%";
+    wrapper.style.height = "100%";
+    wrapper.style.margin = "auto";
+    wrapper.style.display = "flex";
+    wrapper.style.justifyContent = "center";
+    wrapper.style.alignItems = "center";
+    wrapper.style.overflow = "visible";
+
+    const copypaperDiv = document.createElement('div');
+    copypaperDiv.id = "copypaper";
+    copypaperDiv.style.position = "relative";
+    copypaperDiv.style.width = "100%";
+    copypaperDiv.style.height = "100%";
+    copypaperDiv.style.backgroundSize = "contain";
+    copypaperDiv.style.overflow = "visible";
+    copypaperDiv.style.transformOrigin = "center center";
+    wrapper.appendChild(copypaperDiv);
+    document.body.appendChild(wrapper);
+
+    // ✅ Graph + Paper
+    const copygraph = new joint.dia.Graph({}, { cellNamespace: shapeNamespace });
+
+    //const copypaper = new joint.dia.Paper({
+    //    el: copypaperDiv,
+    //    model: copygraph,
+    //    width: 570,   // ✅ FIXED
+    //    height: 570,  // ✅ FIXED
+    //    interactive: false,
+    //    cellViewNamespace: shapeNamespace
+    //});
+    const copypaper = new joint.dia.Paper({
+        el: copypaperDiv,
+        width: '100%',
+        height: '100%',
+        model: copygraph,
+        frozen: true,
+        async: true,
+        overflow: true,
+        cellViewNamespace: shapeNamespace,
+        clickThreshold: 0,
+        interactive: {
+            labelMove: true,
+            linkMove: false,
+            stopDelegation: false,
+            linkDelete: false,
+        },
+        snapLabels: true,
+        labelsLayer: true,
+        background: {
+            color: colors.bg,
+        },
+        defaultConnector: {
+            name: 'curve',
+            args: {
+                sourceDirection: TangentDirections.OUTWARDS,
+                targetDirection: TangentDirections.OUTWARDS,
+            },
+        },
+        defaultConnectionPoint: {
+            name: 'boundary',
+            args: {
+                selector: false,
+            },
+        },
     });
-    const serializer = new XMLSerializer();
-    const svgString = serializer.serializeToString(svg);
+    setTimeout(() => {
+        copypaper.unfreeze();
+    }, 0);
 
-    // ✅ Encode as Base64
-    const base64 = btoa(unescape(encodeURIComponent(svgString)));
-    const dataURL = `data:image/svg+xml;base64,${base64}`;
-    // ✅ Open print window
-    const printWindow = window.open('', '_blank');
+    // ✅ Load JSON properly
+    executeWithSnapshot(copygraph, () => {
+        restoreFromSnapshot.restoreFromSnapshot(copygraph, snapshot, shapeNamespace, joint);
+    });
+    copypaper.model.getCells().forEach(cell => {
+        const view = copypaper.findViewByModel(cell);
+        if (view) view.update();
+    });
+    // ✅ Wait for render
+    setTimeout(() => {
 
-    const doc = printWindow.document;
+        const svg = copypaper.svg;
 
-    // ✅ A4 PERFECT LAYOUT
-    doc.open();
-    doc.write(`
-        <html>
-        <head>
-            <title>Print Diagram</title>
-            <style>
-                body {
-                    margin: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                .page {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-                #printPageBtn {
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    padding: 10px 20px;
-                    background: #007bff;
-                    color: #fff;
-                    border: none;
-                    border-radius: 5px;
-                    font-size: 16px;
-                    cursor: pointer;
-                    z-index: 9999;
-                    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-                }
-                #printPageBtn:hover {
-                    background: #0056b3;
-                }
-                @media print {
-                    #printPageBtn {
-                        display: none;
-                    }
-                }
-            </style>
-        </head>
-        <body>
-            <button id="printPageBtn">Print</button>
-            <div class="page">
-                <img src="${dataURL}" />
-            </div>
-        </body>
-        </html>
-    `);
-    doc.close();
+        // ✅ Inject styles
+        const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
+        style.textContent = `
+              .FormNoteViewDiv {
+                box-sizing: border-box;
+                background: #fffbe6;
+                padding: 35px;
+                font-family: sans-serif;
+                font-size: 28px;
+                display: flex;
+                flex-direction: column;
+                /* justify-content: center; */
+                gap: 20px;
+                width: fit-content;
+            }
+            .FormNoteViewInnerDiv {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            .FormNoteViewInnerDiv label {
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            .FormNoteViewInnerDiv input {
+                padding: 8px;
+                font-size: 28px;
+            }
+            .form-note-container {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                border: 2px solid #333;
+                overflow: hidden;
+            }
+            .FormNoteViewDiv > label {
+                font-size: 45px;
+                font-weight: bold;
+            }
+        `;
+        svg.insertBefore(style, svg.firstChild);
 
-    // ✅ Smooth print (no freeze issue)
-    printWindow.onload = function () {
-        setTimeout(() => {
-            const btn = printWindow.document.getElementById('printPageBtn');
-            if (btn) btn.addEventListener('click', () => printWindow.print());
-            printWindow.focus();
-            printWindow.print();
-        }, 300);
-    };
+        // ✅ Preserve input values
+        svg.querySelectorAll('input').forEach(input => {
+            input.setAttribute('value', input.value);
+        });
+
+        // 🔥 IMPORTANT: Use actual content bounds
+        const bbox = svg.getBBox();
+
+        svg.setAttribute("viewBox", `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
+        svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+        svg.removeAttribute("width");
+        svg.removeAttribute("height");
+
+        // ✅ Convert to base64
+        const serializer = new XMLSerializer();
+        const svgString = serializer.serializeToString(svg);
+        const base64 = btoa(unescape(encodeURIComponent(svgString)));
+        const dataURL = `data:image/svg+xml;base64,${base64}`;
+
+        // ✅ Print window
+        const printWindow = window.open('', '_blank');
+        const doc = printWindow.document;
+
+        doc.open();
+        doc.write(`
+            <html>
+            <head>
+                <title>Print Diagram</title>
+                <style>
+                       body {
+                           margin: 0;
+                           display: flex;
+                           justify-content: center;
+                           align-items: center;
+                       }
+                       .page {
+                           width: 100%;
+                           height: 100%;
+                           display: flex;
+                           justify-content: center;
+                           align-items: center;
+                       }
+                       img {
+                           width: 100%;
+                           height: 100%;
+                       }
+                       #printPageBtn {
+                           position: fixed;
+                           top: 20px;
+                           right: 20px;
+                           padding: 10px 20px;
+                           background: #007bff;
+                           color: #fff;
+                           border: none;
+                           border-radius: 5px;
+                           font-size: 16px;
+                           cursor: pointer;
+                           z-index: 9999;
+                           box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                       }
+                       #printPageBtn:hover {
+                           background: #0056b3;
+                       }
+                       @media print {
+                           #printPageBtn {
+                               display: none;
+                           }
+                       }
+                </style>
+            </head>
+            <body>
+                <button id="printPageBtn">Print</button>
+                <div class="page">
+                    <img src="${dataURL}" />
+                </div>
+            </body>
+            </html>
+        `);
+        doc.close();
+
+        printWindow.onload = function () {
+            setTimeout(() => {
+                printWindow.document
+                    .getElementById('printPageBtn')
+                    .addEventListener('click', () => printWindow.print());
+
+                printWindow.print();
+            }, 300);
+        };
+
+        document.body.removeChild(wrapper);
+
+    }, 300);
 });
 $("#loadBtn").on("click", function () {
     const savedJSON = localStorage.getItem('mySavedDiagram');
