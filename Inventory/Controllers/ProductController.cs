@@ -52,14 +52,14 @@ namespace Inventory.Controllers
             //var userIdList = await _unitOfWork.Credential.GetUserIdListOnParent(adminID);
             //userIdList.Add(adminID);
             //productList = productList.Where(p => userIdList.Contains(p.CreatedBy)).ToList();
-            var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand, p => p.CreatedByNavigation.Role);
+            //var productList = await _unitOfWork.Product.GetAllIncluding(p => p.Category, p => p.Brand, p => p.CreatedByNavigation.Role);
             ViewData["CategoryList"] = categoryList;
             ViewData["BrandList"] = brandList;
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
-                return PartialView("Index", productList);
+                return PartialView("Index");
             }
-            return View(productList);
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> GetProducts([FromForm] DataTablesRequest request, [FromForm] ProductSearch productSearch)

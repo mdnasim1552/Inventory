@@ -13,7 +13,8 @@ namespace InventoryEntity.Purchase
         public int PurchaseId { get; set; }
 
         public int ProductId { get; set; }
-
+        public string ProductName { get; set; }
+        public string ProductImage { get; set; }
         public int Quantity { get; set; }
 
         [Column(TypeName = "decimal(18, 6)")]
@@ -28,5 +29,7 @@ namespace InventoryEntity.Purchase
         [Column(TypeName = "decimal(18, 6)")]
         public decimal? Total { get; set; }
         public ProductDto Product { get; set; } = null!;
+        [Column(TypeName = "datetime")]
+        public DateTime ExpiryDate { get; set; }
     }
 }

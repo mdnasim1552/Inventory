@@ -194,6 +194,7 @@ public partial class ApplicationDbContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK__Purchase__3214EC073F74A64E");
 
             entity.Property(e => e.Discount).HasDefaultValue(0m);
+            entity.Property(e => e.ExpiryDate).HasDefaultValueSql("(getdate())", "DF_PurchaseItem_PurchaseDate");
             entity.Property(e => e.Tax).HasDefaultValue(0m);
 
             entity.HasOne(d => d.Product).WithMany(p => p.PurchaseItems)

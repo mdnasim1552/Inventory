@@ -1,4 +1,6 @@
-﻿@model InventoryEntity.Purchase.PurchaseDto
+﻿@using InventoryEntity.Purchase
+@using Newtonsoft.Json
+@model InventoryEntity.Purchase.PurchaseDto
 @{
     var supplierList = ViewData["SupplierList"] as IEnumerable<Inventory.Models.Supplier>;
     var supplierSelectList = supplierList != null
@@ -9,15 +11,17 @@
     var productSelectList = productList != null
            ? new SelectList(productList, "Id", "Name")
            : new SelectList(Enumerable.Empty<Product>(), "Id", "Name");
+    var purchaseItemList = ViewData["PurchaseItemList"] as IEnumerable<InventoryEntity.Purchase.PurchaseItemDto>;
 }
 <div class="col-lg-3 col-sm-6 col-12">
     <div class="form-group">
         <label for="supplierSelect">Supplier Name</label>
         <div class="d-flex align-items-center gap-2">
-            <select class="form-select" id="supplierSelect" asp-for="@Model.SupplierId" asp-items="supplierSelectList" required>
-                <option value="" selected disabled>Choose Supplier</option>
-            </select>
-
+            <div class="w-100">
+                <select class="select" id="supplierSelect" asp-for="@Model.SupplierId" asp-items="supplierSelectList" required>
+                    <option value="" selected disabled>Choose Supplier</option>
+                </select>
+            </div>
             <div class="add-icon">
                 <a href="javascript:void(0);"><img src="~/assets/img/icons/plus1.svg" alt="img"></a>
             </div>
@@ -33,7 +37,7 @@
     <div class="form-group">
         <label asp-for="PurchaseDate">Purchase Date </label>
         <div class="input-groupicon">
-            <input asp-for="PurchaseDate" type="text" placeholder="DD-MM-YYYY" class="datetimepicker">
+            <input asp-for="PurchaseDate" type="text" placeholder="DD-MM-YYYY" class="datetimepicker" required>
             <div class="addonset">
                 <img src="~/assets/img/icons/calendars.svg" alt="img">
             </div>
@@ -67,19 +71,6 @@
         </div>
     </div>
 </div>
-<div class="col-lg-3 col-sm-6 col-12">
-    <div class="form-group">
-        <label asp-for="Tax" >Tax</label>
-        <input class="form-control" asp-for="Tax" type="number">
-    </div>
-</div>
-<div class="col-lg-3 col-sm-6 col-12">
-    <div class="form-group">
-        <label asp-for="Discount">Discount</label>
-        <input class="form-control" asp-for="Discount" type="number">
-    </div>
-</div>
-
 <div class="col-lg-12">
     @* <button class="btn btn-primary" id="addPurchaseItem">Add Purchase Item</button> *@
     <table class="table" id="productdatanew">
@@ -102,17 +93,17 @@
             </tr>
         </thead>
         <tbody>
-           @*  @if (Model.PurchaseItems.Any())
+            @*  @if (purchaseItemList!=null)
             {
-                @foreach (var productItem in Model.PurchaseItems)
+                @foreach (var productItem in purchaseItemList)
                 {
                     <tr>
                         <td class="productimgname">
                             <a href="javascript:void(0);" class="product-img">
-                                <img src="@productItem.Product.Image"
+                                <img src="@productItem.ProductImage"
                                      alt="product" />
                             </a>
-                            <a href="javascript:void(0);">@productItem.Product.Name</a>
+                            <a href="javascript:void(0);">@productItem.ProductName</a>
                         </td>
                         <td>@productItem.Quantity</td>
                         <td>@productItem.UnitCost</td>
@@ -120,8 +111,11 @@
                         <td>@productItem.Discount</td>
                         <td>@productItem.Total</td>
                         <td>
-                            <a class="deleteProductItembtn" href="javascript:void(0);">
-                                <img src="~/assets/img/icons/delete.svg" alt="img" />
+                            <a class="me-3 editRow" href="javascript:void(0);">
+                                <img src="/assets/img/icons/edit.svg" alt="img" />
+                            </a>
+                            <a href="javascript:void(0);" class="deleteRow">
+                                <img src="/assets/img/icons/delete.svg" />
                             </a>
                         </td>
                     </tr>
@@ -131,33 +125,52 @@
 
         </tbody>
     </table>
+    <script id="existingData" type="application/json">
+        @Html.Raw(JsonConvert.SerializeObject(purchaseItemList ?? new List<PurchaseItemDto>()))
+    </script>
 </div>
 <div class="col-lg-12 float-md-right">
     <div class="total-order">
         <ul>
             <li>
-                <h4>Order Tax</h4>
-                <h5>$ 0.00 (0.00%)</h5>
+                <h4>Sub Total</h4>
+                <h5 id="subTotal">$ 0.00</h5>
             </li>
             <li>
-                <h4>Discount	</h4>
-                <h5>$ 0.00</h5>
+                <h4>Discount</h4>
+                <h5 id="discountTotal">$ 0.00</h5>
             </li>
             <li>
-                <h4>Shipping</h4>
-                <h5>$ 0.00</h5>
+                <h4>Tax</h4>
+                <h5 id="taxTotal">$ 0.00</h5>
             </li>
             <li class="total">
                 <h4>Grand Total</h4>
-                <h5>$ 0.00</h5>
+                <h5 id="grandTotal">$ 0.00</h5>
             </li>
         </ul>
     </div>
 </div>
 <!-- Hidden field for ImageUrl -->
 <input type="hidden" asp-for="InvoiceFile" id="ImageUrlHiddenField" />
+<style>
+    .total-order{
+        margin-right:0px;
+    }
+</style>
 <script type="text/javascript">
     $(document).ready(function () {
+          if ($('.datetimepicker').length > 0) {
+              $('.datetimepicker').datetimepicker({
+                format: 'DD-MM-YYYY',
+                icons: {
+                  up: "fas fa-angle-up",
+                  down: "fas fa-angle-down",
+                  next: 'fas fa-angle-right',
+                  previous: 'fas fa-angle-left'
+                }
+              });
+          }
         if ($('.select').length > 0) {
            $('.select').select2({
              minimumResultsForSearch: -1,

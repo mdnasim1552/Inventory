@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Inventory.Models;
 
 [Table("Product")]
+[Index("Sku", Name = "IX_Product", IsUnique = true)]
 public partial class Product
 {
     [Key]

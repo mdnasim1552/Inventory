@@ -47,21 +47,26 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="productSelect">Product Name</label>
-                                <select class="select" id="productSelect" asp-items="productSelectList" required>
-                                    <option value="" selected disabled>Choose Product</option>
+                                <select class="select" id="productSelect" required>
+                                    @foreach (var item in productList)
+                                    {
+                                        <option value="@item.Id" data-image="@item.Image">
+                                            @item.Name
+                                        </option>
+                                    }
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label asp-for="@Model.PurchaseItem.Quantity">Quantity</label>
-                                <input id="piQuantity" class="form-control" asp-for="@Model.PurchaseItem.Quantity" type="number">
+                                <input id="piQuantity" class="form-control" asp-for="@Model.PurchaseItem.Quantity" type="number" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label asp-for="@Model.PurchaseItem.UnitCost">Cost</label>
-                                <input id="piUnitCost" class="form-control" asp-for="@Model.PurchaseItem.UnitCost" type="number">
+                                <input id="piUnitCost" class="form-control" asp-for="@Model.PurchaseItem.UnitCost" type="number" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
@@ -76,43 +81,90 @@
                                 <input id="piDiscount" class="form-control" asp-for="@Model.PurchaseItem.Discount" type="number">
                             </div>
                         </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.ExpiryDate">Expiry Date </label>
+                                <div class="input-groupicon">
+                                    <input id="piExpiryDate" asp-for="@Model.PurchaseItem.ExpiryDate" type="text" placeholder="DD-MM-YYYY" class="datetimepicker" required>
+                                    <div class="addonset">
+                                        <img src="~/assets/img/icons/calendars.svg" alt="img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer" style="margin-right:10px;display:inline-block;padding:0; float:right;">
                     <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                     @* <button type="button" class="btn btn-primary">Send message</button> *@
-                    <button type="submit" class="btn btn-sm btn-primary" id="submitid">Submit</button>
+                    <button type="submit" class="btn btn-sm btn-primary" id="submitid">Save</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<style>
+    .select2-selection__clear {
+        margin-right: 20px; /* push away from arrow */
+        font-size: 16px;
+    }
+</style>
 <script type="text/javascript">
 
     $(document).ready(function () {
+        let editIndex = -1;
+        let purchaseItems = [];
         var updateMessage = '@TempData["CreatedMessage"]';
         if (updateMessage) {
             showContent(updateMessage);
         }
-        if ($('.select').length > 0) {
-            $('.select').select2({
-                minimumResultsForSearch: -1,
-                width: '100%'
-            });
-        }
+        $('#userModal').on('hidden.bs.modal', function () {
+            editIndex = -1; // 🔥 always reset
+            $('#editPurchaseItemForm')[0].reset(); // optional clean reset
+            $('#productSelect').val(null).trigger('change'); // reset select2
+        });
         $("#addPurchaseItem").on("click", function (e) {
+            $('#editPurchaseItemForm')[0].reset(); // optional clean reset
+            $('#productSelect').val(null).trigger('change'); // reset select2
+            $('#submitid').text('Save');
             $("#userModal").modal("show");
         });
-        let purchaseItems = [];
+        $('#productdatanew').on('click', '.editRow', function () {
+
+            const row = $(this).closest('tr');
+            editIndex = row.index(); // 🔥 store index
+
+            const item = purchaseItems[editIndex];
+
+            // Fill modal fields
+            $('#productSelect').val(item.productId).trigger('change');
+            $('#piQuantity').val(item.quantity);
+            $('#piUnitCost').val(item.unitCost);
+            $('#piTax').val(item.tax);
+            $('#piDiscount').val(item.discount);
+            $('#submitid').text('Update');
+            // Open modal
+            $("#userModal").modal("show");
+        });
+        
         $('#editPurchaseItemForm').submit(function (event) {
             event.preventDefault();
-
+            debugger;
             const productId = $('#productSelect').val();
             const productName = $('#productSelect option:selected').text();
+            const productImage = $('#productSelect option:selected').data('image');
             const quantity = parseFloat($('#piQuantity').val()) || 0;
             const unitCost = parseFloat($('#piUnitCost').val()) || 0;
             const tax = parseFloat($('#piTax').val()) || 0;
             const discount = parseFloat($('#piDiscount').val()) || 0;
+
+            let expiryDateRaw = $('#piExpiryDate').val();
+            let expiryDate = null;
+
+            if (expiryDateRaw) {
+                const parts = expiryDateRaw.split('-'); // DD-MM-YYYY
+                expiryDate = `${parts[2]}-${parts[1]}-${parts[0]}`; // YYYY-MM-DD
+            }
 
             if (!productId || quantity <= 0 || unitCost <= 0) {
                 alert("Please fill required fields");
@@ -124,37 +176,57 @@
             let taxAmount = subtotal * (tax / 100);
             let discountAmount = subtotal * (discount / 100);
             let total = subtotal + taxAmount - discountAmount;
-
-            // Save to array (for backend later)
-            purchaseItems.push({
+            const itemData = {
                 productId,
                 productName,
+                productImage,
                 quantity,
                 unitCost,
                 tax,
                 discount,
-                total
-            });
+                total,
+                expiryDate
+            };
+            if (editIndex >= 0) {
+                // 🔥 UPDATE MODE
+                purchaseItems[editIndex] = itemData;
 
-            // Add row to table
-            appendRow(productId, productName, quantity, unitCost, tax, discount, total);
+                // Replace row
+                $('#productdatanew tbody tr').eq(editIndex).replaceWith(createRowHtml(itemData));
 
+                editIndex = -1; // reset
+            } else {
+                // ➕ ADD MODE
+                purchaseItems.push(itemData);
+                $("#productdatanew tbody").append(createRowHtml(itemData));
+            }
+
+            updateTotals();
             // Close modal
             $("#userModal").modal("hide");
 
             // Reset form
             this.reset();
         });
-        function appendRow(productId, productName, qty, cost, tax, discount, total) {
+        function appendRow(productId, productName,productImage, qty, cost, tax, discount, total) {
             const row = `
                 <tr>
-                    <td>${productName}</td>
+                    <td class="productimgname">
+                            <a href="javascript:void(0);" class="product-img">
+                                <img src="${productImage}"
+                                     alt="product" />
+                            </a>
+                            <a href="javascript:void(0);">${productName}</a>
+                     </td>
                     <td>${qty}</td>
                     <td>${cost.toFixed(2)}</td>
                     <td>${tax}%</td>
                     <td>${discount}%</td>
                     <td>${total.toFixed(2)}</td>
                     <td>
+                        <a class="me-3 editRow" href="javascript:void(0);">
+                            <img src="/assets/img/icons/edit.svg" alt="img" />
+                        </a>
                         <a href="javascript:void(0);" class="deleteRow">
                             <img src="/assets/img/icons/delete.svg" />
                         </a>
@@ -164,10 +236,36 @@
 
             $("#productdatanew tbody").append(row);
         }
+        function createRowHtml(item) {
+            return `
+                <tr>
+                    <td class="productimgname">
+                        <a href="javascript:void(0);" class="product-img">
+                            <img src="${item.productImage}" alt="product" />
+                        </a>
+                        <a href="javascript:void(0);">${item.productName}</a>
+                    </td>
+                    <td>${item.quantity}</td>
+                    <td>${item.unitCost.toFixed(2)}</td>
+                    <td>${item.tax}%</td>
+                    <td>${item.discount}%</td>
+                    <td>${item.total.toFixed(2)}</td>
+                    <td>
+                        <a class="me-3 editRow" href="javascript:void(0);">
+                            <img src="/assets/img/icons/edit.svg" />
+                        </a>
+                        <a href="javascript:void(0);" class="deleteRow">
+                            <img src="/assets/img/icons/delete.svg" />
+                        </a>
+                    </td>
+                </tr>
+            `;
+        }
         $('#productdatanew').on('click', '.deleteRow', function () {
             const index = $(this).closest('tr').index();
             purchaseItems.splice(index, 1); // remove from array
             $(this).closest('tr').remove();
+            updateTotals();
         });
         // $('form').on('submit', function () {
         //     $('<input>').attr({
@@ -176,25 +274,89 @@
         //         value: JSON.stringify(purchaseItems)
         //     }).appendTo(this);
         // });
-        $('#purchaseForm').on('submit', function () {
+        $('#purchaseForm').on('submit', function (e) {
+           if (!purchaseItems || purchaseItems.length === 0) {
+                e.preventDefault();
+                e.stopImmediatePropagation(); // 🔥 VERY IMPORTANT
+                alert("Please add at least one product!");
+                return false;
+            }
+            let raw = $('#PurchaseDate').val(); // DD-MM-YYYY
+
+            if (raw) {
+                const parts = raw.split('-');
+                $('#PurchaseDate').val(`${parts[2]}-${parts[1]}-${parts[0]}`);
+            }
             $('#PurchaseItemsJson').val(JSON.stringify(purchaseItems));
         });
-        const existingJson = $('#PurchaseItemsJson').val();
 
-        if (existingJson) {
-            purchaseItems = JSON.parse(existingJson);
+        const existingData = document.getElementById("existingData");
+
+        if (existingData) {
+            // purchaseItems = JSON.parse(existingData.textContent);
+            const rawData = JSON.parse(existingData.textContent);
+
+            purchaseItems = rawData.map(item => ({
+                productId: item.ProductId,
+                productName: item.ProductName?.trim(),
+                productImage: item.ProductImage,
+                quantity: item.Quantity,
+                unitCost: item.UnitCost,
+                tax: item.Tax || 0,
+                discount: item.Discount || 0,
+                total: item.Total || 0
+            }));
+            purchaseItems.forEach(item => {
+                $("#productdatanew tbody").append(createRowHtml(item));
+            });
+            updateTotals();
+        }
+        function formatProduct(option) {
+            if (!option.id) return option.text;
+
+            var img = $(option.element).data('image');
+
+            if (!img) return option.text;
+
+            return $(`
+                <span style="display:flex;align-items:center;">
+                    <img src="${img}" style="width:30px;height:30px;margin-right:10px;border-radius:4px;" />
+                    ${option.text}
+                </span>
+            `);
+        }
+        $('#productSelect').select2({
+            dropdownParent: $('#userModal'), // 🔥 THIS FIXES YOUR ISSUE
+            templateResult: formatProduct,
+            templateSelection: formatProduct,
+            placeholder: "Choose Product",
+            minimumResultsForSearch: 0,
+            allowClear: true,
+            escapeMarkup: function (m) { return m; }
+        });
+        function updateTotals() {
+            let subTotal = 0;
+            let totalTax = 0;
+            let totalDiscount = 0;
 
             purchaseItems.forEach(item => {
-                appendRow(
-                    item.productId,
-                    item.productName,
-                    item.quantity,
-                    item.unitCost,
-                    item.tax,
-                    item.discount,
-                    item.total
-                );
+                let itemSub = item.quantity * item.unitCost;
+
+                let itemTax = itemSub * (item.tax / 100);
+                let itemDiscount = itemSub * (item.discount / 100);
+
+                subTotal += itemSub;
+                totalTax += itemTax;
+                totalDiscount += itemDiscount;
             });
+
+            let grandTotal = subTotal + totalTax - totalDiscount;
+
+            // Update UI
+            $('#subTotal').text('$ ' + subTotal.toFixed(2));
+            $('#taxTotal').text('$ ' + totalTax.toFixed(2));
+            $('#discountTotal').text('$ ' + totalDiscount.toFixed(2));
+            $('#grandTotal').text('$ ' + grandTotal.toFixed(2));
         }
     });
 </script>

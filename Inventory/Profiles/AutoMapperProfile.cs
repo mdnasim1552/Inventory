@@ -125,7 +125,7 @@ namespace Inventory.Profiles
                 .ForMember(dest => dest.SupplierId, opt => opt.MapFrom(src => src.SupplierId))
                 .ForMember(dest => dest.InvoiceNo, opt => opt.MapFrom(src => src.InvoiceNo))
                 .ForMember(dest => dest.InvoiceFile, opt => opt.MapFrom(src => src.InvoiceFile))
-                .ForMember(dest => dest.PurchaseDate, opt => opt.MapFrom(src => Convert.ToDateTime(src.PurchaseDate)))
+                .ForMember(dest => dest.PurchaseDate, opt => opt.MapFrom(src => src.PurchaseDate))
                 .ForMember(dest => dest.SubTotal, opt => opt.MapFrom(src => src.SubTotal))
                 .ForMember(dest => dest.Discount, opt => opt.MapFrom(src => src.Discount))
                 .ForMember(dest => dest.Tax, opt => opt.MapFrom(src => src.Tax))
@@ -141,6 +141,7 @@ namespace Inventory.Profiles
                 .ForMember(dest => dest.UnitCost, opt => opt.MapFrom(src => src.UnitCost))
                 .ForMember(dest => dest.Tax, opt => opt.MapFrom(src => src.Tax))
                 .ForMember(dest => dest.Total, opt => opt.MapFrom(src => src.Total))
+                .ForMember(dest => dest.ExpiryDate, opt => opt.MapFrom(src => src.ExpiryDate))
                 .ReverseMap();
 
         }

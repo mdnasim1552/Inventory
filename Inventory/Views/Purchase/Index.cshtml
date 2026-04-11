@@ -1,5 +1,178 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Inventory.Models.Supplier>
 @{
+    ViewData["Title"] = "Purchase List";
 }
+<div class="content" id="FullBody">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Purchase List</h4>
+            <h6>Manage your Purchases</h6>
+        </div>
+        <div class="page-btn">
+            <a asp-action="Create" asp-controller="Purchase" class="btn btn-added spa-link">
+                <img src="~/assets/img/icons/plus.svg"
+                     alt="img"
+                     class="me-1" />Add Purchase
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-top">
+                <div class="search-set">
+                    <div class="search-path">
+                        <a class="btn btn-filter" id="purchase_filter_search">
+                            <img src="~/assets/img/icons/filter.svg" alt="img" />
+                            <span>
+                                <img src="~/assets/img/icons/closes.svg" alt="img" />
+                            </span>
+                        </a>
+                    </div>
+                    <div class="search-input">
+                        <a class="btn btn-searchset">
+                            <img src="~/assets/img/icons/search-white.svg" alt="img" />
+                        </a>
+                    </div>
+                </div>
+                <div class="wordset">
+                    <ul>
+                        <li>
+                            <a data-bs-toggle="tooltip" id="pdfButton"
+                               data-bs-placement="top"
+                               title="pdf">
+                                <img src="~/assets/img/icons/pdf.svg" alt="img" />
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bs-toggle="tooltip" id="excelButton"
+                               data-bs-placement="top"
+                               title="excel">
+                                <img src="~/assets/img/icons/excel.svg" alt="img" />
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bs-toggle="tooltip" id="mswordButton"
+                               data-bs-placement="top"
+                               title="print">
+                                <img src="~/assets/img/icons/printer.svg" alt="img" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <form id="filterForm" method="post">
+                <div class="card mb-0" id="filter_inputs">
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12">
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <input name="SupplierName" type="text" id="supplierName" placeholder="Enter Supplier Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <input name="InvoiceNo" type="text" id="invoiceNo" placeholder="Enter invoice no">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <div class="input-groupicon">
+                                                <input name="PurchaseDateFrom" id="purchaseDateFrom" type="text" placeholder="From date: DD-MM-YYYY" class="datetimepicker">
+                                                <div class="addonset">
+                                                    <img src="~/assets/img/icons/calendars.svg" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <div class="input-groupicon">
+                                                <input name="PurchaseDateTo" id="purchaseDateTo" type="text" placeholder="To date: DD-MM-YYYY" class="datetimepicker">
+                                                <div class="addonset">
+                                                    <img src="~/assets/img/icons/calendars.svg" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-filters ms-auto">
+                                                <img src="~/assets/img/icons/search-whites.svg" alt="img" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <div class="table-responsive" id="purchaseList">
+                @await Html.PartialAsync("_PurchaseList")
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .ui-slider-horizontal {
+        height: .6em;
+    }
+
+    .ui-slider-horizontal {
+        margin-bottom: 15px;
+        /* width: 100%; */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .ui-widget-header {
+        background: #ff9f43;
+    }
+
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($('.datetimepicker').length > 0) {
+              $('.datetimepicker').datetimepicker({
+                format: 'DD-MM-YYYY',
+                icons: {
+                  up: "fas fa-angle-up",
+                  down: "fas fa-angle-down",
+                  next: 'fas fa-angle-right',
+                  previous: 'fas fa-angle-left'
+                }
+              });
+          }
+        $("#purchase_filter_search").on("click",function(){
+                $('#filter_inputs').slideToggle("slow");
+                $('#filter_search').toggleClass("setclose");
+        });
+        $('#purchasedatanew').on("click", ".edit_purchase", function() {
+            var purchaseId = $(this).data("id");
+            var url = '/Purchase/Edit/' + purchaseId;
+            $.ajax({
+                url: url, // GET action returning PartialView
+                type: 'GET',
+                success: function(result) {
+                    // Replace __ProductList with Edit partial
+                    $('#FullBody').html(result);
+                    //window.history.pushState({ path: url }, "", url);
+                    // Re-parse validation for the form
+                    //$.validator.unobtrusive.parse("#supplierList");
+                },
+                error: function() {
+                    alert('Error loading edit form');
+                }
+            });
+        });
+        var updateMessage = '@TempData["UpdateMessage"]';
+        if (updateMessage) {
+            showContent(updateMessage);
+        }
+    });
+</script>

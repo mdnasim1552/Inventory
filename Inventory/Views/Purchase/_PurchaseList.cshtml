@@ -1,5 +1,230 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<table class="table" id="purchasedatanew">
+    <thead>
+        <tr>
+            <th>
+                <label class="checkboxs">
+                    <input type="checkbox" id="select-all" />
+                    <span class="checkmarks"></span>
+                </label>
+            </th>
+            <th>Invoice No</th>
+            <th>Supplier Name</th>
+            <th>Sub Total</th>
+            <th>Discount</th>
+            <th>Tax</th>
+            <th>Total Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<div class="modal fade " id="purchaseModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Supplier Details</h1>
+                @* <h4>Product Details</h4>
+                <h6>Full details of a product</h6> *@
+                <button type="button" class="fa fa-times" data-bs-dismiss="modal" aria-label="Close" style="color:black !important;"></button>
+            </div>
+            <form id="editPurchaseForm">
+                <div class="modal-body" id="purchaseModalBody">
+                </div>
+                <div class="modal-footer" style="margin-right:10px;display:inline-block;padding:0; float:right;">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    @* <button type="button" class="btn btn-primary">Send message</button> *@
+                    <button type="submit" class="btn btn-sm btn-primary" id="submitid">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+            var table = $('#purchasedatanew').DataTable({
+                serverSide: true,      // enable server-side processing
+                processing: true,      // show processing indicator
+                ajax: {
+                    url: '/Purchase/GetPurchases',   // your server-side URL
+                    type: 'POST',
+                    data: function(d) {
+                        // You can send extra filter parameters here
+                        let fromDateRaw = $('#purchaseDateFrom').val();
+                        let fromDate = null;
+                        if (fromDateRaw) {
+                            const parts = fromDateRaw.split('-'); // DD-MM-YYYY
+                            fromDate = `${parts[2]}-${parts[1]}-${parts[0]}`; // YYYY-MM-DD
+                        }
+                        let toDateRaw = $('#purchaseDateTo').val();
+                        let toDate=null;
+                        if (toDateRaw) {
+                            const parts = toDateRaw.split('-'); // DD-MM-YYYY
+                            toDate = `${parts[2]}-${parts[1]}-${parts[0]}`; // YYYY-MM-DD
+                        }
+                        d.SupplierName = $('#supplierName').val();
+                        d.InvoiceNo = $('#invoiceNo').val();
+                        d.PurchaseDateFrom = fromDate;
+                        d.PurchaseDateTo = toDate;
+                    }
+                },
+                columns: [
+                    {
+                        data: null,
+                        render: function(data, type, row){
+                            return `<label class="checkboxs"><input type="checkbox" /><span class="checkmarks"></span></label>`;
+                        },
+                        orderable: false
+                    },
+                    {
+                        data: "InvoiceNo", // we will render manually using row data
+                        orderable: true
+                    },
+                    { data: 'SupplierName' },
+                    { data: 'SubTotal' },
+                    { data: 'Discount' },
+                    { data: 'Tax' },
+                    { data: 'TotalAmount' },
+                    { data: 'Id', render: function(data, type, row){
+                        return `
+                            <a class="me-3 view_purchase" data-id="${data}">
+                                <img src="/assets/img/icons/eye.svg" alt="img" />
+                            </a>
+                            <a class="me-3 edit_purchase" href="javascript:void(0);" data-id="${data}">
+                                <img src="/assets/img/icons/edit.svg" alt="img" />
+                            </a>
+                            <a class="deletePurchasedbtn" href="javascript:void(0);" data-id="${data}">
+                                <img src="/assets/img/icons/delete.svg" alt="img" />
+                            </a>`;
+                    }, orderable: false }
+                ],
+                columnDefs: [
+                    {
+                        // 'targets': [1,2,3],
+                        // 'orderable': false, // orderable false if (index === 0 || index === 1 || index === 2 || index === 11) return;
+                    },
+                    {
+                        // 'targets': [0,10],
+                        // 'visible': false
+                    }
+                ],
+                paging: true,
+                lengthMenu: [
+                    [5,10,20, 25, 50, -1],
+                    ['5 rows','10 rows', '20 rows', '25 rows', '50 rows', 'Show all']
+                ],
+                // "lengthMenu": [10, 20, 30, 40, 50, 100, [-1, "All"]],
+                pageLength: 5, // Default page size
+                pagingType: 'numbers',
+                ordering: true,
+                language: {
+                    search: ' ',
+                    sLengthMenu: '_MENU_',
+                    searchPlaceholder: "Search...",
+                    info: "_START_ - _END_ of _TOTAL_ items",
+                },
+                initComplete: function (settings, json) {
+                    $('.dataTables_filter').appendTo('#tableSearch');
+                    $('.dataTables_filter').appendTo('.search-input');
+                    $('#purchasedatanew thead tr th:first-child').removeClass();
+                }
+            });
+
+
+            $("#filterForm").on("submit", function(e) {
+                e.preventDefault();
+                table.ajax.reload();  // ✅ DataTable fetches with new filters
+            });
+
+        $('#purchasedatanew').on("click", ".view_purchase", function () {
+            //var allData = table.rows().data().toArray();
+            var supplierId = $(this).data("id");
+            $.ajax({
+                url: '/Supplier/GetSupplierDetails', // Adjust the controller action URL as needed
+                type: 'GET',
+                data: { id: supplierId },
+                success: function (result) {
+                    $('#purchaseModalBody').html(result); // Load the result into the modal body
+                    $("#purchaseModal").modal("show"); // Show the modal
+                },
+                error: function () {
+                    alert('Error loading product details');
+                }
+            });
+        });
+        $('#editPurchaseForm').submit(function (event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            $.ajax({
+                url: '/Purchase/EditPurchase',
+                type: 'POST',
+                data: $(this).serialize(), // Serialize the form data
+                success: function (response) {
+                    if (response.success) {
+                        showContent(response.message);
+                        $('#purchaseModal').modal('hide'); // Hide the modal
+                        // Optionally, refresh the table or show a success message
+                    } else {
+                        $('#purchaseModalBody').html(response); // Reload the form with validation errors
+                    }
+                },
+                error: function () {
+                    alert('Error saving product details');
+                }
+            });
+        });
+        $('#purchasedatanew').on("click", ".deletePurchasedbtn", function () {
+            var purchaseId = $(this).data("id");
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+                confirmButtonClass: "btn btn-primary",
+                cancelButtonClass: "btn btn-danger ml-1",
+                buttonsStyling: !1
+            }).then(function (t) {
+                if (t.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete", "Purchase")',
+                        data: { id: purchaseId },
+                        success: function (response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    type: "success",
+                                    title: "Deleted!",
+                                    text: "Your brand has been deleted.",
+                                    confirmButtonClass: "btn btn-success"
+                                });
+                                // Remove the brand row from the table
+                                //$('tr[data-id="' + brandId + '"]').remove();
+                                // Remove the brand row from the table using DataTable API
+                                table.row($('tr[data-id="' + purchaseId + '"]')).remove().draw();
+                            } else {
+                                Swal.fire({
+                                    type: "error",
+                                    title: "Error!",
+                                    text: response.message,
+                                    confirmButtonClass: "btn btn-danger"
+                                });
+                            }
+                        },
+                        error: function () {
+                            Swal.fire({
+                                type: "error",
+                                title: "Error!",
+                                text: "An error occurred while processing your request.",
+                                confirmButtonClass: "btn btn-danger"
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    });
+
+</script>

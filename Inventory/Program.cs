@@ -1,11 +1,13 @@
-using Microsoft.EntityFrameworkCore;
 using Inventory.Configuration;
 using Inventory.Data;
+using Inventory.Hubs;
 using Inventory.Profiles;
 using Inventory.UnitOfWork;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
-using Inventory.Hubs;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +33,16 @@ builder.Services.AddAutoMapper(cfg =>
 });
 builder.Services.AddSignalR();
 var app = builder.Build();
+//var cultureInfo = new CultureInfo("en-GB");
 
+//var localizationOptions = new RequestLocalizationOptions
+//{
+//    DefaultRequestCulture = new RequestCulture(cultureInfo),
+//    SupportedCultures = new[] { cultureInfo },
+//    SupportedUICultures = new[] { cultureInfo }
+//};
+
+//app.UseRequestLocalization(localizationOptions);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

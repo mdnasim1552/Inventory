@@ -30,6 +30,9 @@ public partial class PurchaseItem
     [Column(TypeName = "decimal(18, 6)")]
     public decimal? Total { get; set; }
 
+    [Column(TypeName = "datetime")]
+    public DateTime ExpiryDate { get; set; }
+
     [ForeignKey("ProductId")]
     [InverseProperty("PurchaseItems")]
     public virtual Product Product { get; set; } = null!;
