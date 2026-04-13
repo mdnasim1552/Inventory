@@ -1367,6 +1367,7 @@ function showLinkColorMenu({ x, y, linkView, segmentIndex }) {
                 const currentDisplay = labels[0]?.attrs?.labelText?.display;
                 const show = currentDisplay === 'none';
                 toggleLinkLabels(link, show);
+                linkView.removeTools();
             }
 
             colorMenu.style.display = 'none';
