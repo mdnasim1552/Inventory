@@ -1,5 +1,433 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model InventoryEntity.Purchase.PurchaseDto
 @{
+    ViewData["Title"] = "Edit Purchase";
+    var productList = ViewData["ProductList"] as IEnumerable<Inventory.Models.Product>;
+    var productSelectList = productList != null
+           ? new SelectList(productList, "Id", "Name")
+           : new SelectList(Enumerable.Empty<Product>(), "Id", "Name");
 }
+<div class="content">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Purchase Edit</h4>
+            <h6>Update your purchase</h6>
+        </div>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <form id="purchaseForm" asp-controller="Purchase" asp-action="Edit" method="post" enctype="multipart/form-data" data-ajax="true">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <partial name="_PurchaseFormFields" model="Model" />
+                    <input type="hidden" id="PurchaseItemsJson" name="PurchaseItemsJson" />
+                    <div class="col-12" id="EditImageContainer">
+                        <div class="product-list">
+                            <ul class="row">
+                                <li>
+                                    <div class="productviews">
+                                        <div class="productviewsimg">
+                                            <img id="purchase-image" src="@Model.InvoiceFile" alt="img" />
+                                        </div>
+                                        <div class="productviewscontent">
+                                            <div class="productviewsname">
+                                                <h2>@Model.InvoiceNo</h2>
+                                                <h3 id="image-size">Loading...</h3>
+                                            </div>
+                                            <a href="javascript:void(0);" id="delete-image">x</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Hidden field for ImageUrl -->
+                    @* <input type="hidden" asp-for="@Model.ImageUrl" id="ImageUrlHiddenField" /> *@
+                    <div class="col-lg-12">
+                        @* <a href="javascript:void(0);" class="btn btn-submit me-2">Submit</a> *@
+                        <button type="submit" class="btn btn-submit me-2">Update</button>
+                        <a class="btn btn-cancel" asp-action="Index">Cancel</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal fade " id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Purchase Item Details</h1>
+                @* <h4>Product Details</h4>
+                <h6>Full details of a product</h6> *@
+                <button type="button" class="fa fa-times" data-bs-dismiss="modal" aria-label="Close" style="color:black !important;"></button>
+            </div>
+            <form id="editPurchaseItemForm">
+                <div class="modal-body" id="productModalBody">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="productSelect">Product Name</label>
+                                <select class="select" id="productSelect" required>
+                                    @foreach (var item in productList)
+                                    {
+                                        <option value="@item.Id" data-image="@item.Image">
+                                            @item.Name
+                                        </option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.Quantity">Quantity</label>
+                                <input id="piQuantity" class="form-control" asp-for="@Model.PurchaseItem.Quantity" type="number" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.UnitCost">Cost</label>
+                                <input id="piUnitCost" class="form-control" asp-for="@Model.PurchaseItem.UnitCost" type="number" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.Tax">Tax</label>
+                                <input id="piTax" class="form-control" asp-for="@Model.PurchaseItem.Tax" type="number">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.Discount">Discount</label>
+                                <input id="piDiscount" class="form-control" asp-for="@Model.PurchaseItem.Discount" type="number">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.ExpiryDate">Expiry Date </label>
+                                <div class="input-groupicon">
+                                    <input id="piExpiryDate" asp-for="@Model.PurchaseItem.ExpiryDate" type="text" placeholder="DD-MM-YYYY" class="datetimepicker" required>
+                                    <div class="addonset">
+                                        <img src="~/assets/img/icons/calendars.svg" alt="img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-right:10px;display:inline-block;padding:0; float:right;">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    @* <button type="button" class="btn btn-primary">Send message</button> *@
+                    <button type="submit" class="btn btn-sm btn-primary" id="submitid">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    .select2-selection__clear {
+        margin-right: 20px; /* push away from arrow */
+        font-size: 16px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var imageUrl = $('#purchase-image').attr('src');
+        if (!imageUrl || imageUrl.trim() === '') {
+            $('#EditImageContainer').hide();
+        }
+        var id = @Model.Id;
+        $('#delete-image').click(function () {
+            if (confirm('Are you sure you want to delete this image?')) {
+                DeleteImage();
+            }
+        });
+        function DeleteImage() {
+            $.ajax({
+                type: 'DELETE',
+                url: '@Url.Action("DeleteImage", "Purchase")', // URL of your controller action
+                data: { imageUrl: imageUrl, id: id },
+                success: function (response) {
+                    $('#EditImageContainer').hide();
+                    $('#purchase-image').attr('src', ''); // Optionally clear the image URL
+                    $('#ImageUrlHiddenField').val(''); // Clear the hidden field
+                    alert('Image deleted successfully.');
+                    // Optionally, handle UI changes or redirection
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Error deleting image: ' + errorThrown);
+                }
+            });
+        }
+        $.ajax({
+            type: 'HEAD',
+            url: imageUrl,
+            success: function (data, textStatus, xhr) {
+                var imageSize = xhr.getResponseHeader('Content-Length');
+                if (imageSize) {
+                    var sizeInKB = (imageSize / 1024).toFixed(2);
+                    $('#image-size').text(sizeInKB + ' KB');
+                } else {
+                    $('#image-size').text('Size not available');
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error fetching image size: ' + errorThrown);
+                $('#image-size').text('Error fetching size');
+            }
+        });
+        let editIndex = -1;
+        let purchaseItems = [];
+        $('#userModal').on('hidden.bs.modal', function () {
+            editIndex = -1; // 🔥 always reset
+            $('#editPurchaseItemForm')[0].reset(); // optional clean reset
+            $('#productSelect').val(null).trigger('change'); // reset select2
+        });
+        $("#addPurchaseItem").on("click", function (e) {
+            $('#editPurchaseItemForm')[0].reset(); // optional clean reset
+            $('#productSelect').val(null).trigger('change'); // reset select2
+            $('#submitid').text('Save');
+            $("#userModal").modal("show");
+        });
+        $('#productdatanew').on('click', '.editRow', function () {
+
+            const row = $(this).closest('tr');
+            editIndex = row.index(); // 🔥 store index
+
+            const item = purchaseItems[editIndex];
+            let formattedDate = '';
+            if (item.expiryDate) {
+                let parts = item.expiryDate.split('T')[0].split('-'); // "2027-04-13"
+
+                formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+            }
+            // Fill modal fields
+            $('#productSelect').val(item.productId).trigger('change');
+            $('#piQuantity').val(item.quantity);
+            $('#piUnitCost').val(item.unitCost);
+            $('#piTax').val(item.tax);
+            $('#piDiscount').val(item.discount);
+            $('#piExpiryDate').val(formattedDate);
+            $('#submitid').text('Update');
+            // Open modal
+            $("#userModal").modal("show");
+            console.log(item);
+        });
+
+        $('#editPurchaseItemForm').submit(function (event) {
+            event.preventDefault();
+            debugger;
+            const productId = $('#productSelect').val();
+            const productName = $('#productSelect option:selected').text();
+            const productImage = $('#productSelect option:selected').data('image');
+            const quantity = parseFloat($('#piQuantity').val()) || 0;
+            const unitCost = parseFloat($('#piUnitCost').val()) || 0;
+            const tax = parseFloat($('#piTax').val()) || 0;
+            const discount = parseFloat($('#piDiscount').val()) || 0;
+
+            let expiryDateRaw = $('#piExpiryDate').val();
+            let expiryDate = null;
+
+            if (expiryDateRaw) {
+                const parts = expiryDateRaw.split('-'); // DD-MM-YYYY
+                expiryDate = `${parts[2]}-${parts[1]}-${parts[0]}`; // YYYY-MM-DD
+            }
+
+            if (!productId || quantity <= 0 || unitCost <= 0) {
+                alert("Please fill required fields");
+                return;
+            }
+
+            // 🔥 Calculate total
+            let subtotal = quantity * unitCost;
+            let taxAmount = subtotal * (tax / 100);
+            let discountAmount = subtotal * (discount / 100);
+            let total = subtotal + taxAmount - discountAmount;
+            const itemData = {
+                productId,
+                productName,
+                productImage,
+                quantity,
+                unitCost,
+                tax,
+                discount,
+                total,
+                expiryDate
+            };
+            if (editIndex >= 0) {
+                // 🔥 UPDATE MODE
+                purchaseItems[editIndex] = itemData;
+
+                // Replace row
+                $('#productdatanew tbody tr').eq(editIndex).replaceWith(createRowHtml(itemData));
+
+                editIndex = -1; // reset
+            } else {
+                // ➕ ADD MODE
+                purchaseItems.push(itemData);
+                $("#productdatanew tbody").append(createRowHtml(itemData));
+            }
+
+            updateTotals();
+            // Close modal
+            $("#userModal").modal("hide");
+
+            // Reset form
+            this.reset();
+        });
+        function appendRow(productId, productName,productImage, qty, cost, tax, discount, total) {
+            const row = `
+                <tr>
+                    <td class="productimgname">
+                            <a href="javascript:void(0);" class="product-img">
+                                <img src="${productImage}"
+                                     alt="product" />
+                            </a>
+                            <a href="javascript:void(0);">${productName}</a>
+                     </td>
+                    <td>${qty}</td>
+                    <td>${cost.toFixed(2)}</td>
+                    <td>${tax}%</td>
+                    <td>${discount}%</td>
+                    <td>${total.toFixed(2)}</td>
+                    <td>
+                        <a class="me-3 editRow" href="javascript:void(0);">
+                            <img src="/assets/img/icons/edit.svg" alt="img" />
+                        </a>
+                        <a href="javascript:void(0);" class="deleteRow">
+                            <img src="/assets/img/icons/delete.svg" />
+                        </a>
+                    </td>
+                </tr>
+            `;
+
+            $("#productdatanew tbody").append(row);
+        }
+        function createRowHtml(item) {
+            return `
+                <tr>
+                    <td class="productimgname">
+                        <a href="javascript:void(0);" class="product-img">
+                            <img src="${item.productImage}" alt="product" />
+                        </a>
+                        <a href="javascript:void(0);">${item.productName}</a>
+                    </td>
+                    <td>${item.quantity}</td>
+                    <td>${item.unitCost.toFixed(2)}</td>
+                    <td>${item.tax}%</td>
+                    <td>${item.discount}%</td>
+                    <td>${item.total.toFixed(2)}</td>
+                    <td>
+                        <a class="me-3 editRow" href="javascript:void(0);">
+                            <img src="/assets/img/icons/edit.svg" />
+                        </a>
+                        <a href="javascript:void(0);" class="deleteRow">
+                            <img src="/assets/img/icons/delete.svg" />
+                        </a>
+                    </td>
+                </tr>
+            `;
+        }
+        $('#productdatanew').on('click', '.deleteRow', function () {
+            const index = $(this).closest('tr').index();
+            purchaseItems.splice(index, 1); // remove from array
+            $(this).closest('tr').remove();
+            updateTotals();
+        });
+        // $('form').on('submit', function () {
+        //     $('<input>').attr({
+        //         type: 'hidden',
+        //         name: 'PurchaseItemsJson',
+        //         value: JSON.stringify(purchaseItems)
+        //     }).appendTo(this);
+        // });
+        $('#purchaseForm').on('submit', function (e) {
+           if (!purchaseItems || purchaseItems.length === 0) {
+                e.preventDefault();
+                e.stopImmediatePropagation(); // 🔥 VERY IMPORTANT
+                alert("Please add at least one product!");
+                return false;
+            }
+            let raw = $('#PurchaseDate').val(); // DD-MM-YYYY
+
+            if (raw) {
+                const parts = raw.split('-');
+                $('#PurchaseDate').val(`${parts[2]}-${parts[1]}-${parts[0]}`);
+            }
+            $('#PurchaseItemsJson').val(JSON.stringify(purchaseItems));
+        });
+
+        const existingData = document.getElementById("existingData");
+
+        if (existingData) {
+            // purchaseItems = JSON.parse(existingData.textContent);
+            const rawData = JSON.parse(existingData.textContent);
+
+            purchaseItems = rawData.map(item => ({
+                productId: item.ProductId,
+                productName: item.ProductName?.trim(),
+                productImage: item.ProductImage,
+                quantity: item.Quantity,
+                unitCost: item.UnitCost,
+                tax: item.Tax || 0,
+                discount: item.Discount || 0,
+                total: item.Total || 0,
+                expiryDate:item.ExpiryDate
+            }));
+            purchaseItems.forEach(item => {
+                $("#productdatanew tbody").append(createRowHtml(item));
+            });
+            updateTotals();
+        }
+        function formatProduct(option) {
+            if (!option.id) return option.text;
+
+            var img = $(option.element).data('image');
+
+            if (!img) return option.text;
+
+            return $(`
+                <span style="display:flex;align-items:center;">
+                    <img src="${img}" style="width:30px;height:30px;margin-right:10px;border-radius:4px;" />
+                    ${option.text}
+                </span>
+            `);
+        }
+        $('#productSelect').select2({
+            dropdownParent: $('#userModal'), // 🔥 THIS FIXES YOUR ISSUE
+            templateResult: formatProduct,
+            templateSelection: formatProduct,
+            placeholder: "Choose Product",
+            minimumResultsForSearch: 0,
+            allowClear: true,
+            escapeMarkup: function (m) { return m; }
+        });
+        function updateTotals() {
+            let subTotal = 0;
+            let totalTax = 0;
+            let totalDiscount = 0;
+
+            purchaseItems.forEach(item => {
+                let itemSub = item.quantity * item.unitCost;
+
+                let itemTax = itemSub * (item.tax / 100);
+                let itemDiscount = itemSub * (item.discount / 100);
+
+                subTotal += itemSub;
+                totalTax += itemTax;
+                totalDiscount += itemDiscount;
+            });
+
+            let grandTotal = subTotal + totalTax - totalDiscount;
+
+            // Update UI
+            $('#subTotal').text('$ ' + subTotal.toFixed(2));
+            $('#taxTotal').text('$ ' + totalTax.toFixed(2));
+            $('#discountTotal').text('$ ' + totalDiscount.toFixed(2));
+            $('#grandTotal').text('$ ' + grandTotal.toFixed(2));
+        }
+    });
+
+</script>

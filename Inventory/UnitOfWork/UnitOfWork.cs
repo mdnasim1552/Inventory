@@ -19,6 +19,7 @@ namespace Inventory.UnitOfWork
         public ISupplierRepository Supplier { get; set; }
         public IStoreRepository Store { get; private set; }
         public IPurchaseRepository Purchase { get; set; }
+        public IPurchaseItemRepository PurchaseItem { get; set; }
         public IUnitRepository Unit { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -36,6 +37,7 @@ namespace Inventory.UnitOfWork
             Supplier=new SupplierRepository(context);
             Store=new StoreRepository(context);
             Purchase=new PurchaseRepository(context);
+            PurchaseItem=new PurchaseItemRepository(context);
             Unit = new UnitRepository(context);
         }
 

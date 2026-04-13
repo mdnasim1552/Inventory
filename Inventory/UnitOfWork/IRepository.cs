@@ -13,6 +13,7 @@ namespace Inventory.UnitOfWork
         Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
         Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
         Task<IEnumerable<TEntity>> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties);
+        Task<TEntity?> GetIncluding(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties);
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);

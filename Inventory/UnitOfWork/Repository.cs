@@ -96,5 +96,16 @@ namespace Inventory.UnitOfWork
             }
             return await query.ToListAsync();
         }
+        public async Task<TEntity?> GetIncluding(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            IQueryable<TEntity> query = dbSet;
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return await query.FirstOrDefaultAsync(predicate);
+        }
     }
 }
