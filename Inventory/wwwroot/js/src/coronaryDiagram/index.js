@@ -1362,6 +1362,12 @@ function showLinkColorMenu({ x, y, linkView, segmentIndex }) {
             }
             else if (action === 'add-up-bottom-stroke') {
                 insertObjectInsideLink.insertUpBottomStroke(link, ratio, graph, paper, joint);
+            }else if (action === 'show-label') {
+                const labels = link.labels();
+                const currentDisplay = labels[0]?.attrs?.labelText?.display;
+                const show = currentDisplay === 'none';
+                toggleLinkLabels(link, show);
+                linkView.removeTools();
             }
 
             colorMenu.style.display = 'none';
@@ -1369,6 +1375,21 @@ function showLinkColorMenu({ x, y, linkView, segmentIndex }) {
 
         menuOpen = false;
     };
+}
+function toggleLinkLabels(link, show = true) {
+    if (!link) return;
+
+    const display = show ? 'block' : 'none';
+
+    link.labels().forEach((label, index) => {
+        link.label(index, {
+            attrs: {
+                labelText: { display },
+                labelBackground: { display },
+                line: { display },
+            }
+        });
+    });
 }
 function snapshotGraph(graph) {
     return graph.toJSON({ deep: true }); // full state of graph
@@ -2993,7 +3014,11 @@ function getAllLabelTexts(graph) {
 function bindArteryDropdown() {
     const data = getAllLabelTexts(graph);
     const dropdown = $("#arteryComboBox");
-
+    if (!dropdown) {
+        // Retry until initialized
+        setTimeout(bindArteryDropdown, 100);
+        return;
+    }
     // 🔥 Destroy previous Select2 (IMPORTANT)
     if (dropdown.hasClass("select2-hidden-accessible")) {
         dropdown.select2('destroy');
