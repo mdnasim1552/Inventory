@@ -1313,6 +1313,19 @@ const colorMenu = document.getElementById('link-color-menu');
 let activeLinkId = null;
 let activeSegmentIndex = null;
 function showLinkColorMenu({ x, y, linkView, segmentIndex }) {
+    const labels = linkView.model.labels();
+    const toggleItem = document.getElementById('toggle-label-menu');
+    if (labels.length) {
+        const currentDisplay = labels[0]?.attrs?.labelText?.display;
+    
+        if (currentDisplay === 'none') {
+            toggleItem.textContent = 'Show Label';
+        } else {
+            toggleItem.textContent = 'Hide Label';
+        }
+    } else {
+        toggleItem.textContent = 'Show Label';
+    }
     menuEl.style.display = 'none';
     const paperRect = paper.el.getBoundingClientRect();
     // Convert viewport coordinates to paper-local coordinates
