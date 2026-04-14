@@ -1313,6 +1313,19 @@ const colorMenu = document.getElementById('link-color-menu');
 let activeLinkId = null;
 let activeSegmentIndex = null;
 function showLinkColorMenu({ x, y, linkView, segmentIndex }) {
+    const labels = linkView.model.labels();
+    const toggleItem = document.getElementById('toggle-label-menu');
+    if (labels.length) {
+        const currentDisplay = labels[0]?.attrs?.labelText?.display;
+    
+        if (currentDisplay === 'none') {
+            toggleItem.textContent = 'Show Label';
+        } else {
+            toggleItem.textContent = 'Hide Label';
+        }
+    } else {
+        toggleItem.textContent = 'Show Label';
+    }
     menuEl.style.display = 'none';
     const paperRect = paper.el.getBoundingClientRect();
     // Convert viewport coordinates to paper-local coordinates
@@ -2686,6 +2699,92 @@ $("#toggleLblBtn").on("click", function () {
         showAllLinkLabels();
         $(this).text("Hide Labels");
     }
+});
+let zoomEnabled = false;
+
+let scale = paper.scale().sx;
+let minScale = 0.2;   // allow deep zoom-out
+let maxScale = 4;
+
+let translate = { x: 0, y: 0 };
+
+$("#zoomBtn").on("click", function () {
+    zoomEnabled = !zoomEnabled;
+
+    if (!zoomEnabled) {
+        paper.transformToFitContent({
+            //contentArea: { x: 0, y: 0, width: 2000, height: 2000 },
+            horizontalAlign: 'middle',
+            verticalAlign: 'middle',
+            //padding: 50,
+            useModelGeometry: true,
+        });
+        scale = paper.scale().sx;
+        translate = { x: 0, y: 0 }; 
+        $("#diagram-paper-wrapper").css("cursor", "default");
+        $("#zoomBtn").text("Zoom");
+    } else {
+        $("#diagram-paper-wrapper").css("cursor", "grab");
+        $("#zoomBtn").text("Reset");
+    }
+    const panel = $("#diagramBtncontrols");
+    panel.removeClass("show");
+    $("#toggleControlsBtn i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+});
+$("#diagram-paper-wrapper").on("wheel", function (e) {
+    if (!zoomEnabled) return;
+
+    e.preventDefault();
+
+    const evt = e.originalEvent;
+    const rect = paper.el.getBoundingClientRect();
+
+    const ox = evt.clientX - rect.left;
+    const oy = evt.clientY - rect.top;
+
+    // 🔥 smoother zoom step (IMPORTANT FIX)
+    const zoomStep = 0.05;
+
+    if (evt.deltaY > 0) {
+        scale -= zoomStep;
+    } else {
+        scale += zoomStep;
+    }
+
+    scale = Math.max(minScale, Math.min(maxScale, scale));
+
+    paper.scale(scale, scale, ox, oy);
+});
+let isPanning = false;
+let st = { x: 0, y: 0 };
+
+$("#diagram-paper-wrapper").on("mousedown", function (e) {
+    if (!zoomEnabled) return;
+
+    isPanning = true;
+
+    st = {
+        x: e.clientX,
+        y: e.clientY
+    };
+});
+
+$(document).on("mousemove", function (e) {
+    if (!isPanning || !zoomEnabled) return;
+
+    const dx = e.clientX - st.x;
+    const dy = e.clientY - st.y;
+
+    st = { x: e.clientX, y: e.clientY };
+
+    translate.x += dx;
+    translate.y += dy;
+
+    paper.translate(translate.x, translate.y);
+});
+
+$(document).on("mouseup", function () {
+    isPanning = false;
 });
 $("#addRetrogradeFlowBtn").on("click", function () {
     cabgOrRetroMode = true;

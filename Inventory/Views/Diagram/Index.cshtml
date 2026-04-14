@@ -50,7 +50,7 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-5 firstWrapper">
                     <div class="table-top">
                         <div class="search-set">
                             <div class="search-path">
@@ -213,6 +213,7 @@
                             <button class="btn btn-sm btn-outline-info" id="rightDomBtn">Right-Dominance</button>
                             <button class="btn btn-sm btn-outline-info" id="coDomBtn">Co-Dominance</button>
                             <button class="btn btn-sm btn-outline-dark" id="toggleLblBtn">Show Labels</button>
+                            <button class="btn btn-sm btn-outline-dark" id="zoomBtn">Zoom</button>
                             <button class="btn btn-sm btn-outline-dark" id="printBtn">Print</button>
                             <button class="btn btn-sm btn-outline-dark" id="undoBtn">Undo</button>
                             <button class="btn btn-sm btn-outline-dark" id="redoBtn">Redo</button>
@@ -233,6 +234,10 @@
     .select2-selection__clear {
         margin-right: 20px; /* push away from arrow */
         font-size: 16px;
+    }
+    .firstWrapper {
+        z-index:9999;
+        background-color:white;
     }
 </style>
 <script type="text/javascript">
