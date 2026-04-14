@@ -4,12 +4,12 @@ namespace Inventory.Extensions
 {
     public static class InventoryUtility
     {
-        public static async Task<string> UploadImage(IFormFile imgFile,string uploadFolderPath,string folderName)
+        public static async Task<string> UploadFile(IFormFile imgFile,string uploadFolderPath,string folderName)
         {
             string uniqueFileName = string.Empty;
             if (imgFile != null)
             {
-                var allowedImageExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                var allowedImageExtensions = new[] { ".pdf", ".doc", ".docx", ".xls", ".xlsx", ".jpg", ".jpeg", ".png", ".gif", ".txt" };
                 var imageExtension = Path.GetExtension(imgFile.FileName);
                 var imageName = Path.GetFileNameWithoutExtension(imgFile.FileName).Length > 20 ?
                     Path.GetFileNameWithoutExtension(imgFile.FileName).Substring(0, 20) + imageExtension :

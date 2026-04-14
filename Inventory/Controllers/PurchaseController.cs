@@ -138,7 +138,7 @@ namespace Inventory.Controllers
                             //return Ok("Image deleted successfully.");
                         }
                     }
-                    purchaseDto.InvoiceFile = await InventoryUtility.UploadImage(purchaseDto.Invoice_File, uploadFolderPath, folderName);
+                    purchaseDto.InvoiceFile = await InventoryUtility.UploadFile(purchaseDto.Invoice_File, uploadFolderPath, folderName);
                 }
                 var purchase = _mapper.Map<Purchase>(purchaseDto);
                 var subTotal = purchaseItemList.Sum(x => x.Quantity * x.UnitCost);
@@ -218,7 +218,7 @@ namespace Inventory.Controllers
                             //return Ok("Image deleted successfully.");
                         }
                     }
-                    purchaseDto.InvoiceFile = await InventoryUtility.UploadImage(purchaseDto.Invoice_File, uploadFolderPath, folderName);//await UploadImage(customerDto.CustomerImg);
+                    purchaseDto.InvoiceFile = await InventoryUtility.UploadFile(purchaseDto.Invoice_File, uploadFolderPath, folderName);//await UploadImage(customerDto.CustomerImg);
                 }
                 var purchase = _mapper.Map<Purchase>(purchaseDto);
                 var subTotal = purchaseItemList.Sum(x => x.Quantity * x.UnitCost);
@@ -267,6 +267,38 @@ namespace Inventory.Controllers
                 }
             }
             return NotFound("Image not found.");
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var purchase = await _unitOfWork.Purchase.GetAsync(id);
+            if (purchase == null)
+            {
+                return NotFound();
+            }
+
+            // If the brand has an image, delete it
+            if (!string.IsNullOrEmpty(purchase.InvoiceFile))
+            {
+                var imageUrl = purchase.InvoiceFile.TrimStart('/');
+                imageUrl = Path.Combine(_webHostEnvironment.WebRootPath, imageUrl);
+                if (System.IO.File.Exists(imageUrl))
+                {
+                    System.IO.File.Delete(imageUrl);
+                }
+            }
+            var purchaseItems = await _unitOfWork.PurchaseItem.FindAsync(x => x.PurchaseId == id);
+            _unitOfWork.PurchaseItem.RemoveRange(purchaseItems);
+
+            _unitOfWork.Purchase.Remove(purchase);
+            var result = await _unitOfWork.SaveAsync();
+
+            if (result)
+            {
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false, message = "Error while deleting the Product" });
         }
     }
 }

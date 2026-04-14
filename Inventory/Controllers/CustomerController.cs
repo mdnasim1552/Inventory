@@ -103,7 +103,7 @@ namespace Inventory.Controllers
         {
             if (ModelState.IsValid)
             {
-                customerDto.Image = await InventoryUtility.UploadImage(customerDto.CustomerImg, uploadFolderPath, folderName);//await UploadImage(customerDto.CustomerImg);
+                customerDto.Image = await InventoryUtility.UploadFile(customerDto.CustomerImg, uploadFolderPath, folderName);//await UploadImage(customerDto.CustomerImg);
                 var customers = _mapper.Map<Customer>(customerDto);
                 _unitOfWork.Customer.Add(customers);
                 var productstatus = await _unitOfWork.SaveAsync();
@@ -155,7 +155,7 @@ namespace Inventory.Controllers
                             //return Ok("Image deleted successfully.");
                         }
                     }
-                    customerDto.Image = await InventoryUtility.UploadImage(customerDto.CustomerImg, uploadFolderPath, folderName);//await UploadImage(customerDto.CustomerImg);
+                    customerDto.Image = await InventoryUtility.UploadFile(customerDto.CustomerImg, uploadFolderPath, folderName);//await UploadImage(customerDto.CustomerImg);
                 }
                 var customers = _mapper.Map<Customer>(customerDto);
                 _unitOfWork.Customer.Update(customers);

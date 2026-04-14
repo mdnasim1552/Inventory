@@ -78,7 +78,7 @@ namespace Inventory.Controllers
                 {
                     //var isAuthenticated = User.Identity.IsAuthenticated;
                     var adminID = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "AdminID").Value);
-                    userDto.Image = await InventoryUtility.UploadImage(userDto.UserImg, uploadFolderPath, folderName);
+                    userDto.Image = await InventoryUtility.UploadFile(userDto.UserImg, uploadFolderPath, folderName);
                     userDto.Birthday = Convert.ToDateTime(userDto.Birthday).ToString("yyyy-MM-dd");
                     var users = _mapper.Map<Credential>(userDto);
                     users.CreatedOn = DateTime.Now;
@@ -141,7 +141,7 @@ namespace Inventory.Controllers
                             //return Ok("Image deleted successfully.");
                         }
                     }
-                    userDto.Image = await InventoryUtility.UploadImage(userDto.UserImg, uploadFolderPath, folderName);
+                    userDto.Image = await InventoryUtility.UploadFile(userDto.UserImg, uploadFolderPath, folderName);
                 }
                 userDto.Birthday = Convert.ToDateTime(userDto.Birthday).ToString("yyyy-MM-dd");
                 var user = _mapper.Map<Credential>(userDto);
