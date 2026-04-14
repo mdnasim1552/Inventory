@@ -135,13 +135,19 @@
             editIndex = row.index(); // 🔥 store index
 
             const item = purchaseItems[editIndex];
+            let formattedDate = '';
+            if (item.expiryDate) {
+                let parts = item.expiryDate.split('T')[0].split('-'); // "2027-04-13"
 
+                formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+            }
             // Fill modal fields
             $('#productSelect').val(item.productId).trigger('change');
             $('#piQuantity').val(item.quantity);
             $('#piUnitCost').val(item.unitCost);
             $('#piTax').val(item.tax);
             $('#piDiscount').val(item.discount);
+            $('#piExpiryDate').val(formattedDate);
             $('#submitid').text('Update');
             // Open modal
             $("#userModal").modal("show");

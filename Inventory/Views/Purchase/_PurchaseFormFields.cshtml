@@ -37,7 +37,7 @@
     <div class="form-group">
         <label asp-for="PurchaseDate">Purchase Date </label>
         <div class="input-groupicon">
-            <input asp-for="PurchaseDate" type="text" placeholder="DD-MM-YYYY" class="datetimepicker" required>
+            <input asp-for="PurchaseDate" type="text" placeholder="DD-MM-YYYY" class="datetimepicker" required value="@Model.PurchaseDate.ToString("dd-MM-yyyy")">
             <div class="addonset">
                 <img src="~/assets/img/icons/calendars.svg" alt="img">
             </div>

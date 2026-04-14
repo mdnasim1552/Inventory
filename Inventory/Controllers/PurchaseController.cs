@@ -50,7 +50,7 @@ namespace Inventory.Controllers
             }
             if (!String.IsNullOrEmpty(purchaseSearch.InvoiceNo))
             {
-                purchaseList = purchaseList.Where(b => b.InvoiceNo.ToLower().Contains(purchaseSearch.InvoiceNo.ToLower()));
+                purchaseList = purchaseList.Where(b => b.InvoiceNo != null && b.InvoiceNo.ToLower().Contains(purchaseSearch.InvoiceNo.ToLower()));
             }
             if (purchaseSearch.PurchaseDateFrom is not null)
             {
@@ -105,13 +105,19 @@ namespace Inventory.Controllers
         }
         public IActionResult Create()
         {
+            var model = new PurchaseDto
+            {
+                PurchaseDate = DateTime.Now
+            };
+
             ViewData["SupplierList"] = supplierList;
             ViewData["ProductList"] = productList;
+            ViewData["PurchaseItemList"] = new List<PurchaseItemDto>();
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
-                return PartialView();
+                return PartialView(model);
             }
-            return View();
+            return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Create(PurchaseDto purchaseDto)
@@ -224,6 +230,7 @@ namespace Inventory.Controllers
                 purchase.Discount = discount;
                 purchase.TotalAmount = subTotal + tax - discount;
                 purchase.PurchaseItems = purchaseItemList;
+                purchase.CreatedAt = DateTime.Now;
                 _unitOfWork.Purchase.Update(purchase);
                 var purchasestatus = await _unitOfWork.SaveAsync();
                 if (purchasestatus)
