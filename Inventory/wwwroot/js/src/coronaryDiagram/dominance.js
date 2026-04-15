@@ -1,11 +1,15 @@
-﻿export function LeftDominance(graph) {
+export function LeftDominance(graph) {
     const mB2LinkModel = graph.getCell('mB2Link');
     const mB2LinkChild1Model = graph.getCell('mB2LinkChild1');
     const mB2LinkChild2Model = graph.getCell('mB2LinkChild2');
     const mB2LinkChild3Model = graph.getCell('mB2LinkChild3');
     const mB2LinkChild4Model = graph.getCell('mB2LinkChild4');
     if (!mB2LinkModel) return;
-
+    const mB0LinkModel = graph.getCell('mB0Link');
+    mB0LinkModel.attr('line', {
+        organicStrokeThinning: 0,
+        organicStrokeTaper: 0
+    });
     // 3️⃣ Update the link
     mB2LinkModel.set({
         source: { x: 994, y: 1296 },
@@ -94,7 +98,11 @@ export function RightDominance(graph) {
     const mB2LinkChild3Model = graph.getCell('mB2LinkChild3');
     const mB2LinkChild4Model = graph.getCell('mB2LinkChild4');
     if (!mB2LinkModel) return;
-
+    const mB0LinkModel = graph.getCell('mB0Link');
+    mB0LinkModel.attr('line', {
+        organicStrokeThinning: 0.5,
+        organicStrokeTaper: 1
+    });
     // 3️⃣ Update the link
     mB2LinkModel.set({
         source: { x: 827, y: 1431 },
@@ -182,7 +190,11 @@ export function CoDominance(graph) {
     const mB2LinkChild3Model = graph.getCell('mB2LinkChild3');
     const mB2LinkChild4Model = graph.getCell('mB2LinkChild4');
     if (!mB2LinkModel) return;
-
+    const mB0LinkModel = graph.getCell('mB0Link');
+    mB0LinkModel.attr('line', {
+        organicStrokeThinning: 0,
+        organicStrokeTaper: 0
+    });
     // 3️⃣ Update the link
     mB2LinkModel.set({
         source: { x: 827, y: 1431 },
