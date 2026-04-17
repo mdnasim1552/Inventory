@@ -300,5 +300,33 @@ namespace Inventory.Controllers
 
             return Json(new { success = false, message = "Error while deleting the Product" });
         }
+        public async Task<IActionResult> GetPurchaseDetails(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            //var purchases = await _unitOfWork.Purchase.GetAsync(id);
+            var purchase = await _unitOfWork.Purchase.GetIncluding(
+                                p => p.Id == id,
+                                p => p.Supplier,
+                                p => p.PurchaseItems
+                            );
+            if (purchase == null)
+            {
+                return NotFound();
+            }
+            var purchaseDto = _mapper.Map<PurchaseDto>(purchase);
+            purchaseDto.SupplierName = purchase.Supplier.Name;
+            var purchaseItemListDto = _mapper.Map<List<PurchaseItemDto>>(purchase.PurchaseItems);
+            ViewData["PurchaseItemList"] = purchaseItemListDto;
+            ViewData["SupplierList"] = supplierList;
+            ViewData["ProductList"] = productList;
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_PurchaseView",purchaseDto);
+            }
+            return View("_PurchaseView",purchaseDto);
+        }
     }
 }

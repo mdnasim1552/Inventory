@@ -13,7 +13,8 @@ namespace InventoryEntity.Purchase
         public int Id { get; set; }
 
         public int SupplierId { get; set; }
-
+        [StringLength(100)]
+        public string? SupplierName { get; set; }
         [StringLength(100)]
         public string? InvoiceNo { get; set; }
         [StringLength(500)]

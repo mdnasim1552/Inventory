@@ -1,5 +1,241 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using InventoryEntity.Purchase
+@using Newtonsoft.Json
+@model InventoryEntity.Purchase.PurchaseDto
 @{
+    var productList = ViewData["ProductList"] as IEnumerable<Inventory.Models.Product>;
+    var productSelectList = productList != null
+           ? new SelectList(productList, "Id", "Name")
+           : new SelectList(Enumerable.Empty<Product>(), "Id", "Name");
+    var purchaseItemList = ViewData["PurchaseItemList"] as IEnumerable<InventoryEntity.Purchase.PurchaseItemDto>;
+    var fileUrl = Model.InvoiceFile;
+    var extension = fileUrl != null ? System.IO.Path.GetExtension(fileUrl).ToLower() : "";
+
+    var isImage = extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif" || extension == ".bmp" || extension == ".webp";
+
+    var fileIcon = "/assets/img/icons/file.svg"; // default
+
+    if (extension == ".pdf")
+        fileIcon = "/assets/img/icons/pdf.svg";
+    else if (extension == ".doc" || extension == ".docx")
+        fileIcon = "/assets/img/icons/word.svg";
+    else if (extension == ".xls" || extension == ".xlsx")
+        fileIcon = "/assets/img/icons/excel.svg";
 }
+<div class="row">
+    <div class="col-lg-8 col-sm-12" >
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="productdetails">
+                    <ul class="product-bar">
+                        <li>
+                            <h4>Supplier Name</h4>
+                            <input value="@Model.SupplierName" readonly type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Purchase Date</h4>
+                            <input value="@Model.PurchaseDate.ToString("dd-MM-yyyy")" readonly type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                        <li>
+                            <h4>Invoice No</h4>
+                            <input value="@Model.InvoiceNo" readonly type="text" style="width:70% !important; border:none;padding: 10px;" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-12" id="sliderDiv" style="max-height:50vh;">
+        <div class="card h-100" style="overflow:auto;">
+            <div class="card-body">
+                <div class="slider-product-details">
+                    <div class="owl-carousel owl-theme product-slide">
+                        <div class="slider-product">
+                            <img id="purchase-image" style="width:100% !important;" alt="img"
+                                 src="@(isImage? Model.InvoiceFile: fileIcon)"
+                                 data-file="@Model.InvoiceFile"
+                                 alt="file" style="cursor:pointer;" />
+                            <h4>@Model.InvoiceNo</h4>
+                            <h6 class="image-size">Loading...</h6>
+                        </div>
+                        <div class="slider-product">
+                            <img id="purchase-image" style="width:100% !important;" alt="img"
+                                 src="@(isImage? Model.InvoiceFile: fileIcon)"
+                                 data-file="@Model.InvoiceFile"
+                                 alt="file" style="cursor:pointer;" />
+                            <h4>@Model.InvoiceNo</h4>
+                            <h6 class="image-size">Loading...</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 mt-3">
+        @* <button class="btn btn-primary" id="addPurchaseItem">Add Purchase Item</button> *@
+        <table class="table" id="productdatanew">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Oty</th>
+                    <th>Cost</th>
+                    <th>Tax(%)</th>
+                    <th>Discount</th>
+                    <th>Total Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (purchaseItemList!=null)
+                {
+                    @foreach (var productItem in purchaseItemList)
+                    {
+                        <tr>
+                            <td class="productimgname">
+                                <a href="javascript:void(0);" class="product-img">
+                                    <img src="@productItem.ProductImage"
+                                         alt="product" />
+                                </a>
+                                <a href="javascript:void(0);">@productItem.ProductName</a>
+                            </td>
+                            <td>@productItem.Quantity.ToString("F2")</td>
+                            <td>@productItem.UnitCost.ToString("F2")</td>
+                            <td>@productItem.Tax?.ToString("F2")</td>
+                            <td>@productItem.Discount?.ToString("F2")</td>
+                            <td>@productItem.Total?.ToString("F2")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <script id="existingData" type="application/json">
+            @Html.Raw(JsonConvert.SerializeObject(purchaseItemList ?? new List<PurchaseItemDto>()))
+        </script>
+    </div>
+    <div class="col-lg-12 float-md-right">
+        <div class="total-order">
+            <ul>
+                <li>
+                    <h4>Sub Total</h4>
+                    <h5 id="subTotal">$ 0.00</h5>
+                </li>
+                <li>
+                    <h4>Discount</h4>
+                    <h5 id="discountTotal">$ 0.00</h5>
+                </li>
+                <li>
+                    <h4>Tax</h4>
+                    <h5 id="taxTotal">$ 0.00</h5>
+                </li>
+                <li class="total">
+                    <h4>Grand Total</h4>
+                    <h5 id="grandTotal">$ 0.00</h5>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<style>
+    .select2-container {
+        min-width: 70% !important;
+    }
+    .total-order {
+        margin-right: 0px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        let purchaseItems = [];
+        var imageUrl = $('#purchase-image').data('file');
+        if (!imageUrl || imageUrl.trim() === '') {
+            $("#sliderDiv").hide();
+        }else{
+            $.ajax({
+                type: 'HEAD',
+                url: imageUrl,
+                success: function (data, textStatus, xhr) {
+                    var imageSize = xhr.getResponseHeader('Content-Length');
+                    if (imageSize) {
+                        var sizeInKB = (imageSize / 1024).toFixed(2);
+                        $('.image-size').text(sizeInKB + ' KB');
+                    } else {
+                        $('.image-size').text('Size not available');
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error fetching image size: ' + errorThrown);
+                    $('.image-size').text('Error fetching size');
+                }
+            });
+            if ($('.product-slide').length > 0) {
+                $('.product-slide').owlCarousel({
+                  items: 1,
+                  margin: 30,
+                  dots: false,
+                  nav: true,
+                  loop: false,
+                  responsiveClass: true,
+                  responsive: {
+                    0 : {
+                      items: 1
+                    },
+                    800 : {
+                      items: 1
+                    },
+                    1170 : {
+                      items: 1
+                    }
+                  }
+                });
+            }
+        }
+        $('#purchase-image').on('click', function () {
+            var fileUrl = '@Model.InvoiceFile';
+            if (fileUrl) {
+                window.open(fileUrl, '_blank');
+            }
+        });
+        const existingData = document.getElementById("existingData");
+
+        if (existingData) {
+            // purchaseItems = JSON.parse(existingData.textContent);
+            const rawData = JSON.parse(existingData.textContent);
+
+            purchaseItems = rawData.map(item => ({
+                productId: item.ProductId,
+                productName: item.ProductName?.trim(),
+                productImage: item.ProductImage,
+                quantity: item.Quantity,
+                unitCost: item.UnitCost,
+                tax: item.Tax || 0,
+                discount: item.Discount || 0,
+                total: item.Total || 0
+            }));
+            updateTotals();
+        }
+        function updateTotals() {
+            let subTotal = 0;
+            let totalTax = 0;
+            let totalDiscount = 0;
+
+            purchaseItems.forEach(item => {
+                let itemSub = item.quantity * item.unitCost;
+
+                let itemTax = itemSub * (item.tax / 100);
+                let itemDiscount = itemSub * (item.discount / 100);
+
+                subTotal += itemSub;
+                totalTax += itemTax;
+                totalDiscount += itemDiscount;
+            });
+
+            let grandTotal = subTotal + totalTax - totalDiscount;
+
+            // Update UI
+            $('#subTotal').text('$ ' + subTotal.toFixed(2));
+            $('#taxTotal').text('$ ' + totalTax.toFixed(2));
+            $('#discountTotal').text('$ ' + totalDiscount.toFixed(2));
+            $('#grandTotal').text('$ ' + grandTotal.toFixed(2));
+        }
+
+    });
+
+</script>

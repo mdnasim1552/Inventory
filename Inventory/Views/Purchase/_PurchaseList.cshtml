@@ -23,7 +23,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Supplier Details</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Purchase Details</h1>
                 @* <h4>Product Details</h4>
                 <h6>Full details of a product</h6> *@
                 <button type="button" class="fa fa-times" data-bs-dismiss="modal" aria-label="Close" style="color:black !important;"></button>
@@ -138,11 +138,11 @@
 
         $('#purchasedatanew').on("click", ".view_purchase", function () {
             //var allData = table.rows().data().toArray();
-            var supplierId = $(this).data("id");
+            var purchaseId = $(this).data("id");
             $.ajax({
-                url: '/Supplier/GetSupplierDetails', // Adjust the controller action URL as needed
+                url: '/Purchase/GetPurchaseDetails', // Adjust the controller action URL as needed
                 type: 'GET',
-                data: { id: supplierId },
+                data: { id: purchaseId },
                 success: function (result) {
                     $('#purchaseModalBody').html(result); // Load the result into the modal body
                     $("#purchaseModal").modal("show"); // Show the modal

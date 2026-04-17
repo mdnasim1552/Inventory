@@ -54,7 +54,7 @@
     <div class="form-group">
         <label asp-for="Invoice_File">Invoice File</label>
         <div class="image-upload" style="position:relative;">
-            <input asp-for="Invoice_File" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.gif,.txt" id="fileInput" />
+            <input asp-for="Invoice_File" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.gif,.txt" id="fileInput" required />
             <div class="image-uploads" id="imageuloadContainer">
                 <img src="~/assets/img/icons/upload.svg" alt="img" />
                 <h4>Drag and drop a file to upload</h4>
