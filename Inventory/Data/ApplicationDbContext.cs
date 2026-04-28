@@ -164,8 +164,6 @@ public partial class ApplicationDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__ProductS__3214EC070CBE1085");
 
-            entity.Property(e => e.Discount).HasDefaultValue(0m, "DF_ProductStore_Discount");
-            entity.Property(e => e.Tax).HasDefaultValue(0m, "DF_ProductStore_Tax");
             entity.Property(e => e.UpdatedAt).HasDefaultValueSql("(getdate())", "DF_ProductStore_UpdatedAt");
 
             entity.HasOne(d => d.Product).WithMany(p => p.ProductStores)
@@ -183,6 +181,10 @@ public partial class ApplicationDbContext : DbContext
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())", "DF__Purchase__Create__75F77EB0");
             entity.Property(e => e.PurchaseDate).HasDefaultValueSql("(getdate())", "DF__Purchase__Purcha__75035A77");
+
+            entity.HasOne(d => d.Store).WithMany(p => p.Purchases)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Purchase_Store");
 
             entity.HasOne(d => d.Supplier).WithMany(p => p.Purchases)
                 .OnDelete(DeleteBehavior.ClientSetNull)

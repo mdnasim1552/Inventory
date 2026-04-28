@@ -2,6 +2,11 @@
 @using Newtonsoft.Json
 @model InventoryEntity.Purchase.PurchaseDto
 @{
+    var storeList = ViewData["StoreList"] as IEnumerable<Inventory.Models.Store>;
+    var storeSelectList = storeList != null
+           ? new SelectList(storeList, "Id", "Name")
+           : new SelectList(Enumerable.Empty<Supplier>(), "Id", "Name");
+
     var supplierList = ViewData["SupplierList"] as IEnumerable<Inventory.Models.Supplier>;
     var supplierSelectList = supplierList != null
            ? new SelectList(supplierList, "Id", "Name")
@@ -13,6 +18,21 @@
            : new SelectList(Enumerable.Empty<Product>(), "Id", "Name");
     var purchaseItemList = ViewData["PurchaseItemList"] as IEnumerable<InventoryEntity.Purchase.PurchaseItemDto>;
 }
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="form-group">
+        <label for="storeSelect">Store Name</label>
+        <div class="d-flex align-items-center gap-2">
+            <div class="w-100">
+                <select class="select" id="storeSelect" asp-for="@Model.StoreId" asp-items="storeSelectList" required>
+                    <option value="" selected disabled>Choose Store</option>
+                </select>
+            </div>
+            <div class="add-icon">
+                <a href="javascript:void(0);"><img src="~/assets/img/icons/plus1.svg" alt="img"></a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="col-lg-3 col-sm-6 col-12">
     <div class="form-group">
         <label for="supplierSelect">Supplier Name</label>

@@ -122,6 +122,7 @@ namespace Inventory.Profiles
                 .ReverseMap();
             CreateMap<PurchaseDto, Purchase>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.StoreId, opt => opt.MapFrom(src => src.StoreId))
                 .ForMember(dest => dest.SupplierId, opt => opt.MapFrom(src => src.SupplierId))
                 .ForMember(dest => dest.InvoiceNo, opt => opt.MapFrom(src => src.InvoiceNo))
                 .ForMember(dest => dest.InvoiceFile, opt => opt.MapFrom(src => src.InvoiceFile))

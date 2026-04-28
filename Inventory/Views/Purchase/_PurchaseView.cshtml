@@ -50,7 +50,7 @@
                 <div class="slider-product-details">
                     <div class="owl-carousel owl-theme product-slide">
                         <div class="slider-product">
-                            <img id="purchase-image" style="width:100% !important;" alt="img"
+                            <img class="purchase-image" style="width:100% !important;" alt="img"
                                  src="@(isImage? Model.InvoiceFile: fileIcon)"
                                  data-file="@Model.InvoiceFile"
                                  alt="file" style="cursor:pointer;" />
@@ -58,7 +58,7 @@
                             <h6 class="image-size">Loading...</h6>
                         </div>
                         <div class="slider-product">
-                            <img id="purchase-image" style="width:100% !important;" alt="img"
+                            <img class="purchase-image" style="width:100% !important;" alt="img"
                                  src="@(isImage? Model.InvoiceFile: fileIcon)"
                                  data-file="@Model.InvoiceFile"
                                  alt="file" style="cursor:pointer;" />
@@ -144,7 +144,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         let purchaseItems = [];
-        var imageUrl = $('#purchase-image').data('file');
+        var imageUrl = $('.purchase-image').first().data('file');
         if (!imageUrl || imageUrl.trim() === '') {
             $("#sliderDiv").hide();
         }else{
@@ -187,7 +187,7 @@
                 });
             }
         }
-        $('#purchase-image').on('click', function () {
+        $('.purchase-image').on('click', function () {
             var fileUrl = '@Model.InvoiceFile';
             if (fileUrl) {
                 window.open(fileUrl, '_blank');

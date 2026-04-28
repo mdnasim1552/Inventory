@@ -129,7 +129,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
-            var stores = await _unitOfWork.Store.GetAsync(id);
+            var stores = await _unitOfWork.Store.GetByIdAsync(id);
             if (stores == null)
             {
                 return NotFound();
@@ -185,7 +185,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
-            var stores = await _unitOfWork.Store.GetAsync(id);
+            var stores = await _unitOfWork.Store.GetByIdAsync(id);
             if (stores == null)
             {
                 return NotFound();
@@ -196,7 +196,7 @@ namespace Inventory.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var store = await _unitOfWork.Store.GetAsync(id);
+            var store = await _unitOfWork.Store.GetByIdAsync(id);
             if (store == null)
             {
                 return NotFound();

@@ -174,5 +174,9 @@
         if (updateMessage) {
             showContent(updateMessage);
         }
+        var failMessage = '@TempData["FailMessage"]';
+        if (failMessage) {
+            showContentFail(failMessage);
+        }
     });
 </script>

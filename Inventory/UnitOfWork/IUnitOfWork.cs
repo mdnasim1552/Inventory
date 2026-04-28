@@ -1,4 +1,5 @@
 ﻿using Inventory.IRepositories;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Inventory.UnitOfWork
 {
@@ -17,8 +18,10 @@ namespace Inventory.UnitOfWork
         IStoreRepository Store { get; }
         IPurchaseRepository Purchase { get; }
         IPurchaseItemRepository PurchaseItem { get; }
+        IProductStoreRepository ProductStore { get; }
         IUnitRepository Unit { get; }
         void Saved();
         Task<bool> SaveAsync();
+        Task<IDbContextTransaction> BeginTransactionAsync();
     }
 }

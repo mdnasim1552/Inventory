@@ -17,7 +17,10 @@ namespace Inventory.UnitOfWork
         {
             dbSet.Add(entity);
         }
-
+        public async Task AddAsync(TEntity entity)
+        {
+            await dbSet.AddAsync(entity);
+        }
         public void AddRange(IEnumerable<TEntity> entities)
         {
             dbSet.AddRange(entities);
@@ -59,7 +62,7 @@ namespace Inventory.UnitOfWork
             return await dbSet.ToListAsync();
         }
 
-        public async Task<TEntity> GetAsync(int? id)
+        public async Task<TEntity?> GetByIdAsync(int? id)
         {
             return await dbSet.FindAsync(id);
         }
@@ -78,9 +81,13 @@ namespace Inventory.UnitOfWork
             dbSet.Attach(entity);
             _db.Entry(entity).State = EntityState.Modified;
         }
-        public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity?> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await dbSet.SingleOrDefaultAsync(predicate);
+        }
+        public async Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await dbSet.FirstOrDefaultAsync(predicate);
         }
         public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
         {

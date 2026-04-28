@@ -105,7 +105,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
-            var subcategories = await _unitOfWork.SubCategory.GetAsync(id);
+            var subcategories = await _unitOfWork.SubCategory.GetByIdAsync(id);
             if (subcategories == null)
             {
                 return NotFound();
@@ -195,7 +195,7 @@ namespace Inventory.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteImage(string imageUrl, int id)
         {
-            var subcategory = await _unitOfWork.SubCategory.GetAsync(id);
+            var subcategory = await _unitOfWork.SubCategory.GetByIdAsync(id);
             subcategory.Image = null;
             _unitOfWork.SubCategory.Update(subcategory);
             var saveResult = await _unitOfWork.SaveAsync();
@@ -215,7 +215,7 @@ namespace Inventory.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var subcategory = await _unitOfWork.SubCategory.GetAsync(id);
+            var subcategory = await _unitOfWork.SubCategory.GetByIdAsync(id);
             if (subcategory == null)
             {
                 return NotFound();

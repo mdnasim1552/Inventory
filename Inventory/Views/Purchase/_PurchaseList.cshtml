@@ -34,7 +34,7 @@
                 <div class="modal-footer" style="margin-right:10px;display:inline-block;padding:0; float:right;">
                     <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                     @* <button type="button" class="btn btn-primary">Send message</button> *@
-                    <button type="submit" class="btn btn-sm btn-primary" id="submitid">Submit</button>
+                    @* <button type="submit" class="btn btn-sm btn-primary" id="submitid">Submit</button> *@
                 </div>
             </form>
         </div>
@@ -145,7 +145,10 @@
                 data: { id: purchaseId },
                 success: function (result) {
                     $('#purchaseModalBody').html(result); // Load the result into the modal body
-                    $("#purchaseModal").modal("show"); // Show the modal
+                    setTimeout(function () {
+                        $("#purchaseModal").modal("show");
+                    }, 300); // small delay
+                    //$("#purchaseModal").modal("show"); // Show the modal
                 },
                 error: function () {
                     alert('Error loading product details');

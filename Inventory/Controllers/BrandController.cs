@@ -91,7 +91,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
-            var brand = await _unitOfWork.Brand.GetAsync(id);
+            var brand = await _unitOfWork.Brand.GetByIdAsync(id);
             if (brand == null)
             {
                 return NotFound();
@@ -172,7 +172,7 @@ namespace Inventory.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteImage(string imageUrl, int id)
         {
-            var brand = await _unitOfWork.Brand.GetAsync(id);
+            var brand = await _unitOfWork.Brand.GetByIdAsync(id);
             brand.Image = null;
             _unitOfWork.Brand.Update(brand);
             var saveResult = await _unitOfWork.SaveAsync();
@@ -192,7 +192,7 @@ namespace Inventory.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var brand = await _unitOfWork.Brand.GetAsync(id);
+            var brand = await _unitOfWork.Brand.GetByIdAsync(id);
             if (brand == null)
             {
                 return NotFound();

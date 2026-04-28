@@ -12,6 +12,8 @@ public partial class Purchase
     [Key]
     public int Id { get; set; }
 
+    public int StoreId { get; set; }
+
     public int SupplierId { get; set; }
 
     [StringLength(100)]
@@ -42,6 +44,10 @@ public partial class Purchase
 
     [InverseProperty("Purchase")]
     public virtual ICollection<PurchaseItem> PurchaseItems { get; set; } = new List<PurchaseItem>();
+
+    [ForeignKey("StoreId")]
+    [InverseProperty("Purchases")]
+    public virtual Store Store { get; set; } = null!;
 
     [ForeignKey("SupplierId")]
     [InverseProperty("Purchases")]

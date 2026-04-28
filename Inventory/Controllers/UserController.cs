@@ -108,7 +108,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
-            var user = await _unitOfWork.Credential.GetAsync(id);
+            var user = await _unitOfWork.Credential.GetByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -178,7 +178,7 @@ namespace Inventory.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var user = await _unitOfWork.Credential.GetAsync(id);
+            var user = await _unitOfWork.Credential.GetByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -208,7 +208,7 @@ namespace Inventory.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteImage(string imageUrl, int id)
         {
-            var user = await _unitOfWork.Credential.GetAsync(id);
+            var user = await _unitOfWork.Credential.GetByIdAsync(id);
             user.Image = null;
             _unitOfWork.Credential.Update(user);
             var saveResult = await _unitOfWork.SaveAsync();

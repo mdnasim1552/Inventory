@@ -18,18 +18,6 @@ public partial class ProductStore
 
     public int Quantity { get; set; }
 
-    [Column(TypeName = "decimal(18, 6)")]
-    public decimal CostPrice { get; set; }
-
-    [Column(TypeName = "decimal(18, 6)")]
-    public decimal SalePrice { get; set; }
-
-    [Column(TypeName = "decimal(18, 6)")]
-    public decimal? Tax { get; set; }
-
-    [Column(TypeName = "decimal(18, 6)")]
-    public decimal? Discount { get; set; }
-
     [Column(TypeName = "datetime")]
     public DateTime? UpdatedAt { get; set; }
 

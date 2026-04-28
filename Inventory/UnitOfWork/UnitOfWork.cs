@@ -1,6 +1,7 @@
 ﻿using Inventory.Data;
 using Inventory.IRepositories;
 using Inventory.Repositories;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Inventory.UnitOfWork
 {
@@ -21,6 +22,7 @@ namespace Inventory.UnitOfWork
         public IPurchaseRepository Purchase { get; set; }
         public IPurchaseItemRepository PurchaseItem { get; set; }
         public IUnitRepository Unit { get; private set; }
+        public IProductStoreRepository ProductStore { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
@@ -38,6 +40,7 @@ namespace Inventory.UnitOfWork
             Store=new StoreRepository(context);
             Purchase=new PurchaseRepository(context);
             PurchaseItem=new PurchaseItemRepository(context);
+            ProductStore=new ProductStoreRepository(context);
             Unit = new UnitRepository(context);
         }
 
@@ -65,6 +68,9 @@ namespace Inventory.UnitOfWork
                 return false;
             }
         }
-
+        public async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            return await _context.Database.BeginTransactionAsync();
+        }
     }
 }

@@ -126,7 +126,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
-            var customers = await _unitOfWork.Customer.GetAsync(id);
+            var customers = await _unitOfWork.Customer.GetByIdAsync(id);
             if (customers == null)
             {
                 return NotFound();
@@ -181,7 +181,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
-            var customers = await _unitOfWork.Customer.GetAsync(id);
+            var customers = await _unitOfWork.Customer.GetByIdAsync(id);
             if (customers == null)
             {
                 return NotFound();
@@ -192,7 +192,7 @@ namespace Inventory.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var customer = await _unitOfWork.Customer.GetAsync(id);
+            var customer = await _unitOfWork.Customer.GetByIdAsync(id);
             if (customer == null)
             {
                 return NotFound();
@@ -222,7 +222,7 @@ namespace Inventory.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteImage(string imageUrl, int id)
         {
-            var customer = await _unitOfWork.Customer.GetAsync(id);
+            var customer = await _unitOfWork.Customer.GetByIdAsync(id);
             customer.Image = null;
             _unitOfWork.Customer.Update(customer);
             var saveResult = await _unitOfWork.SaveAsync();

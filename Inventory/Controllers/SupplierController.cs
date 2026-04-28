@@ -127,7 +127,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
-            var suppliers = await _unitOfWork.Supplier.GetAsync(id);
+            var suppliers = await _unitOfWork.Supplier.GetByIdAsync(id);
             if (suppliers == null)
             {
                 return NotFound();
@@ -182,7 +182,7 @@ namespace Inventory.Controllers
             {
                 return NotFound();
             }
-            var suppliers = await _unitOfWork.Supplier.GetAsync(id);
+            var suppliers = await _unitOfWork.Supplier.GetByIdAsync(id);
             if (suppliers == null)
             {
                 return NotFound();
@@ -193,7 +193,7 @@ namespace Inventory.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var supplier = await _unitOfWork.Supplier.GetAsync(id);
+            var supplier = await _unitOfWork.Supplier.GetByIdAsync(id);
             if (supplier == null)
             {
                 return NotFound();
@@ -223,7 +223,7 @@ namespace Inventory.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteImage(string imageUrl, int id)
         {
-            var supplier = await _unitOfWork.Supplier.GetAsync(id);
+            var supplier = await _unitOfWork.Supplier.GetByIdAsync(id);
             supplier.Image = null;
             _unitOfWork.Supplier.Update(supplier);
             var saveResult = await _unitOfWork.SaveAsync();

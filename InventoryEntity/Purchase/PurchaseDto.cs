@@ -11,7 +11,7 @@ namespace InventoryEntity.Purchase
     public class PurchaseDto
     {
         public int Id { get; set; }
-
+        public int StoreId { get; set; }
         public int SupplierId { get; set; }
         [StringLength(100)]
         public string? SupplierName { get; set; }
