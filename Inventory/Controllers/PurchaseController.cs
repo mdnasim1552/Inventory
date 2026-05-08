@@ -162,7 +162,8 @@ namespace Inventory.Controllers
                         await UpdateProductStoreFromPurchaseCreate(
                             item.ProductId,
                             purchaseDto.StoreId, // must exist
-                            item.Quantity
+                            item.Quantity,
+                            item.SellingPrice
                         );
                     }
                     TempData["CreatedMessage"] = "Created successfully";
@@ -180,7 +181,7 @@ namespace Inventory.Controllers
             }
             return View(purchaseDto);
         }
-        public async Task UpdateProductStoreFromPurchaseCreate(int productId, int storeId, int newQty)
+        public async Task UpdateProductStoreFromPurchaseCreate(int productId, int storeId, int newQty, decimal newSellingPrice)
         {
             var productStore = await _unitOfWork.ProductStore.FirstOrDefaultAsync(x => x.ProductId == productId && x.StoreId == storeId);
 
@@ -189,6 +190,7 @@ namespace Inventory.Controllers
                 // ✅ Update existing
                 productStore.Quantity += newQty;
                 productStore.UpdatedAt = DateTime.Now;
+                productStore.SellingPrice = newSellingPrice;
 
                 _unitOfWork.ProductStore.Update(productStore);
             }
@@ -200,6 +202,7 @@ namespace Inventory.Controllers
                     ProductId = productId,
                     StoreId = storeId,
                     Quantity = newQty,
+                    SellingPrice = newSellingPrice,
                     UpdatedAt = DateTime.Now
                 };
 
@@ -274,6 +277,7 @@ namespace Inventory.Controllers
                         {
                             productStore.Quantity += item.Quantity;
                             productStore.UpdatedAt = DateTime.Now;
+                            productStore.SellingPrice = item.SellingPrice;
                         }
                         else
                         {
@@ -282,6 +286,7 @@ namespace Inventory.Controllers
                                 ProductId = item.ProductId,
                                 StoreId = purchaseDto.StoreId,
                                 Quantity = item.Quantity,
+                                SellingPrice = item.SellingPrice,
                                 UpdatedAt = DateTime.Now
                             });
                         }

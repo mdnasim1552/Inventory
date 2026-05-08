@@ -35,4 +35,7 @@ public partial class Customer
 
     [StringLength(500)]
     public string? Image { get; set; }
+
+    [InverseProperty("Customer")]
+    public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
 }

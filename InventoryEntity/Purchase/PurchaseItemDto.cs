@@ -19,6 +19,8 @@ namespace InventoryEntity.Purchase
 
         [Column(TypeName = "decimal(18, 6)")]
         public decimal UnitCost { get; set; }
+        [Column(TypeName = "decimal(18, 6)")]
+        public decimal SellingPrice { get; set; }
 
         [Column(TypeName = "decimal(18, 6)")]
         public decimal? Tax { get; set; }

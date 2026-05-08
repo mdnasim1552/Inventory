@@ -340,12 +340,12 @@
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul>
-                                <li><a href="saleslist.html">Sales List</a></li>
-                                <li><a href="pos.html">POS</a></li>
-                                <li><a href="pos.html">New Sales</a></li>
-                                <li><a href="salesreturnlists.html">Sales Return List</a></li>
+                                <li><a asp-action="Index" asp-controller="Sale">Sales List</a></li>
+                                <li><a asp-action="POS" asp-controller="Sale">POS</a></li>
+                                <li><a asp-action="Create" asp-controller="Sale">New Sales</a></li>
+                                <li><a asp-action="SalesReturnList" asp-controller="Sale">Sales Return List</a></li>
                                 <li>
-                                    <a href="createsalesreturns.html">New Sales Return</a>
+                                    <a asp-action="CreateSalesReturn" asp-controller="Sale">New Sales Return</a>
                                 </li>
                             </ul>
                         </li>

@@ -15,6 +15,7 @@ node_modules/
 # ASP.NET Core
 wwwroot/lib/
 wwwroot/temp/
+wwwroot/InvoiceFiles/
 
 # Logs
 *.log

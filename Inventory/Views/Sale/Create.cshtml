@@ -1,0 +1,8 @@
+﻿@model InventoryEntity.Sale.SaleDto
+@{
+    ViewData["Title"] = "Add Sale";
+    var productList = ViewData["ProductList"] as IEnumerable<Inventory.Models.Product>;
+    var productSelectList = productList != null
+           ? new SelectList(productList, "Id", "Name")
+           : new SelectList(Enumerable.Empty<Product>(), "Id", "Name");
+}

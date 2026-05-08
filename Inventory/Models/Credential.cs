@@ -54,6 +54,9 @@ public partial class Credential
     [InverseProperty("Credentials")]
     public virtual Userrole Role { get; set; } = null!;
 
+    [InverseProperty("CreatedByNavigation")]
+    public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
+
     [ForeignKey("StoreId")]
     [InverseProperty("Credentials")]
     public virtual Store? Store { get; set; }

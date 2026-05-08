@@ -57,6 +57,9 @@ public partial class Product
     public virtual ICollection<PurchaseItem> PurchaseItems { get; set; } = new List<PurchaseItem>();
 
     [InverseProperty("Product")]
+    public virtual ICollection<SaleItem> SaleItems { get; set; } = new List<SaleItem>();
+
+    [InverseProperty("Product")]
     public virtual ICollection<StockTransferItem> StockTransferItems { get; set; } = new List<StockTransferItem>();
 
     [ForeignKey("SubCategoryId")]

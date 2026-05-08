@@ -42,6 +42,10 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<PurchaseItem> PurchaseItems { get; set; }
 
+    public virtual DbSet<Sale> Sales { get; set; }
+
+    public virtual DbSet<SaleItem> SaleItems { get; set; }
+
     public virtual DbSet<StockTransfer> StockTransfers { get; set; }
 
     public virtual DbSet<StockTransferItem> StockTransferItems { get; set; }
@@ -195,9 +199,9 @@ public partial class ApplicationDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__Purchase__3214EC073F74A64E");
 
-            entity.Property(e => e.Discount).HasDefaultValue(0m);
+            entity.Property(e => e.Discount).HasDefaultValue(0m, "DF__PurchaseI__Disco__7ABC33CD");
             entity.Property(e => e.ExpiryDate).HasDefaultValueSql("(getdate())", "DF_PurchaseItem_PurchaseDate");
-            entity.Property(e => e.Tax).HasDefaultValue(0m);
+            entity.Property(e => e.Tax).HasDefaultValue(0m, "DF__PurchaseIte__Tax__79C80F94");
 
             entity.HasOne(d => d.Product).WithMany(p => p.PurchaseItems)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -206,6 +210,37 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.Purchase).WithMany(p => p.PurchaseItems)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PurchaseItem_Purchase");
+        });
+
+        modelBuilder.Entity<Sale>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Sale__3214EC07F72212AC");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())", "DF__Sale__CreatedAt__3C89F72A");
+            entity.Property(e => e.SaleDate).HasDefaultValueSql("(getdate())", "DF__Sale__SaleDate__3B95D2F1");
+
+            entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.Sales)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Sale_Credential");
+
+            entity.HasOne(d => d.Customer).WithMany(p => p.Sales).HasConstraintName("FK_Sale_Customer");
+
+            entity.HasOne(d => d.Store).WithMany(p => p.Sales)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Sale_Store");
+        });
+
+        modelBuilder.Entity<SaleItem>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__SaleItem__3214EC0709D46EE3");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.SaleItems)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SaleItem_Product");
+
+            entity.HasOne(d => d.Sale).WithMany(p => p.SaleItems)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SaleItem_Sale");
         });
 
         modelBuilder.Entity<StockTransfer>(entity =>

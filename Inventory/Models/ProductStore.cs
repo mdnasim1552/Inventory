@@ -18,6 +18,9 @@ public partial class ProductStore
 
     public int Quantity { get; set; }
 
+    [Column(TypeName = "decimal(18, 6)")]
+    public decimal SellingPrice { get; set; }
+
     [Column(TypeName = "datetime")]
     public DateTime? UpdatedAt { get; set; }
 

@@ -35,4 +35,7 @@ public partial class Store
 
     [InverseProperty("Store")]
     public virtual ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
+
+    [InverseProperty("Store")]
+    public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
 }

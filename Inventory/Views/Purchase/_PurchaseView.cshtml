@@ -78,6 +78,7 @@
                     <th>Product Name</th>
                     <th>Oty</th>
                     <th>Cost</th>
+                    <th>Selling</th>
                     <th>Tax(%)</th>
                     <th>Discount</th>
                     <th>Total Cost</th>
@@ -98,6 +99,7 @@
                             </td>
                             <td>@productItem.Quantity.ToString("F2")</td>
                             <td>@productItem.UnitCost.ToString("F2")</td>
+                            <td>@productItem.SellingPrice.ToString("F2")</td>
                             <td>@productItem.Tax?.ToString("F2")</td>
                             <td>@productItem.Discount?.ToString("F2")</td>
                             <td>@productItem.Total?.ToString("F2")</td>
@@ -205,6 +207,7 @@
                 productImage: item.ProductImage,
                 quantity: item.Quantity,
                 unitCost: item.UnitCost,
+                sellingPrice: item.SellingPrice,
                 tax: item.Tax || 0,
                 discount: item.Discount || 0,
                 total: item.Total || 0

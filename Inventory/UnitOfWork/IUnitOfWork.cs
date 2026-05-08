@@ -18,6 +18,8 @@ namespace Inventory.UnitOfWork
         IStoreRepository Store { get; }
         IPurchaseRepository Purchase { get; }
         IPurchaseItemRepository PurchaseItem { get; }
+        ISaleRepository Sale { get; }
+        ISaleItemRepository SaleItem { get; }
         IProductStoreRepository ProductStore { get; }
         IUnitRepository Unit { get; }
         void Saved();

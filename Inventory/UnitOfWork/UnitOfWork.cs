@@ -21,6 +21,8 @@ namespace Inventory.UnitOfWork
         public IStoreRepository Store { get; private set; }
         public IPurchaseRepository Purchase { get; set; }
         public IPurchaseItemRepository PurchaseItem { get; set; }
+        public ISaleRepository Sale { get; set; }
+        public ISaleItemRepository SaleItem { get; set; }
         public IUnitRepository Unit { get; private set; }
         public IProductStoreRepository ProductStore { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
@@ -40,7 +42,9 @@ namespace Inventory.UnitOfWork
             Store=new StoreRepository(context);
             Purchase=new PurchaseRepository(context);
             PurchaseItem=new PurchaseItemRepository(context);
-            ProductStore=new ProductStoreRepository(context);
+            Sale=new SaleRepository(context);
+            SaleItem=new SaleItemRepository(context);
+            ProductStore =new ProductStoreRepository(context);
             Unit = new UnitRepository(context);
         }
 

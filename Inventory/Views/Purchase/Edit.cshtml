@@ -111,6 +111,12 @@
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
+                                <label asp-for="@Model.PurchaseItem.SellingPrice">Selling Price</label>
+                                <input id="piSellingPrice" class="form-control" asp-for="@Model.PurchaseItem.SellingPrice" type="number" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
                                 <label asp-for="@Model.PurchaseItem.Tax">Tax</label>
                                 <input id="piTax" class="form-control" asp-for="@Model.PurchaseItem.Tax" type="number">
                             </div>
@@ -230,6 +236,7 @@
             $('#productSelect').val(item.productId).trigger('change');
             $('#piQuantity').val(item.quantity);
             $('#piUnitCost').val(item.unitCost);
+            $('#piSellingPrice').val(item.sellingPrice);
             $('#piTax').val(item.tax);
             $('#piDiscount').val(item.discount);
             $('#piExpiryDate').val(formattedDate);
@@ -247,6 +254,7 @@
             const productImage = $('#productSelect option:selected').data('image');
             const quantity = parseFloat($('#piQuantity').val()) || 0;
             const unitCost = parseFloat($('#piUnitCost').val()) || 0;
+            const sellingPrice = parseFloat($('#piSellingPrice').val()) || 0;
             const tax = parseFloat($('#piTax').val()) || 0;
             const discount = parseFloat($('#piDiscount').val()) || 0;
 
@@ -274,6 +282,7 @@
                 productImage,
                 quantity,
                 unitCost,
+                sellingPrice,
                 tax,
                 discount,
                 total,
@@ -339,6 +348,7 @@
                     </td>
                     <td>${item.quantity}</td>
                     <td>${item.unitCost.toFixed(2)}</td>
+                    <td>${item.sellingPrice.toFixed(2)}</td>
                     <td>${item.tax}%</td>
                     <td>${item.discount}%</td>
                     <td>${item.total.toFixed(2)}</td>
@@ -394,6 +404,7 @@
                 productImage: item.ProductImage,
                 quantity: item.Quantity,
                 unitCost: item.UnitCost,
+                sellingPrice: item.SellingPrice || 0,
                 tax: item.Tax || 0,
                 discount: item.Discount || 0,
                 total: item.Total || 0,
