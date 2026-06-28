@@ -53,7 +53,13 @@ export function updateUpBottomStrokeShape(upBottomStrokeShape, graph, paper) {
             organicSize +
             (organicSize + (link.attr('line/strokeWidth') || 2)) / 2;
     }
-
+    const tapper = link.attr('line/organicStrokeTaper') || 0;
+    if (tapper != 0 && !attachment.linkId.startsWith("mB1Link")) {
+        organicSize = organicSize - organicSize * 0.15;
+    }
+    if (attachment.linkId == 'mrLink') {
+        organicSize = organicSize - organicSize * 0.30;
+    }
     const shapeLength = (lengthPercent / 100) / 2;
     const step = shapeLength / segments;
 
@@ -195,6 +201,13 @@ export function updateWormShape(worm, graph, paper) {
     if (thinning != 0) {
         organicSize = organicSize + (organicSize + link.attr('line/strokeWidth')) / 2;
     }
+    const tapper = link.attr('line/organicStrokeTaper') || 0;
+    if (tapper != 0 && !attachment.linkId.startsWith("mB1Link")) {
+        organicSize = organicSize - organicSize * 0.15;
+    }
+    if (attachment.linkId == 'mrLink') {
+         organicSize = organicSize - organicSize * 0.30;
+    }
     const top = [];
     const bottom = [];
 
@@ -286,6 +299,13 @@ export function updateStentShape(stent, graph, paper) {
     let organicSize = (link.attr('line/organicStrokeSize') || baseHeight);
     if (thinning != 0) {
         organicSize = organicSize + (organicSize + link.attr('line/strokeWidth')) / 2;
+    }
+    const tapper = link.attr('line/organicStrokeTaper') || 0;
+    if (tapper != 0 && !attachment.linkId.startsWith("mB1Link")) {
+        organicSize = organicSize - organicSize * 0.15;
+    }
+    if (attachment.linkId == 'mrLink') {
+        organicSize = organicSize - organicSize * 0.30;
     }
     const top = [];
     const bottom = [];
