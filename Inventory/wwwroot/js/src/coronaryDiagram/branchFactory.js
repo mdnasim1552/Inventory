@@ -1,6 +1,24 @@
 export function buildBranches(Branch) {
     const branchConfig = [
         {
+            id: 'mrLink',
+            order: 100,
+            toFront: true,
+            source: { x: 1052, y: 415 },
+            target: { x: 1097, y: 506 },
+            vertices: [
+                { x: 1057, y: 462 }
+            ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: 'Left Main' } },
+                    position: { distance: 0.5, angle: 10 }
+                }
+            ],
+            style: { fill: "#ED2E24", stroke: '#000000', strokeWidth: 1, organicStrokeSize: 70, organicStrokeThinning: .2, organicStrokeTaper: 0, organicStrokeStartCap: false }
+        },
+        {
             id: 'mpLink',
             order: 99,
             toFront: true,
