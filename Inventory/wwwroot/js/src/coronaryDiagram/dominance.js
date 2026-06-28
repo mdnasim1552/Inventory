@@ -7,6 +7,7 @@ export function LeftDominance(graph) {
     if (!mB2LinkModel) return;
     const mB0LinkModel = graph.getCell('mB0Link');
     mB0LinkModel.attr('line', {
+        organicStrokeSize: 50,
         organicStrokeThinning: 0,
         organicStrokeTaper: 0
     });
@@ -100,6 +101,7 @@ export function RightDominance(graph) {
     if (!mB2LinkModel) return;
     const mB0LinkModel = graph.getCell('mB0Link');
     mB0LinkModel.attr('line', {
+        organicStrokeSize: 40,
         organicStrokeThinning: 0.5,
         organicStrokeTaper: 1
     });
@@ -192,6 +194,7 @@ export function CoDominance(graph) {
     if (!mB2LinkModel) return;
     const mB0LinkModel = graph.getCell('mB0Link');
     mB0LinkModel.attr('line', {
+        organicStrokeSize: 50,
         organicStrokeThinning: 0,
         organicStrokeTaper: 0
     });
