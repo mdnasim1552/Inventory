@@ -43,7 +43,7 @@ joint.shapes.custom.Region = joint.dia.Element.define(
                 pointerEvents: 'none'
             },
             area2: {
-                d: 'M 1070 514 L 1077 522 L 1116 489 L 1103 468 L 1098 434 L 1024 429 L 991 420 z M 648 27 C 625 105 623 181 637 255 C 649 329 684 391 719 450 C 740 490 719 542 728 571 C 750 638 815 652 838 648 C 893 639 938 592 936 565 C 946 606 985 626 1036 583 C 1059 561 1074 535 1066 509 C 1041 479.3333 1016 449.6667 991 420 C 956 398 955 364 960 322',
+                d: 'M 648 27 C 625 105 623 181 637 255 C 649 329 684 391 719 450 C 740 490 719 542 728 571 C 750 638 815 652 838 648 C 893 639 938 592 936 565 C 946 606 985 626 1036 583 C 1059 561 1074 535 1066 509 C 1041 479.3333 1016 449.6667 991 420 C 956 398 955 364 960 322',
                 fill: '#ffffff',
                 stroke: '#000',
                 strokeWidth: 5,
@@ -55,22 +55,22 @@ joint.shapes.custom.Region = joint.dia.Element.define(
                 stroke: '#000',
                 strokeWidth: 5,
                 pointerEvents: 'none'
-            },
-            area4: {
-                d: 'M 1070 514 L 1077 522 L 1116 489 L 1103 468 L 1098 434 L 1024 429 L 991 420 z',
-                fill: '#ED2E24',
-                stroke: '#000',
-                strokeWidth: 5,
-                pointerEvents: 'none'
             }
+            // area4: {
+            //     d: 'M 1070 514 L 1077 522 L 1116 489 L 1103 468 L 1098 434 L 1024 429 L 991 420 z',
+            //     fill: '#ED2E24',
+            //     stroke: '#000',
+            //     strokeWidth: 5,
+            //     pointerEvents: 'none'
+            // }
         }
     },
     {
         markup: [
             { tagName: 'path', selector: 'area1' },
             { tagName: 'path', selector: 'area2' },
-            { tagName: 'path', selector: 'area3' },
-            { tagName: 'path', selector: 'area4' }
+            { tagName: 'path', selector: 'area3' }
+            // { tagName: 'path', selector: 'area4' }
         ]
     }
 );
