@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.Models;
 
+[Index("ChatRoomId", Name = "IX_Messages_ChatRoomId")]
+[Index("SenderId", Name = "IX_Messages_SenderId")]
 public partial class Message
 {
     [Key]

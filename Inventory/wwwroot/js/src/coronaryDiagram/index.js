@@ -19,8 +19,8 @@ const colors = {
     link: '#FFFFFF',
     highlight: '#f7a1a8',
 };
-joint.shapes.custom = {};
-joint.shapes.custom.Region = joint.dia.Element.define(
+var custom = {};
+custom.Region = joint.dia.Element.define(
     'custom.Region',
     {
         size: { width: 2000, height: 2000 },
@@ -74,12 +74,12 @@ joint.shapes.custom.Region = joint.dia.Element.define(
         ]
     }
 );
-const region = new joint.shapes.custom.Region({
+const region = new custom.Region({
     position: { x: 0, y: 0 },
     z: -1,
 });
 const regionBBox = region.getBBox();
-joint.shapes.custom.Worm = joint.dia.Element.define('custom.Worm', {
+custom.Worm = joint.dia.Element.define('custom.Worm', {
     size: { width: 60, height: 30 },
 
     attrs: {
@@ -99,7 +99,7 @@ joint.shapes.custom.Worm = joint.dia.Element.define('custom.Worm', {
         }
     ]
 });
-joint.shapes.custom.Stent = joint.dia.Element.define('custom.Stent', {
+custom.Stent = joint.dia.Element.define('custom.Stent', {
 
     size: { width: 60, height: 30 },
 
@@ -139,7 +139,7 @@ joint.shapes.custom.Stent = joint.dia.Element.define('custom.Stent', {
     ]
 
 });
-joint.shapes.custom.UpBottomStroke = joint.dia.Element.define('custom.UpBottomStroke', {
+custom.UpBottomStroke = joint.dia.Element.define('custom.UpBottomStroke', {
     size: { width: 1, height: 1 }, // small because we position paths absolutely
     attrs: {
         root: { class: 'custom-shape' },
@@ -158,7 +158,7 @@ joint.shapes.custom.UpBottomStroke = joint.dia.Element.define('custom.UpBottomSt
 // 2️⃣ Define the FormNote element
 // FormNote element
 // Define FormNote element
-joint.shapes.custom.FormNote = joint.dia.Element.define(
+custom.FormNote = joint.dia.Element.define(
     'custom.FormNote',
     {
         size: { width: 220, height: 120 },
@@ -201,7 +201,7 @@ joint.shapes.custom.FormNote = joint.dia.Element.define(
     }
 );
 
-joint.shapes.custom.FormNoteView = joint.dia.ElementView.extend({
+custom.FormNoteView = joint.dia.ElementView.extend({
     render() {
         joint.dia.ElementView.prototype.render.apply(this, arguments);
         const container = this.el.querySelector('[joint-selector="formContainer"]');
@@ -641,7 +641,7 @@ const shapeNamespace = {
     ...joint.shapes,
     Species,
     Branch,
-    ...joint.shapes.custom,
+    custom,
 };
 const graph = new joint.dia.Graph({}, { cellNamespace: shapeNamespace });
 const undoStack = [];
@@ -680,7 +680,7 @@ function undo() {
         // }
         switch (op.type) {
             case 'snapshot':
-                restoreFromSnapshot.restoreFromSnapshot(graph, op.before, shapeNamespace, joint); // restore manually
+                restoreFromSnapshot.restoreFromSnapshot(graph, op.before, shapeNamespace, custom); // restore manually
                 refreshPaper();
                 break;
             case 'addElement': op.element.remove(); break;
@@ -745,7 +745,7 @@ function redo() {
         // }
         switch (op.type) {
             case 'snapshot':
-                restoreFromSnapshot.restoreFromSnapshot(graph, op.after, shapeNamespace, joint);
+                restoreFromSnapshot.restoreFromSnapshot(graph, op.after, shapeNamespace, custom);
                 refreshPaper();
                 break;
             case 'addElement': graph.addCell(op.element); break;
@@ -1109,7 +1109,7 @@ function showElementMenu({ x, y, elementView, isNote }) {
                 insertObjectInsideLink.LoadGridData(graph.toJSON());
             }
         } else if (action === 'add-note') {
-            addNoteToElement.addNoteToElement(graph, paper, joint, model);
+            addNoteToElement.addNoteToElement(graph, paper, custom, model);
         }
         elementMenu.style.display = 'none';
         menuOpen = false;
@@ -1369,12 +1369,12 @@ function showLinkColorMenu({ x, y, linkView, segmentIndex }) {
                     splitLinkAndInertObject.splitLinkAtPointWithRectangle(linkView, x, y, paper, Branch, joint.shapes.standard.Rectangle);
                 });
             } else if (action === 'add-worm') {
-                insertObjectInsideLink.insertWormOnLink(link, ratio, color, graph, paper, joint);
+                insertObjectInsideLink.insertWormOnLink(link, ratio, color, graph, paper, custom);
             } else if (action === 'add-stent') {
-                insertObjectInsideLink.insertStentOnLink(link, ratio, color, graph, paper, joint);
+                insertObjectInsideLink.insertStentOnLink(link, ratio, color, graph, paper, custom);
             }
             else if (action === 'add-up-bottom-stroke') {
-                insertObjectInsideLink.insertUpBottomStroke(link, ratio, graph, paper, joint);
+                insertObjectInsideLink.insertUpBottomStroke(link, ratio, graph, paper, custom);
             }else if (action === 'show-label') {
                 const labels = link.labels();
                 const currentDisplay = labels[0]?.attrs?.labelText?.display;
@@ -2338,7 +2338,7 @@ $("#printBtn").on("click", function () {
 
     // ✅ Load JSON properly
     executeWithSnapshot(copygraph, () => {
-        restoreFromSnapshot.restoreFromSnapshot(copygraph, snapshot, shapeNamespace, joint);
+        restoreFromSnapshot.restoreFromSnapshot(copygraph, snapshot, shapeNamespace, custom);
     });
     copypaper.model.getCells().forEach(cell => {
         const view = copypaper.findViewByModel(cell);
@@ -2494,7 +2494,7 @@ $("#loadBtn").on("click", function () {
     try {
         const snapshot = JSON.parse(savedJSON);
         executeWithSnapshot(graph, () => {
-            restoreFromSnapshot.restoreFromSnapshot(graph, snapshot, shapeNamespace, joint);
+            restoreFromSnapshot.restoreFromSnapshot(graph, snapshot, shapeNamespace, custom);
         });
         refreshPaper();
         alert('Diagram loaded successfully!');
@@ -2539,7 +2539,7 @@ $("#insert-object").on("click", function () {
         return;
     }
 
-    insertObjectInsideLink.insertObjectByVessel(vesselName, objectType, graph, paper, joint);
+    insertObjectInsideLink.insertObjectByVessel(vesselName, objectType, graph, paper, custom);
 });
 function extractFlowInfoFromJSON(graphJSON) {
     const result = {

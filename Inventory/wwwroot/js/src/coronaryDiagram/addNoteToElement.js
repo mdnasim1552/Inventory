@@ -1,3 +1,4 @@
+import * as joint from '@joint/core';
 function isOverlapping(rect1, rect2) {
     return !(
         rect1.x + rect1.width <= rect2.x ||
@@ -19,7 +20,7 @@ function getExistingNoteRects(graph) {
             };
         });
 }
-export function addNoteToElement(graph, paper, joint, element) {
+export function addNoteToElement(graph, paper, custom, element) {
     const existingNotes = element.get('attachedNotes') || [];
     if (existingNotes.length > 0) {
         console.warn('Element already has a note. Skipping.');
@@ -54,7 +55,7 @@ export function addNoteToElement(graph, paper, joint, element) {
         newRect.y += 10; // shift downward
     }
     noteY = newRect.y;
-    const note = new joint.shapes.custom.FormNote({
+    const note = new custom.FormNote({
         position: {
             x: noteX, //x + element.size().width + 20,//40
             y: noteY

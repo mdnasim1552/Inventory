@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Inventory.Models;
 
 [Table("SubCategory")]
+[Index("CategoryId", Name = "IX_SubCategory_CategoryId")]
 public partial class SubCategory
 {
     [Key]

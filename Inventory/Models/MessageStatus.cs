@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Inventory.Models;
 
 [Table("MessageStatus")]
+[Index("MessageId", Name = "IX_MessageStatus_MessageId")]
+[Index("UserId", Name = "IX_MessageStatus_UserId")]
 public partial class MessageStatus
 {
     [Key]

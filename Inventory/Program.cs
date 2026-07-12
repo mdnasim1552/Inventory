@@ -1,5 +1,6 @@
 using Inventory.Configuration;
 using Inventory.Data;
+using Inventory.Data.Seeders;
 using Inventory.Hubs;
 using Inventory.Profiles;
 using Inventory.UnitOfWork;
@@ -33,6 +34,11 @@ builder.Services.AddAutoMapper(cfg =>
 });
 builder.Services.AddSignalR();
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await DbSeeder.SeedAsync(db);
+}
 //var cultureInfo = new CultureInfo("en-GB");
 
 //var localizationOptions = new RequestLocalizationOptions

@@ -97,7 +97,8 @@
 //         }
 //     });
 // }
-export function restoreFromSnapshot(graph, snapshot, shapeNamespace, joint) {
+import * as joint from '@joint/core';
+export function restoreFromSnapshot(graph, snapshot, shapeNamespace, custom) {
     if (!snapshot?.cells?.length) return;
 
     graph.clear();
@@ -119,11 +120,11 @@ export function restoreFromSnapshot(graph, snapshot, shapeNamespace, joint) {
                 case 'standard.Rectangle': cell = new joint.shapes.standard.Rectangle(data); break;
                 case 'standard.Circle': cell = new joint.shapes.standard.Circle(data); break;
                 case 'standard.Ellipse': cell = new joint.shapes.standard.Ellipse(data); break;
-                case 'custom.Region': cell = new joint.shapes.custom.Region(data); break;
-                case 'custom.Worm': cell = new joint.shapes.custom.Worm(data); break;
-                case 'custom.UpBottomStroke': cell = new joint.shapes.custom.UpBottomStroke(data); break;
-                case 'custom.Stent': cell = new joint.shapes.custom.Stent(data); break;
-                case 'custom.FormNote': cell = new joint.shapes.custom.FormNote(data); break;
+                case 'custom.Region': cell = new custom.Region(data); break;
+                case 'custom.Worm': cell = new custom.Worm(data); break;
+                case 'custom.UpBottomStroke': cell = new custom.UpBottomStroke(data); break;
+                case 'custom.Stent': cell = new custom.Stent(data); break;
+                case 'custom.FormNote': cell = new custom.FormNote(data); break;
                 case 'standard.Link': cell = new joint.shapes.standard.Link(data); break;
                 default: return;
             }

@@ -1,10 +1,10 @@
 import * as addNoteToElement from './addNoteToElement.js';
-export function insertUpBottomStroke(link, ratio, graph, paper, joint) {
+export function insertUpBottomStroke(link, ratio, graph, paper, custom) {
     graph.startBatch();
 
     const linkView = paper.findViewByModel(link);
     if (!linkView) return;
-    const upBottomStrokeShape = new joint.shapes.custom.UpBottomStroke();
+    const upBottomStrokeShape = new custom.UpBottomStroke();
 
     upBottomStrokeShape.set('linkAttachment', {
         linkId: link.id,
@@ -15,7 +15,7 @@ export function insertUpBottomStroke(link, ratio, graph, paper, joint) {
 
     graph.addCell(upBottomStrokeShape);
     updateUpBottomStrokeShape(upBottomStrokeShape, graph, paper);
-    addNoteToElement.addNoteToElement(graph, paper, joint, upBottomStrokeShape);
+    addNoteToElement.addNoteToElement(graph, paper, custom, upBottomStrokeShape);
     graph.stopBatch();
     linkView.removeTools();
 
@@ -143,11 +143,11 @@ export function updateUpBottomStrokeShape(upBottomStrokeShape, graph, paper) {
     });
     LoadGridData(graph.toJSON());
 }
-export function insertWormOnLink(link, ratio, color, graph, paper, joint) {
+export function insertWormOnLink(link, ratio, color, graph, paper, custom) {
     graph.startBatch();
     const linkView = paper.findViewByModel(link);
     if (!linkView) return;
-    const worm = new joint.shapes.custom.Worm();
+    const worm = new custom.Worm();
     worm.attr('body/fill', color);
     worm.set('linkAttachment', {
         linkId: link.id,
@@ -157,7 +157,7 @@ export function insertWormOnLink(link, ratio, color, graph, paper, joint) {
 
     graph.addCell(worm);
     updateWormShape(worm, graph, paper);
-    addNoteToElement.addNoteToElement(graph, paper, joint, worm);
+    addNoteToElement.addNoteToElement(graph, paper, custom, worm);
     graph.stopBatch();
     linkView.removeTools();
 }
@@ -241,11 +241,11 @@ export function updateWormShape(worm, graph, paper) {
     //linkView.removeTools();
     LoadGridData(graph.toJSON());
 }
-export function insertStentOnLink(link, ratio, color, graph, paper, joint) {
+export function insertStentOnLink(link, ratio, color, graph, paper, custom) {
     graph.startBatch();
     const linkView = paper.findViewByModel(link);
     if (!linkView) return;
-    const stent = new joint.shapes.custom.Stent();
+    const stent = new custom.Stent();
     //stent.attr('body/fill', color);
     stent.set('linkAttachment', {
         linkId: link.id,
@@ -256,7 +256,7 @@ export function insertStentOnLink(link, ratio, color, graph, paper, joint) {
 
     graph.addCell(stent);
     updateStentShape(stent, graph, paper);
-    addNoteToElement.addNoteToElement(graph, paper, joint, stent);
+    addNoteToElement.addNoteToElement(graph, paper, custom, stent);
     graph.stopBatch();
     linkView.removeTools();
 }
@@ -598,7 +598,7 @@ export function LoadGridData(graphJSON) {
     //console.log(results);
     //return results;
 }
-export function insertObjectByVessel(vesselName, objectType, graph, paper, joint) {
+export function insertObjectByVessel(vesselName, objectType, graph, paper, custom) {
 
     const links = graph.getLinks();
 
@@ -648,11 +648,11 @@ export function insertObjectByVessel(vesselName, objectType, graph, paper, joint
                 return;
             }
             if (objectType === "Worm") {
-                insertWormOnLink(link, ratio, "#000000", graph, paper, joint);
+                insertWormOnLink(link, ratio, "#000000", graph, paper, custom);
             } else if (objectType === "UpBottomStroke") {
-                insertUpBottomStroke(link, ratio, graph, paper, joint);
+                insertUpBottomStroke(link, ratio, graph, paper, custom);
             } else if (objectType === "Stent") {
-                insertStentOnLink(link, ratio, "#000000", graph, paper, joint);
+                insertStentOnLink(link, ratio, "#000000", graph, paper, custom);
             }
             return;
         }

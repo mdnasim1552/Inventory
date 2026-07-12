@@ -141,6 +141,10 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
+            entity.HasIndex(e => e.Sku, "IX_Product")
+                .IsUnique()
+                .HasFilter("([SKU] IS NOT NULL)");
+
             entity.Property(e => e.Sku).IsFixedLength();
 
             entity.HasOne(d => d.Brand).WithMany(p => p.Products)
@@ -199,9 +203,9 @@ public partial class ApplicationDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__Purchase__3214EC073F74A64E");
 
-            entity.Property(e => e.Discount).HasDefaultValue(0m, "DF__PurchaseI__Disco__7ABC33CD");
+            entity.Property(e => e.Discount).HasDefaultValue(0.0m, "DF__PurchaseI__Disco__7ABC33CD");
             entity.Property(e => e.ExpiryDate).HasDefaultValueSql("(getdate())", "DF_PurchaseItem_PurchaseDate");
-            entity.Property(e => e.Tax).HasDefaultValue(0m, "DF__PurchaseIte__Tax__79C80F94");
+            entity.Property(e => e.Tax).HasDefaultValue(0.0m, "DF__PurchaseIte__Tax__79C80F94");
 
             entity.HasOne(d => d.Product).WithMany(p => p.PurchaseItems)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -304,8 +308,6 @@ public partial class ApplicationDbContext : DbContext
         modelBuilder.Entity<Userrole>(entity =>
         {
             entity.HasKey(e => e.RoleId).HasName("PK__Userrole__006568E9FF2BC678");
-
-            entity.Property(e => e.RoleId).ValueGeneratedNever();
         });
 
         OnModelCreatingPartial(modelBuilder);

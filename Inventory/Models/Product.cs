@@ -7,7 +7,11 @@ using Microsoft.EntityFrameworkCore;
 namespace Inventory.Models;
 
 [Table("Product")]
-[Index("Sku", Name = "IX_Product", IsUnique = true)]
+[Index("BrandId", Name = "IX_Product_BrandId")]
+[Index("CategoryId", Name = "IX_Product_CategoryId")]
+[Index("CreatedBy", Name = "IX_Product_CreatedBy")]
+[Index("SubCategoryId", Name = "IX_Product_SubCategoryId")]
+[Index("UnitId", Name = "IX_Product_UnitId")]
 public partial class Product
 {
     [Key]
