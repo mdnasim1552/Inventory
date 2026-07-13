@@ -38,9 +38,9 @@ export function addNoteToElement(graph, paper, custom, element) {
     const x = point.x;
     const y = point.y;
     if (x >= 900) {
-        noteX = 1800
+        noteX = 1800;
     } else {
-        noteX = -200
+        noteX = -200;
     }
     let newRect = {
         x: noteX,
