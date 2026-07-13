@@ -1,5 +1,5 @@
 import * as addNoteToElement from './addNoteToElement.js';
-export function insertUpBottomStroke(link, ratio, graph, paper, custom) {
+export function insertUpBottomStroke(link, ratio, graph, paper, custom, lengthPercent = 15, heightPercent=50) {
     graph.startBatch();
 
     const linkView = paper.findViewByModel(link);
@@ -9,8 +9,8 @@ export function insertUpBottomStroke(link, ratio, graph, paper, custom) {
     upBottomStrokeShape.set('linkAttachment', {
         linkId: link.id,
         ratio,
-        lengthPercent: 10, // default to 10% of link length, can be adjusted
-        heightPercent: 50,
+        lengthPercent: lengthPercent, // default to 10% of link length, can be adjusted
+        heightPercent: heightPercent,
     });
 
     graph.addCell(upBottomStrokeShape);
@@ -40,7 +40,7 @@ export function updateUpBottomStrokeShape(upBottomStrokeShape, graph, paper) {
     const ratio = attachment.ratio;
     const segments = 10;
 
-    const lengthPercent = attachment.lengthPercent || 10;
+    const lengthPercent = attachment.lengthPercent || 15;
     const heightPercent = attachment.heightPercent || 50;
 
     const baseHeight = 30;
@@ -60,7 +60,14 @@ export function updateUpBottomStrokeShape(upBottomStrokeShape, graph, paper) {
     if (attachment.linkId == 'mrLink') {
         organicSize = organicSize - organicSize * 0.30;
     }
-    const shapeLength = (lengthPercent / 100) / 2;
+    const totalLength = connection.length();
+    //const shapeLength = (lengthPercent / 100) / 2;
+    const MM_TO_PX = 3.779527559;   // or your own pixels-per-mm scale
+    let pixelLength = lengthPercent * MM_TO_PX;
+    if (pixelLength > totalLength) {
+        pixelLength = totalLength;
+    }
+    const shapeLength = (pixelLength / totalLength) / 2;
     const step = shapeLength / segments;
 
     const safeRatio = Math.max(
@@ -143,7 +150,7 @@ export function updateUpBottomStrokeShape(upBottomStrokeShape, graph, paper) {
     });
     LoadGridData(graph.toJSON());
 }
-export function insertWormOnLink(link, ratio, color, graph, paper, custom) {
+export function insertWormOnLink(link, ratio, color, graph, paper, custom, lengthPercent=15) {
     graph.startBatch();
     const linkView = paper.findViewByModel(link);
     if (!linkView) return;
@@ -152,7 +159,7 @@ export function insertWormOnLink(link, ratio, color, graph, paper, custom) {
     worm.set('linkAttachment', {
         linkId: link.id,
         ratio,
-        lengthPercent: 10, // default to 10% of link length, can be adjusted
+        lengthPercent: lengthPercent, // default to 10% of link length, can be adjusted
     });
 
     graph.addCell(worm);
@@ -184,12 +191,18 @@ export function updateWormShape(worm, graph, paper) {
     const baseHeight = 30;
 
 
-    const pixelLength = 60;
-    const lengthPercent = attachment.lengthPercent || 10;
+    //const pixelLength = 60;
+    const lengthPercent = attachment.lengthPercent || 15;//convert mm into px
     const heightPercent = attachment.heightPercent || 50;
     const totalLength = connection.length();
-    //const wormLength = pixelLength / totalLength; // convert px to ratio 
-    const wormLength = (lengthPercent / 100) / 2;
+    ////const wormLength = pixelLength / totalLength; // convert px to ratio 
+    //const wormLength = (lengthPercent / 100) / 2;
+    const MM_TO_PX = 3.779527559;   // or your own pixels-per-mm scale
+    let wormPixelLength = lengthPercent * MM_TO_PX;
+    if (wormPixelLength > totalLength) {
+        wormPixelLength = totalLength;
+    }
+    const wormLength = (wormPixelLength / totalLength) / 2;
     const step = wormLength / segments;
     const safeRatio = Math.max(
         wormLength,
@@ -203,10 +216,10 @@ export function updateWormShape(worm, graph, paper) {
     }
     const tapper = link.attr('line/organicStrokeTaper') || 0;
     if (tapper != 0 && !attachment.linkId.startsWith("mB1Link")) {
-        organicSize = organicSize - organicSize * 0.15;
+        organicSize = organicSize - organicSize*0.15;
     }
     if (attachment.linkId == 'mrLink') {
-         organicSize = organicSize - organicSize * 0.30;
+        organicSize = organicSize - organicSize * 0.30;
     }
     const top = [];
     const bottom = [];
@@ -241,7 +254,7 @@ export function updateWormShape(worm, graph, paper) {
     //linkView.removeTools();
     LoadGridData(graph.toJSON());
 }
-export function insertStentOnLink(link, ratio, color, graph, paper, custom) {
+export function insertStentOnLink(link, ratio, color, graph, paper, custom, lengthPercent = 15, widthMM=10) {
     graph.startBatch();
     const linkView = paper.findViewByModel(link);
     if (!linkView) return;
@@ -250,8 +263,8 @@ export function insertStentOnLink(link, ratio, color, graph, paper, custom) {
     stent.set('linkAttachment', {
         linkId: link.id,
         ratio,
-        lengthPercent: 10, // default to 10% of link length, can be adjusted
-        widthMM: 10,
+        lengthPercent: lengthPercent, // default to 10% of link length, can be adjusted
+        widthMM: widthMM,
     });
 
     graph.addCell(stent);
@@ -283,12 +296,19 @@ export function updateStentShape(stent, graph, paper) {
     const baseHeight = 30;
 
 
-    const pixelLength = 60;
-    const lengthPercent = attachment.lengthPercent || 10;
+    //const pixelLength = 60;
+    const lengthPercent = attachment.lengthPercent || 15;
     const heightPercent = attachment.heightPercent || 50;
     const totalLength = connection.length();
-    //const wormLength = pixelLength / totalLength; // convert px to ratio 
-    const stentLength = (lengthPercent / 100) / 2;
+    //const wormLength = pixelLength / totalLength; // convert px to ratio
+    const MM_TO_PX = 3.779527559;   // or your own pixels-per-mm scale
+    let pixelLength = lengthPercent * MM_TO_PX;
+    if (pixelLength > totalLength) {
+        pixelLength = totalLength;
+    }
+    const stentLength = (pixelLength / totalLength) / 2;
+    
+    //const stentLength = (lengthPercent / 100) / 2;
     const step = stentLength / segments;
     const safeRatio = Math.max(
         stentLength,
@@ -550,7 +570,7 @@ export function LoadGridData(graphJSON) {
             && cell.type !== "custom.Stent") continue;
 
         const linkId = cell.linkAttachment?.linkId;
-        const ratio = cell.linkAttachment?.ratio;
+        const ratio = Number(cell.linkAttachment?.ratio.toFixed(2));
 
         const link = linkMap.get(linkId);
         if (!link) continue;
