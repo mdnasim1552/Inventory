@@ -43,7 +43,7 @@ custom.Region = joint.dia.Element.define(
                 pointerEvents: 'none'
             },
             area2: {
-                d: 'M 648 27 C 625 105 623 181 637 255 C 649 329 684 391 719 450 C 740 490 719 542 728 571 C 750 638 815 652 838 648 C 893 639 938 592 936 565 C 946 606 985 626 1036 583 C 1059 561 1074 535 1066 509 C 1041 479.3333 1016 449.6667 991 420 C 956 398 955 364 960 322',
+                d: 'M 648 27 C 625 105 623 181 637 255 C 649 329 684 391 719 450 C 740 490 719 542 728 571 C 750 638 815 652 838 648 C 893 639 938 592 936 565 C 946 606 985 626 1036 583 C 1059 561 1074 535 1066 509 C 1041 479.3333 1016 449.6667 1010 420 C 956 398 955 364 960 322',
                 fill: '#ffffff',
                 stroke: '#000',
                 strokeWidth: 5,
@@ -857,7 +857,7 @@ const polygons = [
     regionConstraints.parsePathToPoints(region.attr('area1/d')),
     regionConstraints.parsePathToPoints(region.attr('area2/d')),
     regionConstraints.parsePathToPoints(region.attr('area3/d')),
-    regionConstraints.parsePathToPoints(region.attr('area4/d')),
+    // regionConstraints.parsePathToPoints(region.attr('area4/d')),
 ].filter(p => p.length > 0); // ignore empty
 graph.on('change:vertices', link => {
     const vertices = link.vertices();
@@ -2030,7 +2030,7 @@ function refreshPaper() {
 $("#saveBtn").on("click", function () {
     const json = graph.toJSON();
     localStorage.setItem('mySavedDiagram', JSON.stringify(json));
-
+    //localStorage.setItem('mySavedDiagram', JSON.stringify(filterStenosis(json)));
     //graph.getCells().forEach(cell => {
     //    const type = cell.get('type');
     //    if (type === 'custom.FormNote' || type === 'standard.Link') {
@@ -2121,6 +2121,7 @@ $("#saveBtn").on("click", function () {
     
     console.log(json);
     console.log(parseStenosis(json));
+    console.log(filterStenosis(json));
     console.log(extractFlowInfoFromJSON(json));
     //alert('Diagram saved successfully!');
     //window.parent.showAlert('Diagram saved successfully!');
@@ -2611,6 +2612,66 @@ function extractFlowInfoFromJSON(graphJSON) {
 
 //    return result;
 //}
+function filterStenosis(graphJSON) {
+
+    const cells = graphJSON.cells || [];
+
+    // IDs of cells that should be removed
+    const removeIds = new Set();
+
+    // -------- Pass 1 : Find stenosis shapes --------
+    for (const cell of cells) {
+
+        if (
+            cell.type === "custom.UpBottomStroke" ||
+            cell.type === "custom.Worm" ||
+            cell.type === "custom.Stent"
+        ) {
+            removeIds.add(cell.id);
+
+            // Collect attached note ids
+            if (cell.attachedNotes) {
+                for (const note of cell.attachedNotes) {
+                    if (note.noteId) removeIds.add(note.noteId);
+                    if (note.linkId) removeIds.add(note.linkId);
+                }
+            }
+        }
+    }
+
+    // -------- Pass 2 : Remove everything connected --------
+    const filteredCells = cells.filter(cell => {
+
+        // Remove cells whose id is marked
+        if (removeIds.has(cell.id))
+            return false;
+
+        // Remove links connected to removed cells
+        if (cell.type === "standard.Link") {
+
+            const sourceId = cell.source?.id;
+            const targetId = cell.target?.id;
+
+            if (removeIds.has(sourceId) || removeIds.has(targetId))
+                return false;
+        }
+
+        // Remove notes attached to removed cells
+        if (
+            cell.type === "custom.FormNote" &&
+            removeIds.has(cell.attachedTo)
+        ) {
+            return false;
+        }
+
+        return true;
+    });
+
+    return {
+        ...graphJSON,
+        cells: filteredCells
+    };
+}
 function parseStenosis(graphJSON) {
 
     const cells = graphJSON.cells || graphJSON;
