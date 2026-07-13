@@ -86,7 +86,7 @@ export function LeftDominance(graph) {
         labels: [
             {
                 range: { min: 0, max: 1 },
-                attrs: { labelText: { text: 'IPDA' } },
+                attrs: { labelText: { text: 'LPDA' } },
                 position: { distance: 0.5, angle: 10 }
             }
         ]
@@ -273,7 +273,7 @@ export function CoDominance(graph) {
         labels: [
             {
                 range: { min: 0, max: 1 },
-                attrs: { labelText: { text: 'IPDA' } },
+                attrs: { labelText: { text: 'LPDA' } },
                 position: { distance: 0.5, angle: 10 }
             }
         ]
