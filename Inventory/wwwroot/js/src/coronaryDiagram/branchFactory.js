@@ -12,7 +12,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: 'Left Main' } },
+                    attrs: { labelText: { text: 'Left main stem' } },
                     position: { distance: 0.5, angle: 10 }
                 }
             ],
@@ -23,9 +23,16 @@ export function buildBranches(Branch) {
             order: 99,
             toFront: true,
             source: { x: 1139, y: 593 },
-            target: { x: 1101, y: 449 },
+            target: { x: 1090, y: 425 },
             vertices: [
                 { x: 1157, y: 543 }, { x: 1169, y: 491 }, { x: 1155, y: 457 }
+            ],
+            labels: [
+                {
+                    range: { min: 0, max: 1 },
+                    attrs: { labelText: { text: 'Proximal LAD' } },
+                    position: { distance: 0.5, angle: 10 }
+                }
             ],
             style: { fill: "#C07BAE", stroke: '#000000', strokeWidth: 1, organicStrokeSize: 50, organicStrokeThinning: .5, organicStrokeTaper: 0, organicStrokeStartCap: false }
         },
@@ -42,17 +49,17 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 0.2 },
-                    attrs: { labelText: { text: 'pLAD' } },
+                    attrs: { labelText: { text: 'LAD proximal' } },
                     position: { distance: 0.1, angle: 10 }
                 },
                 {
                     range: { min: 0.21, max: 0.5 },
-                    attrs: { labelText: { text: 'mLAD' } },
+                    attrs: { labelText: { text: 'LAD mid' } },
                     position: { distance: 0.35, angle: 10 }
                 },
                 {
                     range: { min: 0.51, max: 1 },
-                    attrs: { labelText: { text: 'dLAD' } },
+                    attrs: { labelText: { text: 'LAD distal' } },
                     position: { distance: 0.75, angle: 10 }
                 }
             ],
@@ -135,7 +142,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: '1st Diag' } },
+                    attrs: { labelText: { text: 'First diagonal' } },
                     position: { distance: 0.4, angle: 10 }
                 },
             ],
@@ -171,7 +178,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: '2nd Diag' } },
+                    attrs: { labelText: { text: 'Second diagonal' } },
                     position: { distance: 0.5, angle: 10 }
                 },
             ],
@@ -237,23 +244,23 @@ export function buildBranches(Branch) {
             source: { x: 1097, y: 506 },
             target: { x: 1491, y: 1294 },
             vertices: [
-                { x: 1124, y: 532 }, { x: 1212, y: 517 }, { x: 1331, y: 510 }, { x: 1443, y: 576 }, { x: 1541, y: 674 }, { x: 1611, y: 786 }, { x: 1654, y: 895 }, { x: 1657, y: 1007 },
+                { x: 1135, y: 532 }, { x: 1212, y: 517 }, { x: 1331, y: 510 }, { x: 1443, y: 576 }, { x: 1541, y: 674 }, { x: 1611, y: 786 }, { x: 1654, y: 895 }, { x: 1657, y: 1007 },
                 { x: 1632, y: 1109 }, { x: 1569, y: 1214 }
             ],
             labels: [
                 {
                     range: { min: 0, max: 0.33 },
-                    attrs: { labelText: { text: 'pCIRC' } },
+                    attrs: { labelText: { text: 'Cx proximal' } },
                     position: { distance: 0.15, angle: 10 }
                 },
                 {
                     range: { min: 0.34, max: 0.66 },
-                    attrs: { labelText: { text: 'mCIRC' } },
+                    attrs: { labelText: { text: 'Cx mid' } },
                     position: { distance: 0.45, angle: 10 }
                 },
                 {
                     range: { min: 0.67, max: 1 },
-                    attrs: { labelText: { text: 'dCIRC' } },
+                    attrs: { labelText: { text: 'Cx distal' } },
                     position: { distance: 0.75, angle: 10 }
                 }
             ],
@@ -278,10 +285,20 @@ export function buildBranches(Branch) {
             ],
             labels: [
                 {
-                    range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: 'Ramus' } },
+                    range: { min: 0, max: 0.33 },
+                    attrs: { labelText: { text: 'Intermediate distal' } },
                     position: { distance: 0.5, angle: 10 }
                 },
+                {
+                    range: { min: 0.34, max: 0.66 },
+                    attrs: { labelText: { text: 'Intermediate mid' } },
+                    position: { distance: 0.5, angle: 10 }
+                },
+                {
+                    range: { min: 0.67, max: 1 },
+                    attrs: { labelText: { text: 'Intermediate proximal' } },
+                    position: { distance: 0.5, angle: 10 }
+                }
             ],
             style: { fill: "#6CBE47", stroke: '#000000', strokeWidth: 0.5, organicStrokeSize: 25, organicStrokeThinning: .3, organicStrokeTaper: 1, organicStrokeStartCap: false }
         },
@@ -315,7 +332,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: '1st OM' } },
+                    attrs: { labelText: { text: 'OM1' } },
                     position: { distance: 0.5, angle: 10 }
                 },
             ],
@@ -351,7 +368,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: '2nd OM' } },
+                    attrs: { labelText: { text: 'OM2' } },
                     position: { distance: 0.5, angle: 10 }
                 },
             ],
@@ -387,7 +404,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: '3rd OM' } },
+                    attrs: { labelText: { text: 'OM3' } },
                     position: { distance: 0.5, angle: 10 }
                 },
             ],
@@ -424,17 +441,17 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 0.35 },
-                    attrs: { labelText: { text: 'pRCA' } },
+                    attrs: { labelText: { text: 'RCA proximal' } },
                     position: { distance: 0.15, angle: 10 }
                 },
                 {
                     range: { min: 0.36, max: 0.65 },
-                    attrs: { labelText: { text: 'mRCA' } },
+                    attrs: { labelText: { text: 'RCA mid' } },
                     position: { distance: 0.55, angle: 10 }
                 },
                 {
                     range: { min: 0.66, max: 1 },
-                    attrs: { labelText: { text: 'dRCA' } },
+                    attrs: { labelText: { text: 'RCA distal' } },
                     position: { distance: 0.85, angle: 10 }
                 }
             ],
@@ -476,7 +493,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: 'aMarg(1st)' } },
+                    attrs: { labelText: { text: 'aMarg (1st)' } },
                     position: { distance: 0.5, angle: 10 }
                 }
             ],
@@ -506,7 +523,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: 'aMarg(2nd)' } },
+                    attrs: { labelText: { text: 'aMarg (2nd)' } },
                     position: { distance: 0.5, angle: 10 }
                 }
             ],
@@ -524,7 +541,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: 'CIRC AV' } },
+                    attrs: { labelText: { text: 'AV Circumflex' } },
                     position: { distance: 0.5, angle: 10 }
                 }
             ],
@@ -597,7 +614,7 @@ export function buildBranches(Branch) {
             labels: [
                 {
                     range: { min: 0, max: 1 },
-                    attrs: { labelText: { text: 'IPDA' } },
+                    attrs: { labelText: { text: 'LPDA', title: 'This is the LPDA vessel' } },
                     position: { distance: 0.5, angle: 10 }
                 }
             ],
