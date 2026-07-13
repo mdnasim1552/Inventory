@@ -212,15 +212,15 @@ custom.FormNoteView = joint.dia.ElementView.extend({
                 <label joint-selector="noteHeaderLabel">Stenosis:</label>
                 <div class="FormNoteViewInnerDiv" joint-selector="heightDiv">
                     <label class="FormNoteViewLable">Percent:</label>
-                    <input type="number" min="1" max="100" joint-selector="vesselHeightInput"/>
+                    <input type="number" min="1" max="5000" joint-selector="vesselHeightInput"/>
                 </div>
                 <div class="FormNoteViewInnerDiv" joint-selector="widthDiv">
                     <label class="FormNoteViewLable">Width:&nbsp;&nbsp;&nbsp;</label>
-                    <input type="number" min="1" max="100" joint-selector="vesselWidthInput"/>
+                    <input type="number" min="1" max="5000" joint-selector="vesselWidthInput"/>
                 </div>
                 <div class="FormNoteViewInnerDiv" joint-selector="lengthDiv">
                     <label class="FormNoteViewLable">Length:&nbsp;</label>
-                    <input type="number" min="1" max="100" joint-selector="vesselLengthInput"/>
+                    <input type="number" min="1" max="5000" joint-selector="vesselLengthInput"/>
                 </div>
             </div>
         `;
@@ -252,7 +252,7 @@ custom.FormNoteView = joint.dia.ElementView.extend({
             lengthInput.value = this.model.get('vesselLengthValue') || '';
             heightInput.value = this.model.get('vesselHeightInput') || '';
             widthtInput.value = this.model.get('vesselWidthInput') || '';
-            const MAX = 100;
+            const MAX = 5000;
             lengthInput.addEventListener('input', (e) => {
                 let value = parseFloat(e.target.value);
                 if (!isNaN(value) && value > MAX) {
@@ -263,7 +263,7 @@ custom.FormNoteView = joint.dia.ElementView.extend({
             });
             heightInput.addEventListener('input', (e) => {
                 let value = parseFloat(e.target.value);
-                if (!isNaN(value) && value > MAX) {
+                if (!isNaN(value) && value > 100) {
                     value = MAX;
                     e.target.value = value;
                 }
@@ -1577,8 +1577,9 @@ export function resolveAttachmentCollision(element, graph, link, paper) {
         const type = el.get('type');
 
         if (type === 'custom.Worm' || type === 'custom.UpBottomStroke' || type === 'custom.Stent') {
-            const percent = a.lengthPercent || 10;
-            return (percent / 100) * totalLength;
+            const percent = a.lengthPercent || 15;
+            //return (percent / 100) * totalLength;
+            return percent * 3.779527559;   // return length in pixels
         }
 
         return el.size()?.width || 40;
