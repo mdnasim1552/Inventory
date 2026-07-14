@@ -2724,11 +2724,14 @@ function parseStenosis(graphJSON) {
         const formNote = noteMap.get(noteId);
 
         const percent = formNote?.vesselHeightInput ?? null;
-
+        const length = formNote?.vesselLengthValue ?? null;
+        const width = formNote?.vesselWidthInput ?? null;
         results.push({
             vessel: vesselName,
             object: cell.type.replace("custom.", ""),
-            percent: percent
+            percent: percent,
+            length: length,
+            width: width
         });
     }
 
